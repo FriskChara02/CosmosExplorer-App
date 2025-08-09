@@ -7,72 +7,141 @@
 
 import SwiftUI
 
-struct RegisterView: View {
-    @StateObject private var viewModel = AuthViewModel()
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State private var username = ""
-    @State private var errorMessage = ""
+struct RegisterFields: View {
+    @Binding var username: String
+    @Binding var email: String
+    @Binding var password: String
+    @Binding var confirmPassword: String
+    @Binding var showPassword: Bool
+    @Binding var showConfirmPassword: Bool
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Tạo tài khoản")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-
-            TextField("Tên người dùng", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            SecureField("Mật khẩu", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            SecureField("Xác nhận mật khẩu", text: $confirmPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            if !errorMessage.isEmpty {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
-
-            Button(action: {
-                if password != confirmPassword {
-                    errorMessage = "Mật khẩu và xác nhận mật khẩu không khớp"
-                    return
-                }
-                
-                viewModel.signUp(email: email, password: password, username: username) { result in
-                    switch result {
-                    case .success:
-                        print("✅ Đăng ký thành công")
-                    case .failure(let error):
-                        errorMessage = error.localizedDescription
-                    }
-                }
-            }) {
-                Text("Đăng ký")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-            }
-
-            NavigationLink("Đã có tài khoản? Đăng nhập", destination: LoginView())
+            CustomTextField(
+                text: $username,
+                placeholder: "Tên người dùng",
+                icon: "person.fill",
+                iconColor: .green
+            )
+            CustomTextField(
+                text: $email,
+                placeholder: "Email",
+                icon: "envelope.fill",
+                iconColor: .blue
+            )
+            CustomSecureField(
+                text: $password,
+                placeholder: "Mật khẩu",
+                icon: showPassword ? "eye.fill" : "eye.slash.fill",
+                iconColor: .purple,
+                showPassword: $showPassword
+            )
+            CustomSecureField(
+                text: $confirmPassword,
+                placeholder: "Xác nhận mật khẩu",
+                icon: showConfirmPassword ? "eye.fill" : "eye.slash.fill",
+                iconColor: .purple,
+                showPassword: $showConfirmPassword,
+                trailingIcon: password == confirmPassword && !password.isEmpty ? "checkmark.circle.fill" : nil,
+                trailingIconColor: .green
+            )
         }
-        .padding()
+    }
+}
+
+struct CustomTextField: View {
+    @Binding var text: String
+    let placeholder: String
+    let icon: String
+    let iconColor: Color
+    var trailingIcon: String?
+    var trailingIconColor: Color?
+
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .foregroundColor(iconColor)
+                .frame(width: 24)
+            
+            TextField(placeholder, text: $text)
+                .foregroundColor(.white)
+                .frame(width: 200, height: 44)
+                .overlay(
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.white.opacity(0.7)),
+                    alignment: .bottom
+                )
+            
+            if let trailingIcon = trailingIcon, let trailingIconColor = trailingIconColor {
+                Image(systemName: trailingIcon)
+                    .foregroundColor(trailingIconColor)
+                    .frame(width: 24)
+            }
+        }
+        .padding(.horizontal)
+    }
+}
+
+struct CustomSecureField: View {
+    @Binding var text: String
+    let placeholder: String
+    let icon: String
+    let iconColor: Color
+    @Binding var showPassword: Bool
+    var trailingIcon: String?
+    var trailingIconColor: Color?
+
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .foregroundColor(iconColor)
+                .frame(width: 24)
+                .onTapGesture {
+                    showPassword.toggle()
+                }
+            
+            if showPassword {
+                TextField(placeholder, text: $text)
+                    .foregroundColor(.white)
+                    .frame(width: 200, height: 44)
+                    .overlay(
+                        Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(.white.opacity(0.7)),
+                        alignment: .bottom
+                    )
+            } else {
+                SecureField(placeholder, text: $text)
+                    .foregroundColor(.white)
+                    .frame(width: 200, height: 44)
+                    .overlay(
+                        Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(.white.opacity(0.7)),
+                        alignment: .bottom
+                    )
+            }
+            
+            if let trailingIcon = trailingIcon, let trailingIconColor = trailingIconColor {
+                Image(systemName: trailingIcon)
+                    .foregroundColor(trailingIconColor)
+                    .frame(width: 24)
+            }
+        }
+        .padding(.horizontal)
     }
 }
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterFields(
+            username: .constant(""),
+            email: .constant(""),
+            password: .constant(""),
+            confirmPassword: .constant(""),
+            showPassword: .constant(false),
+            showConfirmPassword: .constant(false)
+        )
     }
 }

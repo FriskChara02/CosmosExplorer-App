@@ -54,11 +54,21 @@
 			);
 			target = 7A7F82CA2E367C30006291B9 /* CosmosExplorer */;
 		};
+		7AE718F72E3A7E9C003CBFA0 /* Exceptions for "CosmosExplorer" folder in "CosmosExplorer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 7A7F82CA2E367C30006291B9 /* CosmosExplorer */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7A7F82CD2E367C30006291B9 /* CosmosExplorer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7AE718F72E3A7E9C003CBFA0 /* Exceptions for "CosmosExplorer" folder in "CosmosExplorer" target */,
+			);
 			path = CosmosExplorer;
 			sourceTree = "<group>";
 		};
@@ -492,6 +502,7 @@
 				DEVELOPMENT_TEAM = M47BB5RR2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CosmosExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -520,6 +531,7 @@
 				DEVELOPMENT_TEAM = M47BB5RR2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CosmosExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

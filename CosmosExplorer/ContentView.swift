@@ -13,13 +13,16 @@ struct ContentView: View {
     @StateObject private var viewModel = AuthViewModel()
 
     var body: some View {
-        Group {
-            if viewModel.isSignedIn {
-                HomeView()
-            } else {
-                LoginView()
+        NavigationView {
+            Group {
+                if viewModel.isSignedIn {
+                    WelcomeView()
+                } else {
+                    LoginView()
+                }
             }
         }
+        .environmentObject(viewModel)
         .onAppear {
             viewModel.setModelContext(modelContext)
         }
@@ -28,5 +31,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: [UserModel.self], inMemory: true)
 }

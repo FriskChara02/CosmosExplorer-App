@@ -15,11 +15,18 @@ class AuthViewModel: ObservableObject {
     @Published var username: String?
     private let db = Firestore.firestore()
     private var modelContext: ModelContext?
+    private var authStateHandle: AuthStateDidChangeListenerHandle?
 
     init() {
-        if let user = Auth.auth().currentUser {
-            isSignedIn = true
-            fetchUsername(userId: user.uid)
+        authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let self = self else { return }
+            if let user = user {
+                self.isSignedIn = true
+                self.fetchUsername(userId: user.uid)
+            } else {
+                self.isSignedIn = false
+                self.username = nil
+            }
         }
     }
 
@@ -28,7 +35,13 @@ class AuthViewModel: ObservableObject {
     }
 
     func fetchUsername(userId: String) {
+        guard Auth.auth().currentUser != nil else { return }
+        
         db.collection("users").document(userId).getDocument { snapshot, error in
+            if let error = error {
+                print("Lỗi khi lấy username: \(error)")
+                return
+            }
             if let data = snapshot?.data(), let username = data["username"] as? String {
                 self.username = username
             }
@@ -110,6 +123,12 @@ class AuthViewModel: ObservableObject {
             self.username = nil
         } catch {
             print("Lỗi khi đăng xuất: \(error)")
+        }
+    }
+
+    deinit {
+        if let handle = authStateHandle {
+            Auth.auth().removeStateDidChangeListener(handle)
         }
     }
 }

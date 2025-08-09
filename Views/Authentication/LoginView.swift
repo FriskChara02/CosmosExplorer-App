@@ -1,64 +1,418 @@
-//
-//  LoginView.swift
-//  CosmosExplorer
-//
-//  Created by Loi Nguyen on 28/7/25.
-//
-
 import SwiftUI
+import FirebaseAuth
+
+enum AuthMode: String {
+    case login = "Đăng nhập"
+    case signUp = "Đăng ký"
+    case forgotPassword = "Quên mật khẩu"
+}
 
 struct LoginView: View {
-    @StateObject private var viewModel = AuthViewModel()
+    @EnvironmentObject private var viewModel: AuthViewModel
+    @State private var authMode: AuthMode = .login
     @State private var email = ""
     @State private var password = ""
+    @State private var confirmPassword = ""
+    @State private var username = ""
     @State private var errorMessage = ""
+    @State private var successMessage = ""
+    @State private var showPassword = false
+    @State private var showConfirmPassword = false
+    @State private var showWelcomeView = false
+    @Namespace private var animation
+    @State private var starOffset: CGFloat = 0
+    @State private var circleOffset1 = CGSize.zero
+    @State private var circleOffset2 = CGSize.zero
+    @State private var meteorOffset = CGSize.zero
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                Text("Cosmos Explorer")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        NavigationStack {
+            ZStack {
+                Image("cosmos_background")
+                    .resizable()
+                    .scaledToFill()
+                    .overlay(
+                        GeometryReader { geometry in
+                            ZStack {
+                                // Stars background
+                                ForEach(0..<40) { _ in
+                                    Circle()
+                                        .fill(Color.white.opacity(Double.random(in: 0.3...0.8)))
+                                        .frame(width: CGFloat.random(in: 2...5))
+                                        .position(
+                                            x: CGFloat.random(in: 0...geometry.size.width),
+                                            y: CGFloat.random(in: 0...geometry.size.height)
+                                        )
+                                        .offset(y: starOffset)
+                                        .animation(
+                                            Animation.linear(duration: Double.random(in: 20...40)).repeatForever(autoreverses: false),
+                                            value: starOffset
+                                        )
+                                }
+                                // Moving circles
+                                Circle()
+                                    .fill(.white.opacity(0.5))
+                                    .frame(width: 5)
+                                    .offset(circleOffset1)
+                                    .animation(
+                                        Animation.linear(duration: 10).repeatForever(autoreverses: false),
+                                        value: circleOffset1
+                                    )
+                                // Snow-like falling circles
+                                ForEach(0..<40) { index in
+                                    Circle()
+                                        .fill(.white.opacity(Double.random(in: 0.3...0.8)))
+                                        .frame(width: CGFloat.random(in: 3...7))
+                                        .position(
+                                            x: CGFloat.random(in: 0...geometry.size.width),
+                                            y: -CGFloat.random(in: 0...geometry.size.height)
+                                        )
+                                        .offset(y: circleOffset2.height)
+                                        .animation(
+                                            Animation.easeInOut(duration: Double.random(in: 8...15))
+                                                .repeatForever(autoreverses: false)
+                                                .delay(Double(index) * 0.5),
+                                            value: circleOffset2
+                                        )
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [.white, .white.opacity(0.2), .clear],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                        .frame(width: 50, height: 5)
+                                        .blur(radius: 3)
+                                        .offset(meteorOffset)
+                                        .animation(
+                                            Animation.linear(duration: 2).repeatForever(autoreverses: false),
+                                            value: meteorOffset
+                                        )
+                                }
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+                            }
+                            .onAppear {
+                                // circleOffset1
+                                // Để kéo lên cao hơn, thay đổi -geometry.size.height * 1.5
+                                // và thay đổi geometry.size.height * 0.5
+                                circleOffset1 = CGSize(width: geometry.size.width, height: -geometry.size.height * 1.5)
+                                // Snow-like falling circles
+                                circleOffset2 = CGSize(width: 0, height: 0)
+                                // Meteor movement
+                                meteorOffset = CGSize(width: geometry.size.width + 50, height: -50)
+                                withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
+                                    circleOffset1 = CGSize(width: -geometry.size.width, height: geometry.size.height * 0.5)
+                                }
+                                withAnimation(.easeInOut(duration: 5).repeatForever(autoreverses: false)) {
+                                    circleOffset2 = CGSize(width: 0, height: geometry.size.height)
+                                }
+                                withAnimation(.linear(duration: 5).repeatForever(autoreverses: false).delay(8)) {
+                                    meteorOffset = CGSize(width: -geometry.size.width - 50, height: 50)
+                                }
+                            }
+                        }
+                    )
+                    .ignoresSafeArea()
 
-                TextField("Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                VStack(spacing: 20) {
+                    logoView
+                        .padding(.top, 50)
 
-                SecureField("Mật khẩu", text: $password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                }
-
-                Button(action: {
-                    viewModel.signIn(email: email, password: password) { result in
-                        switch result {
-                        case .success:
-                            print("✅ Đăng nhập thành công")
-                            // Không cần set isSignedIn vì AuthViewModel đã xử lý
-                        case .failure(let error):
-                            errorMessage = error.localizedDescription
+                    HStack {
+                        ForEach([AuthMode.login, AuthMode.signUp], id: \.self) { mode in
+                            ZStack {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "globe.asia.australia.fill")
+                                        .foregroundColor(mode == .login ? .blue : .red)
+                                        .font(.system(size: 20))
+                                    Text(mode.rawValue)
+                                        .font(.title2)
+                                        .fontWeight(authMode == mode ? .bold : .regular)
+                                        .foregroundColor(.white)
+                                        .padding(8)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        colors: authMode == mode ? [.white.opacity(0.8), .clear] : [.clear],
+                                                        startPoint: .top,
+                                                        endPoint: .bottom
+                                                    ),
+                                                    lineWidth: authMode == mode ? 2 : 0
+                                                )
+                                                .shadow(color: .white.opacity(authMode == mode ? 0.5 : 0), radius: 5)
+                                        )
+                                        .matchedGeometryEffect(id: "mode_\(mode.rawValue)", in: animation)
+                                        .onTapGesture {
+                                            withAnimation(.spring()) {
+                                                authMode = mode
+                                                errorMessage = ""
+                                                successMessage = ""
+                                                email = ""
+                                                password = ""
+                                                confirmPassword = ""
+                                                username = ""
+                                            }
+                                        }
+                                }
+                            }
                         }
                     }
-                }) {
-                    Text("Đăng nhập")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
+                    .padding(.bottom, 20)
 
-                NavigationLink("Đăng ký", destination: RegisterView())
-                NavigationLink("Quên mật khẩu?", destination: ForgotPasswordView())
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(.ultraThinMaterial)
+                            .frame(width: 300, height: inputStackHeight)
+                        
+                        VStack(spacing: 20) {
+                            if authMode == .login {
+                                LoginFields(email: $email, password: $password, showPassword: $showPassword)
+                            } else if authMode == .signUp {
+                                RegisterFields(
+                                    username: $username,
+                                    email: $email,
+                                    password: $password,
+                                    confirmPassword: $confirmPassword,
+                                    showPassword: $showPassword,
+                                    showConfirmPassword: $showConfirmPassword
+                                )
+                            } else {
+                                ForgotPasswordFields(email: $email)
+                            }
+                        }
+                        .padding()
+                    }
+
+                    if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                    }
+                    if !successMessage.isEmpty {
+                        Text(successMessage)
+                            .foregroundColor(.green)
+                            .font(.caption)
+                    }
+
+                    Button(action: performAction) {
+                        Text(authMode.rawValue)
+                            .font(.headline)
+                            .frame(width: 250, height: 50)
+                            .background(authMode == .login ? Color.black : authMode == .signUp ? Color.green : Color.red)
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                    }
+                    .padding(.horizontal, 20)
+
+                    VStack(spacing: 10) {
+                        Text("⋆˚☆˖°⋆｡°✮˖ ࣪⊹⋆.˚.𖥔 ݁˖.✦ OR ✩.⋆☾⋆⁺₊✧ִׄ˚ •𖥔 ࣪˖⭑₊⭒*ೃ")
+                            .foregroundColor(.white.opacity(0.7))
+                            .fontWeight(.bold)
+                        HStack(spacing: 20) {
+                            Image(systemName: "apple.logo")
+                                .foregroundColor(.white)
+                                .font(.system(size: 30))
+                            Image(systemName: "g.circle.fill")
+                                .foregroundColor(.white)
+                                .font(.system(size: 30))
+                            Image(systemName: "f.circle.fill")
+                                .foregroundColor(.white)
+                                .font(.system(size: 30))
+                        }
+                    }
+                    .padding(.top, 10)
+
+                    if authMode != .forgotPassword {
+                        Button("✧ Quên mật khẩu?") {
+                            withAnimation(.spring()) {
+                                authMode = .forgotPassword
+                                errorMessage = ""
+                                successMessage = ""
+                                email = ""
+                            }
+                        }
+                        .foregroundColor(.white.opacity(0.7))
+                        .font(.system(size: 16))
+                    }
+                }
+                .padding()
+                .navigationDestination(isPresented: $showWelcomeView) {
+                    WelcomeView()
+                        .environmentObject(viewModel)
+                        .navigationBarBackButtonHidden(true)
+                }
             }
-            .padding()
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.black, .purple, .blue]), startPoint: .top, endPoint: .bottom)
-                    .ignoresSafeArea()
+            .onAppear {
+                starOffset = 1000
+            }
+            .ignoresSafeArea(.keyboard)
+        }
+    }
+
+    private var logoView: some View {
+        VStack(spacing: 5) {
+            Text("Cosmos Explorer")
+                .font(.custom("Audiowide", size: 36))
+                .fontWeight(.bold)
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.purple, .blue, .pink],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .shadow(color: .white.opacity(0.4), radius: 10, x: 0, y: 0)
+                .offset(y: authMode == .login ? sin(Date().timeIntervalSince1970 * 0.5) * 5 : -20)
+                .animation(
+                    authMode == .login ?
+                        .easeInOut(duration: 3.5).repeatForever(autoreverses: true) :
+                        .easeInOut(duration: 0.5),
+                    value: authMode
+                )
+
+            Text("Explore the universe of knowledge")
+                .font(.custom("Audiowide", size: 18))
+                .foregroundColor(.white.opacity(0.7))
+        }
+        .overlay(
+            ZStack {
+                Circle()
+                    .fill(RadialGradient(gradient: Gradient(colors: [.white.opacity(0.1), .clear]), center: .center, startRadius: 0, endRadius: 100))
+                    .frame(width: 200, height: 200)
+                    .offset(x: -50, y: -100)
+            }
+        )
+    }
+
+    private var inputStackHeight: CGFloat {
+        switch authMode {
+        case .login:
+            return 140
+        case .signUp:
+            return 260
+        case .forgotPassword:
+            return 80
+        }
+    }
+
+    private func performAction() {
+        switch authMode {
+        case .login:
+            viewModel.signIn(email: email, password: password) { result in
+                switch result {
+                case .success:
+                    print("✅ Đăng nhập thành công")
+                    errorMessage = ""
+                    showWelcomeView = true
+                case .failure(let error):
+                    errorMessage = error.localizedDescription
+                }
+            }
+        case .signUp:
+            if password != confirmPassword {
+                errorMessage = "Mật khẩu và xác nhận mật khẩu không khớp"
+                return
+            }
+            viewModel.signUp(email: email, password: password, username: username) { result in
+                switch result {
+                case .success:
+                    print("✅ Đăng ký thành công")
+                    errorMessage = ""
+                case .failure(let error):
+                    errorMessage = error.localizedDescription
+                }
+            }
+        case .forgotPassword:
+            viewModel.resetPassword(email: email) { result in
+                switch result {
+                case .success:
+                    successMessage = "Email khôi phục đã được gửi!"
+                    errorMessage = ""
+                case .failure(let error):
+                    errorMessage = error.localizedDescription
+                    successMessage = ""
+                }
+            }
+        }
+    }
+
+    struct LoginFields: View {
+        @Binding var email: String
+        @Binding var password: String
+        @Binding var showPassword: Bool
+
+        var body: some View {
+            VStack(spacing: 20) {
+                CustomTextField(
+                    text: $email,
+                    placeholder: "Email",
+                    icon: "envelope.fill",
+                    iconColor: .blue
+                )
+                CustomSecureField(
+                    text: $password,
+                    placeholder: "Mật khẩu",
+                    icon: showPassword ? "eye.fill" : "eye.slash.fill",
+                    iconColor: .purple,
+                    showPassword: $showPassword
+                )
+            }
+        }
+    }
+
+    struct RegisterFields: View {
+        @Binding var username: String
+        @Binding var email: String
+        @Binding var password: String
+        @Binding var confirmPassword: String
+        @Binding var showPassword: Bool
+        @Binding var showConfirmPassword: Bool
+
+        var body: some View {
+            VStack(spacing: 20) {
+                CustomTextField(
+                    text: $username,
+                    placeholder: "Tên người dùng",
+                    icon: "person.fill",
+                    iconColor: .green
+                )
+                CustomTextField(
+                    text: $email,
+                    placeholder: "Email",
+                    icon: "envelope.fill",
+                    iconColor: .blue
+                )
+                CustomSecureField(
+                    text: $password,
+                    placeholder: "Mật khẩu",
+                    icon: showPassword ? "eye.fill" : "eye.slash.fill",
+                    iconColor: .purple,
+                    showPassword: $showPassword
+                )
+                CustomSecureField(
+                    text: $confirmPassword,
+                    placeholder: "Xác nhận mật khẩu",
+                    icon: showConfirmPassword ? "eye.fill" : "eye.slash.fill",
+                    iconColor: .purple,
+                    showPassword: $showConfirmPassword
+                )
+            }
+        }
+    }
+
+    struct ForgotPasswordFields: View {
+        @Binding var email: String
+
+        var body: some View {
+            CustomTextField(
+                text: $email,
+                placeholder: "Email",
+                icon: "envelope.fill",
+                iconColor: .blue
             )
         }
     }
@@ -67,5 +421,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(AuthViewModel())
     }
 }
