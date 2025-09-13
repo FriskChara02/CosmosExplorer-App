@@ -1,23 +1,19 @@
 import SwiftUI
-import FirebaseAuth
 
 struct ProfileView: View {
+    @EnvironmentObject private var viewModel: AuthViewModel
     @State private var errorMessage: String?
-    
+
     var body: some View {
         VStack(spacing: 20) {
             Text("Profile")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
-            
+
             Button(action: {
-                do {
-                    try Auth.auth().signOut()
-                    errorMessage = nil
-                } catch {
-                    errorMessage = "Failed to sign out: \(error.localizedDescription)"
-                }
+                viewModel.signOut()
+                errorMessage = nil
             }) {
                 Text("Sign Out")
                     .font(.headline)
@@ -28,7 +24,7 @@ struct ProfileView: View {
                     .cornerRadius(10)
             }
             .padding(.horizontal, 30)
-            
+
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .font(.subheadline)
@@ -36,7 +32,7 @@ struct ProfileView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)
             }
-            
+
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,5 +43,6 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+            .environmentObject(AuthViewModel())
     }
 }

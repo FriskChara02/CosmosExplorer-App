@@ -1,15 +1,18 @@
 import SwiftUI
-import FirebaseAuth
 import SwiftData
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel: HomeViewModel
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var selectedBannerIndex = 0
     @State private var showMenu = false
     @Environment(\.colorScheme) var colorScheme
     @Namespace private var animation
     
-    // Sample data for banner and grid items
+    init() {
+        _viewModel = StateObject(wrappedValue: HomeViewModel(authViewModel: nil))
+    }
+    
     private let bannerItems = [
         "Map Galaxy", "Solar System", "Planets", "Stars", "Universe",
         "Galaxy", "Cosmos", "Nebula", "Astronomical News", "Constellation",
@@ -179,33 +182,56 @@ struct HomeView: View {
                             ForEach(0..<gridItemsLeft.count, id: \.self) { index in
                                 Group {
                                     // Left Column
-                                    NavigationLink(destination: PlaceholderView(title: gridItemsLeft[index])) {
-                                        ZStack(alignment: .bottomLeading) {
-                                            Image("cosmos_background")
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(height: 115)
-                                                .clipped()
-                                                .cornerRadius(25)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 25)
-                                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
-                                                )
-                                            Text(gridItemsLeft[index])
-                                                .font(.caption)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                                .padding(8)
-                                                .background(Color.black.opacity(0.5))
-                                                .cornerRadius(25)
-                                                .padding([.leading, .bottom], 10)
-                                        }
-                                        .padding(8)
-                                        .matchedGeometryEffect(id: gridItemsLeft[index], in: animation)
+                                    ZStack(alignment: .bottomLeading) {
+                                        Image("cosmos_background")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(height: 115)
+                                            .clipped()
+                                            .cornerRadius(25)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 25)
+                                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                            )
+                                        Text(gridItemsLeft[index])
+                                            .font(.caption)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                            .padding(8)
+                                            .background(Color.black.opacity(0.5))
+                                            .cornerRadius(25)
+                                            .padding([.leading, .bottom], 10)
                                     }
+                                    .padding(8)
+                                    .matchedGeometryEffect(id: gridItemsLeft[index], in: animation)
                                     
                                     // Right Column
-                                    NavigationLink(destination: PlaceholderView(title: gridItemsRight[index])) {
+                                    if gridItemsRight[index] == "Solar System" {
+                                        NavigationLink(destination: SolarSystemView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image("cosmos_background")
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: gridItemsRight[index], in: animation)
+                                        }
+                                    } else {
                                         ZStack(alignment: .bottomLeading) {
                                             Image("cosmos_background")
                                                 .resizable()
@@ -244,35 +270,32 @@ struct HomeView: View {
                                 .padding(.leading, 15)
                                 .offset(y: -40)
                             
-                            NavigationLink(destination: PlaceholderView(title: "Astronomical News")) {
-                                HStack {
-                                    Image("cosmos_background")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 100, height: 100)
-                                        .clipped()
-                                        .cornerRadius(10)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("Latest Space Discovery")
-                                            .font(.headline)
-                                            .foregroundColor(.white)
-                                        Text("Sep 11/2025")
-                                            .font(.caption)
-                                            .foregroundColor(.white.opacity(0.8))
-                                    }
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
+                            HStack {
+                                Image("cosmos_background")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .clipped()
+                                    .cornerRadius(10)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Latest Space Discovery")
+                                        .font(.headline)
                                         .foregroundColor(.white)
+                                    Text("Sep 11/2025")
+                                        .font(.caption)
+                                        .foregroundColor(.white.opacity(0.8))
                                 }
-                                .padding()
-                                .background(Color.black.opacity(0.3))
-                                .cornerRadius(10)
-                                .padding(.horizontal, 15)
-                                .offset(y: -40)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.white)
                             }
+                            .padding()
+                            .background(Color.black.opacity(0.3))
+                            .cornerRadius(10)
+                            .padding(.horizontal, 15)
+                            .offset(y: -40)
                         }
-                        // Thêm khoảng trống ở dưới để tránh nội dung bị che bởi Bottom Navigation Bar
                         Spacer(minLength: 100)
                     }
                 }
@@ -284,7 +307,7 @@ struct HomeView: View {
                         .edgesIgnoringSafeArea(.all)
                 )
                 
-                // Bottom Navigation Bar (cố định nè)
+                // Bottom Navigation Bar
                 VStack {
                     Spacer()
                     HStack {
@@ -325,6 +348,7 @@ struct HomeView: View {
                 // Hamburger Menu
                 if showMenu {
                     HamburgerMenuView(isPresented: $showMenu)
+                        .environmentObject(authViewModel)
                         .transition(
                             .asymmetric(
                                 insertion: .move(edge: .leading).combined(with: .scale(scale: 0.98, anchor: .leading)).combined(with: .opacity),
@@ -343,13 +367,13 @@ struct HomeView: View {
         case "Home":
             HomeView()
         case "Astronomical News":
-            PlaceholderView(title: "Astronomical News")
+            EmptyView()
         case "Map":
-            PlaceholderView(title: "Map")
+            EmptyView()
         case "Settings":
-            PlaceholderView(title: "Settings")
+            EmptyView()
         case "Profile":
-            PlaceholderView(title: "Profile")
+            ProfileView()
         default:
             EmptyView()
         }
@@ -380,15 +404,14 @@ class HomeViewModel: ObservableObject {
         "Love Cosmos.",
         "The stars are calling, let's answer.",
         "Discover the mysteries of the cosmos.",
-        "Journey through the galaxy awaits."
+        "Falling Star♪"
     ]
     
-    init() {
-        if let user = Auth.auth().currentUser {
-            self.userName = user.displayName ?? "User"
-        }
-        
-        // Random quote
+    private var authViewModel: AuthViewModel?
+    
+    init(authViewModel: AuthViewModel? = nil) {
+        self.authViewModel = authViewModel
+        self.userName = authViewModel?.username ?? "User"
         self.randomCosmosQuote = cosmosQuotes.randomElement() ?? "Explore the universe!"
     }
 }
@@ -400,25 +423,9 @@ struct NavItem: Identifiable {
     let icon: String
 }
 
-// Placeholder View
-struct PlaceholderView: View {
-    let title: String
-    
-    var body: some View {
-        VStack {
-            Text("\(title) View")
-                .font(.largeTitle)
-                .foregroundColor(.white)
-            Text("To be implemented")
-                .foregroundColor(.white.opacity(0.8))
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black)
-    }
-}
-
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(AuthViewModel())
     }
 }

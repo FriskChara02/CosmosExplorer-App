@@ -7,11 +7,10 @@
 
 import SwiftUI
 import SwiftData
-import FirebaseCore
 
 @main
 struct CosmosExplorerApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    let swiftDataService = SwiftDataService()
     
     // MARK: - SwiftData ModelContainer
     var sharedModelContainer: ModelContainer = {
@@ -33,5 +32,6 @@ struct CosmosExplorerApp: App {
         }
         .modelContainer(sharedModelContainer)
         .modelContainer(for: [UserModel.self])
+        .modelContainer(swiftDataService.container)
     }
 }

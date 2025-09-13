@@ -6,26 +6,25 @@
 //
 
 import Foundation
-import FirebaseAuth
-import FirebaseFirestore
 import SwiftData
+import PostgresClientKit
+import CryptoKit
 
 class AuthViewModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var username: String?
-    private let db = Firestore.firestore()
     private var modelContext: ModelContext?
-    private var authStateHandle: AuthStateDidChangeListenerHandle?
 
     init() {
-        authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
-            guard let self = self else { return }
-            if let user = user {
-                self.isSignedIn = true
-                self.fetchUsername(userId: user.uid)
-            } else {
-                self.isSignedIn = false
-                self.username = nil
+        // Kiểm tra user đã đăng nhập từ SwiftData
+        if let context = modelContext {
+            do {
+                if let user = try context.fetch(FetchDescriptor<UserModel>()).first {
+                    self.isSignedIn = true
+                    self.username = user.username
+                }
+            } catch {
+                print("Lỗi khi kiểm tra user trong SwiftData: \(error)")
             }
         }
     }
@@ -35,100 +34,130 @@ class AuthViewModel: ObservableObject {
     }
 
     func fetchUsername(userId: String) {
-        guard Auth.auth().currentUser != nil else { return }
-        
-        db.collection("users").document(userId).getDocument { snapshot, error in
-            if let error = error {
-                print("Lỗi khi lấy username: \(error)")
-                return
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+
+        do {
+            let statement = try connection.prepareStatement(text: "SELECT username FROM users WHERE id = $1")
+            defer { statement.close() }
+            let cursor = try statement.execute(parameterValues: [userId])
+            defer { cursor.close() }
+            
+            if let row = try cursor.next()?.get() {
+                self.username = try row.columns[0].string()
             }
-            if let data = snapshot?.data(), let username = data["username"] as? String {
-                self.username = username
-            }
+        } catch {
+            print("Lỗi khi lấy username: \(error)")
         }
     }
 
-    func signUp(email: String, password: String, username: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        if password.count < 6 {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Mật khẩu phải có ít nhất 6 ký tự"])))
+    func hashPassword(_ password: String) -> String {
+        let inputData = Data(password.utf8)
+        let hashed = SHA256.hash(data: inputData)
+        return hashed.compactMap { String(format: "%02x", $0) }.joined()
+    }
+
+    func signUp(email: String, username: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
             return
         }
+        defer { connection.close() }
 
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                completion(.failure(error))
-                return
+        do {
+            let id = UUID().uuidString
+            let hashedPassword = hashPassword(password)
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO users (id, email, username, password, created_at)
+                VALUES ($1, $2, $3, $4, $5)
+                """)
+            defer { statement.close() }
+            let date = ISO8601DateFormatter().string(from: Date())
+            try statement.execute(parameterValues: [id, email, username, hashedPassword, date])
+
+            if let context = modelContext {
+                let newUser = UserModel(id: UUID(uuidString: id)!, email: email, username: username, password: hashedPassword)
+                context.insert(newUser)
+                try context.save()
             }
 
-            guard let user = result?.user else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể tạo người dùng"])))
-                return
-            }
-
-            let userData: [String: Any] = [
-                "id": user.uid,
-                "email": email,
-                "username": username,
-                "createdAt": Timestamp()
-            ]
-
-            self.db.collection("users").document(user.uid).setData(userData) { error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-
-                if let context = self.modelContext {
-                    let newUser = UserModel(id: user.uid, email: email, username: username)
-                    context.insert(newUser)
-                }
-
-                self.isSignedIn = true
-                self.username = username
-                completion(.success(()))
-            }
+            self.isSignedIn = true
+            self.username = username
+            completion(.success(()))
+        } catch {
+            completion(.failure(error))
         }
     }
 
     func signIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
 
-            if let user = result?.user {
-                self.fetchUsername(userId: user.uid)
+        do {
+            let statement = try connection.prepareStatement(text: "SELECT id, username, password FROM users WHERE email = $1")
+            defer { statement.close() }
+            let cursor = try statement.execute(parameterValues: [email])
+            defer { cursor.close() }
+            
+            if let row = try cursor.next()?.get(),
+               let id = try? row.columns[0].string(),
+               let username = try? row.columns[1].string(),
+               let storedPassword = try? row.columns[2].string() {
+                let hashedPassword = hashPassword(password)
+                if hashedPassword == storedPassword {
+                    self.isSignedIn = true
+                    self.username = username
+                    if let context = modelContext {
+                        let newUser = UserModel(id: UUID(uuidString: id)!, email: email, username: username, password: storedPassword)
+                        context.insert(newUser)
+                        try context.save()
+                    }
+                    completion(.success(()))
+                } else {
+                    completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Mật khẩu không đúng nhaaaaa"])))
+                }
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Email không tồn tại nhennnn"])))
             }
-
-            self.isSignedIn = true
-            completion(.success(()))
+        } catch {
+            completion(.failure(error))
         }
     }
 
     func resetPassword(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
+
+        do {
+            let newPassword = UUID().uuidString.prefix(8)
+            let hashedPassword = hashPassword(String(newPassword))
+            let statement = try connection.prepareStatement(text: "UPDATE users SET password = $1 WHERE email = $2")
+            defer { statement.close() }
+            try statement.execute(parameterValues: [hashedPassword, email])
+
+            print("Mật khẩu mới cho \(email): \(newPassword)")
             completion(.success(()))
+        } catch {
+            completion(.failure(error))
         }
     }
 
     func signOut() {
-        do {
-            try Auth.auth().signOut()
-            self.isSignedIn = false
-            self.username = nil
-        } catch {
-            print("Lỗi khi đăng xuất: \(error)")
-        }
-    }
-
-    deinit {
-        if let handle = authStateHandle {
-            Auth.auth().removeStateDidChangeListener(handle)
+        self.isSignedIn = false
+        self.username = nil
+        if let context = modelContext {
+            do {
+                try context.delete(model: UserModel.self)
+                try context.save()
+            } catch {
+                print("Lỗi khi xóa user khỏi SwiftData: \(error)")
+            }
         }
     }
 }

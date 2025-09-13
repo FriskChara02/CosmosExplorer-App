@@ -10,15 +10,18 @@ import SwiftData
 
 @Model
 class UserModel: Identifiable {
-    var id: String // UID từ Firebase
+    var id: UUID
     var email: String
     var username: String?
+    var password: String
     var createdAt: Date
 
-    init(id: String, email: String, username: String? = nil, createdAt: Date = Date()) {
+    init(id: UUID = UUID(), email: String, username: String? = nil, password: String, createdAt: Date = Date()) {
         self.id = id
         self.email = email
         self.username = username
+        self.password = password
         self.createdAt = createdAt
     }
 }
+

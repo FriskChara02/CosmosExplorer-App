@@ -3,8 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>UIAppFonts</key>
-        <array>
-            <string>Audiowide-Regular.ttf</string>
-        </array>
+    <array>
+        <string>Audiowide-Regular.ttf</string>
+    </array>
+
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    
 </dict>
 </plist>

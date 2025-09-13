@@ -1,5 +1,4 @@
 import SwiftUI
-import FirebaseAuth
 
 enum AuthMode: String {
     case login = "Đăng nhập"
@@ -317,11 +316,12 @@ struct LoginView: View {
                 errorMessage = "Mật khẩu và xác nhận mật khẩu không khớp"
                 return
             }
-            viewModel.signUp(email: email, password: password, username: username) { result in
+            viewModel.signUp(email: email, username: username, password: password) { result in
                 switch result {
                 case .success:
                     print("✅ Đăng ký thành công")
                     errorMessage = ""
+                    successMessage = "Đăng ký thành công!"
                 case .failure(let error):
                     errorMessage = error.localizedDescription
                 }

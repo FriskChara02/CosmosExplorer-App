@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7AE712302E372397003CBFA0 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE7122F2E372397003CBFA0 /* FirebaseAI */; };
-		7AE712322E372397003CBFA0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE712312E372397003CBFA0 /* FirebaseAnalytics */; };
-		7AE712342E372397003CBFA0 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE712332E372397003CBFA0 /* FirebaseAnalyticsCore */; };
-		7AE712362E372397003CBFA0 /* FirebaseAnalyticsIdentitySupport in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE712352E372397003CBFA0 /* FirebaseAnalyticsIdentitySupport */; };
-		7AE712382E372397003CBFA0 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE712372E372397003CBFA0 /* FirebaseAppCheck */; };
-		7AE716F72E3761F9003CBFA0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE716F62E3761F9003CBFA0 /* FirebaseAuth */; };
-		7AE716F92E376219003CBFA0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE716F82E376219003CBFA0 /* FirebaseFirestore */; };
-		7AE716FB2E37623A003CBFA0 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7AE716FA2E37623A003CBFA0 /* FirebaseCore */; };
+		7A4FF46E2E61A9EA00ED6904 /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FF46D2E61A9EA00ED6904 /* RealityKit.framework */; };
+		7A4FF4702E6310C900ED6904 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FF46F2E6310C900ED6904 /* WebKit.framework */; };
+		7A4FF4722E64390500ED6904 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FF4712E64390500ED6904 /* UIKit.framework */; };
+		7AB292EF2E74499D00582D0F /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292EE2E74499D00582D0F /* PostgresClientKit */; };
+		7AB292F42E7450F100582D0F /* OpenCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F32E7450F100582D0F /* OpenCombine */; };
+		7AB292F62E7450F100582D0F /* OpenCombineDispatch in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F52E7450F100582D0F /* OpenCombineDispatch */; };
+		7AB292F82E7450F100582D0F /* OpenCombineFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F72E7450F100582D0F /* OpenCombineFoundation */; };
+		7AB292FA2E7450F100582D0F /* OpenCombineShim in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F92E7450F100582D0F /* OpenCombineShim */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A4FF46D2E61A9EA00ED6904 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
+		7A4FF46F2E6310C900ED6904 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		7A4FF4712E64390500ED6904 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7A7F82CB2E367C30006291B9 /* CosmosExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmosExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F82DA2E367C31006291B9 /* CosmosExplorerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosExplorerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F82E42E367C31006291B9 /* CosmosExplorerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosExplorerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,14 +120,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AE712362E372397003CBFA0 /* FirebaseAnalyticsIdentitySupport in Frameworks */,
-				7AE716F72E3761F9003CBFA0 /* FirebaseAuth in Frameworks */,
-				7AE712322E372397003CBFA0 /* FirebaseAnalytics in Frameworks */,
-				7AE712342E372397003CBFA0 /* FirebaseAnalyticsCore in Frameworks */,
-				7AE712382E372397003CBFA0 /* FirebaseAppCheck in Frameworks */,
-				7AE712302E372397003CBFA0 /* FirebaseAI in Frameworks */,
-				7AE716FB2E37623A003CBFA0 /* FirebaseCore in Frameworks */,
-				7AE716F92E376219003CBFA0 /* FirebaseFirestore in Frameworks */,
+				7A4FF4702E6310C900ED6904 /* WebKit.framework in Frameworks */,
+				7A4FF4722E64390500ED6904 /* UIKit.framework in Frameworks */,
+				7A4FF46E2E61A9EA00ED6904 /* RealityKit.framework in Frameworks */,
+				7AB292F42E7450F100582D0F /* OpenCombine in Frameworks */,
+				7AB292F62E7450F100582D0F /* OpenCombineDispatch in Frameworks */,
+				7AB292EF2E74499D00582D0F /* PostgresClientKit in Frameworks */,
+				7AB292F82E7450F100582D0F /* OpenCombineFoundation in Frameworks */,
+				7AB292FA2E7450F100582D0F /* OpenCombineShim in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +177,9 @@
 		7AE716F52E3761F9003CBFA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A4FF4712E64390500ED6904 /* UIKit.framework */,
+				7A4FF46F2E6310C900ED6904 /* WebKit.framework */,
+				7A4FF46D2E61A9EA00ED6904 /* RealityKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,14 +208,11 @@
 			);
 			name = CosmosExplorer;
 			packageProductDependencies = (
-				7AE7122F2E372397003CBFA0 /* FirebaseAI */,
-				7AE712312E372397003CBFA0 /* FirebaseAnalytics */,
-				7AE712332E372397003CBFA0 /* FirebaseAnalyticsCore */,
-				7AE712352E372397003CBFA0 /* FirebaseAnalyticsIdentitySupport */,
-				7AE712372E372397003CBFA0 /* FirebaseAppCheck */,
-				7AE716F62E3761F9003CBFA0 /* FirebaseAuth */,
-				7AE716F82E376219003CBFA0 /* FirebaseFirestore */,
-				7AE716FA2E37623A003CBFA0 /* FirebaseCore */,
+				7AB292EE2E74499D00582D0F /* PostgresClientKit */,
+				7AB292F32E7450F100582D0F /* OpenCombine */,
+				7AB292F52E7450F100582D0F /* OpenCombineDispatch */,
+				7AB292F72E7450F100582D0F /* OpenCombineFoundation */,
+				7AB292F92E7450F100582D0F /* OpenCombineShim */,
 			);
 			productName = CosmosExplorer;
 			productReference = 7A7F82CB2E367C30006291B9 /* CosmosExplorer.app */;
@@ -295,7 +298,8 @@
 			mainGroup = 7A7F82C22E367C30006291B9;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */,
+				7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7A7F82CC2E367C30006291B9 /* Products */;
@@ -664,56 +668,49 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			repositoryURL = "https://github.com/codewinsdotcom/PostgresClientKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.0.0;
+				minimumVersion = 1.0.0;
+			};
+		};
+		7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OpenCombine/OpenCombine.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7AE7122F2E372397003CBFA0 /* FirebaseAI */ = {
+		7AB292EE2E74499D00582D0F /* PostgresClientKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAI;
+			package = 7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */;
+			productName = PostgresClientKit;
 		};
-		7AE712312E372397003CBFA0 /* FirebaseAnalytics */ = {
+		7AB292F32E7450F100582D0F /* OpenCombine */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
+			package = 7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */;
+			productName = OpenCombine;
 		};
-		7AE712332E372397003CBFA0 /* FirebaseAnalyticsCore */ = {
+		7AB292F52E7450F100582D0F /* OpenCombineDispatch */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsCore;
+			package = 7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */;
+			productName = OpenCombineDispatch;
 		};
-		7AE712352E372397003CBFA0 /* FirebaseAnalyticsIdentitySupport */ = {
+		7AB292F72E7450F100582D0F /* OpenCombineFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsIdentitySupport;
+			package = 7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */;
+			productName = OpenCombineFoundation;
 		};
-		7AE712372E372397003CBFA0 /* FirebaseAppCheck */ = {
+		7AB292F92E7450F100582D0F /* OpenCombineShim */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
-		};
-		7AE716F62E3761F9003CBFA0 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		7AE716F82E376219003CBFA0 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		7AE716FA2E37623A003CBFA0 /* FirebaseCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7AE7122E2E372397003CBFA0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
+			package = 7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */;
+			productName = OpenCombineShim;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
