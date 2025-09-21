@@ -32,6 +32,7 @@ struct CosmosExplorerApp: App {
         }
         .modelContainer(sharedModelContainer)
         .modelContainer(for: [UserModel.self])
+        .modelContainer(for: [PlanetModel.self])
         .modelContainer(swiftDataService.container)
     }
 }

@@ -84,7 +84,7 @@
                                     .foregroundColor(.white)
                                     .matchedGeometryEffect(id: "search", in: animation)
                             }
-                            NavigationLink(destination: AddPlanetView()) {
+                            NavigationLink(destination: AddPlanetView(viewModel: viewModel)) {
                                 Image(systemName: "plus")
                                     .font(.title2)
                                     .foregroundColor(.white)
@@ -142,13 +142,14 @@
                         text: $viewModel.searchText,
                         isPresented: $isSearchActive,
                         placement: .navigationBarDrawer(displayMode: .automatic),
-                        prompt: Text("Search planets")
-                            .foregroundColor(.white)
+                        prompt: "Search planets"
                     )
                     .background(.ultraThinMaterial)
                 }
                 .onAppear {
-                    viewModel.loadPlanets()
+                    Task {
+                        await viewModel.loadPlanets()
+                    }
                 }
             }
         }
@@ -170,9 +171,35 @@
         let viewCountScale: CGFloat
         let menuScale: CGFloat
         @Namespace private var animation
+        
+        @ViewBuilder
+        func planetView(for planet: PlanetModel) -> some View {
+            switch planet.name {
+            case "Sun":
+                SunView(planet: planet, viewModel: viewModel)
+            case "Mercury":
+                MercuryView()
+            case "Venus":
+                VenusView()
+            case "Earth":
+                EarthView()
+            case "Mars":
+                MarsView()
+            case "Jupiter":
+                JupiterView()
+            case "Saturn":
+                SaturnView()
+            case "Uranus":
+                UranusView()
+            case "Neptune":
+                NeptuneView()
+            default:
+                PlanetView(planet: planet, viewModel: viewModel)
+            }
+        }
 
         var body: some View {
-            NavigationLink(destination: SunView(planet: planet, viewModel: viewModel)) {
+            NavigationLink(destination: planetView(for: planet)) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(.ultraThinMaterial)
@@ -219,13 +246,21 @@
                         .padding(.horizontal, 2)
                         .padding(.top, 1)
 
-                        // Hình hành tinh
-                        Image(planet.name.lowercased() == "sun" ? "Sun" : planet.name)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100 * imageScale, height: 100 * imageScale)
-                            .shadow(color: .black.opacity(0.7), radius: 5, x: 3, y: 3)
-                            .offset(x: imageXOffset, y: imageYOffset)
+                        // Planets image
+                        Group {
+                            if let data = planet.imageData, let uiImage = UIImage(data: data) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Image(planet.name.lowercased() == "sun" ? "Sun" : (planet.name.isEmpty ? "UnknownPlanet" : planet.name))
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                        .frame(width: 100 * imageScale, height: 100 * imageScale)
+                        .shadow(color: .black.opacity(0.7), radius: 5, x: 3, y: 3)
+                        .offset(x: imageXOffset, y: imageYOffset)
 
                         // Tên và mô tả
                         VStack(alignment: .leading) {
