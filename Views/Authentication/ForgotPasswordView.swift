@@ -13,7 +13,7 @@ struct ForgotPasswordFields: View {
     var body: some View {
         CustomTextField(
             text: $email,
-            placeholder: "Email",
+            placeholder: LanguageManager.current.string("Email"),
             icon: "envelope.fill",
             iconColor: .blue
         )

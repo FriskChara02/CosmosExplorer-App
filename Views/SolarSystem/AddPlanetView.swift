@@ -134,15 +134,15 @@ struct AddPlanetView: View {
                 )
                 WikiSection(wikiLink: $wikiLink)
             }
-            .navigationTitle("Add Your New Planet")
+            .navigationTitle(LanguageManager.current.string("Add Your New Planet"))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(LanguageManager.current.string("Cancel")) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button(LanguageManager.current.string("Save")) {
                         if !name.isEmpty {
                             let newPlanet = PlanetModel(
                                 name: name,
@@ -200,13 +200,13 @@ struct BasicInfoSection: View {
     @Binding var selectedImageData: Data?
     
     var body: some View {
-        Section(header: Text("Basic information")) {
-            TextField("Planet name", text: $name)
-            TextField("Short description", text: $description, axis: .vertical)
+        Section(header: Text(LanguageManager.current.string("Basic information"))) {
+            TextField(LanguageManager.current.string("Planet name"), text: $name)
+            TextField(LanguageManager.current.string("Short description"), text: $description, axis: .vertical)
                 .lineLimit(3)
             HStack {
                 PhotosPicker(selection: $selectedImage, matching: .images) {
-                    Text("Planet Image")
+                    Text(LanguageManager.current.string("Planet Image"))
                         .foregroundColor(.blue)
                 }
                 .onChange(of: selectedImage) { _, newItem in
@@ -235,7 +235,7 @@ struct OverviewSection: View {
     @Binding var selectedImageData: Data?
     
     var body: some View {
-        Section(header: Text("Overview")) {
+        Section(header: Text(LanguageManager.current.string("Overview"))) {
             if selectedImage != nil, let data = selectedImageData, let uiImage = UIImage(data: data) {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -243,11 +243,11 @@ struct OverviewSection: View {
                     .frame(width: 50, height: 50)
                     .cornerRadius(8)
             } else {
-                Text("Image from Basic Information")
+                Text(LanguageManager.current.string("Image from Basic Information"))
                     .foregroundColor(.blue)
             }
             ForEach(randomInfos.indices, id: \.self) { index in
-                TextField("Random information \(index + 1)", text: $randomInfos[index], axis: .vertical)
+                TextField(LanguageManager.current.string("Random information").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $randomInfos[index], axis: .vertical)
                     .lineLimit(3)
             }
             HStack {
@@ -277,11 +277,11 @@ struct InformationSection: View {
     @Binding var videoURLs: [String]
     
     var body: some View {
-        Section(header: Text("Information")) {
-            TextField("About description", text: $aboutDescription, axis: .vertical)
+        Section(header: Text(LanguageManager.current.string("Information"))) {
+            TextField(LanguageManager.current.string("About description"), text: $aboutDescription, axis: .vertical)
                 .lineLimit(5)
             ForEach(videoURLs.indices, id: \.self) { index in
-                TextField("Your link video \(index + 1)", text: $videoURLs[index])
+                TextField(LanguageManager.current.string("Your link video").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $videoURLs[index])
             }
             HStack {
                 Button(action: {
@@ -320,14 +320,14 @@ struct ByTheNumbersSection: View {
     @Binding var age: String
     
     var body: some View {
-        Section(header: Text("By the Numbers")) {
-            TextField("Planet Type", text: $planetType, onEditingChanged: { isEditing in
+        Section(header: Text(LanguageManager.current.string("By the Numbers"))) {
+            TextField(LanguageManager.current.string("Planet Type"), text: $planetType, onEditingChanged: { isEditing in
                 if isEditing {
                     showPlanetTypePicker = true
                 }
             })
             if showPlanetTypePicker {
-                Picker("Select Planet Type", selection: $planetType) {
+                Picker(LanguageManager.current.string("Select Planet Type"), selection: $planetType) {
                     ForEach(planetTypes, id: \.self) { type in
                         Text(type).tag(type)
                     }
@@ -337,15 +337,15 @@ struct ByTheNumbersSection: View {
                     showPlanetTypePicker = false
                 }
             }
-            TextField("Radius", text: $radius)
-            TextField("Distance from Sun", text: $distanceFromSun)
-            TextField("Moons", text: $moons)
-            TextField("Gravity", text: $gravity)
-            TextField("Tilt of Axis", text: $tiltOfAxis)
-            TextField("Length of Year", text: $lengthOfYear)
-            TextField("Length of Day", text: $lengthOfDay)
-            TextField("Temperature", text: $temperature)
-            TextField("Age", text: $age)
+            TextField(LanguageManager.current.string("Radius"), text: $radius)
+            TextField(LanguageManager.current.string("Distance from Sun"), text: $distanceFromSun)
+            TextField(LanguageManager.current.string("Moons"), text: $moons)
+            TextField(LanguageManager.current.string("Gravity"), text: $gravity)
+            TextField(LanguageManager.current.string("Tilt of Axis"), text: $tiltOfAxis)
+            TextField(LanguageManager.current.string("Length of Year"), text: $lengthOfYear)
+            TextField(LanguageManager.current.string("Length of Day"), text: $lengthOfDay)
+            TextField(LanguageManager.current.string("Temperature"), text: $temperature)
+            TextField(LanguageManager.current.string("Age"), text: $age)
         }
     }
 }
@@ -355,11 +355,11 @@ struct GalleriesSection: View {
     @Binding var galleryImageData: [Data?]
     
     var body: some View {
-        Section(header: Text("Galleries")) {
+        Section(header: Text(LanguageManager.current.string("Galleries"))) {
             ForEach(galleryImages.indices, id: \.self) { index in
                 HStack {
                     PhotosPicker(selection: $galleryImages[index], matching: .images) {
-                        Text("Select photo \(index + 1)")
+                        Text(LanguageManager.current.string("Select photo").replacingOccurrences(of: "{index}", with: "\(index + 1)"))
                             .foregroundColor(.blue)
                     }
                     .onChange(of: galleryImages[index]) { _, newItem in
@@ -412,19 +412,19 @@ struct MythSection: View {
     @Binding var myths: [(culture: String, godName: String, description: String, selectedImage: PhotosPickerItem?, imageData: Data?)]
     
     var body: some View {
-        Section(header: Text("Myth")) {
-            TextField("Myth Title", text: $mythTitle)
-            TextField("Myth Description", text: $mythDescription, axis: .vertical)
+        Section(header: Text(LanguageManager.current.string("Myth"))) {
+            TextField(LanguageManager.current.string("Myth Title"), text: $mythTitle)
+            TextField(LanguageManager.current.string("Myth Description"), text: $mythDescription, axis: .vertical)
                 .lineLimit(3)
             ForEach(myths.indices, id: \.self) { index in
                 VStack {
-                    TextField("Culture \(index + 1)", text: $myths[index].culture)
-                    TextField("God Name \(index + 1)", text: $myths[index].godName)
-                    TextField("God Description \(index + 1)", text: $myths[index].description, axis: .vertical)
+                    TextField(LanguageManager.current.string("Culture").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $myths[index].culture)
+                    TextField(LanguageManager.current.string("God Name").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $myths[index].godName)
+                    TextField(LanguageManager.current.string("God Description").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $myths[index].description, axis: .vertical)
                         .lineLimit(3)
                     HStack {
                         PhotosPicker(selection: $myths[index].selectedImage, matching: .images) {
-                            Text("Image \(index + 1)")
+                            Text(LanguageManager.current.string("Image").replacingOccurrences(of: "{index}", with: "\(index + 1)"))
                                 .foregroundColor(.blue)
                         }
                         .onChange(of: myths[index].selectedImage) { _, newItem in
@@ -476,16 +476,16 @@ struct InternalSection: View {
     @Binding var internalImageData: Data?
     
     var body: some View {
-        Section(header: Text("Internal")) {
-            TextField("Internal Title", text: $internalTitle)
+        Section(header: Text(LanguageManager.current.string("Internal"))) {
+            TextField(LanguageManager.current.string("Internal Title"), text: $internalTitle)
             ForEach(layers.indices, id: \.self) { index in
                 VStack {
-                    TextField("Layer name \(index + 1)", text: $layers[index].name)
-                    TextField("Layer description \(index + 1)", text: $layers[index].description, axis: .vertical)
+                    TextField(LanguageManager.current.string("Layer name").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $layers[index].name)
+                    TextField(LanguageManager.current.string("Layer description").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $layers[index].description, axis: .vertical)
                         .lineLimit(3)
-                    ColorPicker("Start color", selection: $layers[index].colorStart)
-                    ColorPicker("End color", selection: $layers[index].colorEnd)
-                    Picker("Icon \(index + 1)", selection: $layers[index].selectedIcon) {
+                    ColorPicker(LanguageManager.current.string("Start color"), selection: $layers[index].colorStart)
+                    ColorPicker(LanguageManager.current.string("End color"), selection: $layers[index].colorEnd)
+                    Picker(LanguageManager.current.string("Icon").replacingOccurrences(of: "{index}", with: "\(index + 1)"), selection: $layers[index].selectedIcon) {
                         ForEach(iconOptions, id: \.self) { icon in
                             Image(systemName: icon).tag(icon)
                         }
@@ -495,7 +495,7 @@ struct InternalSection: View {
             }
             HStack {
                 PhotosPicker(selection: $internalImagePicker, matching: .images) {
-                    Text("Select the last image of the tab")
+                    Text(LanguageManager.current.string("Select the last image of the tab"))
                         .foregroundColor(.blue)
                 }
                 .onChange(of: internalImagePicker) { _, newItem in
@@ -530,11 +530,11 @@ struct InDepthSection: View {
     let iconOptions: [String]
     
     var body: some View {
-        Section(header: Text("In Depth")) {
-            TextField("In Depth Title", text: $inDepthTitle)
+        Section(header: Text(LanguageManager.current.string("In Depth"))) {
+            TextField(LanguageManager.current.string("In Depth Title"), text: $inDepthTitle)
             HStack {
                 PhotosPicker(selection: $headerImageInDepth, matching: .images) {
-                    Text("Select header image")
+                    Text(LanguageManager.current.string("Select header image"))
                         .foregroundColor(.blue)
                 }
                 .onChange(of: headerImageInDepth) { _, newItem in
@@ -555,16 +555,16 @@ struct InDepthSection: View {
             }
             ForEach(infoCards.indices, id: \.self) { index in
                 VStack {
-                    Picker("Icon \(index + 1)", selection: $infoCards[index].icon) {
+                    Picker(LanguageManager.current.string("Icon").replacingOccurrences(of: "{index}", with: "\(index + 1)"), selection: $infoCards[index].icon) {
                         ForEach(iconOptions, id: \.self) { icon in
                             Image(systemName: icon).tag(icon)
                         }
                     }
                     .pickerStyle(.menu)
-                    TextField("Card Title \(index + 1)", text: $infoCards[index].title)
-                    TextField("Card Description \(index + 1)", text: $infoCards[index].description, axis: .vertical)
+                    TextField(LanguageManager.current.string("Card Title").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $infoCards[index].title)
+                    TextField(LanguageManager.current.string("Card Description").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $infoCards[index].description, axis: .vertical)
                         .lineLimit(3)
-                    ColorPicker("Icon color", selection: $infoCards[index].iconColor)
+                    ColorPicker(LanguageManager.current.string("Icon color"), selection: $infoCards[index].iconColor)
                 }
             }
             HStack {
@@ -600,11 +600,11 @@ struct ExplorationSection: View {
     let iconOptions: [String]
     
     var body: some View {
-        Section(header: Text("Exploration")) {
-            TextField("Exploration Title", text: $explorationTitle)
+        Section(header: Text(LanguageManager.current.string("Exploration"))) {
+            TextField(LanguageManager.current.string("Exploration Title"), text: $explorationTitle)
             HStack {
                 PhotosPicker(selection: $headerImageExploration, matching: .images) {
-                    Text("Select header image")
+                    Text(LanguageManager.current.string("Select header image"))
                         .foregroundColor(.blue)
                 }
                 .onChange(of: headerImageExploration) { _, newItem in
@@ -625,10 +625,10 @@ struct ExplorationSection: View {
             }
             ForEach(missions.indices, id: \.self) { index in
                 VStack {
-                    TextField("Mission title \(index + 1)", text: $missions[index].title)
-                    TextField("Mission description \(index + 1)", text: $missions[index].description, axis: .vertical)
+                    TextField(LanguageManager.current.string("Mission title").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $missions[index].title)
+                    TextField(LanguageManager.current.string("Mission description").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $missions[index].description, axis: .vertical)
                         .lineLimit(3)
-                    Picker("Icon \(index + 1)", selection: $missions[index].icon) {
+                    Picker(LanguageManager.current.string("Icon").replacingOccurrences(of: "{index}", with: "\(index + 1)"), selection: $missions[index].icon) {
                         ForEach(iconOptions, id: \.self) { icon in
                             Image(systemName: icon).tag(icon)
                         }
@@ -654,11 +654,11 @@ struct ExplorationSection: View {
                 .disabled(missions.count <= 1)
                 Spacer()
             }
-            TextField("Highlight Quote", text: $highlightQuote, axis: .vertical)
+            TextField(LanguageManager.current.string("Highlight Quote"), text: $highlightQuote, axis: .vertical)
                 .lineLimit(3)
             HStack {
                 PhotosPicker(selection: $showcaseImage, matching: .images) {
-                    Text("Select showcase photo")
+                    Text(LanguageManager.current.string("Select showcase photo"))
                         .foregroundColor(.blue)
                 }
                 .onChange(of: showcaseImage) { _, newItem in
@@ -685,8 +685,8 @@ struct WikiSection: View {
     @Binding var wikiLink: String
     
     var body: some View {
-        Section(header: Text("Wikipedia link")) {
-            TextField("Wikipedia", text: $wikiLink)
+        Section(header: Text(LanguageManager.current.string("Wikipedia link"))) {
+            TextField(LanguageManager.current.string("Wikipedia"), text: $wikiLink)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }

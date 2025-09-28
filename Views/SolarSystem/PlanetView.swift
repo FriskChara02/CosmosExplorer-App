@@ -15,7 +15,7 @@ struct PlanetView: View {
     @State private var glowIntensity: Float = 1.0
     @State private var isFavorite: Bool
     @Namespace private var animation
-    @State private var selectedTab: String = "Overview"
+    @State private var selectedTab: String = LanguageManager.current.string("Overview")
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
@@ -37,13 +37,13 @@ struct PlanetView: View {
                             .foregroundColor(.white)
                     }
                     Spacer()
-                    Text("\(selectedTab) Planet")
+                    Text("\(LanguageManager.current.string(selectedTab)) \(LanguageManager.current.string("Planets"))")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
                     Button(action: {
-                        if selectedTab == "Wiki" {
+                        if selectedTab == LanguageManager.current.string("Wiki") {
                             UIPasteboard.general.string = planet.wikiLink.isEmpty ? "https://en.wikipedia.org/wiki/\(planet.name)" : planet.wikiLink
                         } else {
                             withAnimation(.spring()) {
@@ -52,7 +52,7 @@ struct PlanetView: View {
                             }
                         }
                     }) {
-                        Image(systemName: selectedTab == "Wiki" ? "document.on.document" : (isFavorite ? "heart.fill" : "heart"))
+                        Image(systemName: selectedTab == LanguageManager.current.string("Wiki") ? "document.on.document" : (isFavorite ? "heart.fill" : "heart"))
                             .font(.title2)
                             .foregroundColor(.white)
                     }
@@ -64,14 +64,14 @@ struct PlanetView: View {
 
                 // Nội dung tab
                 VStack {
-                    if selectedTab == "Overview" {
+                    if selectedTab == LanguageManager.current.string("Overview") {
                         OverviewView(
                             planet: planet,
                             glowIntensity: $glowIntensity,
                             randomInfo: $randomInfo,
                             animation: animation
                         )
-                    } else if selectedTab == "Information" {
+                    } else if selectedTab == LanguageManager.current.string("Information") {
                         InformationView(
                             planet: planet,
                             glowIntensity: $glowIntensity,
@@ -80,13 +80,13 @@ struct PlanetView: View {
                             animation: animation,
                             viewModel: viewModel
                         )
-                    } else if selectedTab == "By the Numbers" {
+                    } else if selectedTab == LanguageManager.current.string("By the Numbers") {
                         ByTheNumbersView(planet: planet)
-                    } else if selectedTab == "Galleries" {
+                    } else if selectedTab == LanguageManager.current.string("Galleries") {
                         GalleriesView(planet: planet, animation: animation)
-                    } else if selectedTab == "Wiki" {
+                    } else if selectedTab == LanguageManager.current.string("Wiki") {
                         VStack {
-                            Text("Wikipedia: \(planet.name)")
+                            Text("\(LanguageManager.current.string("Wiki")): \(planet.name)")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .padding()
@@ -96,16 +96,16 @@ struct PlanetView: View {
                                 .padding(.horizontal)
                                 .transition(.move(edge: .bottom))
                         }
-                    } else if selectedTab == "Myth" {
+                    } else if selectedTab == LanguageManager.current.string("Myth") {
                         MythView(planet: planet, animation: animation)
-                    } else if selectedTab == "Internal" {
+                    } else if selectedTab == LanguageManager.current.string("Internal") {
                         InternalView(planet: planet, animation: animation)
-                    } else if selectedTab == "In Depth" {
+                    } else if selectedTab == LanguageManager.current.string("In Depth") {
                         InDepthView(planet: planet, animation: animation)
-                    } else if selectedTab == "Exploration" {
+                    } else if selectedTab == LanguageManager.current.string("Exploration") {
                         ExplorationView(planet: planet, animation: animation)
                     } else {
-                        Text("Content for \(selectedTab) tab coming soon!")
+                        Text(LanguageManager.current.string("Content for tab coming soon").replacingOccurrences(of: "{tab}", with: selectedTab))
                             .font(.title2)
                             .foregroundColor(.white)
                             .padding()
@@ -139,7 +139,18 @@ struct PlanetView: View {
     struct TabBarView: View {
         @Binding var selectedTab: String
 
-        let tabs = ["Overview", "Information", "By the Numbers", "Galleries", "Myth", "Internal", "In Depth", "Exploration", "Comment", "Wiki"]
+        let tabs = [
+            LanguageManager.current.string("Overview"),
+            LanguageManager.current.string("Information"),
+            LanguageManager.current.string("By the Numbers"),
+            LanguageManager.current.string("Galleries"),
+            LanguageManager.current.string("Myth"),
+            LanguageManager.current.string("Internal"),
+            LanguageManager.current.string("In Depth"),
+            LanguageManager.current.string("Exploration"),
+            LanguageManager.current.string("Comment"),
+            LanguageManager.current.string("Wiki")
+        ]
 
         var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -261,12 +272,12 @@ struct PlanetView: View {
                                 Circle()
                                     .fill(.green)
                                     .frame(width: 8, height: 8)
-                                Text("About")
+                                Text(LanguageManager.current.string("About"))
                                     .font(.headline)
                                     .foregroundColor(.white)
                                 Spacer()
                                 Button(action: {
-                                    if selectedTab == "Wiki" {
+                                    if selectedTab == LanguageManager.current.string("Wiki") {
                                         UIPasteboard.general.string = planet.wikiLink.isEmpty ? "https://en.wikipedia.org/wiki/\(planet.name)" : planet.wikiLink
                                     } else {
                                         withAnimation(.spring()) {
@@ -275,14 +286,14 @@ struct PlanetView: View {
                                         }
                                     }
                                 }) {
-                                    Image(systemName: selectedTab == "Wiki" ? "document.on.document" : (isFavorite ? "heart.fill" : "heart"))
+                                    Image(systemName: selectedTab == LanguageManager.current.string("Wiki") ? "document.on.document" : (isFavorite ? "heart.fill" : "heart"))
                                         .font(.title2)
                                         .foregroundColor(.white)
                                 }
                             }
                             .padding(.horizontal)
 
-                            Text(planet.aboutDescription.isEmpty ? "No description available." : planet.aboutDescription)
+                            Text(planet.aboutDescription.isEmpty ? LanguageManager.current.string("No description available") : planet.aboutDescription)
                                 .font(.body)
                                 .foregroundColor(.white)
                                 .padding(.horizontal)
@@ -295,12 +306,12 @@ struct PlanetView: View {
                                 Circle()
                                     .fill(.green)
                                     .frame(width: 8, height: 8)
-                                Text("Video")
+                                Text(LanguageManager.current.string("Video"))
                                     .font(.headline)
                                     .foregroundColor(.white)
                                 Spacer()
                                 NavigationLink(destination: VideoListView(videoURLs: planet.videoURLs, planetName: planet.name)) {
-                                    Text("See more           ")
+                                    Text(LanguageManager.current.string("See more           "))
                                         .font(.subheadline)
                                         .foregroundColor(.white)
                                         .overlay(alignment: .trailing) {
@@ -420,11 +431,11 @@ struct PlanetView: View {
                 .padding()
             }
             .background(Image("BlackBG").resizable().scaledToFill().ignoresSafeArea())
-            .navigationTitle("Videos")
+            .navigationTitle(LanguageManager.current.string("Videos"))
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 if !planetName.isEmpty {
-                    print("📱 VideoListView appeared for \(planetName)")
+                    print("📱 \(LanguageManager.current.string("VideoListView appeared for")) \(planetName)")
                 }
             }
         }
@@ -436,16 +447,16 @@ struct PlanetView: View {
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 2) {
-                    infoRow(icon: "star.fill", color: .yellow, text: "Planet Type: \(planet.planetType.isEmpty ? "N/A" : planet.planetType)")
-                    infoRow(icon: "circle.fill", color: .orange, text: "Radius: \(planet.radius.isEmpty ? "N/A" : planet.radius)")
-                    infoRow(icon: "sun.max.fill", color: .red, text: "Distance from Sun: \(planet.distanceFromSun.isEmpty ? "N/A" : planet.distanceFromSun)")
-                    infoRow(icon: "moon.fill", color: .gray, text: "Moons: \(planet.moons.isEmpty ? "N/A" : planet.moons)")
-                    infoRow(icon: "gauge", color: .green, text: "Gravity: \(planet.gravity.isEmpty ? "N/A" : planet.gravity)")
-                    infoRow(icon: "arrow.triangle.2.circlepath", color: .blue, text: "Tilt of Axis: \(planet.tiltOfAxis.isEmpty ? "N/A" : planet.tiltOfAxis)")
-                    infoRow(icon: "calendar", color: .purple, text: "Length of Year: \(planet.lengthOfYear.isEmpty ? "N/A" : planet.lengthOfYear)")
-                    infoRow(icon: "clock", color: .pink, text: "Length of Day: \(planet.lengthOfDay.isEmpty ? "N/A" : planet.lengthOfDay)")
-                    infoRow(icon: "thermometer", color: .red, text: "Temperature: \(planet.temperature.isEmpty ? "N/A" : planet.temperature)")
-                    infoRow(icon: "hourglass", color: .teal, text: "Age: \(planet.age.isEmpty ? "N/A" : planet.age)")
+    infoRow(icon: "star.fill", color: .yellow, text: "\(LanguageManager.current.string("Planet Type")): \(planet.planetType.isEmpty ? LanguageManager.current.string("N/A") : planet.planetType)")
+    infoRow(icon: "circle.fill", color: .orange, text: "\(LanguageManager.current.string("Radius")): \(planet.radius.isEmpty ? LanguageManager.current.string("N/A") : planet.radius)")
+    infoRow(icon: "sun.max.fill", color: .red, text: "\(LanguageManager.current.string("Distance from Sun")): \(planet.distanceFromSun.isEmpty ? LanguageManager.current.string("N/A") : planet.distanceFromSun)")
+    infoRow(icon: "moon.fill", color: .gray, text: "\(LanguageManager.current.string("Moons")): \(planet.moons.isEmpty ? LanguageManager.current.string("N/A") : planet.moons)")
+    infoRow(icon: "gauge", color: .green, text: "\(LanguageManager.current.string("Gravity")): \(planet.gravity.isEmpty ? LanguageManager.current.string("N/A") : planet.gravity)")
+    infoRow(icon: "arrow.triangle.2.circlepath", color: .blue, text: "\(LanguageManager.current.string("Tilt of Axis")): \(planet.tiltOfAxis.isEmpty ? LanguageManager.current.string("N/A") : planet.tiltOfAxis)")
+    infoRow(icon: "calendar", color: .purple, text: "\(LanguageManager.current.string("Length of Year")): \(planet.lengthOfYear.isEmpty ? LanguageManager.current.string("N/A") : planet.lengthOfYear)")
+    infoRow(icon: "clock", color: .pink, text: "\(LanguageManager.current.string("Length of Day")): \(planet.lengthOfDay.isEmpty ? LanguageManager.current.string("N/A") : planet.lengthOfDay)")
+    infoRow(icon: "thermometer", color: .red, text: "\(LanguageManager.current.string("Temperature")): \(planet.temperature.isEmpty ? LanguageManager.current.string("N/A") : planet.temperature)")
+    infoRow(icon: "hourglass", color: .teal, text: "\(LanguageManager.current.string("Age")): \(planet.age.isEmpty ? LanguageManager.current.string("N/A") : planet.age)")
                 }
                 .padding()
                 .transition(.move(edge: .leading))
@@ -526,11 +537,11 @@ struct PlanetView: View {
                                     Image(uiImage: uiImage)
                                         .resizable()
                                         .scaledToFill()
-                                        .frame(height: 180)
+                                        .frame(width: 180, height: 180)
                                         .clipShape(RoundedRectangle(cornerRadius: 16))
                                         .shadow(color: .purple.opacity(0.6), radius: 10, x: 0, y: 4)
                                         .matchedGeometryEffect(id: "gallery-\(index)", in: animation)
-                                    Text("Image \(index + 1)")
+                                    Text(LanguageManager.current.string("Image").replacingOccurrences(of: "{index}", with: "\(index + 1)"))
                                         .font(.headline)
                                         .fontWeight(.semibold)
                                         .foregroundColor(.white)
@@ -590,10 +601,10 @@ struct PlanetView: View {
             VStack(spacing: 24) {
                 // Header
                 VStack(spacing: 8) {
-                    Text(planet.mythTitle.isEmpty ? "☀️ Myths Across Cultures" : planet.mythTitle)
+                    Text(planet.mythTitle.isEmpty ? LanguageManager.current.string("Myths Across Cultures") : planet.mythTitle)
                         .font(.title.bold())
                         .foregroundColor(.white)
-                    Text(planet.mythDescription.isEmpty ? "No myth description available." : planet.mythDescription)
+                    Text(planet.mythDescription.isEmpty ? LanguageManager.current.string("No myth description available") : planet.mythDescription)
                         .font(.body)
                         .foregroundColor(.white.opacity(0.8))
                         .multilineTextAlignment(.center)
@@ -639,18 +650,18 @@ struct PlanetView: View {
                     
                     // Myth info
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(myth.culture.isEmpty ? "N/A" : myth.culture)
+                        Text(myth.culture.isEmpty ? LanguageManager.current.string("N/A") : myth.culture)
                             .font(.headline)
                             .foregroundColor(.yellow)
                             .multilineTextAlignment(.leading)
-                        Text(myth.godName.isEmpty ? "N/A" : myth.godName)
+                        Text(myth.godName.isEmpty ? LanguageManager.current.string("N/A") : myth.godName)
                             .font(.title3.bold())
                             .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
                     }
                 }
                 
-                Text(myth.mythDescription.isEmpty ? "No description available." : myth.mythDescription)
+                Text(myth.mythDescription.isEmpty ? LanguageManager.current.string("No description available") : myth.mythDescription)
                     .font(.body)
                     .foregroundColor(.white.opacity(0.9))
                     .lineLimit(3)
@@ -697,7 +708,7 @@ struct PlanetView: View {
         var body: some View {
             VStack(spacing: 20) {
                 // Header
-                Text(planet.internalTitle.isEmpty ? "☀️ Internal Layers" : planet.internalTitle)
+                Text(planet.internalTitle.isEmpty ? LanguageManager.current.string("Internal Layers") : planet.internalTitle)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -751,11 +762,11 @@ struct PlanetView: View {
                         .frame(width: 28)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(layer.name.isEmpty ? "N/A" : layer.name)
+                        Text(layer.name.isEmpty ? LanguageManager.current.string("N/A") : layer.name)
                             .font(.headline)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
-                        Text(layer.layerDescription.isEmpty ? "No description available." : layer.layerDescription)
+                        Text(layer.layerDescription.isEmpty ? LanguageManager.current.string("No description available") : layer.layerDescription)
                             .font(.subheadline)
                             .foregroundColor(.white.opacity(0.9))
                             .multilineTextAlignment(.leading)
@@ -806,7 +817,7 @@ struct PlanetView: View {
                             .padding(.horizontal)
                     }
 
-                    Text(planet.inDepthTitle.isEmpty ? "In-Depth Study" : planet.inDepthTitle)
+                    Text(planet.inDepthTitle.isEmpty ? LanguageManager.current.string("In-Depth Study") : planet.inDepthTitle)
                         .font(.title2.bold())
                         .foregroundColor(.white)
                         .padding(.horizontal)
@@ -815,8 +826,8 @@ struct PlanetView: View {
                         ForEach(planet.infoCards) { card in
                             InfoCardView(
                                 icon: card.icon.isEmpty ? "star.fill" : card.icon,
-                                title: card.title.isEmpty ? "N/A" : card.title,
-                                description: card.infoCardDescription.isEmpty ? "No description available." : card.infoCardDescription,
+                                title: card.title.isEmpty ? LanguageManager.current.string("N/A") : card.title,
+                                description: card.infoCardDescription.isEmpty ? LanguageManager.current.string("No description available") : card.infoCardDescription,
                                 iconColor: Color(hex: card.iconColor.isEmpty ? "#FFFFFF" : card.iconColor) ?? .white
                             )
                         }
@@ -888,7 +899,7 @@ struct PlanetView: View {
                                 .frame(height: 220)
                                 .foregroundColor(.gray)
                         }
-                        Text(planet.explorationTitle.isEmpty ? "Exploration" : planet.explorationTitle)
+                        Text(planet.explorationTitle.isEmpty ? LanguageManager.current.string("Exploration") : planet.explorationTitle)
                             .font(.largeTitle.bold())
                             .foregroundColor(.white)
                             .padding()
@@ -900,8 +911,8 @@ struct PlanetView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         ForEach(planet.missions) { mission in
                             MissionCardView(
-                                title: mission.title.isEmpty ? "N/A" : mission.title,
-                                description: mission.missionDescription.isEmpty ? "No description available." : mission.missionDescription,
+                                title: mission.title.isEmpty ? LanguageManager.current.string("N/A") : mission.title,
+                                description: mission.missionDescription.isEmpty ?LanguageManager.current.string("No description available") : mission.missionDescription,
                                 icon: mission.icon.isEmpty ? "star.fill" : mission.icon,
                                 animation: animation,
                                 id: mission.missionId
@@ -910,7 +921,7 @@ struct PlanetView: View {
                     }
                     .padding(.horizontal)
 
-                    Text(planet.highlightQuote.isEmpty ? "No quote available." : planet.highlightQuote)
+                    Text(planet.highlightQuote.isEmpty ? LanguageManager.current.string("No quote available") : planet.highlightQuote)
                         .font(.title3.italic())
                         .foregroundStyle(LinearGradient(
                             colors: [

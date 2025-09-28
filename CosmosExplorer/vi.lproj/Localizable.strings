@@ -1,0 +1,269 @@
+/* 
+  Localizable.strings
+  CosmosExplorer
+
+  Created by Loi Nguyen on 28/9/25.
+  
+*/
+
+/* LoginView */
+"Login" = "Đăng nhập";
+"Sign Up" = "Đăng ký";
+"Forgot Password" = "Quên mật khẩu";
+"Email" = "Email";
+"Password" = "Mật khẩu";
+"Confirm Password" = "Xác nhận mật khẩu";
+"Username" = "Tên người dùng";
+"Passwords do not match" = "Mật khẩu và xác nhận mật khẩu không khớp";
+"Reset email sent" = "Email khôi phục đã được gửi!";
+"Sign Up Success" = "Đăng ký thành công!";
+"Forgot Password Prompt" = "Quên mật khẩu?";
+"Profile" = "Hồ sơ";
+"Sign Out" = "Đăng xuất";
+"Explore the universe" = "Khám phá vũ trụ tri thức";
+
+/* HamburgerMenuView */
+"View Profile" = "Xem hồ sơ";
+"Current Song" = "Nhạc đang phát";
+"Repeat All" = "Lặp lại tất cả";
+"Repeat One" = "Lặp lại một bài";
+"Shuffle" = "Phát ngẫu nhiên";
+"Previous Track" = "Bài trước";
+"Next Track" = "Bài tiếp theo";
+"Music List" = "Danh sách nhạc";
+"Cosmos Explorer" = "Khám phá vũ trụ";
+"My Chats" = "Tin nhắn";
+"Friends" = "Bạn bè";
+"Other" = "Khác";
+"Settings" = "Cài đặt";
+"Help and Settings" = "Trợ giúp và cài đặt";
+
+/* HomeView */
+"Welcome back" = "Chào mừng trở lại";
+"Cosmos is Now" = "Vũ trụ!";
+"Latest Space Discovery" = "Khám phá không gian mới nhất";
+"Map Galaxy" = "Bản đồ thiên hà";
+"Solar System" = "Hệ mặt trời";
+"Planets" = "Hành tinh";
+"Stars" = "Ngôi sao";
+"Universe" = "Vũ trụ hiện đại";
+"Galaxy" = "Thiên hà";
+"Cosmos" = "Vũ trụ cổ";
+"Nebula" = "Tinh vân";
+"Astronomical News" = "Tin tức thiên văn";
+"Constellation" = "Chòm sao";
+"12 Zodiac Signs" = "12 cung hoàng đạo";
+"Sky Live" = "Bầu trời trực tiếp";
+"Home" = "Trang chủ";
+"Map" = "Bản đồ";
+"Love Cosmos" = "Yêu vũ trụ.";
+"The stars are calling" = "Các ngôi sao đang gọi, hãy trả lời.";
+"Discover the mysteries" = "Khám phá những bí ẩn của vũ trụ.";
+"Falling Star" = "Sao băng♪";
+
+/* WelcomeView */
+"COSMOS" = "COSMOS";
+"Explorer" = "Explorer";
+"Keep going! You've worked hard today!" = "Tiếp tục cố gắng! Bạn đã làm việc chăm chỉ hôm nay!";
+"The universe is full of mysteries." = "Vũ trụ đầy những bí ẩn.";
+"Space opens up endless possibilities." = "Không gian mở ra vô vàn khả năng.";
+"The universe is full of wonders." = "Vũ trụ đầy những điều kỳ diệu.";
+"Look up at the sky, dream of the stars." = "Ngước nhìn bầu trời, mơ về các ngôi sao.";
+"The universe is an open book." = "Vũ trụ là một cuốn sách mở.";
+"Every star tells a story." = "Mỗi ngôi sao kể một câu chuyện.";
+"Space is the grand beginning." = "Không gian là khởi đầu vĩ đại.";
+"The universe holds countless secrets." = "Vũ trụ chứa đựng vô số bí mật.";
+"Hope you enjoy the universe." = "Hy vọng bạn thích khám phá vũ trụ.";
+
+/*SettingsView */
+"Settings" = "Settings";
+"Language" = "Language";
+"English" = "English";
+"Vietnamese" = "Vietnamese";
+"Are you sure you want to change the language?" = "Are you sure you want to change the language?";
+"Cancel" = "Cancel";
+"Yes" = "Yes";
+"Language Changed" = "Language Changed";
+"OK" = "OK";
+"The language has been changed to English." = "The language has been changed to English.";
+"The language has been changed to Vietnamese." = "The language has been changed to Vietnamese.";
+
+/* PlanetView */
+"Content for tab coming soon" = "Nội dung cho tab sẽ sớm ra mắt!";
+"No description available" = "Không có mô tả.";
+"N/A" = "N/A";
+"Planet Type" = "Loại hành tinh";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Moons" = "Mặt trăng";
+"Gravity" = "Trọng lực";
+"Tile of Axis" = "Độ nghiêng trục";
+"Length of Year" = "Độ dài năm";
+"Length of Day" = "Độ dài ngày";
+"Temperature" = "Nhiệt độ";
+"Age" = "Tuổi";
+"Image" = "Hình ảnh {index}";
+"Myths Across Cultures" = "Thần thoại qua các nền văn hóa";
+"Internal Layers" = "Các lớp bên trong";
+"In-Depth Study" = "Nghiên cứu chuyên sâu";
+"No quote available" = "Không có trích dẫn.";
+"Overview" = "Tổng quan";
+"Information" = "Thông tin";
+"By the Numbers" = "Số liệu";
+"Galleries" = "Thư viện";
+"Myth" = "Thần thoại";
+"Internal" = "Bên trong";
+"In Depth" = "Sâu hơn";
+"Exploration" = "Khám phá";
+"Comment" = "Bình luận";
+"Wiki" = "Wikipedia";
+"Videos" = "Video";
+"VideoListView appeared for" = "Danh sách video đã xuất hiện cho";
+"See more           " = "Xem thêm           ";
+
+/* SolarSystemView */
+"Search planets" = "Tìm kiếm hành tinh";
+"Unfavorite" = "Bỏ yêu thích";
+"Favorite" = "Yêu thích";
+"Edit" = "Chỉnh sửa";
+"Sun" = "Mặt Trời";
+"Mercury" = "Sao Thủy";
+"Venus" = "Sao Kim";
+"Earth" = "Trái Đất";
+"Mars" = "Sao Hỏa";
+"Jupiter" = "Sao Mộc";
+"Saturn" = "Sao Thổ";
+"Uranus" = "Sao Thiên Vương";
+"Neptune" = "Sao Hải Vương";
+
+/* SolarSystemViewModel */
+"SunDescription" = "Ngôi sao ở trung tâm Hệ Mặt Trời.";
+"MercuryDescription" = "Hành tinh nhỏ nhất trong Hệ Mặt Trời.";
+"VenusDescription" = "Hành tinh nóng nhất trong Hệ Mặt Trời.";
+"EarthDescription" = "Hành tinh duy nhất được biết là có sự sống.";
+"MarsDescription" = "Được gọi là Hành tinh Đỏ do bề mặt chứa sắt và bụi.";
+"JupiterDescription" = "Hành tinh lớn nhất trong Hệ Mặt Trời.";
+"SaturnDescription" = "Nổi tiếng với hệ thống vành đai tuyệt đẹp.";
+"UranusDescription" = "Hành tinh khí khổng lồ xoay nghiêng một bên.";
+"NeptuneDescription" = "Hành tinh xa nhất từ Mặt Trời và nổi tiếng với màu xanh đậm.";
+
+/* AddPlanetView */
+"Add Your New Planet" = "Thêm Hành Tinh Mới";
+"Basic information" = "Thông Tin Cơ Bản";
+"Planet name" = "Tên Hành Tinh";
+"Short description" = "Mô Tả Ngắn";
+"Planet Image" = "Hình Ảnh Hành Tinh";
+"Overview" = "Tổng Quan";
+"Image from Basic Information" = "Hình Ảnh từ Thông Tin Cơ Bản";
+"Random information" = "Thông Tin Ngẫu Nhiên {index}";
+"Information" = "Thông Tin";
+"About description" = "Mô Tả Về Hành Tinh";
+"Your link video" = "Link Video {index}";
+"By the Numbers" = "Số Liệu";
+"Select Planet Type" = "Chọn Loại Hành Tinh";
+"Radius" = "Bán Kính";
+"Distance from Sun" = "Khoảng Cách từ Mặt Trời";
+"Moons" = "Mặt Trăng";
+"Gravity" = "Trọng Lực";
+"Tilt of Axis" = "Độ Nghiêng Trục";
+"Length of Year" = "Độ Dài Năm";
+"Length of Day" = "Độ Dài Ngày";
+"Temperature" = "Nhiệt Độ";
+"Age" = "Tuổi";
+"Galleries" = "Thư Viện";
+"Select photo" = "Chọn Ảnh {index}";
+"Myth" = "Thần Thoại";
+"Myth Title" = "Tiêu Đề Thần Thoại";
+"Myth Description" = "Mô Tả Thần Thoại";
+"Culture" = "Văn Hóa {index}";
+"God Name" = "Tên Thần {index}";
+"God Description" = "Mô Tả Thần {index}";
+"Image" = "Hình Ảnh {index}";
+"Internal" = "Bên Trong";
+"Internal Title" = "Tiêu Đề Bên Trong";
+"Layer name" = "Tên Lớp {index}";
+"Layer description" = "Mô Tả Lớp {index}";
+"Start color" = "Màu Bắt Đầu";
+"End color" = "Màu Kết Thúc";
+"Icon" = "Biểu Tượng {index}";
+"Select the last image of the tab" = "Chọn Hình Ảnh Cuối Cùng của Tab";
+"In Depth" = "Sâu Hơn";
+"In Depth Title" = "Tiêu Đề Sâu Hơn";
+"Select header image" = "Chọn Hình Ảnh Tiêu Đề";
+"Card Title" = "Tiêu Đề Thẻ {index}";
+"Card Description" = "Mô Tả Thẻ {index}";
+"Icon color" = "Màu Biểu Tượng";
+"Exploration" = "Khám Phá";
+"Exploration Title" = "Tiêu Đề Khám Phá";
+"Mission title" = "Tiêu Đề Nhiệm Vụ {index}";
+"Mission description" = "Mô Tả Nhiệm Vụ {index}";
+"Highlight Quote" = "Trích Dẫn Nổi Bật";
+"Select showcase photo" = "Chọn Ảnh Nổi Bật";
+"Wikipedia link" = "Link Wikipedia";
+"Wikipedia" = "Wikipedia";
+"Cancel" = "Hủy";
+"Save" = "Lưu";
+
+/* SunView */
+"Sun Random Info 1" = "Mặt Trời là một ngôi sao chính G-type.";
+"Sun Random Info 2" = "Nó chiếm 99,86% khối lượng của Hệ Mặt Trời.";
+"Sun Random Info 3" = "Nhiệt độ bề mặt Mặt Trời khoảng 5.500°C.";
+"Sun Random Info 4" = "Nó khoảng 4,6 tỷ năm tuổi.";
+"Sun Random Info 5" = "Mặt Trời điều khiển khí hậu Trái Đất và duy trì sự sống.";
+"Sun About Description" = "Mặt Trời, một ngôi sao khổng lồ loại G thuộc dãy chính, nằm ở trung tâm Hệ Mặt Trời, neo giữ các hành tinh của nó bằng lực hấp dẫn khổng lồ. Mặt Trời có tuổi đời khoảng 4,6 tỷ năm, là một trong những thiên thể lâu đời nhất trong khu vực vũ trụ của chúng ta. Bề mặt rực lửa của nó, đạt nhiệt độ khoảng 5.500°C, tỏa ra năng lượng duy trì sự sống cho Trái Đất. Bầu khí quyển năng động của Mặt Trời có các tia sáng mặt trời và vết đen, định hình thời tiết không gian trên toàn hệ thống.";
+"Sun By The Numbers Planet Type" = "Loại Hành Tinh: Ngôi sao chính G-type";
+"Sun By The Numbers Radius" = "Bán Kính: ~696.340 km";
+"Sun By The Numbers Distance" = "Khoảng Cách từ Mặt Trời: 0 km (trung tâm Hệ Mặt Trời)";
+"Sun By The Numbers Moons" = "Mặt Trăng: Không có";
+"Sun By The Numbers Gravity" = "Trọng Lực: ~274 m/s²";
+"Sun By The Numbers Tilt" = "Độ Nghiêng Trục: ~7.25°";
+"Sun By The Numbers Year" = "Độ Dài Năm: Không áp dụng (đứng yên)";
+"Sun By The Numbers Day" = "Độ Dài Ngày: ~25.38 ngày Trái Đất";
+"Sun By The Numbers Temperature" = "Nhiệt Độ: ~5.500°C (bề mặt)";
+"Sun By The Numbers Age" = "Tuổi: ~4.6 tỷ năm";
+"Sun Myths Title" = "☀️ Thần Thoại Mặt Trời Qua Các Nền Văn Hóa";
+"Sun Myths Description" = "Trong suốt lịch sử, các nền văn minh tôn kính Mặt Trời như một lực lượng thần thánh, định hình các thần thoại và truyền thuyết trên toàn thế giới.";
+"Egyptian Myth Culture" = "Ai Cập";
+"Egyptian Myth God" = "Ra";
+"Egyptian Myth Description" = "Ra là thần Mặt Trời, đi thuyền qua bầu trời mỗi ngày và du hành qua thế giới ngầm mỗi đêm.";
+"Greek Myth Culture" = "Hy Lạp";
+"Greek Myth God" = "Helios";
+"Greek Myth Description" = "Helios lái cỗ xe lửa qua bầu trời, mang ánh sáng ban ngày đến thế giới.";
+"Aztec Myth Culture" = "Aztec";
+"Aztec Myth God" = "Tonatiuh";
+"Aztec Myth Description" = "Tonatiuh là thần Mặt Trời Aztec, đòi hỏi sự hy sinh để duy trì trật tự vũ trụ.";
+"Japanese Myth Culture" = "Nhật Bản";
+"Japanese Myth God" = "Amaterasu";
+"Japanese Myth Description" = "Amaterasu, nữ thần Mặt Trời, là một vị thần trung tâm trong Thần đạo, biểu tượng cho ánh sáng và sự sống.";
+"Sun Internal Title" = "☀️ Các Lớp Bên Trong của Mặt Trời";
+"Sun Layer Core" = "Lõi";
+"Sun Layer Core Description" = "Ở 15 triệu °C, phản ứng tổng hợp hạt nhân xảy ra tại đây, tạo ra năng lượng khổng lồ của Mặt Trời.";
+"Sun Layer Radiative" = "Vùng Bức Xạ";
+"Sun Layer Radiative Description" = "Năng lượng di chuyển chậm ra ngoài dưới dạng bức xạ, mất hàng ngàn năm để thoát ra.";
+"Sun Layer Convective" = "Vùng Đối Lưu";
+"Sun Layer Convective Description" = "Các khí nóng di chuyển trong dòng đối lưu, vận chuyển năng lượng lên bề mặt.";
+"Sun Layer Photosphere" = "Quang Quyển";
+"Sun Layer Photosphere Description" = "Bề mặt có thể nhìn thấy (~5.500 °C), nơi ánh sáng mặt trời thoát ra không gian.";
+"Sun Layer Chromosphere" = "Sắc Quyển";
+"Sun Layer Chromosphere Description" = "Lớp màu đỏ được nhìn thấy trong các lần nhật thực, nơi các vầng sáng mặt trời xuất hiện.";
+"Sun Layer Corona" = "Vành Nhật Hoa";
+"Sun Layer Corona Description" = "Bầu khí quyển bên ngoài, trải dài hàng triệu km vào không gian, nóng hơn bề mặt.";
+"Sun In Depth Title" = "Nghiên Cứu Sâu Hơn về Mặt Trời";
+"Sun In Depth Magnetic Fields" = "Từ Trường";
+"Sun In Depth Magnetic Fields Description" = "Từ trường của Mặt Trời tạo ra các vết đen và thúc đẩy hoạt động mặt trời. Những lực mạnh mẽ này định hình gió mặt trời và ảnh hưởng đến thời tiết không gian tác động đến Trái Đất.";
+"Sun In Depth Solar Flares" = "Bùng Nổ Mặt Trời";
+"Sun In Depth Solar Flares Description" = "Bùng nổ mặt trời là các vụ nổ năng lượng và bức xạ có thể làm gián đoạn liên lạc và tín hiệu GPS. Chúng thường liên quan đến các vùng vết đen.";
+"Sun In Depth CME" = "Phun Trào Khối Vành Nhật Hoa";
+"Sun In Depth CME Description" = "Các đám mây plasma khổng lồ phun ra từ vành nhật hoa. CME có thể ảnh hưởng đến vệ tinh, phi hành gia, và thậm chí gây ra bão địa từ trên Trái Đất.";
+"Sun In Depth Missions" = "Nhiệm Vụ Khoa Học";
+"Sun In Depth Missions Description" = "Tàu Parker Solar Probe của NASA và Solar Orbiter của ESA đang nghiên cứu Mặt Trời gần hơn bao giờ hết, cung cấp những hiểu biết chưa từng có về vật lý mặt trời.";
+"Sun Exploration Title" = "Khám Phá Mặt Trời";
+"Sun Mission SOHO" = "SOHO (1995)";
+"Sun Mission SOHO Description" = "SOHO đã quan sát Mặt Trời hơn 25 năm, theo dõi gió mặt trời và các vết đen.";
+"Sun Mission SDO" = "SDO (2010)";
+"Sun Mission SDO Description" = "Đài Quan sát Động lực học Mặt Trời cung cấp hình ảnh độ phân giải cao tuyệt đẹp của bầu khí quyển Mặt Trời.";
+"Sun Mission Parker" = "Parker Solar Probe (2018)";
+"Sun Mission Parker Description" = "Tàu vũ trụ đầu tiên 'chạm' vào bầu khí quyển ngoài của Mặt Trời, cách mạng hóa hiểu biết của chúng ta về gió mặt trời.";
+"Sun Exploration Quote" = "“Tàu Parker Solar Probe là cuộc gặp gỡ gần nhất của nhân loại với ngôi sao của chúng ta.”";
+"Content for tab coming soon" = "Nội dung cho tab sẽ sớm ra mắt!";
+"Wikipedia: Sun" = "Wikipedia: Mặt Trời";

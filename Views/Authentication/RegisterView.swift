@@ -19,26 +19,26 @@ struct RegisterFields: View {
         VStack(spacing: 20) {
             CustomTextField(
                 text: $username,
-                placeholder: "Tên người dùng",
+                placeholder: LanguageManager.current.string("Username"),
                 icon: "person.fill",
                 iconColor: .green
             )
             CustomTextField(
                 text: $email,
-                placeholder: "Email",
+                placeholder: LanguageManager.current.string("Email"),
                 icon: "envelope.fill",
                 iconColor: .blue
             )
             CustomSecureField(
                 text: $password,
-                placeholder: "Mật khẩu",
+                placeholder: LanguageManager.current.string("Password"),
                 icon: showPassword ? "eye.fill" : "eye.slash.fill",
                 iconColor: .purple,
                 showPassword: $showPassword
             )
             CustomSecureField(
                 text: $confirmPassword,
-                placeholder: "Xác nhận mật khẩu",
+                placeholder: LanguageManager.current.string("Confirm Password"),
                 icon: showConfirmPassword ? "eye.fill" : "eye.slash.fill",
                 iconColor: .purple,
                 showPassword: $showConfirmPassword,

@@ -1,0 +1,271 @@
+/* 
+  Localizable.strings
+  CosmosExplorer
+
+  Created by Loi Nguyen on 28/9/25.
+  
+*/
+
+/* LoginView */
+"Login" = "Login";
+"Sign Up" = "Sign Up";
+"Forgot Password" = "Forgot Password";
+"Email" = "Email";
+"Password" = "Password";
+"Confirm Password" = "Confirm Password";
+"Username" = "Username";
+"Passwords do not match" = "Passwords do not match";
+"Reset email sent" = "Reset email sent!";
+"Sign Up Success" = "Sign up successful!";
+"Forgot Password Prompt" = "Forgot Password?";
+"Profile" = "Profile";
+"Sign Out" = "Sign Out";
+"Explore the universe" = "Explore the universe of knowledge";
+
+/* HamburgerMenuView */
+"View Profile" = "View Profile";
+"Current Song" = "Stellar Vibes";
+"Repeat All" = "Repeat All";
+"Repeat One" = "Repeat One";
+"Shuffle" = "Shuffle";
+"Previous Track" = "Previous Track";
+"Next Track" = "Next Track";
+"Music List" = "Music List";
+"Cosmos Explorer" = "Cosmos Explorer";
+"My Chats" = "My Chats";
+"Friends" = "Friends";
+"Other" = "Other";
+"Settings" = "Settings";
+"Help and Settings" = "Help and Settings";
+
+/* HomeView */
+"Welcome back" = "Welcome back";
+"Cosmos is Now" = "Cosmos is Now";
+"Latest Space Discovery" = "Latest Space Discovery";
+"Map Galaxy" = "Map Galaxy";
+"Solar System" = "Solar System";
+"Planets" = "Planets";
+"Stars" = "Stars";
+"Universe" = "Universe";
+"Galaxy" = "Galaxy";
+"Cosmos" = "Cosmos";
+"Nebula" = "Nebula";
+"Astronomical News" = "Astronomical News";
+"Constellation" = "Constellation";
+"12 Zodiac Signs" = "12 Zodiac Signs";
+"Sky Live" = "Sky Live";
+"Home" = "Home";
+"Map" = "Map";
+"Love Cosmos" = "Love Cosmos.";
+"The stars are calling" = "The stars are calling, let's answer.";
+"Discover the mysteries" = "Discover the mysteries of the cosmos.";
+"Falling Star" = "Falling Star♪";
+
+/* WelcomeView */
+"COSMOS" = "COSMOS";
+"Explorer" = "Explorer";
+"Keep going! You've worked hard today!" = "Keep going! You've worked hard today!";
+"The universe is full of mysteries." = "The universe is full of mysteries.";
+"Space opens up endless possibilities." = "Space opens up endless possibilities.";
+"The universe is full of wonders." = "The universe is full of wonders.";
+"Look up at the sky, dream of the stars." = "Look up at the sky, dream of the stars.";
+"The universe is an open book." = "The universe is an open book.";
+"Every star tells a story." = "Every star tells a story.";
+"Space is the grand beginning." = "Space is the grand beginning.";
+"The universe holds countless secrets." = "The universe holds countless secrets.";
+"Hope you enjoy the universe." = "Hope you enjoy the universe.";
+
+/*SettingsView */
+"Settings" = "Cài đặt";
+"Language" = "Ngôn ngữ";
+"English" = "Tiếng Anh";
+"Vietnamese" = "Tiếng Việt";
+"Are you sure you want to change the language?" = "Bạn có chắc chắn muốn thay đổi ngôn ngữ?";
+"Cancel" = "Hủy";
+"Yes" = "Có";
+"Language Changed" = "Ngôn ngữ đã thay đổi";
+"OK" = "OK";
+"The language has been changed to English." = "Ngôn ngữ đã được thay đổi thành Tiếng Anh.";
+"The language has been changed to Vietnamese." = "Ngôn ngữ đã được thay đổi thành Tiếng Việt.";
+
+/* PlanetView */
+"Content for tab coming soon" = "Content for tab coming soon!";
+"No description available" = "No description available.";
+"N/A" = "N/A";
+"Planet Type" = "Planet Type";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Moons" = "Moons";
+"Gravity" = "Gravity";
+"Tilt of Axis" = "Tilt of Axis";
+"Length of Year" = "Length of Year";
+"Length of Day" = "Length of Day";
+"Temperature" = "Temperature";
+"Age" = "Age";
+"Image" = "Image {index}";
+"Myths Across Cultures" = "Myths Across Cultures";
+"Internal Layers" = "Internal Layers";
+"In-Depth Study" = "In-Depth Study";
+"No quote available" = "No quote available.";
+"Overview" = "Overview";
+"Information" = "Information";
+"By the Numbers" = "By the Numbers";
+"Galleries" = "Galleries";
+"Myth" = "Myth";
+"Internal" = "Internal";
+"In Depth" = "In Depth";
+"Exploration" = "Exploration";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Videos" = "Videos";
+"VideoListView appeared for" = "VideoListView appeared for";
+"See more           " = "See more           ";
+
+/* SolarSystemView */
+"Search planets" = "Search planets";
+"Unfavorite" = "Unfavorite";
+"Favorite" = "Favorite";
+"Edit" = "Edit";
+"Sun" = "Sun";
+"Mercury" = "Mercury";
+"Venus" = "Venus";
+"Earth" = "Earth";
+"Mars" = "Mars";
+"Jupiter" = "Jupiter";
+"Saturn" = "Saturn";
+"Uranus" = "Uranus";
+"Neptune" = "Neptune";
+
+/* SolarSystemViewModel */
+"SunDescription" = "The star at the center of the Solar System.";
+"MercuryDescription" = "The smallest planet in our Solar System.";
+"VenusDescription" = "The hottest planet in our Solar System.";
+"EarthDescription" = "The only planet known to support life.";
+"MarsDescription" = "Known as the Red Planet due to its dusty, iron-rich surface.";
+"JupiterDescription" = "The largest planet in our Solar System.";
+"SaturnDescription" = "Famous for its stunning system of rings.";
+"UranusDescription" = "A gas giant that rotates on its side.";
+"NeptuneDescription" = "The farthest planet from the Sun and known for its deep blue color.";
+
+/* AddPlanetView */
+"Add Your New Planet" = "Add Your New Planet";
+"Basic information" = "Basic Information";
+"Planet name" = "Planet Name";
+"Short description" = "Short Description";
+"Planet Image" = "Planet Image";
+"Overview" = "Overview";
+"Image from Basic Information" = "Image from Basic Information";
+"Random information" = "Random Information {index}";
+"Information" = "Information";
+"About description" = "About Description";
+"Your link video" = "Your Link Video {index}";
+"By the Numbers" = "By the Numbers";
+"Select Planet Type" = "Select Planet Type";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Moons" = "Moons";
+"Gravity" = "Gravity";
+"Tilt of Axis" = "Tilt of Axis";
+"Length of Year" = "Length of Year";
+"Length of Day" = "Length of Day";
+"Temperature" = "Temperature";
+"Age" = "Age";
+"Galleries" = "Galleries";
+"Select photo" = "Select Photo {index}";
+"Myth" = "Myth";
+"Myth Title" = "Myth Title";
+"Myth Description" = "Myth Description";
+"Culture" = "Culture {index}";
+"God Name" = "God Name {index}";
+"God Description" = "God Description {index}";
+"Image" = "Image {index}";
+"Internal" = "Internal";
+"Internal Title" = "Internal Title";
+"Layer name" = "Layer Name {index}";
+"Layer description" = "Layer Description {index}";
+"Start color" = "Start Color";
+"End color" = "End Color";
+"Icon" = "Icon {index}";
+"Select the last image of the tab" = "Select the Last Image of the Tab";
+"In Depth" = "In Depth";
+"In Depth Title" = "In Depth Title";
+"Select header image" = "Select Header Image";
+"Card Title" = "Card Title {index}";
+"Card Description" = "Card Description {index}";
+"Icon color" = "Icon Color";
+"Exploration" = "Exploration";
+"Exploration Title" = "Exploration Title";
+"Mission title" = "Mission Title {index}";
+"Mission description" = "Mission Description {index}";
+"Highlight Quote" = "Highlight Quote";
+"Select showcase photo" = "Select Showcase Photo";
+"Wikipedia link" = "Wikipedia Link";
+"Wikipedia" = "Wikipedia";
+"Cancel" = "Cancel";
+"Save" = "Save";
+
+/* SunView */
+"Sun Random Info 1" = "The Sun is a G-type main-sequence star.";
+"Sun Random Info 2" = "It accounts for 99.86% of the Solar System's mass.";
+"Sun Random Info 3" = "The Sun's surface temperature is about 5,500°C.";
+"Sun Random Info 4" = "It is approximately 4.6 billion years old.";
+"Sun Random Info 5" = "The Sun drives Earth's climate and sustains life.";
+"Sun About Description" = "The Sun, a colossal G-type main-sequence star, sits at the heart of our Solar System, anchoring its planets with immense gravity. It is roughly 4.6 billion years old, making it one of the oldest celestial bodies in our cosmic neighborhood. Its fiery surface, reaching temperatures of about 5,500°C, radiates life-sustaining energy to Earth. The Sun's dynamic atmosphere features solar flares and sunspots, shaping space weather across the system.";
+"Sun By The Numbers Planet Type" = "Planet Type: G-type main-sequence star";
+"Sun By The Numbers Radius" = "Radius: ~696,340 km";
+"Sun By The Numbers Distance" = "Distance from Sun: 0 km (center of Solar System)";
+"Sun By The Numbers Moons" = "Moons: None";
+"Sun By The Numbers Gravity" = "Gravity: ~274 m/s²";
+"Sun By The Numbers Tilt" = "Tilt of Axis: ~7.25°";
+"Sun By The Numbers Year" = "Length of Year: N/A (stationary)";
+"Sun By The Numbers Day" = "Length of Day: ~25.38 Earth days";
+"Sun By The Numbers Temperature" = "Temperature: ~5,500°C (surface)";
+"Sun By The Numbers Age" = "Age: ~4.6 billion years";
+"Sun Myths Title" = "☀️ Sun Myths Across Cultures";
+"Sun Myths Description" = "Throughout history, civilizations revered the Sun as a divine force, shaping myths and legends worldwide.";
+"Egyptian Myth Culture" = "Egyptian";
+"Egyptian Myth God" = "Ra";
+"Egyptian Myth Description" = "Ra was the Sun god, sailing across the sky each day and traveling through the underworld each night.";
+"Greek Myth Culture" = "Greek";
+"Greek Myth God" = "Helios";
+"Greek Myth Description" = "Helios drove his fiery chariot across the heavens, bringing daylight to the world.";
+"Aztec Myth Culture" = "Aztec";
+"Aztec Myth God" = "Tonatiuh";
+"Aztec Myth Description" = "Tonatiuh was the Aztec Sun god, demanding sacrifices to maintain cosmic order.";
+"Japanese Myth Culture" = "Japanese";
+"Japanese Myth God" = "Amaterasu";
+"Japanese Myth Description" = "Amaterasu, the Sun goddess, was a central deity in Shinto, symbolizing light and life.";
+"Sun Internal Title" = "☀️ Internal Layers of the Sun";
+"Sun Layer Core" = "Core";
+"Sun Layer Core Description" = "At 15 million °C, nuclear fusion happens here, producing the Sun’s immense energy.";
+"Sun Layer Radiative" = "Radiative Zone";
+"Sun Layer Radiative Description" = "Energy slowly travels outward as radiation, taking thousands of years to escape.";
+"Sun Layer Convective" = "Convective Zone";
+"Sun Layer Convective Description" = "Hot gases move in convection currents, transporting energy to the surface.";
+"Sun Layer Photosphere" = "Photosphere";
+"Sun Layer Photosphere Description" = "The visible surface (~5,500 °C), where sunlight escapes into space.";
+"Sun Layer Chromosphere" = "Chromosphere";
+"Sun Layer Chromosphere Description" = "A reddish layer seen during eclipses, where solar prominences rise.";
+"Sun Layer Corona" = "Corona";
+"Sun Layer Corona Description" = "The outer atmosphere, millions of km into space, hotter than the surface.";
+"Sun In Depth Title" = "In-Depth Study of the Sun";
+"Sun In Depth Magnetic Fields" = "Magnetic Fields";
+"Sun In Depth Magnetic Fields Description" = "The Sun’s magnetic fields create sunspots and drive solar activity. These powerful forces shape the solar wind and influence space weather affecting Earth.";
+"Sun In Depth Solar Flares" = "Solar Flares";
+"Sun In Depth Solar Flares Description" = "Solar flares are bursts of energy and radiation that can disrupt communications and GPS signals. They are often associated with sunspot regions.";
+"Sun In Depth CME" = "Coronal Mass Ejections";
+"Sun In Depth CME Description" = "Massive clouds of plasma ejected from the Sun’s corona. CMEs can impact satellites, astronauts, and even cause geomagnetic storms on Earth.";
+"Sun In Depth Missions" = "Scientific Missions";
+"Sun In Depth Missions Description" = "NASA’s Parker Solar Probe and ESA’s Solar Orbiter are studying the Sun closer than ever, providing unprecedented insights into heliophysics.";
+"Sun Exploration Title" = "Exploration of the Sun";
+"Sun Mission SOHO" = "SOHO (1995)";
+"Sun Mission SOHO Description" = "SOHO has been observing the Sun for over 25 years, monitoring solar winds and sunspots.";
+"Sun Mission SDO" = "SDO (2010)";
+"Sun Mission SDO Description" = "The Solar Dynamics Observatory provides stunning high-resolution images of the Sun’s atmosphere.";
+"Sun Mission Parker" = "Parker Solar Probe (2018)";
+"Sun Mission Parker Description" = "The first spacecraft to 'touch' the Sun’s outer atmosphere, revolutionizing our understanding of solar winds.";
+"Sun Exploration Quote" = "“The Parker Solar Probe is humanity’s closest encounter with our star.”";
+"Content for tab coming soon" = "Content for tab coming soon!";
+"Wikipedia: Sun" = "Wikipedia: Sun";
+
+

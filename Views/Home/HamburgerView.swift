@@ -96,10 +96,10 @@ struct HamburgerMenuView: View {
             NavigationLink(destination: ProfileView()) {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(viewModel.userName)
+                        Text(LanguageManager.current.string("Username"))
                             .font(.headline)
                             .foregroundColor(.white)
-                        Text("View Profile")
+                        Text(LanguageManager.current.string("View Profile"))
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
@@ -134,7 +134,7 @@ struct HamburgerMenuView: View {
                     
                     // Music Info
                     VStack(alignment: .leading) {
-                        Text(viewModel.currentSong)
+                        Text(LanguageManager.current.string("Current Song"))
                             .font(.headline)
                             .foregroundColor(.white)
                         Text(viewModel.songDuration)
@@ -162,11 +162,11 @@ struct HamburgerMenuView: View {
             // Music Menu
             if viewModel.isMusicMenuOpen {
                 VStack(alignment: .leading, spacing: 10) {
-                    musicMenuItem(icon: "repeat", title: "Repeat All", mode: .repeatAll)
-                    musicMenuItem(icon: "repeat.1", title: "Repeat One", mode: .repeatOne)
-                    musicMenuItem(icon: "shuffle", title: "Shuffle", mode: .shuffle)
-                    musicMenuItem(icon: "backward.fill", title: "Previous Track", mode: .none)
-                    musicMenuItem(icon: "forward.fill", title: "Next Track", mode: .none)
+                    musicMenuItem(icon: "repeat", title: LanguageManager.current.string("Repeat All"), mode: .repeatAll)
+                    musicMenuItem(icon: "repeat.1", title: LanguageManager.current.string("Repeat One"), mode: .repeatOne)
+                    musicMenuItem(icon: "shuffle", title: LanguageManager.current.string("Shuffle"), mode: .shuffle)
+                    musicMenuItem(icon: "backward.fill", title: LanguageManager.current.string("Previous Track"), mode: .none)
+                    musicMenuItem(icon: "forward.fill", title: LanguageManager.current.string("Next Track"), mode: .none)
                     musicListSection
                 }
                 .padding(.leading, 10)
@@ -178,7 +178,7 @@ struct HamburgerMenuView: View {
     // MARK: - Music List Section
     private var musicListSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Music List")
+            Text(LanguageManager.current.string("Music List"))
                 .font(.caption)
                 .foregroundColor(.gray)
             
@@ -231,12 +231,12 @@ struct HamburgerMenuView: View {
     // MARK: - Cosmos Explorer Section
     private var cosmosExplorerSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Cosmos Explorer")
+            Text(LanguageManager.current.string("Cosmos Explorer"))
                 .font(.caption)
                 .foregroundColor(.gray)
             
-            menuItem(icon: "message.fill", title: "My Chats")
-            menuItem(icon: "person.2.fill", title: "Friends")
+            menuItem(icon: "message.fill", title: LanguageManager.current.string("My Chats"))
+            menuItem(icon: "person.2.fill", title: LanguageManager.current.string("Friends"))
             
             Divider()
                 .background(Color.gray)
@@ -246,12 +246,12 @@ struct HamburgerMenuView: View {
     // MARK: - Other Section
     private var otherSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Other")
+            Text(LanguageManager.current.string("Other"))
                 .font(.caption)
                 .foregroundColor(.gray)
             
-            menuItem(icon: "gearshape.fill", title: "Settings")
-            menuItem(icon: "questionmark.circle.fill", title: "Help and Settings")
+            menuItem(icon: "gearshape.fill", title: LanguageManager.current.string("Settings"))
+            menuItem(icon: "questionmark.circle.fill", title: LanguageManager.current.string("Help and Settings"))
         }
     }
     

@@ -6,7 +6,7 @@ struct ProfileView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Profile")
+            Text(LanguageManager.current.string("Profile"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -15,7 +15,7 @@ struct ProfileView: View {
                 viewModel.signOut()
                 errorMessage = nil
             }) {
-                Text("Sign Out")
+                Text(LanguageManager.current.string("Sign Out"))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()

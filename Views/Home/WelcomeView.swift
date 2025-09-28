@@ -9,16 +9,16 @@ struct WelcomeView: View {
     private let circleRotationDuration: Double = 8
 
     private let quotes = [
-        "Cố gắng lên bạn nhé! Hôm nay bạn vất vả nhiều rồi!.",
-        "Vũ trụ đầy những điều bí ẩn.",
-        "Không gian mở ra mọi khả năng.",
-        "Vũ trụ đầy những điều kỳ diệu.",
-        "Nhìn lên trời, mơ những vì sao.",
-        "Vũ trụ là một cuốn sách mở.",
-        "Mỗi ngôi sao kể một câu chuyện.",
-        "Không gian là khởi đầu vĩ đại.",
-        "Vũ trụ ẩn chứa vô vàn bí ẩn.",
-        "Hi vọng bạn thích thú với vũ trụ."
+        LanguageManager.current.string("Keep going! You've worked hard today!"),
+        LanguageManager.current.string("The universe is full of mysteries."),
+        LanguageManager.current.string("Space opens up endless possibilities."),
+        LanguageManager.current.string("The universe is full of wonders."),
+        LanguageManager.current.string("Look up at the sky, dream of the stars."),
+        LanguageManager.current.string("The universe is an open book."),
+        LanguageManager.current.string("Every star tells a story."),
+        LanguageManager.current.string("Space is the grand beginning."),
+        LanguageManager.current.string("The universe holds countless secrets."),
+        LanguageManager.current.string("Hope you enjoy the universe.")
     ]
 
     var body: some View {
@@ -88,7 +88,7 @@ struct BackgroundView: View {
 struct TitleView: View {
     var body: some View {
         VStack(spacing: 5) {
-            Text("COSMOS")
+            Text(LanguageManager.current.string("COSMOS"))
                 .font(.custom("Audiowide", size: 36))
                 .fontWeight(.bold)
                 .foregroundStyle(
@@ -100,7 +100,7 @@ struct TitleView: View {
                 )
                 .shadow(color: .white.opacity(0.4), radius: 10)
 
-            Text("Explorer")
+            Text(LanguageManager.current.string("Explorer"))
                 .font(.custom("Audiowide", size: 36))
                 .foregroundColor(.white.opacity(0.7))
         }
@@ -112,7 +112,7 @@ struct QuoteView: View {
     let quote: String
 
     var body: some View {
-        Text(quote)
+        Text(LanguageManager.current.string(quote))
             .font(.system(size: 16))
             .foregroundColor(.white.opacity(0.8))
             .multilineTextAlignment(.leading)

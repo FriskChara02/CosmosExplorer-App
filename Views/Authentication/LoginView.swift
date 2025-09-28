@@ -1,9 +1,9 @@
 import SwiftUI
 
 enum AuthMode: String {
-    case login = "Đăng nhập"
-    case signUp = "Đăng ký"
-    case forgotPassword = "Quên mật khẩu"
+    case login = "Login"
+    case signUp = "Sign Up"
+    case forgotPassword = "Forgot Password"
 }
 
 struct LoginView: View {
@@ -127,7 +127,7 @@ struct LoginView: View {
                                     Image(systemName: "globe.asia.australia.fill")
                                         .foregroundColor(mode == .login ? .blue : .red)
                                         .font(.system(size: 20))
-                                    Text(mode.rawValue)
+                                    Text(LanguageManager.current.string(mode.rawValue))
                                         .font(.title2)
                                         .fontWeight(authMode == mode ? .bold : .regular)
                                         .foregroundColor(.white)
@@ -198,7 +198,7 @@ struct LoginView: View {
                     }
 
                     Button(action: performAction) {
-                        Text(authMode.rawValue)
+                        Text(LanguageManager.current.string(authMode.rawValue))
                             .font(.headline)
                             .frame(width: 250, height: 50)
                             .background(authMode == .login ? Color.black : authMode == .signUp ? Color.green : Color.red)
@@ -226,7 +226,7 @@ struct LoginView: View {
                     .padding(.top, 10)
 
                     if authMode != .forgotPassword {
-                        Button("✧ Quên mật khẩu?") {
+                        Button(LanguageManager.current.string("Forgot Password Prompt")) {
                             withAnimation(.spring()) {
                                 authMode = .forgotPassword
                                 errorMessage = ""
@@ -273,7 +273,7 @@ struct LoginView: View {
                     value: authMode
                 )
 
-            Text("Explore the universe of knowledge")
+            Text(LanguageManager.current.string("Explore the universe"))
                 .font(.custom("Audiowide", size: 18))
                 .foregroundColor(.white.opacity(0.7))
         }
@@ -304,7 +304,7 @@ struct LoginView: View {
             viewModel.signIn(email: email, password: password) { result in
                 switch result {
                 case .success:
-                    print("✅ Đăng nhập thành công")
+                    print("✅ \(LanguageManager.current.string("Login")) thành công")
                     errorMessage = ""
                     showWelcomeView = true
                 case .failure(let error):
@@ -313,15 +313,15 @@ struct LoginView: View {
             }
         case .signUp:
             if password != confirmPassword {
-                errorMessage = "Mật khẩu và xác nhận mật khẩu không khớp"
+                errorMessage = LanguageManager.current.string("Passwords do not match")
                 return
             }
             viewModel.signUp(email: email, username: username, password: password) { result in
                 switch result {
                 case .success:
-                    print("✅ Đăng ký thành công")
+                    print("✅ \(LanguageManager.current.string("Sign Up")) thành công")
                     errorMessage = ""
-                    successMessage = "Đăng ký thành công!"
+                    successMessage = LanguageManager.current.string("Sign Up Success")
                 case .failure(let error):
                     errorMessage = error.localizedDescription
                 }
@@ -330,7 +330,7 @@ struct LoginView: View {
             viewModel.resetPassword(email: email) { result in
                 switch result {
                 case .success:
-                    successMessage = "Email khôi phục đã được gửi!"
+                    successMessage = LanguageManager.current.string("Reset email sent")
                     errorMessage = ""
                 case .failure(let error):
                     errorMessage = error.localizedDescription
@@ -349,13 +349,13 @@ struct LoginView: View {
             VStack(spacing: 20) {
                 CustomTextField(
                     text: $email,
-                    placeholder: "Email",
+                    placeholder: LanguageManager.current.string("Email"),
                     icon: "envelope.fill",
                     iconColor: .blue
                 )
                 CustomSecureField(
                     text: $password,
-                    placeholder: "Mật khẩu",
+                    placeholder: LanguageManager.current.string("Password"),
                     icon: showPassword ? "eye.fill" : "eye.slash.fill",
                     iconColor: .purple,
                     showPassword: $showPassword
@@ -376,26 +376,26 @@ struct LoginView: View {
             VStack(spacing: 20) {
                 CustomTextField(
                     text: $username,
-                    placeholder: "Tên người dùng",
+                    placeholder: LanguageManager.current.string("Username"),
                     icon: "person.fill",
                     iconColor: .green
                 )
                 CustomTextField(
                     text: $email,
-                    placeholder: "Email",
+                    placeholder: LanguageManager.current.string("Email"),
                     icon: "envelope.fill",
                     iconColor: .blue
                 )
                 CustomSecureField(
                     text: $password,
-                    placeholder: "Mật khẩu",
+                    placeholder: LanguageManager.current.string("Password"),
                     icon: showPassword ? "eye.fill" : "eye.slash.fill",
                     iconColor: .purple,
                     showPassword: $showPassword
                 )
                 CustomSecureField(
                     text: $confirmPassword,
-                    placeholder: "Xác nhận mật khẩu",
+                    placeholder: LanguageManager.current.string("Confirm Password"),
                     icon: showConfirmPassword ? "eye.fill" : "eye.slash.fill",
                     iconColor: .purple,
                     showPassword: $showConfirmPassword
@@ -410,7 +410,7 @@ struct LoginView: View {
         var body: some View {
             CustomTextField(
                 text: $email,
-                placeholder: "Email",
+                placeholder: LanguageManager.current.string("Email"),
                 icon: "envelope.fill",
                 iconColor: .blue
             )

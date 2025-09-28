@@ -68,7 +68,7 @@
                                 .foregroundColor(.white)
                         }
                         Spacer()
-                        Text("Solar System")
+                        Text(LanguageManager.current.string("Solar System"))
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -142,7 +142,7 @@
                         text: $viewModel.searchText,
                         isPresented: $isSearchActive,
                         placement: .navigationBarDrawer(displayMode: .automatic),
-                        prompt: "Search planets"
+                        prompt: Text(LanguageManager.current.string("Search planets"))
                     )
                     .background(.ultraThinMaterial)
                 }
@@ -175,23 +175,23 @@
         @ViewBuilder
         func planetView(for planet: PlanetModel) -> some View {
             switch planet.name {
-            case "Sun":
+            case LanguageManager.current.string("Sun"):
                 SunView(planet: planet, viewModel: viewModel)
-            case "Mercury":
+            case LanguageManager.current.string("Mercury"):
                 MercuryView()
-            case "Venus":
+            case LanguageManager.current.string("Venus"):
                 VenusView()
-            case "Earth":
+            case LanguageManager.current.string("Earth"):
                 EarthView()
-            case "Mars":
+            case LanguageManager.current.string("Mars"):
                 MarsView()
-            case "Jupiter":
+            case LanguageManager.current.string("Jupiter"):
                 JupiterView()
-            case "Saturn":
+            case LanguageManager.current.string("Saturn"):
                 SaturnView()
-            case "Uranus":
+            case LanguageManager.current.string("Uranus"):
                 UranusView()
-            case "Neptune":
+            case LanguageManager.current.string("Neptune"):
                 NeptuneView()
             default:
                 PlanetView(planet: planet, viewModel: viewModel)
@@ -227,9 +227,9 @@
                                         viewModel.toggleFavorite(planet: planet)
                                     }
                                 }) {
-                                    Label(planet.isFavorite ? "Unfavorite" : "Favorite", systemImage: planet.isFavorite ? "heart.fill" : "heart")
+                                    Label(planet.isFavorite ? LanguageManager.current.string("Unfavorite") : LanguageManager.current.string("Favorite"), systemImage: planet.isFavorite ? "heart.fill" : "heart")
                                 }
-                                Button("Edit") {
+                                Button(LanguageManager.current.string("Edit")) {
                                     // Xử lý chỉnh sửa (Giai đoạn 3)
                                 }
                             } label: {

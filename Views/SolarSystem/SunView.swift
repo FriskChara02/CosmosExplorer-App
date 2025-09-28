@@ -22,11 +22,11 @@ struct SunView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
     private let infoItems: [String] = [
-        "The Sun is a G-type main-sequence star.",
-        "It accounts for 99.86% of the Solar System's mass.",
-        "The Sun's surface temperature is about 5,500°C.",
-        "It is approximately 4.6 billion years old.",
-        "The Sun drives Earth's climate and sustains life."
+        LanguageManager.current.string("Sun Random Info 1"),
+        LanguageManager.current.string("Sun Random Info 2"),
+        LanguageManager.current.string("Sun Random Info 3"),
+        LanguageManager.current.string("Sun Random Info 4"),
+        LanguageManager.current.string("Sun Random Info 5")
     ]
 
     init(planet: PlanetModel, viewModel: SolarSystemViewModel) {
@@ -47,7 +47,7 @@ struct SunView: View {
                             .foregroundColor(.white)
                     }
                     Spacer()
-                    Text("\(selectedTab) Planet")
+                    Text("\(LanguageManager.current.string(selectedTab)) Planet")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -98,7 +98,7 @@ struct SunView: View {
                         GalleriesView(animation: animation)
                     } else if selectedTab == "Wiki" {
                         VStack {
-                            Text("Wikipedia: Sun")
+                            Text(LanguageManager.current.string("Wikipedia: Sun"))
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .padding()
@@ -117,7 +117,7 @@ struct SunView: View {
                     } else if selectedTab == "Exploration" {
                         ExplorationView(animation: animation)
                     } else {
-                        Text("Content for \(selectedTab) tab coming soon!")
+                        Text(LanguageManager.current.string("Content for tab coming soon").replacingOccurrences(of: "{tab}", with: selectedTab))
                             .font(.title2)
                             .foregroundColor(.white)
                             .padding()
@@ -151,7 +151,16 @@ struct SunView: View {
     struct TabBarView: View {
         @Binding var selectedTab: String
         
-        let tabs = ["Overview", "Information", "By the Numbers", "Galleries", "Myth", "Internal", "In Depth", "Exploration", "Comment", "Wiki"]
+        let tabs = [LanguageManager.current.string("Overview"),
+                    LanguageManager.current.string("Information"),
+                    LanguageManager.current.string("By the Numbers"),
+                    LanguageManager.current.string("Galleries"),
+                    LanguageManager.current.string("Myth"),
+                    LanguageManager.current.string("Internal"),
+                    LanguageManager.current.string("In Depth"),
+                    LanguageManager.current.string("Exploration"),
+                    LanguageManager.current.string("Comment"),
+                    LanguageManager.current.string("Wiki")]
         
         var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -295,7 +304,7 @@ struct SunView: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(.white.opacity(0.8))
                         .offset(x: 0, y: -220)
-                    Text("360°")
+                    Text(LanguageManager.current.string("360°"))
                         .font(.caption)
                         .foregroundColor(.white.opacity(0.8))
                         .offset(x: 0, y: -215)
@@ -367,7 +376,7 @@ struct SunView: View {
                                 Circle()
                                     .fill(.green)
                                     .frame(width: 8, height: 8)
-                                Text("About")
+                                Text(LanguageManager.current.string("About"))
                                     .font(.headline)
                                     .foregroundColor(.white)
                                 Spacer()
@@ -390,7 +399,7 @@ struct SunView: View {
                             }
                             .padding(.horizontal)
                             
-                            Text("The Sun, a colossal G-type main-sequence star, sits at the heart of our Solar System, anchoring its planets with immense gravity. It is roughly 4.6 billion years old, making it one of the oldest celestial bodies in our cosmic neighborhood. Its fiery surface, reaching temperatures of about 5,500°C, radiates life-sustaining energy to Earth. The Sun's dynamic atmosphere features solar flares and sunspots, shaping space weather across the system.")
+                            Text(LanguageManager.current.string("Sun About Description"))
                                 .font(.body)
                                 .foregroundColor(.white)
                                 .padding(.horizontal)
@@ -403,12 +412,12 @@ struct SunView: View {
                                 Circle()
                                     .fill(.green)
                                     .frame(width: 8, height: 8)
-                                Text("Video")
+                                Text(LanguageManager.current.string("Video"))
                                     .font(.headline)
                                     .foregroundColor(.white)
                                 Spacer()
                                 NavigationLink(destination: VideoListView()) {
-                                    Text("See more           ")
+                                    Text(LanguageManager.current.string("See more           "))
                                         .font(.subheadline)
                                         .foregroundColor(.white)
                                         .overlay(alignment: .trailing) {
@@ -524,34 +533,34 @@ struct SunView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     
                     infoRow(icon: "star.fill", color: .yellow,
-                            text: "Planet Type: G-type main-sequence star")
+                            text: LanguageManager.current.string("Sun By The Numbers Planet Type"))
                     
                     infoRow(icon: "circle.fill", color: .orange,
-                            text: "Radius: ~696,340 km")
+                            text: LanguageManager.current.string("Sun By The Numbers Radius"))
                     
                     infoRow(icon: "sun.max.fill", color: .red,
-                            text: "Distance from Sun: 0 km (center of Solar System)")
+                            text: LanguageManager.current.string("Sun By The Numbers Distance"))
                     
                     infoRow(icon: "moon.fill", color: .gray,
-                            text: "Moons: None")
+                            text: LanguageManager.current.string("Sun By The Numbers Moons"))
                     
                     infoRow(icon: "gauge", color: .green,
-                            text: "Gravity: ~274 m/s²")
+                            text: LanguageManager.current.string("Sun By The Numbers Gravity"))
                     
                     infoRow(icon: "arrow.triangle.2.circlepath", color: .blue,
-                            text: "Tilt of Axis: ~7.25°")
+                            text: LanguageManager.current.string("Sun By The Numbers Tilt"))
                     
                     infoRow(icon: "calendar", color: .purple,
-                            text: "Length of Year: N/A (stationary)")
+                            text: LanguageManager.current.string("Sun By The Numbers Year"))
                     
                     infoRow(icon: "clock", color: .pink,
-                            text: "Length of Day: ~25.38 Earth days")
+                            text: LanguageManager.current.string("Sun By The Numbers Day"))
                     
                     infoRow(icon: "thermometer", color: .red,
-                            text: "Temperature: ~5,500°C (surface)")
+                            text: LanguageManager.current.string("Sun By The Numbers Temperature"))
                     
                     infoRow(icon: "hourglass", color: .teal,
-                            text: "Age: ~4.6 billion years")
+                            text: LanguageManager.current.string("Sun By The Numbers Age"))
                 }
                 .padding()
                 .transition(.move(edge: .leading))
@@ -627,7 +636,7 @@ struct SunView: View {
                                 Image(image)
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(height: 180)
+                                    .frame(width: 180, height: 180)
                                     .clipShape(RoundedRectangle(cornerRadius: 16))
                                     .shadow(color: .purple.opacity(0.6), radius: 10, x: 0, y: 4)
                                     .overlay(
@@ -680,10 +689,10 @@ struct SunView: View {
         
         // Danh sách thần thoại
         private let myths: [Myth] = [
-            Myth(culture: "Egyptian", godName: "Ra", description: "Ra was the Sun god, sailing across the sky each day and traveling through the underworld each night.", imageName: "egypt_sun"),
-            Myth(culture: "Greek", godName: "Helios", description: "Helios drove his fiery chariot across the heavens, bringing daylight to the world.", imageName: "greek_sun"),
-            Myth(culture: "Aztec", godName: "Tonatiuh", description: "Tonatiuh was the Aztec Sun god, demanding sacrifices to maintain cosmic order.", imageName: "aztec_sun"),
-            Myth(culture: "Japanese", godName: "Amaterasu", description: "Amaterasu, the Sun goddess, was a central deity in Shinto, symbolizing light and life.", imageName: "japan_sun")
+            Myth(culture: LanguageManager.current.string("Egyptian Myth Culture"), godName: LanguageManager.current.string("Egyptian Myth God"), description: LanguageManager.current.string("Egyptian Myth Description"), imageName: "God_Ra"),
+            Myth(culture: LanguageManager.current.string("Greek Myth Culture"), godName: LanguageManager.current.string("Greek Myth God"), description: LanguageManager.current.string("Greek Myth Description"), imageName: "God_Helios"),
+            Myth(culture: LanguageManager.current.string("Aztec Myth Culture"), godName: LanguageManager.current.string("Aztec Myth God"), description: LanguageManager.current.string("Aztec Myth Description"), imageName: "God_Aztec"),
+            Myth(culture: LanguageManager.current.string("Japanese Myth Culture"), godName: LanguageManager.current.string("Japanese Myth God"), description: LanguageManager.current.string("Japanese Myth Description"), imageName: "God_Amaterasu")
         ]
         
         var body: some View {
@@ -698,11 +707,11 @@ struct SunView: View {
                     VStack(spacing: 24) {
                         // Header
                         VStack(spacing: 8) {
-                            Text("☀️ Sun Myths Across Cultures")
+                            Text(LanguageManager.current.string("Sun Myths Title"))
                                 .font(.title.bold())
                                 .foregroundColor(.white)
                             
-                            Text("Throughout history, civilizations revered the Sun as a divine force, shaping myths and legends worldwide.")
+                            Text(LanguageManager.current.string("Sun Myths Description"))
                                 .font(.body)
                                 .foregroundColor(.white.opacity(0.8))
                                 .multilineTextAlignment(.center)
@@ -767,38 +776,38 @@ struct SunView: View {
         
         private let layers: [SunLayer] = [
             SunLayer(
-                name: "Core",
-                description: "At 15 million °C, nuclear fusion happens here, producing the Sun’s immense energy.",
+                name: LanguageManager.current.string("Sun Layer Core"),
+                description: LanguageManager.current.string("Sun Layer Core Description"),
                 color: LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing),
                 icon: "flame.fill"
             ),
             SunLayer(
-                name: "Radiative Zone",
-                description: "Energy slowly travels outward as radiation, taking thousands of years to escape.",
+                name: LanguageManager.current.string("Sun Layer Radiative"),
+                description: LanguageManager.current.string("Sun Layer Radiative Description"),
                 color: LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing),
                 icon: "rays"
             ),
             SunLayer(
-                name: "Convective Zone",
-                description: "Hot gases move in convection currents, transporting energy to the surface.",
+                name: LanguageManager.current.string("Sun Layer Convective"),
+                description: LanguageManager.current.string("Sun Layer Convective Description"),
                 color: LinearGradient(colors: [.yellow, .white], startPoint: .top, endPoint: .bottom),
                 icon: "waveform.path.ecg"
             ),
             SunLayer(
-                name: "Photosphere",
-                description: "The visible surface (~5,500 °C), where sunlight escapes into space.",
+                name: LanguageManager.current.string("Sun Layer Photosphere"),
+                description: LanguageManager.current.string("Sun Layer Photosphere Description"),
                 color: LinearGradient(colors: [.yellow, .orange], startPoint: .leading, endPoint: .trailing),
                 icon: "sun.max.fill"
             ),
             SunLayer(
-                name: "Chromosphere",
-                description: "A reddish layer seen during eclipses, where solar prominences rise.",
+                name: LanguageManager.current.string("Sun Layer Chromosphere"),
+                description: LanguageManager.current.string("Sun Layer Chromosphere Description"),
                 color: LinearGradient(colors: [.pink, .red], startPoint: .top, endPoint: .bottom),
                 icon: "sparkles"
             ),
             SunLayer(
-                name: "Corona",
-                description: "The outer atmosphere, millions of km into space, hotter than the surface.",
+                name: LanguageManager.current.string("Sun Layer Corona"),
+                description: LanguageManager.current.string("Sun Layer Corona Description"),
                 color: LinearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing),
                 icon: "globe.americas.fill"
             )
@@ -807,7 +816,7 @@ struct SunView: View {
         var body: some View {
             ScrollView {
                 VStack(spacing: 20) {
-                    Text("☀️ Internal Layers of the Sun")
+                    Text(LanguageManager.current.string("Sun Internal Title"))
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -877,7 +886,7 @@ struct SunView: View {
                         .matchedGeometryEffect(id: "indepth-sun", in: animation)
                     
                     // Title
-                    Text("In-Depth Study of the Sun")
+                    Text(LanguageManager.current.string("Sun In Depth Title"))
                         .font(.title2.bold())
                         .foregroundColor(.white)
                         .padding(.horizontal)
@@ -886,29 +895,29 @@ struct SunView: View {
                     VStack(spacing: 16) {
                         InfoCardView(
                             icon: "wave.3.forward.circle.fill",
-                            title: "Magnetic Fields",
-                            description: "The Sun’s magnetic fields create sunspots and drive solar activity. These powerful forces shape the solar wind and influence space weather affecting Earth.",
+                            title: LanguageManager.current.string("Sun In Depth Magnetic Fields"),
+                            description: LanguageManager.current.string("Sun In Depth Magnetic Fields Description"),
                             iconColor: .cyan
                         )
                         
                         InfoCardView(
                             icon: "flame.fill",
-                            title: "Solar Flares",
-                            description: "Solar flares are bursts of energy and radiation that can disrupt communications and GPS signals. They are often associated with sunspot regions.",
+                            title: LanguageManager.current.string("Sun In Depth Solar Flares"),
+                            description: LanguageManager.current.string("Sun In Depth Solar Flares Description"),
                             iconColor: .orange
                         )
                         
                         InfoCardView(
                             icon: "bolt.fill",
-                            title: "Coronal Mass Ejections",
-                            description: "Massive clouds of plasma ejected from the Sun’s corona. CMEs can impact satellites, astronauts, and even cause geomagnetic storms on Earth.",
+                            title: LanguageManager.current.string("Sun In Depth CME"),
+                            description: LanguageManager.current.string("Sun In Depth CME Description"),
                             iconColor: .purple
                         )
                         
                         InfoCardView(
                             icon: "airplane",
-                            title: "Scientific Missions",
-                            description: "NASA’s Parker Solar Probe and ESA’s Solar Orbiter are studying the Sun closer than ever, providing unprecedented insights into heliophysics.",
+                            title: LanguageManager.current.string("Sun In Depth Missions"),
+                            description: LanguageManager.current.string("Sun In Depth Missions Description"),
                             iconColor: .green
                         )
                     }
@@ -973,7 +982,7 @@ struct SunView: View {
                                 )
                             )
                         
-                        Text("Exploration of the Sun")
+                        Text(LanguageManager.current.string("Sun Exploration Title"))
                             .font(.largeTitle.bold())
                             .foregroundColor(.white)
                             .padding()
@@ -985,24 +994,24 @@ struct SunView: View {
                     // 🚀 Timeline Cards
                     VStack(alignment: .leading, spacing: 16) {
                         MissionCardView(
-                            title: "SOHO (1995)",
-                            description: "SOHO has been observing the Sun for over 25 years, monitoring solar winds and sunspots.",
+                            title: LanguageManager.current.string("Sun Mission SOHO"),
+                            description: LanguageManager.current.string("Sun Mission SOHO Description"),
                             icon: "sun.max.fill",
                             animation: animation,
                             id: "soho"
                         )
                         
                         MissionCardView(
-                            title: "SDO (2010)",
-                            description: "The Solar Dynamics Observatory provides stunning high-resolution images of the Sun’s atmosphere.",
+                            title: LanguageManager.current.string("Sun Mission SDO"),
+                            description: LanguageManager.current.string("Sun Mission SDO Description"),
                             icon: "camera.metering.matrix",
                             animation: animation,
                             id: "sdo"
                         )
                         
                         MissionCardView(
-                            title: "Parker Solar Probe (2018)",
-                            description: "The first spacecraft to 'touch' the Sun’s outer atmosphere, revolutionizing our understanding of solar winds.",
+                            title: LanguageManager.current.string("Sun Mission Parker"),
+                            description: LanguageManager.current.string("Sun Mission Parker Description"),
                             icon: "paperplane.fill",
                             animation: animation,
                             id: "parker"
@@ -1011,7 +1020,7 @@ struct SunView: View {
                     .padding(.horizontal)
                     
                     // ✨ Highlight Quote
-                    Text("“The Parker Solar Probe is humanity’s closest encounter with our star.”")
+                    Text(LanguageManager.current.string("Sun Exploration Quote"))
                         .font(.title3.italic())
                         .foregroundStyle(LinearGradient(
                             colors: [.yellow, .orange],

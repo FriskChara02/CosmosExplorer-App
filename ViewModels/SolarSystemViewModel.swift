@@ -81,8 +81,8 @@ class SolarSystemViewModel: ObservableObject {
         let samplePlanets = [
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000000") ?? UUID(),
-                name: "Sun",
-                planetDescription: "The star at the center of the Solar System.",
+                name: LanguageManager.current.string("Sun"),
+                planetDescription: LanguageManager.current.string("SunDescription"),
                 viewCount: 0,
                 planet_order: 0,
                 randomInfos: [],
@@ -90,8 +90,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
-                name: "Mercury",
-                planetDescription: "The smallest planet in our Solar System.",
+                name: LanguageManager.current.string("Mercury"),
+                planetDescription: LanguageManager.current.string("MercuryDescription"),
                 viewCount: 0,
                 planet_order: 1,
                 randomInfos: [],
@@ -99,8 +99,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000002") ?? UUID(),
-                name: "Venus",
-                planetDescription: "The hottest planet in our Solar System.",
+                name: LanguageManager.current.string("Venus"),
+                planetDescription: LanguageManager.current.string("VenusDescription"),
                 viewCount: 0,
                 planet_order: 2,
                 randomInfos: [],
@@ -108,8 +108,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000003") ?? UUID(),
-                name: "Earth",
-                planetDescription: "The only planet known to support life.",
+                name: LanguageManager.current.string("Earth"),
+                planetDescription: LanguageManager.current.string("EarthDescription"),
                 viewCount: 0,
                 planet_order: 3,
                 randomInfos: [],
@@ -117,8 +117,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000004") ?? UUID(),
-                name: "Mars",
-                planetDescription: "Known as the Red Planet due to its dusty, iron-rich surface.",
+                name: LanguageManager.current.string("Mars"),
+                planetDescription: LanguageManager.current.string("MarsDescription"),
                 viewCount: 0,
                 planet_order: 4,
                 randomInfos: [],
@@ -126,8 +126,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000005") ?? UUID(),
-                name: "Jupiter",
-                planetDescription: "The largest planet in our Solar System.",
+                name: LanguageManager.current.string("Jupiter"),
+                planetDescription: LanguageManager.current.string("JupiterDescription"),
                 viewCount: 0,
                 planet_order: 5,
                 randomInfos: [],
@@ -135,8 +135,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000006") ?? UUID(),
-                name: "Saturn",
-                planetDescription: "Famous for its stunning system of rings.",
+                name: LanguageManager.current.string("Saturn"),
+                planetDescription: LanguageManager.current.string("SaturnDescription"),
                 viewCount: 0,
                 planet_order: 6,
                 randomInfos: [],
@@ -144,8 +144,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000007") ?? UUID(),
-                name: "Uranus",
-                planetDescription: "A gas giant that rotates on its side.",
+                name: LanguageManager.current.string("Uranus"),
+                planetDescription: LanguageManager.current.string("UranusDescription"),
                 viewCount: 0,
                 planet_order: 7,
                 randomInfos: [],
@@ -153,8 +153,8 @@ class SolarSystemViewModel: ObservableObject {
             ),
             PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000008") ?? UUID(),
-                name: "Neptune",
-                planetDescription: "The farthest planet from the Sun and known for its deep blue color.",
+                name: LanguageManager.current.string("Neptune"),
+                planetDescription: LanguageManager.current.string("NeptuneDescription"),
                 viewCount: 0,
                 planet_order: 8,
                 randomInfos: [],

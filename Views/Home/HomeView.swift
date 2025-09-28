@@ -9,14 +9,23 @@ struct HomeView: View {
     @Environment(\.colorScheme) var colorScheme
     @Namespace private var animation
     
-    init() {
-        _viewModel = StateObject(wrappedValue: HomeViewModel(authViewModel: nil))
-    }
+    init(authViewModel: AuthViewModel? = nil) {
+            _viewModel = StateObject(wrappedValue: HomeViewModel(authViewModel: authViewModel))
+        }
     
     private let bannerItems = [
-        "Map Galaxy", "Solar System", "Planets", "Stars", "Universe",
-        "Galaxy", "Cosmos", "Nebula", "Astronomical News", "Constellation",
-        "12 Zodiac Signs", "Sky Live"
+        LanguageManager.current.string("Map Galaxy"),
+        LanguageManager.current.string("Solar System"),
+        LanguageManager.current.string("Planets"),
+        LanguageManager.current.string("Stars"),
+        LanguageManager.current.string("Universe"),
+        LanguageManager.current.string("Galaxy"),
+        LanguageManager.current.string("Cosmos"),
+        LanguageManager.current.string("Nebula"),
+        LanguageManager.current.string("Astronomical News"),
+        LanguageManager.current.string("Constellation"),
+        LanguageManager.current.string("12 Zodiac Signs"),
+        LanguageManager.current.string("Sky Live")
     ]
     
     private let backgroundImages = [
@@ -27,11 +36,19 @@ struct HomeView: View {
     ]
     
     private let gridItemsLeft = [
-        "Cosmos", "Galaxy", "Constellation", "Nebula", "Stars"
+        LanguageManager.current.string("Cosmos"),
+        LanguageManager.current.string("Galaxy"),
+        LanguageManager.current.string("Constellation"),
+        LanguageManager.current.string("Nebula"),
+        LanguageManager.current.string("Stars")
     ]
     
     private let gridItemsRight = [
-        "Universe", "Map Galaxy", "12 Zodiac Signs", "Solar System", "Planets"
+        LanguageManager.current.string("Universe"),
+        LanguageManager.current.string("Map Galaxy"),
+        LanguageManager.current.string("12 Zodiac Signs"),
+        LanguageManager.current.string("Solar System"),
+        LanguageManager.current.string("Planets")
     ]
     
     // Timer for auto-scrolling banner
@@ -54,7 +71,7 @@ struct HomeView: View {
                                     .font(.title2)
                                     .foregroundColor(.white)
                             }
-                            Text("Welcome back, \(viewModel.userName)")
+                            Text(LanguageManager.current.string("Welcome back") + ", \(viewModel.userName)")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .offset(y: 1)
@@ -70,7 +87,7 @@ struct HomeView: View {
                         
                         // App Title & Underline
                         VStack(alignment: .leading) {
-                            Text("Cosmos Explorer")
+                            Text(LanguageManager.current.string("Cosmos Explorer"))
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -159,9 +176,9 @@ struct HomeView: View {
                             }
                         }
                         
-                        // Cosme is Now Section
+                        // Cosmos is Now Section
                         HStack {
-                            Text("Cosme is Now")
+                            Text(LanguageManager.current.string("Cosmos is Now"))
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -203,10 +220,10 @@ struct HomeView: View {
                                             .padding([.leading, .bottom], 10)
                                     }
                                     .padding(8)
-                                    .matchedGeometryEffect(id: gridItemsLeft[index], in: animation)
+                                    .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
                                     
                                     // Right Column
-                                    if gridItemsRight[index] == "Solar System" {
+                                    if gridItemsRight[index] == LanguageManager.current.string("Solar System") {
                                         NavigationLink(destination: SolarSystemView().navigationBarBackButtonHidden(true)) {
                                             ZStack(alignment: .bottomLeading) {
                                                 Image("cosmos_background")
@@ -229,7 +246,7 @@ struct HomeView: View {
                                                     .padding([.leading, .bottom], 10)
                                             }
                                             .padding(8)
-                                            .matchedGeometryEffect(id: gridItemsRight[index], in: animation)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
                                         }
                                     } else {
                                         ZStack(alignment: .bottomLeading) {
@@ -263,7 +280,7 @@ struct HomeView: View {
                         
                         // Astronomical News Section
                         VStack(alignment: .leading) {
-                            Text("Astronomical News")
+                            Text(LanguageManager.current.string("Astronomical News"))
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -279,7 +296,7 @@ struct HomeView: View {
                                     .cornerRadius(10)
                                 
                                 VStack(alignment: .leading) {
-                                    Text("Latest Space Discovery")
+                                    Text(LanguageManager.current.string("Latest Space Discovery"))
                                         .font(.headline)
                                         .foregroundColor(.white)
                                     Text("Sep 11/2025")
@@ -327,13 +344,13 @@ struct HomeView: View {
                                             .transition(.opacity)
                                     }
                                 }
-                                .onTapGesture {
-                                    withAnimation {
-                                        viewModel.selectedNavItem = item.id
-                                    }
-                                }
                             }
                             .buttonStyle(PlainButtonStyle())
+                            .simultaneousGesture(TapGesture().onEnded { // Sử dụng simultaneousGesture để không xung đột
+                                withAnimation {
+                                    viewModel.selectedNavItem = item.id
+                                }
+                            })
                         }
                     }
                     .padding(.vertical, 10)
@@ -364,16 +381,18 @@ struct HomeView: View {
     @ViewBuilder
     private func destinationView(for item: NavItem) -> some View {
         switch item.title {
-        case "Home":
-            HomeView()
-        case "Astronomical News":
+        case LanguageManager.current.string("Home"):
             EmptyView()
-        case "Map":
+        case LanguageManager.current.string("Astronomical News"):
             EmptyView()
-        case "Settings":
+        case LanguageManager.current.string("Map"):
             EmptyView()
-        case "Profile":
+        case LanguageManager.current.string("Settings"):
+            SettingsView()
+                .navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Profile"):
             ProfileView()
+                .environmentObject(authViewModel)
         default:
             EmptyView()
         }
@@ -387,11 +406,11 @@ class HomeViewModel: ObservableObject {
     @Published var selectedNavItem: UUID?
     
     let navItems: [NavItem] = [
-        NavItem(id: UUID(), title: "Home", icon: "house.fill"),
-        NavItem(id: UUID(), title: "Astronomical News", icon: "newspaper.fill"),
-        NavItem(id: UUID(), title: "Map", icon: "map.fill"),
-        NavItem(id: UUID(), title: "Settings", icon: "gearshape.fill"),
-        NavItem(id: UUID(), title: "Profile", icon: "person.fill")
+        NavItem(id: UUID(), title: LanguageManager.current.string("Home"), icon: "house.fill"),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Astronomical News"), icon: "newspaper.fill"),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Map"), icon: "map.fill"),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Settings"), icon: "gearshape.fill"),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Profile"), icon: "person.fill")
     ]
     
     var currentDate: String {
@@ -401,10 +420,10 @@ class HomeViewModel: ObservableObject {
     }
     
     private let cosmosQuotes = [
-        "Love Cosmos.",
-        "The stars are calling, let's answer.",
-        "Discover the mysteries of the cosmos.",
-        "Falling Star♪"
+        LanguageManager.current.string("Love Cosmos"),
+        LanguageManager.current.string("The stars are calling"),
+        LanguageManager.current.string("Discover the mysteries"),
+        LanguageManager.current.string("Falling Star")
     ]
     
     private var authViewModel: AuthViewModel?
