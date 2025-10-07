@@ -21,6 +21,7 @@
     struct SolarSystemView: View {
         @StateObject private var viewModel = SolarSystemViewModel()
         @State private var isSearchActive = false
+        @State private var editingPlanet: PlanetModel? = nil
         @Namespace private var animation
         @Environment(\.dismiss) private var dismiss
 
@@ -110,6 +111,7 @@
                                 PlanetCardView(
                                     planet: planet,
                                     viewModel: viewModel,
+                                    editingPlanet: $editingPlanet,
                                     xOffset: 0,
                                     yOffset: -35,
                                     imageXOffset: -3,
@@ -133,6 +135,9 @@
                         .animation(.easeInOut(duration: 0.3), value: viewModel.filteredPlanets)
                     }
                     .offset(x: 0, y: -45)
+                    .sheet(item: $editingPlanet) { planet in
+                        EditPlanetView(viewModel: viewModel, planet: planet)
+                    }
                 }
                 .background(Image("cosmos_background1").resizable().scaledToFill().ignoresSafeArea())
                 .ignoresSafeArea(.all, edges: .bottom)
@@ -144,6 +149,8 @@
                         placement: .navigationBarDrawer(displayMode: .automatic),
                         prompt: Text(LanguageManager.current.string("Search planets"))
                     )
+                    .foregroundColor(.blue)
+                    .fontWeight(.bold)
                     .background(.ultraThinMaterial)
                 }
                 .onAppear {
@@ -159,6 +166,7 @@
     struct PlanetCardView: View {
         let planet: PlanetModel
         @ObservedObject var viewModel: SolarSystemViewModel
+        @Binding var editingPlanet: PlanetModel?
         let xOffset: CGFloat
         let yOffset: CGFloat
         let imageXOffset: CGFloat
@@ -178,21 +186,21 @@
             case LanguageManager.current.string("Sun"):
                 SunView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Mercury"):
-                MercuryView()
+                MercuryView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Venus"):
-                VenusView()
+                VenusView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Earth"):
-                EarthView()
+                EarthView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Mars"):
-                MarsView()
+                MarsView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Jupiter"):
-                JupiterView()
+                JupiterView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Saturn"):
-                SaturnView()
+                SaturnView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Uranus"):
-                UranusView()
+                UranusView(planet: planet, viewModel: viewModel)
             case LanguageManager.current.string("Neptune"):
-                NeptuneView()
+                NeptuneView(planet: planet, viewModel: viewModel)
             default:
                 PlanetView(planet: planet, viewModel: viewModel)
             }
@@ -229,8 +237,11 @@
                                 }) {
                                     Label(planet.isFavorite ? LanguageManager.current.string("Unfavorite") : LanguageManager.current.string("Favorite"), systemImage: planet.isFavorite ? "heart.fill" : "heart")
                                 }
-                                Button(LanguageManager.current.string("Edit")) {
-                                    // Xử lý chỉnh sửa (Giai đoạn 3)
+                                
+                                if planet.planet_order > 8 {
+                                    Button(LanguageManager.current.string("Edit")) {
+                                        editingPlanet = planet
+                                    }
                                 }
                             } label: {
                                 Image(systemName: "ellipsis")

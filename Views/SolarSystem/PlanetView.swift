@@ -327,15 +327,12 @@ struct PlanetView: View {
                                 GridItem(.flexible(), spacing: 16),
                                 GridItem(.flexible(), spacing: 16)
                             ], spacing: 16) {
-                                ForEach(planet.videoURLs, id: \.self) { url in
+                                ForEach(planet.videoURLs.prefix(2), id: \.self) { url in
                                     WebView(url: URL(string: url)!)
                                         .frame(height: 120)
                                         .aspectRatio(16/9, contentMode: .fit)
                                         .clipShape(RoundedRectangle(cornerRadius: 8))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color.white.opacity(0.3), lineWidth: 1)
-                                        )
+                                        .zIndex(1)
                                 }
                             }
                             .padding(.horizontal)
@@ -347,58 +344,6 @@ struct PlanetView: View {
                 }
             }
             .animation(.easeInOut(duration: 0.5), value: isFavorite)
-        }
-    }
-
-    struct WebView: UIViewRepresentable {
-        let url: URL
-        
-        func makeUIView(context: Context) -> WKWebView {
-            let configuration = WKWebViewConfiguration()
-            configuration.allowsInlineMediaPlayback = true
-            configuration.mediaTypesRequiringUserActionForPlayback = []
-            
-            let webView = WKWebView(frame: .zero, configuration: configuration)
-            webView.isOpaque = true
-            webView.backgroundColor = .black
-            webView.scrollView.isScrollEnabled = true
-            webView.scrollView.pinchGestureRecognizer?.isEnabled = true
-            webView.scrollView.minimumZoomScale = 1.0
-            webView.scrollView.maximumZoomScale = 3.0
-            webView.allowsLinkPreview = true
-            webView.isUserInteractionEnabled = true
-            
-            var embedUrlString = url.absoluteString
-            if let videoId = extractYouTubeVideoId(from: embedUrlString) {
-                embedUrlString = "https://www.youtube.com/embed/\(videoId)?playsinline=1&rel=0&modestbranding=1&controls=1"
-            }
-            
-            if let embedUrl = URL(string: embedUrlString) {
-                let request = URLRequest(url: embedUrl)
-                webView.load(request)
-            }
-            
-            return webView
-        }
-        
-        func updateUIView(_ uiView: WKWebView, context: Context) {
-            var embedUrlString = url.absoluteString
-            if let videoId = extractYouTubeVideoId(from: embedUrlString) {
-                embedUrlString = "https://www.youtube.com/embed/\(videoId)?playsinline=1&rel=0&modestbranding=1&controls=1"
-            }
-            
-            if let embedUrl = URL(string: embedUrlString), uiView.url != embedUrl {
-                let request = URLRequest(url: embedUrl)
-                uiView.load(request)
-            }
-        }
-        
-        private func extractYouTubeVideoId(from url: String) -> String? {
-            let pattern = "v=([a-zA-Z0-9_-]{11})"
-            let regex = try? NSRegularExpression(pattern: pattern)
-            let nsString = url as NSString
-            let results = regex?.matches(in: url, range: NSRange(location: 0, length: nsString.length))
-            return results?.map { nsString.substring(with: $0.range(at: 1)) }.first
         }
     }
 

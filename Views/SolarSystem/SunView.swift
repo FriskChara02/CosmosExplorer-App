@@ -203,19 +203,18 @@ struct SunView: View {
                     let sunMesh = MeshResource.generateSphere(radius: 1.0)
                     var sunMaterial = PhysicallyBasedMaterial()
                     do {
-                        let textureResource = try await TextureResource(named: "Sun")
+                        let textureResource = try await TextureResource(named: "Sun_Texture")
                         sunMaterial.baseColor = .init(texture: .init(textureResource))
-                        if let normalResource = try? await TextureResource(named: "Sun") {
+                        if let normalResource = try? await TextureResource(named: "Sun_Texture") {
                             sunMaterial.normal = .init(texture: .init(normalResource))
                         }
                     } catch {
                         print("Error loading texture: \(error)")
                         sunMaterial.baseColor = .init(tint: .yellow)
                     }
-                    sunMaterial.emissiveColor = .init(color: .orange)
                     sunMaterial.emissiveIntensity = glowIntensity
-                    sunMaterial.roughness = 0.2
-                    sunMaterial.metallic = 0.9
+                    sunMaterial.roughness = 1.0
+                    sunMaterial.metallic = 0.0
                     
                     let sunEntity = ModelEntity(mesh: sunMesh, materials: [sunMaterial])
                     sunEntity.name = "Sun"
@@ -342,15 +341,14 @@ struct SunView: View {
                         let sunMesh = MeshResource.generateSphere(radius: 0.5)
                         var sunMaterial = PhysicallyBasedMaterial()
                         do {
-                            let textureResource = try await TextureResource(named: "Sun")
+                            let textureResource = try await TextureResource(named: "Sun_Texture")
                             sunMaterial.baseColor = .init(texture: .init(textureResource))
                         } catch {
                             sunMaterial.baseColor = .init(tint: .yellow)
                         }
-                        sunMaterial.emissiveColor = .init(color: .orange)
                         sunMaterial.emissiveIntensity = glowIntensity
-                        sunMaterial.roughness = 0.2
-                        sunMaterial.metallic = 0.9
+                        sunMaterial.roughness = 1.0
+                        sunMaterial.metallic = 0.0
                         
                         let sunEntity = ModelEntity(mesh: sunMesh, materials: [sunMaterial])
                         sunEntity.position = [0, 0, 0]
@@ -433,18 +431,21 @@ struct SunView: View {
                                 GridItem(.flexible(), spacing: 16),
                                 GridItem(.flexible(), spacing: 16)
                             ], spacing: 16) {
+                                // Trong InformationView
                                 ForEach([
-                                    "https://www.youtube.com/embed/2HoTK_Gqi2Q?playsinline=1",
-                                    "https://www.youtube.com/embed/SLmWY_ycFUA?playsinline=1"
+                                    "https://www.youtube.com/embed/2HoTK_Gqi2Q",
+                                    "https://www.youtube.com/embed/SLmWY_ycFUA"
                                 ], id: \.self) { url in
-                                    WebView(url: URL(string: url)!)
-                                        .frame(height: 120)
-                                        .aspectRatio(16/9, contentMode: .fit)
-                                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color.white.opacity(0.3), lineWidth: 1)
-                                        )
+                                    if let validURL = URL(string: url) {
+                                        WebView(url: validURL)
+                                            .frame(height: 120)
+                                            .aspectRatio(16/9, contentMode: .fit)
+                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                            .zIndex(1)
+                                    } else {
+                                        Text("Invalid URL")
+                                            .foregroundColor(.white)
+                                    }
                                 }
                             }
                             .padding(.horizontal)
@@ -459,46 +460,15 @@ struct SunView: View {
         }
     }
     
-    struct WebView: UIViewRepresentable {
-        let url: URL
-
-        func makeUIView(context: Context) -> WKWebView {
-            let configuration = WKWebViewConfiguration()
-            configuration.allowsInlineMediaPlayback = true
-            configuration.mediaTypesRequiringUserActionForPlayback = []
-
-            let webView = WKWebView(frame: .zero, configuration: configuration)
-            webView.isOpaque = true
-            webView.backgroundColor = .black
-            webView.scrollView.isScrollEnabled = true
-            webView.scrollView.pinchGestureRecognizer?.isEnabled = true
-            webView.scrollView.minimumZoomScale = 1.0
-            webView.scrollView.maximumZoomScale = 3.0
-            webView.allowsLinkPreview = true
-            webView.isUserInteractionEnabled = true
-
-            let request = URLRequest(url: url)
-            webView.load(request)
-
-            return webView
-        }
-
-        func updateUIView(_ uiView: WKWebView, context: Context) {
-            if uiView.url != url {
-                let request = URLRequest(url: url)
-                uiView.load(request)
-            }
-        }
-    }
-    
     struct VideoListView: View {
+        // Trong VideoListView
         let videoURLs = [
-            "https://www.youtube.com/embed/2HoTK_Gqi2Q?playsinline=1",
-            "https://www.youtube.com/embed/SLmWY_ycFUA?playsinline=1",
-            "https://www.youtube.com/embed/YFNwWpf9Bbs?playsinline=1",
-            "https://www.youtube.com/embed/VkW54j82e9U?playsinline=1",
-            "https://www.youtube.com/embed/dGPKTtt05wc?playsinline=1",
-            "https://www.youtube.com/embed/D0D4m2qAY3g?playsinline=1"
+            "https://www.youtube.com/embed/2HoTK_Gqi2Q",
+            "https://www.youtube.com/embed/SLmWY_ycFUA",
+            "https://www.youtube.com/embed/YFNwWpf9Bbs",
+            "https://www.youtube.com/embed/VkW54j82e9U",
+            "https://www.youtube.com/embed/dGPKTtt05wc",
+            "https://www.youtube.com/embed/D0D4m2qAY3g"
         ]
 
         var body: some View {
@@ -612,7 +582,6 @@ struct SunView: View {
     struct GalleriesView: View {
         let animation: Namespace.ID
         
-        // Mock data (Thay bằng ảnh thật)
         let images = ["Sun", "Sun01", "Sun02", "Sun03", "Sun04", "Sun05"]
         
         var body: some View {
@@ -689,10 +658,10 @@ struct SunView: View {
         
         // Danh sách thần thoại
         private let myths: [Myth] = [
-            Myth(culture: LanguageManager.current.string("Egyptian Myth Culture"), godName: LanguageManager.current.string("Egyptian Myth God"), description: LanguageManager.current.string("Egyptian Myth Description"), imageName: "God_Ra"),
-            Myth(culture: LanguageManager.current.string("Greek Myth Culture"), godName: LanguageManager.current.string("Greek Myth God"), description: LanguageManager.current.string("Greek Myth Description"), imageName: "God_Helios"),
-            Myth(culture: LanguageManager.current.string("Aztec Myth Culture"), godName: LanguageManager.current.string("Aztec Myth God"), description: LanguageManager.current.string("Aztec Myth Description"), imageName: "God_Aztec"),
-            Myth(culture: LanguageManager.current.string("Japanese Myth Culture"), godName: LanguageManager.current.string("Japanese Myth God"), description: LanguageManager.current.string("Japanese Myth Description"), imageName: "God_Amaterasu")
+            Myth(culture: LanguageManager.current.string("Egyptian Myth Culture"), godName: LanguageManager.current.string("Egyptian Myth God"), description: LanguageManager.current.string("Egyptian Myth Description"), imageName: "SunGod_Ra"),
+            Myth(culture: LanguageManager.current.string("Greek Myth Culture"), godName: LanguageManager.current.string("Greek Myth God"), description: LanguageManager.current.string("Greek Myth Description"), imageName: "SunGod_Helios"),
+            Myth(culture: LanguageManager.current.string("Aztec Myth Culture"), godName: LanguageManager.current.string("Aztec Myth God"), description: LanguageManager.current.string("Aztec Myth Description"), imageName: "SunGod_Aztec"),
+            Myth(culture: LanguageManager.current.string("Japanese Myth Culture"), godName: LanguageManager.current.string("Japanese Myth God"), description: LanguageManager.current.string("Japanese Myth Description"), imageName: "SunGod_Amaterasu")
         ]
         
         var body: some View {

@@ -59,6 +59,7 @@ class SolarSystemViewModel: ObservableObject {
         if !planets.contains(where: { $0.id == planet.id }) {
             planets.append(planet)
             swiftDataService.savePlanet(planet)
+            planets.sort { $0.planet_order < $1.planet_order }
             print("✅ Added new planet: \(planet.name)")
         } else {
             print("⚠️ Planet \(planet.name) already exists, skipping add")
@@ -74,6 +75,29 @@ class SolarSystemViewModel: ObservableObject {
         }
         planets.sort { $0.planet_order < $1.planet_order }
         print("✅ Loaded planets: \(planets.map { $0.name })")
+    }
+    
+    // MARK: - deletePlanet
+
+    func deletePlanet(_ planet: PlanetModel) {
+        guard planet.planet_order > 8 else {  // Không xóa hard-code
+            print("⚠️ Cannot delete hard-coded planet: \(planet.name)")
+            return
+        }
+        
+        if let index = planets.firstIndex(where: { $0.id == planet.id }) {
+            let planetToDelete = planets.remove(at: index)
+            swiftDataService.deletePlanet(planetToDelete)
+            print("🗑️ Deleted planet: \(planet.name)")
+        }
+    }
+
+    func updatePlanet(_ planet: PlanetModel) {
+        if let index = planets.firstIndex(where: { $0.id == planet.id }) {
+            planets[index] = planet  // Update in-memory
+            swiftDataService.updatePlanet(planet)
+            print("🔄 Updated planet: \(planet.name)")
+        }
     }
     
     // MARK: - Sample Planets

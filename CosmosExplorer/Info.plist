@@ -6,13 +6,35 @@
     <array>
         <string>Audiowide-Regular.ttf</string>
     </array>
+
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key>
         <true/>
+            <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>youtube.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>youtu.be</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+        </dict>
     </dict>
+
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Ứng dụng cần truy cập thư viện ảnh để chọn hình ảnh và video.</string>
+
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Ứng dụng cần quyền lưu ảnh vào thư viện.</string>
 </dict>

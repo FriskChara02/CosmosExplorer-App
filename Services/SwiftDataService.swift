@@ -405,6 +405,43 @@ class SwiftDataService {
         }
     }
     
+    // MARK: - Delete Planet
+    func deletePlanet(_ planet: PlanetModel) {
+        let context = container.mainContext
+        
+        context.delete(planet)
+        do {
+            try context.save()
+            print("✅ Planet deleted from SwiftData: \(planet.name)")
+        } catch {
+            print("❌ Error deleting planet from SwiftData: \(error)")
+            return
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Failed to connect to PostgreSQL for delete")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            for table in ["PlanetMyths", "PlanetLayers", "PlanetInfoCards", "PlanetMissions"] {
+                let deleteRelatedStatement = try connection.prepareStatement(text: "DELETE FROM \(table) WHERE planet_id = $1")
+                defer { deleteRelatedStatement.close() }
+                try deleteRelatedStatement.execute(parameterValues: [pg(planet.id)])
+                print("🗑️ Deleted related data from \(table) for planet \(planet.name)")
+            }
+            
+            let deleteStatement = try connection.prepareStatement(text: "DELETE FROM planets WHERE id = $1")
+            defer { deleteStatement.close() }
+            try deleteStatement.execute(parameterValues: [pg(planet.id)])
+            
+            print("✅ Planet deleted from PostgreSQL: \(planet.name)")
+        } catch {
+            print("❌ Error deleting planet from PostgreSQL: \(error)")
+        }
+    }
+    
     // MARK: - Save User
     func saveUser(_ user: UserModel) {
         let context = container.mainContext

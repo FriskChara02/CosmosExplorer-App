@@ -134,7 +134,15 @@ struct AddPlanetView: View {
                 )
                 WikiSection(wikiLink: $wikiLink)
             }
+            .scrollContentBackground(.hidden)
+            .background(.thinMaterial)
             .navigationTitle(LanguageManager.current.string("Add Your New Planet"))
+            .background(
+                Image("cosmos_background1")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+            )
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(LanguageManager.current.string("Cancel")) {
@@ -144,6 +152,8 @@ struct AddPlanetView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(LanguageManager.current.string("Save")) {
                         if !name.isEmpty {
+                            let convertedURLs = videoURLs.map { convertYouTubeURL($0) }.filter { !$0.isEmpty }
+                            
                             let newPlanet = PlanetModel(
                                 name: name,
                                 planetDescription: description,
@@ -151,7 +161,7 @@ struct AddPlanetView: View {
                                 imageData: selectedImageData,
                                 randomInfos: randomInfos.filter { !$0.isEmpty },
                                 aboutDescription: aboutDescription,
-                                videoURLs: videoURLs.filter { !$0.isEmpty },
+                                videoURLs: convertedURLs,
                                 planetType: planetType,
                                 radius: radius,
                                 distanceFromSun: distanceFromSun,
@@ -188,6 +198,23 @@ struct AddPlanetView: View {
             }
             .navigationBarBackButtonHidden(true)
         }
+    }
+    
+    private func convertYouTubeURL(_ url: String) -> String {
+        guard !url.isEmpty else { return url }
+        
+        if url.contains("watch?v=") {
+            let components = url.components(separatedBy: "watch?v=")
+            if components.count > 1, let videoID = components.last?.components(separatedBy: "&").first {
+                return "https://www.youtube.com/embed/\(videoID)"
+            }
+        } else if url.contains("youtu.be/") {
+            let components = url.components(separatedBy: "youtu.be/")
+            if components.count > 1, let videoID = components.last?.components(separatedBy: "?").first {
+                return "https://www.youtube.com/embed/\(videoID)"
+            }
+        }
+        return url
     }
 }
 
@@ -246,29 +273,50 @@ struct OverviewSection: View {
                 Text(LanguageManager.current.string("Image from Basic Information"))
                     .foregroundColor(.blue)
             }
+
             ForEach(randomInfos.indices, id: \.self) { index in
-                TextField(LanguageManager.current.string("Random information").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $randomInfos[index], axis: .vertical)
+                TextField(LanguageManager.current.string("Random information")
+                            .replacingOccurrences(of: "{index}", with: "\(index + 1)"),
+                          text: $randomInfos[index], axis: .vertical)
                     .lineLimit(3)
             }
-            HStack {
-                Button(action: {
-                    randomInfos.append("")
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
-                }
-                Button(action: {
-                    if randomInfos.count > 1 {
-                        randomInfos.removeLast()
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                }
-                .disabled(randomInfos.count <= 1)
-                Spacer()
-            }
+
+            AddButtonViewOverview(randomInfos: $randomInfos)
+            
+            RemoveButtonViewOverview(randomInfos: $randomInfos)
         }
+    }
+}
+
+struct AddButtonViewOverview: View {
+    @Binding var randomInfos: [String]
+    
+    var body: some View {
+        Button {
+            randomInfos.append("")
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewOverview: View {
+    @Binding var randomInfos: [String]
+    
+    var body: some View {
+        Button {
+            if randomInfos.count > 1 {
+                randomInfos.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(randomInfos.count <= 1)
+        .opacity(randomInfos.count <= 1 ? 0.5 : 1)
     }
 }
 
@@ -283,25 +331,42 @@ struct InformationSection: View {
             ForEach(videoURLs.indices, id: \.self) { index in
                 TextField(LanguageManager.current.string("Your link video").replacingOccurrences(of: "{index}", with: "\(index + 1)"), text: $videoURLs[index])
             }
-            HStack {
-                Button(action: {
-                    videoURLs.append("")
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
-                }
-                Button(action: {
-                    if videoURLs.count > 1 {
-                        videoURLs.removeLast()
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                }
-                .disabled(videoURLs.count <= 1)
-                Spacer()
-            }
+            AddButtonViewInformation(videoURLs: $videoURLs)
+            RemoveButtonViewInformation(videoURLs: $videoURLs)
         }
+        .id(videoURLs.count)
+    }
+}
+
+struct AddButtonViewInformation: View {
+    @Binding var videoURLs: [String]
+    
+    var body: some View {
+        Button {
+            videoURLs.append("")
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewInformation: View {
+    @Binding var videoURLs: [String]
+    
+    var body: some View {
+        Button {
+            if videoURLs.count > 1 {
+                videoURLs.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(videoURLs.count <= 1)
+        .opacity(videoURLs.count <= 1 ? 0.5 : 1)
     }
 }
 
@@ -382,27 +447,46 @@ struct GalleriesSection: View {
                     }
                 }
             }
-            HStack {
-                Button(action: {
-                    galleryImages.append(nil)
-                    galleryImageData.append(nil)
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
-                }
-                Button(action: {
-                    if galleryImages.count > 1 {
-                        galleryImages.removeLast()
-                        galleryImageData.removeLast()
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                }
-                .disabled(galleryImages.count <= 1)
-                Spacer()
-            }
+            AddButtonViewGalleries(galleryImages: $galleryImages, galleryImageData: $galleryImageData)
+            RemoveButtonViewGalleries(galleryImages: $galleryImages, galleryImageData: $galleryImageData)
         }
+        .id(galleryImages.count)
+    }
+}
+
+struct AddButtonViewGalleries: View {
+    @Binding var galleryImages: [PhotosPickerItem?]
+    @Binding var galleryImageData: [Data?]
+    
+    var body: some View {
+        Button {
+            galleryImages.append(nil)
+            galleryImageData.append(nil)
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewGalleries: View {
+    @Binding var galleryImages: [PhotosPickerItem?]
+    @Binding var galleryImageData: [Data?]
+    
+    var body: some View {
+        Button {
+            if galleryImages.count > 1 {
+                galleryImages.removeLast()
+                galleryImageData.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(galleryImages.count <= 1)
+        .opacity(galleryImages.count <= 1 ? 0.5 : 1)
     }
 }
 
@@ -445,25 +529,42 @@ struct MythSection: View {
                     }
                 }
             }
-            HStack {
-                Button(action: {
-                    myths.append(("", "", "", nil, nil))
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
-                }
-                Button(action: {
-                    if myths.count > 1 {
-                        myths.removeLast()
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                }
-                .disabled(myths.count <= 1)
-                Spacer()
-            }
+            AddButtonViewMyth(myths: $myths)
+            RemoveButtonViewMyth(myths: $myths)
         }
+        .id(myths.count)
+    }
+}
+
+struct AddButtonViewMyth: View {
+    @Binding var myths: [(culture: String, godName: String, description: String, selectedImage: PhotosPickerItem?, imageData: Data?)]
+    
+    var body: some View {
+        Button {
+            myths.append(("", "", "", nil, nil))
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewMyth: View {
+    @Binding var myths: [(culture: String, godName: String, description: String, selectedImage: PhotosPickerItem?, imageData: Data?)]
+    
+    var body: some View {
+        Button {
+            if myths.count > 1 {
+                myths.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(myths.count <= 1)
+        .opacity(myths.count <= 1 ? 0.5 : 1)
     }
 }
 
@@ -493,6 +594,8 @@ struct InternalSection: View {
                     .pickerStyle(.menu)
                 }
             }
+            AddButtonViewInternal(layers: $layers)
+            RemoveButtonViewInternal(layers: $layers)
             HStack {
                 PhotosPicker(selection: $internalImagePicker, matching: .images) {
                     Text(LanguageManager.current.string("Select the last image of the tab"))
@@ -519,6 +622,39 @@ struct InternalSection: View {
                     .foregroundColor(.blue)
             }
         }
+        .id(layers.count)
+    }
+}
+
+struct AddButtonViewInternal: View {
+    @Binding var layers: [(name: String, description: String, colorStart: Color, colorEnd: Color, selectedIcon: String)]
+    
+    var body: some View {
+        Button {
+            layers.append(("", "", .white, .white, "star.fill"))
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewInternal: View {
+    @Binding var layers: [(name: String, description: String, colorStart: Color, colorEnd: Color, selectedIcon: String)]
+    
+    var body: some View {
+        Button {
+            if layers.count > 1 {
+                layers.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(layers.count <= 1)
+        .opacity(layers.count <= 1 ? 0.5 : 1)
     }
 }
 
@@ -567,25 +703,42 @@ struct InDepthSection: View {
                     ColorPicker(LanguageManager.current.string("Icon color"), selection: $infoCards[index].iconColor)
                 }
             }
-            HStack {
-                Button(action: {
-                    infoCards.append(("", "", "", .white))
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
-                }
-                Button(action: {
-                    if infoCards.count > 1 {
-                        infoCards.removeLast()
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                }
-                .disabled(infoCards.count <= 1)
-                Spacer()
-            }
+            AddButtonViewInDepth(infoCards: $infoCards)
+            RemoveButtonViewInDepth(infoCards: $infoCards)
         }
+        .id(infoCards.count)
+    }
+}
+
+struct AddButtonViewInDepth: View {
+    @Binding var infoCards: [(icon: String, title: String, description: String, iconColor: Color)]
+    
+    var body: some View {
+        Button {
+            infoCards.append(("", "", "", .white))
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewInDepth: View {
+    @Binding var infoCards: [(icon: String, title: String, description: String, iconColor: Color)]
+    
+    var body: some View {
+        Button {
+            if infoCards.count > 1 {
+                infoCards.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(infoCards.count <= 1)
+        .opacity(infoCards.count <= 1 ? 0.5 : 1)
     }
 }
 
@@ -636,24 +789,8 @@ struct ExplorationSection: View {
                     .pickerStyle(.menu)
                 }
             }
-            HStack {
-                Button(action: {
-                    missions.append(("", "", "star.fill", UUID().uuidString))
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
-                }
-                Button(action: {
-                    if missions.count > 1 {
-                        missions.removeLast()
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.red)
-                }
-                .disabled(missions.count <= 1)
-                Spacer()
-            }
+            AddButtonViewExploration(missions: $missions)
+            RemoveButtonViewExploration(missions: $missions)
             TextField(LanguageManager.current.string("Highlight Quote"), text: $highlightQuote, axis: .vertical)
                 .lineLimit(3)
             HStack {
@@ -678,6 +815,39 @@ struct ExplorationSection: View {
                 }
             }
         }
+        .id(missions.count)
+    }
+}
+
+struct AddButtonViewExploration: View {
+    @Binding var missions: [(title: String, description: String, icon: String, id: String)]
+    
+    var body: some View {
+        Button {
+            missions.append(("", "", "star.fill", UUID().uuidString))
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.green)
+                .font(.title3)
+        }
+    }
+}
+
+struct RemoveButtonViewExploration: View {
+    @Binding var missions: [(title: String, description: String, icon: String, id: String)]
+    
+    var body: some View {
+        Button {
+            if missions.count > 1 {
+                missions.removeLast()
+            }
+        } label: {
+            Image(systemName: "minus.circle.fill")
+                .foregroundColor(.red)
+                .font(.title3)
+        }
+        .disabled(missions.count <= 1)
+        .opacity(missions.count <= 1 ? 0.5 : 1)
     }
 }
 
