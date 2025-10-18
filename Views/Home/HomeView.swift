@@ -6,49 +6,72 @@ struct HomeView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var selectedBannerIndex = 0
     @State private var showMenu = false
+    @State private var showUserMenu = false
     @Environment(\.colorScheme) var colorScheme
     @Namespace private var animation
     
     init(authViewModel: AuthViewModel? = nil) {
-            _viewModel = StateObject(wrappedValue: HomeViewModel(authViewModel: authViewModel))
-        }
+        _viewModel = StateObject(wrappedValue: HomeViewModel(authViewModel: authViewModel))
+    }
     
     private let bannerItems = [
+        LanguageManager.current.string("Galaxy"),
+        LanguageManager.current.string("Black Hole"),
+        LanguageManager.current.string("Nebula"),
         LanguageManager.current.string("Map Galaxy"),
         LanguageManager.current.string("Solar System"),
         LanguageManager.current.string("Planets"),
         LanguageManager.current.string("Stars"),
-        LanguageManager.current.string("Universe"),
-        LanguageManager.current.string("Galaxy"),
-        LanguageManager.current.string("Cosmos"),
-        LanguageManager.current.string("Nebula"),
         LanguageManager.current.string("Astronomical News"),
         LanguageManager.current.string("Constellation"),
         LanguageManager.current.string("12 Zodiac Signs"),
         LanguageManager.current.string("Sky Live")
     ]
-    
+
     private let backgroundImages = [
-        "cosmos_background", "cosmos_background1", "cosmos_background2",
-        "cosmos_background", "cosmos_background1", "cosmos_background2",
-        "cosmos_background", "cosmos_background1", "cosmos_background2",
-        "cosmos_background", "cosmos_background1", "cosmos_background2"
+        "galaxy_background",
+        "BlackHole_background",
+        "nebula_background",
+        "mapgalaxy_background",
+        "solarsystem_background",
+        "planets_background",
+        "Stars_background01",
+        "cosmos_background2",
+        "constellation_background",
+        "zodiac_background",
+        "BlackBG"
     ]
     
     private let gridItemsLeft = [
-        LanguageManager.current.string("Cosmos"),
         LanguageManager.current.string("Galaxy"),
         LanguageManager.current.string("Constellation"),
         LanguageManager.current.string("Nebula"),
-        LanguageManager.current.string("Stars")
+        LanguageManager.current.string("Stars"),
+        LanguageManager.current.string("Black Hole")
     ]
     
     private let gridItemsRight = [
-        LanguageManager.current.string("Universe"),
         LanguageManager.current.string("Map Galaxy"),
         LanguageManager.current.string("12 Zodiac Signs"),
         LanguageManager.current.string("Solar System"),
-        LanguageManager.current.string("Planets")
+        LanguageManager.current.string("Planets"),
+        LanguageManager.current.string("Sky Live")
+    ]
+    
+    private let gridBackgroundImagesLeft = [
+        "galaxy_background",
+        "constellation_background",
+        "nebula_background",
+        "Stars_background01",
+        "BlackHole_background"
+    ]
+
+    private let gridBackgroundImagesRight = [
+        "mapgalaxy_background",
+        "zodiac_background",
+        "solarsystem_background",
+        "planets_background",
+        "BlackBG"
     ]
     
     // Timer for auto-scrolling banner
@@ -63,7 +86,7 @@ struct HomeView: View {
                         // Top Bar: Hamburger, Welcome Text, Avatar
                         HStack {
                             Button(action: {
-                                withAnimation(.spring(response: 0.35, dampingFraction: 0.8, blendDuration: 0.1)) {
+                                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
                                     showMenu.toggle()
                                 }
                             }) {
@@ -76,10 +99,83 @@ struct HomeView: View {
                                 .foregroundColor(.white)
                                 .offset(y: 1)
                             Spacer()
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.white)
+                            Button(action: {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                    showUserMenu.toggle()
+                                }
+                            }) {
+                                Image(systemName: "person.circle.fill")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.white)
+                            }
+                            .overlay(
+                                ZStack {
+                                    if showUserMenu {
+                                        // Menu pop-up
+                                        VStack(spacing: 8) {
+                                            // Profile
+                                            NavigationLink(destination: ProfileView().environmentObject(authViewModel)) {
+                                                HStack {
+                                                    Image(systemName: "person.fill")
+                                                        .foregroundColor(.white)
+                                                    Text(LanguageManager.current.string("Profile"))
+                                                        .foregroundColor(.white)
+                                                        .font(.caption)
+                                                        .fontWeight(.semibold)
+                                                }
+                                                .padding(6)
+                                                .frame(width: 120)
+                                                .background(Color.purple.opacity(0.6))
+                                                .cornerRadius(25)
+                                            }
+                                            
+                                            // Education
+                                            NavigationLink(destination: HomeEducationView().navigationBarBackButtonHidden(true)) {
+                                                HStack {
+                                                    Image(systemName: "book.fill")
+                                                        .foregroundColor(.white)
+                                                    Text(LanguageManager.current.string("Education"))
+                                                        .foregroundColor(.white)
+                                                        .font(.caption)
+                                                        .fontWeight(.semibold)
+                                                }
+                                                .padding(6)
+                                                .frame(width: 120)
+                                                .background(Color.green.opacity(0.6))
+                                                .cornerRadius(25)
+                                            }
+                                            
+                                            // Logout
+                                            Button(action: {
+                                                authViewModel.signOut()
+                                                withAnimation {
+                                                    showUserMenu = false
+                                                }
+                                            }) {
+                                                HStack {
+                                                    Image(systemName: "arrow.right.circle.fill")
+                                                        .foregroundColor(.white)
+                                                    Text(LanguageManager.current.string("Logout"))
+                                                        .foregroundColor(.white)
+                                                        .font(.caption)
+                                                        .fontWeight(.semibold)
+                                                }
+                                                .padding(6)
+                                                .frame(width: 120)
+                                                .background(Color.red.opacity(0.6))
+                                                .cornerRadius(25)
+                                            }
+                                        }
+                                        .padding(8)
+                                        .background(Color.black.opacity(0.7))
+                                        .cornerRadius(25)
+                                        .shadow(radius: 5)
+                                        .offset(x: -100, y: 40) // Vị trí menu
+                                        .transition(.scale.combined(with: .opacity))
+                                    }
+                                }
+                            )
                         }
                         .padding(.horizontal, 15)
                         .padding(.top)
@@ -199,36 +295,132 @@ struct HomeView: View {
                             ForEach(0..<gridItemsLeft.count, id: \.self) { index in
                                 Group {
                                     // Left Column
-                                    ZStack(alignment: .bottomLeading) {
-                                        Image("cosmos_background")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(height: 115)
-                                            .clipped()
-                                            .cornerRadius(25)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 25)
-                                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
-                                            )
-                                        Text(gridItemsLeft[index])
-                                            .font(.caption)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.white)
+                                    if gridItemsLeft[index] == LanguageManager.current.string("Galaxy") {
+                                        NavigationLink(destination: GalaxyCatalogView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
                                             .padding(8)
-                                            .background(Color.black.opacity(0.5))
-                                            .cornerRadius(25)
-                                            .padding([.leading, .bottom], 10)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
+                                    } else if gridItemsLeft[index] == LanguageManager.current.string("Nebula") {
+                                        NavigationLink(destination: NebulaCatalogView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
+                                    } else if gridItemsLeft[index] == LanguageManager.current.string("Stars") {
+                                        NavigationLink(destination: StarCatalogView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
+                                    } else if gridItemsLeft[index] == LanguageManager.current.string("Black Hole") {
+                                        NavigationLink(destination: BlackholeCatalogView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
+                                    } else {
+                                        ZStack(alignment: .bottomLeading) {
+                                            Image(gridBackgroundImagesLeft[index])
+                                                .resizable()
+                                                .frame(height: 115)
+                                                .clipped()
+                                                .cornerRadius(25)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 25)
+                                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                )
+                                            Text(gridItemsLeft[index])
+                                                .font(.caption)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                                .padding(8)
+                                                .background(Color.black.opacity(0.5))
+                                                .cornerRadius(25)
+                                                .padding([.leading, .bottom], 10)
+                                        }
+                                        .padding(8)
+                                        .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
                                     }
-                                    .padding(8)
-                                    .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
                                     
                                     // Right Column
                                     if gridItemsRight[index] == LanguageManager.current.string("Solar System") {
                                         NavigationLink(destination: SolarSystemView().navigationBarBackButtonHidden(true)) {
                                             ZStack(alignment: .bottomLeading) {
-                                                Image("cosmos_background")
+                                                Image(gridBackgroundImagesRight[index])
                                                     .resizable()
-                                                    .scaledToFill()
                                                     .frame(height: 115)
                                                     .clipped()
                                                     .cornerRadius(25)
@@ -250,9 +442,8 @@ struct HomeView: View {
                                         }
                                     } else {
                                         ZStack(alignment: .bottomLeading) {
-                                            Image("cosmos_background")
+                                            Image(gridBackgroundImagesRight[index])
                                                 .resizable()
-                                                .scaledToFill()
                                                 .frame(height: 115)
                                                 .clipped()
                                                 .cornerRadius(25)
@@ -346,7 +537,7 @@ struct HomeView: View {
                                 }
                             }
                             .buttonStyle(PlainButtonStyle())
-                            .simultaneousGesture(TapGesture().onEnded { // Sử dụng simultaneousGesture để không xung đột
+                            .simultaneousGesture(TapGesture().onEnded {
                                 withAnimation {
                                     viewModel.selectedNavItem = item.id
                                 }
@@ -373,6 +564,11 @@ struct HomeView: View {
                             )
                         )
                         .zIndex(2)
+                }
+            }
+            .onTapGesture {
+                withAnimation {
+                    showUserMenu = false
                 }
             }
         }

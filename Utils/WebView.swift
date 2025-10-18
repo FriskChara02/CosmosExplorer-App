@@ -55,7 +55,7 @@ struct WebView: UIViewRepresentable {
         webView.isOpaque = false
         webView.backgroundColor = .clear
         webView.scrollView.backgroundColor = .clear
-        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.isScrollEnabled = true
         webView.scrollView.pinchGestureRecognizer?.isEnabled = false
         webView.scrollView.minimumZoomScale = 1.0
         webView.scrollView.maximumZoomScale = 3.0

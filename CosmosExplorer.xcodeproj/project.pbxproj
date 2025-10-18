@@ -44,10 +44,32 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7A5593E52EA16820008C8C27 /* Exceptions for "ViewModels" folder in "CosmosExplorerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NebulaViewModel.swift,
+			);
+			target = 7A7F82E32E367C31006291B9 /* CosmosExplorerUITests */;
+		};
+		7A5593EB2EA1686D008C8C27 /* Exceptions for "Views" folder in "CosmosExplorerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Nebula/AddNebulaView.swift,
+				Nebula/EditNebulaView.swift,
+				Nebula/NebulaCatalogView.swift,
+				Nebula/NebulaView.swift,
+				Nebula/NebulaView/ButterflyView.swift,
+				Nebula/NebulaView/EagleView.swift,
+				Nebula/NebulaView/HelixView.swift,
+			);
+			target = 7A7F82E32E367C31006291B9 /* CosmosExplorerUITests */;
+		};
 		7AE711D32E371D17003CBFA0 /* Exceptions for "Models" folder in "CosmosExplorer" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				BlackholeModel.swift,
 				GalaxyModel.swift,
+				NebulaModel.swift,
 				NewsModel.swift,
 				PlanetModel.swift,
 				SkyLiveModel.swift,
@@ -87,6 +109,9 @@
 		};
 		7AE711C52E371C62003CBFA0 /* ViewModels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7A5593E52EA16820008C8C27 /* Exceptions for "ViewModels" folder in "CosmosExplorerUITests" target */,
+			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -100,6 +125,9 @@
 		};
 		7AE711CD2E371CAB003CBFA0 /* Views */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7A5593EB2EA1686D008C8C27 /* Exceptions for "Views" folder in "CosmosExplorerUITests" target */,
+			);
 			path = Views;
 			sourceTree = "<group>";
 		};

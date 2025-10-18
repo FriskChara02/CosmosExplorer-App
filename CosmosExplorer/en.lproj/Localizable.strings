@@ -41,6 +41,8 @@
 /* HomeView */
 "Welcome back" = "Welcome back";
 "Cosmos is Now" = "Cosmos is Now";
+"Education" = "Education";
+"Logout" = "Logout";
 "Latest Space Discovery" = "Latest Space Discovery";
 "Map Galaxy" = "Map Galaxy";
 "Solar System" = "Solar System";
@@ -59,6 +61,29 @@
 "Love Cosmos" = "Love Cosmos.";
 "The stars are calling" = "The stars are calling, let's answer.";
 "Discover the mysteries" = "Discover the mysteries of the cosmos.";
+"Falling Star" = "Falling Star♪";
+"Black Hole" = "Black Hole";
+
+/* HomeEducationView */
+"Welcome back" = "Welcome back";
+"Cosmos is Now" = "Cosmos is Now";
+"Cosmos" = "Cosmos";
+"Logout" = "Logout";
+"Your Learning Progress" = "Your Learning Progress";
+"Flashcards" = "Flashcards";
+"Learn" = "Learn";
+"Test" = "Test";
+"Blocks" = "Blocks";
+"Blast" = "Blast";
+"Match" = "Match";
+"Learn Streaks" = "Learn Streaks";
+"Home" = "Home";
+"Quest" = "Quest";
+"Ranks" = "Ranks";
+"Feed" = "Feed";
+"Love Cosmos" = "Love Cosmos";
+"The stars are calling" = "The stars are calling";
+"Discover the mysteries" = "Discover the mysteries";
 "Falling Star" = "Falling Star♪";
 
 /* WelcomeView */
@@ -735,3 +760,462 @@
 "Content for tab coming soon" = "Content for tab coming soon!";
 "Wikipedia: Neptune" = "Wikipedia: Neptune";
 
+/* GalaxyView */
+"Search galaxies" = "Search galaxies";
+"Galaxy Catalog" = "Galaxy Catalog";
+"Galaxy" = "Galaxy";
+"Unfavorite" = "Unfavorite";
+"Favorite" = "Favorite";
+"Edit" = "Edit";
+"Andromeda" = "Andromeda";
+"M32" = "M32";
+"Triangulum" = "Triangulum";
+"Galaxies" = "Galaxies";
+"See more" = "See more";
+"360°" = "360°";
+"About" = "About";
+"Video" = "Video";
+"Overview" = "Overview";
+"Information" = "Information";
+"Galleries" = "Galleries";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Content for tab {tab} coming soon!";
+"Wikipedia: Andromeda" = "Wikipedia: Andromeda";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Age" = "Age";
+"Unknown" = "Unknown";
+"Comment Under Development" = "Comment section under development...";
+"No description available" = "No description available";
+"Image" = "Image {index}";
+"Videos" = "Videos";
+
+/* AndromedaView */
+"Andromeda Random Info 1" = "The Andromeda galaxy is the largest spiral galaxy near the Milky Way.";
+"Andromeda Random Info 2" = "It contains about 1 trillion stars, twice the number in the Milky Way.";
+"Andromeda Random Info 3" = "Andromeda is moving towards the Milky Way at about 110 km/s.";
+"Andromeda Random Info 4" = "It can be seen with the naked eye under dark sky conditions.";
+"Andromeda Random Info 5" = "Andromeda has a supermassive black hole at its center.";
+"Andromeda About Description" = "The Andromeda galaxy, or Messier 31, is the largest spiral galaxy in the Local Group, located about 2.5 million light-years from the Milky Way. With a diameter of about 220,000 light-years, it contains roughly 1 trillion stars and is predicted to collide with the Milky Way in about 4.5 billion years.";
+"Andromeda By The Numbers Radius" = "Radius: ~110,000 light-years";
+"Andromeda By The Numbers Distance" = "Distance from the Sun: ~2.537 million light-years";
+"Andromeda By The Numbers Age" = "Age: ~10 billion years";
+"Wikipedia: Andromeda Galaxy" = "Wikipedia: Andromeda Galaxy";
+
+/* TriangulumView */
+"Triangulum Random Info 1" = "The Triangulum galaxy is a smaller spiral galaxy compared to Andromeda.";
+"Triangulum Random Info 2" = "It is approximately 2.73 million light-years from Earth.";
+"Triangulum Random Info 3" = "It contains about 40 billion stars.";
+"Triangulum Random Info 4" = "Also known as M33 or NGC 598.";
+"Triangulum Random Info 5" = "Famous for its active star-forming regions.";
+"Triangulum About Description" = "The Triangulum galaxy, or Messier 33, is a spiral galaxy in the Local Group, smaller than Andromeda, with a diameter of about 60,000 light-years.";
+"Comment Under Development" = "Comment section under development...";
+"Wikipedia: Triangulum Galaxy" = "Wikipedia: Triangulum Galaxy";
+
+/* M32View */
+"M32 Random Info 1" = "M32 is a dwarf elliptical galaxy, a satellite of Andromeda.";
+"M32 Random Info 2" = "It is approximately 2.65 million light-years from Earth.";
+"M32 Random Info 3" = "It contains about 10 billion stars.";
+"M32 Random Info 4" = "Also known as Messier 32 or NGC 221.";
+"M32 Random Info 5" = "It has a bright core and a compact structure.";
+"M32 About Description" = "M32, or Messier 32, is a dwarf elliptical galaxy and a satellite of Andromeda, with a diameter of about 6,500 light-years.";
+"Comment Under Development" = "Comment section under development...";
+"Wikipedia: Messier 32" = "Wikipedia: Messier 32";
+
+/* AddGalaxyView and EditGalaxyView */
+"Add Your New Galaxy" = "Add Your New Galaxy";
+"Edit Galaxy" = "Edit Galaxy";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Basic information" = "Basic Information";
+"Galaxy name" = "Galaxy Name";
+"Short description" = "Short Description";
+"Galaxy Image" = "Select Galaxy Image";
+"Overview" = "Overview";
+"Random information" = "Random Information {index}";
+"Image from Basic Information" = "Image from Basic Information";
+"Information" = "Information";
+"About description" = "About Description";
+"Your link video" = "Video Link {index}";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Age" = "Age";
+"Galleries" = "Galleries";
+"Select photo" = "Select Photo {index}";
+"Wikipedia link" = "Wikipedia Link";
+"Wikipedia" = "Wikipedia URL";
+"Confirm Delete" = "Confirm Delete";
+"Delete" = "Delete";
+"Are you sure you want to delete {galaxy.name}?" = "Are you sure you want to delete {galaxy.name}?";
+
+/* GalaxyCatalogView */
+"Galaxy" = "Galaxy";
+"Search galaxies" = "Search galaxies...";
+"Favorite" = "Favorite";
+"Unfavorite" = "Unfavorite";
+"Edit" = "Edit";
+"Today" = "Today";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Views";
+"Unknown Galaxy" = "Unknown Galaxy";
+"Local" = "Local";
+"Local Galaxies" = "%d Local Galaxies";
+"Add New Galaxy" = "Add New Galaxy";
+"Name" = "Name";
+"Description" = "Description";
+"Radius" = "Radius";
+"Distance" = "Distance";
+"Age" = "Age";
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Edit Galaxy" = "Edit Galaxy";
+"No Galaxies" = "No galaxies yet";
+"Add First Galaxy" = "Add your first galaxy!";
+"Andromeda" = "Andromeda";
+"M32" = "M32";
+"Triangulum" = "Triangulum";
+"AndromedaDescription" = "Andromeda Galaxy, the largest spiral galaxy in the Local Group.";
+"M32Description" = "M32, a dwarf elliptical satellite galaxy of Andromeda.";
+"TriangulumDescription" = "Triangulum Galaxy, the 3rd spiral galaxy in the Local Group.";
+
+/* NebulaView */
+"Search nebulas" = "Search nebulas";
+"Nebula Catalog" = "Nebula Catalog";
+"Nebula" = "Nebula";
+"Unfavorite" = "Unfavorite";
+"Favorite" = "Favorite";
+"Edit" = "Edit";
+"Eagle" = "Eagle";
+"Butterfly" = "Butterfly";
+"Helix" = "Helix";
+"Nebulas" = "Nebulas";
+"See more" = "See more";
+"About" = "About";
+"Video" = "Video";
+"Overview" = "Overview";
+"Information" = "Information";
+"Galleries" = "Galleries";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Content for tab {tab} coming soon!";
+"Wikipedia: Eagle Nebula" = "Wikipedia: Eagle Nebula";
+"Wikipedia: Butterfly Nebula" = "Wikipedia: Butterfly Nebula";
+"Wikipedia: Helix Nebula" = "Wikipedia: Helix Nebula";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Distance from Earth" = "Distance from Earth";
+"Age" = "Age";
+"Unknown" = "Unknown";
+"Comment Under Development" = "Comment section under development...";
+"No description available" = "No description available";
+"Image" = "Image {index}";
+"Videos" = "Videos";
+"Pinch to Zoom" = "Pinch to Zoom";
+"Invalid URL" = "Invalid URL";
+
+/* EagleView */
+"Eagle Random Info 1" = "Also known as M16, located in the Serpens constellation.";
+"Eagle Random Info 2" = "Famous for the Pillars of Creation.";
+"Eagle Random Info 3" = "A star-forming region.";
+"Eagle Random Info 4" = "Captured by Hubble in iconic images.";
+"Eagle Random Info 5" = "Approximately 5.5 million years old.";
+"Eagle About Description" = "The Eagle Nebula (M16) is a young open cluster of stars in the Serpens constellation, about 7,000 light-years from Earth. It is renowned for the Pillars of Creation, massive columns of gas and dust where new stars are born.";
+"Eagle By The Numbers Radius" = "Radius: ~10 light-years";
+"Eagle By The Numbers Distance" = "Distance from Sun: ~7,000 light-years";
+"Eagle By The Numbers Age" = "Age: ~5.5 million years";
+
+/* ButterflyView */
+"Butterfly Random Info 1" = "Also known as NGC 6302.";
+"Butterfly Random Info 2" = "Located in the Scorpius constellation.";
+"Butterfly Random Info 3" = "Known for its butterfly-like shape.";
+"Butterfly Random Info 4" = "A bipolar planetary nebula.";
+"Butterfly Random Info 5" = "Central star is extremely hot.";
+"Butterfly About Description" = "The Butterfly Nebula (NGC 6302) is a bipolar planetary nebula in the Scorpius constellation, approximately 2,100 light-years from Earth. Its distinctive butterfly shape is due to the ejection of gas from a dying star.";
+"Butterfly By The Numbers Radius" = "Radius: ~2 light-years";
+"Butterfly By The Numbers Distance" = "Distance from Sun: ~2,100 light-years";
+"Butterfly By The Numbers Age" = "Age: Unknown";
+
+/* HelixView */
+"Helix Random Info 1" = "Also known as NGC 7293.";
+"Helix Random Info 2" = "Located in the Aquarius constellation.";
+"Helix Random Info 3" = "One of the closest planetary nebulas.";
+"Helix Random Info 4" = "Nicknamed the 'Eye of God.'";
+"Helix Random Info 5" = "Formed by a dying star.";
+"Helix About Description" = "The Helix Nebula (NGC 7293) is a planetary nebula in the Aquarius constellation, about 650 light-years from Earth. Its ring-like appearance is due to gas expelled by a dying star, resembling an eye in space.";
+"Helix By The Numbers Radius" = "Radius: ~2.87 light-years";
+"Helix By The Numbers Distance" = "Distance from Sun: ~650 light-years";
+"Helix By The Numbers Age" = "Age: Unknown";
+
+/* AddNebulaView and EditNebulaView */
+"Add Your New Nebula" = "Add Your New Nebula";
+"Edit Nebula" = "Edit Nebula";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Basic Information" = "Basic Information";
+"Nebula Name" = "Nebula Name";
+"Short Description" = "Short Description";
+"Nebula Image" = "Select Nebula Image";
+"Overview" = "Overview";
+"Random Information" = "Random Information {index}";
+"Image from Basic Information" = "Image from Basic Information";
+"Information" = "Information";
+"About Description" = "About Description";
+"Your Link Video" = "Video Link {index}";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Distance from Earth" = "Distance from Earth";
+"Age" = "Age";
+"Galleries" = "Galleries";
+"Select Photo" = "Select Photo {index}";
+"Wikipedia Link" = "Wikipedia Link";
+"Wikipedia" = "Wikipedia URL";
+"Confirm Delete" = "Confirm Delete";
+"Delete" = "Delete";
+"Are you sure you want to delete {nebula.name}?" = "Are you sure you want to delete {nebula.name}?";
+
+/* NebulaCatalogView */
+"Nebula" = "Nebula";
+"Search nebulas" = "Search nebulas...";
+"Favorite" = "Favorite";
+"Unfavorite" = "Unfavorite";
+"Edit" = "Edit";
+"Today" = "Today";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Views";
+"Unknown Nebula" = "Unknown Nebula";
+"Local" = "Local";
+"Local Nebulas" = "%d Local Nebulas";
+"Add New Nebula" = "Add New Nebula";
+"Name" = "Name";
+"Description" = "Description";
+"Radius" = "Radius";
+"Distance" = "Distance";
+"Age" = "Age";
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Edit Nebula" = "Edit Nebula";
+"No Nebulas" = "No nebulas yet";
+"Add First Nebula" = "Add your first nebula!";
+"Eagle" = "Eagle";
+"Butterfly" = "Butterfly";
+"Helix" = "Helix";
+"EagleDescription" = "Young star cluster in Serpens, famous for the Pillars of Creation.";
+"ButterflyDescription" = "Bipolar planetary nebula in Scorpius with a butterfly-like shape.";
+"HelixDescription" = "Planetary nebula in Aquarius, nicknamed the 'Eye of God.'";
+"VideoListView appeared for" = "VideoListView appeared for";
+
+/* StarView */
+"Search stars" = "Search stars";
+"Star Catalog" = "Star Catalog";
+"Star" = "Star";
+"Unfavorite" = "Unfavorite";
+"Favorite" = "Favorite";
+"Edit" = "Edit";
+"Sirius" = "Sirius";
+"Canopus" = "Canopus";
+"Alpha Centauri" = "Alpha Centauri";
+"Stars" = "Stars";
+"See more" = "See more";
+"360°" = "360°";
+"About" = "About";
+"Video" = "Video";
+"Overview" = "Overview";
+"Information" = "Information";
+"Galleries" = "Galleries";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Content for tab {tab} coming soon!";
+"Wikipedia: Sirius Star" = "Wikipedia: Sirius Star";
+"Wikipedia: Canopus Star" = "Wikipedia: Canopus Star";
+"Wikipedia: Alpha Centauri Star" = "Wikipedia: Alpha Centauri Star";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Distance from Earth" = "Distance from Earth";
+"Age" = "Age";
+"Unknown" = "Unknown";
+"Comment Under Development" = "Comment section under development...";
+"No description available" = "No description available";
+"Image" = "Image {index}";
+"Videos" = "Videos";
+"Pinch to Zoom" = "Pinch to Zoom";
+
+/* SiriusView */
+"Sirius Random Info 1" = "Sirius is the brightest star in the night sky.";
+"Sirius Random Info 2" = "It is a binary system with Sirius A and B.";
+"Sirius Random Info 3" = "Located in the Canis Major constellation.";
+"Sirius Random Info 4" = "25 times more luminous than the Sun.";
+"Sirius Random Info 5" = "Age around 242 million years.";
+"Sirius About Description" = "Sirius, the brightest star in the night sky, is a binary system in the Canis Major constellation, approximately 8.6 light-years from Earth. It has a radius 1.711 times that of the Sun and is 25 times more luminous.";
+"Sirius By The Numbers Radius" = "Radius: ~1.711 solar radii";
+"Sirius By The Numbers Distance" = "Distance from Sun: ~8.6 light-years";
+"Sirius By The Numbers Age" = "Age: ~242 million years";
+
+/* CanopusView */
+"Canopus Random Info 1" = "Second-brightest star in the night sky.";
+"Canopus Random Info 2" = "Located in the Carina constellation.";
+"Canopus Random Info 3" = "10,000 times more luminous than the Sun.";
+"Canopus Random Info 4" = "Bright giant star.";
+"Canopus Random Info 5" = "Source of X-rays.";
+"Canopus About Description" = "Canopus, the second-brightest star in the night sky, is located in the Carina constellation, about 310 light-years from Earth. It has a radius 71 times that of the Sun and is 10,000 times more luminous.";
+"Canopus By The Numbers Radius" = "Radius: ~71 solar radii";
+"Canopus By The Numbers Distance" = "Distance from Sun: ~310 light-years";
+"Canopus By The Numbers Age" = "Age: ~10-20 million years";
+
+/* AlphaCentauriView */
+"Alpha Centauri Random Info 1" = "Closest star system to the Sun.";
+"Alpha Centauri Random Info 2" = "Triple star system: A, B, and Proxima.";
+"Alpha Centauri Random Info 3" = "Proxima is the closest individual star.";
+"Alpha Centauri Random Info 4" = "Located in the Centaurus constellation.";
+"Alpha Centauri Random Info 5" = "Age about 4.85 billion years.";
+"Alpha Centauri About Description" = "Alpha Centauri is the closest star system to the Sun, located about 4.37 light-years away in the Centaurus constellation. It consists of three stars: Alpha Centauri A, B, and Proxima Centauri, with A having a radius 1.223 times that of the Sun.";
+"Alpha Centauri By The Numbers Radius" = "Radius: ~1.223 solar radii (A)";
+"Alpha Centauri By The Numbers Distance" = "Distance from Sun: ~4.37 light-years";
+"Alpha Centauri By The Numbers Age" = "Age: ~4.85 billion years";
+
+/* AddStarView and EditStarView */
+"Add Your New Star" = "Add Your New Star";
+"Edit Star" = "Edit Star";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Basic Information" = "Basic Information";
+"Star Name" = "Star Name";
+"Short Description" = "Short Description";
+"Star Image" = "Select Star Image";
+"Overview" = "Overview";
+"Random Information" = "Random Information {index}";
+"Image from Basic Information" = "Image from Basic Information";
+"Information" = "Information";
+"About Description" = "About Description";
+"Video Link" = "Video Link {index}";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Distance from Earth" = "Distance from Earth";
+"Age" = "Age";
+"Galleries" = "Galleries";
+"Select Photo" = "Select Photo {index}";
+"Wikipedia Link" = "Wikipedia Link";
+"Wikipedia URL" = "Wikipedia URL";
+"Confirm Delete" = "Confirm Delete";
+"Delete" = "Delete";
+"Are you sure you want to delete {star.name}?" = "Are you sure you want to delete {star.name}?";
+
+/* StarCatalogView */
+"Stars" = "Stars";
+"Search stars" = "Search stars...";
+"Favorite" = "Favorite";
+"Unfavorite" = "Unfavorite";
+"Edit" = "Edit";
+"Today" = "Today";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Views";
+"Unknown Star" = "Unknown Star";
+"Local" = "Local";
+"Local Stars" = "%d Local Stars";
+"Add New Star" = "Add New Star";
+"Name" = "Name";
+"Description" = "Description";
+"Radius" = "Radius";
+"Distance" = "Distance";
+"Age" = "Age";
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Edit Star" = "Edit Star";
+"No Stars" = "No stars yet";
+"Add First Star" = "Add your first star!";
+"Sirius" = "Sirius";
+"Canopus" = "Canopus";
+"Alpha Centauri" = "Alpha Centauri";
+"SiriusDescription" = "Brightest star in the night sky, located in the Canis Major constellation.";
+"CanopusDescription" = "Second-brightest star, located in the Carina constellation.";
+"AlphaCentauriDescription" = "Closest star system to the Sun, located in the Centaurus constellation.";
+"VideoListView appeared for" = "VideoListView appeared for";
+
+/* BlackholeViewModel */
+"Sagittarius A" = "Sagittarius A";
+"SagittariusADescription" = "Sagittarius A*, the supermassive black hole at the center of the Milky Way.";
+"Sagittarius A About Description" = "Sagittarius A* is a supermassive black hole located at the center of the Milky Way galaxy, approximately 26,000 light-years from Earth. It has a mass equivalent to about 4.3 million solar masses.";
+"TON 618" = "TON 618";
+"TON618Description" = "TON 618, one of the most massive black holes known.";
+"TON 618 About Description" = "TON 618 is an ultramassive black hole located in the Canes Venatici constellation, about 10.4 billion light-years from Earth. It has an estimated mass of 66 billion solar masses.";
+"M87" = "M87";
+"M87Description" = "The supermassive black hole in the Messier 87 galaxy.";
+"M87 About Description" = "The supermassive black hole in Messier 87, located 53 million light-years from Earth, is famous for the first-ever image of a black hole captured by the Event Horizon Telescope.";
+
+/* BlackholeCatalogView */
+"Blackhole" = "Blackhole";
+"Search blackholes" = "Search blackholes...";
+"Favorite" = "Favorite";
+"Unfavorite" = "Unfavorite";
+"Edit" = "Edit";
+"Today" = "Today";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Views";
+"Unknown Blackhole" = "Unknown Blackhole";
+"Local" = "Local";
+"Local Blackholes" = "%d Local Blackholes";
+"Add New Blackhole" = "Add New Blackhole";
+
+/* BlackholeView */
+"Pinch to Zoom" = "Pinch to Zoom";
+"Overview" = "Overview";
+"Information" = "Information";
+"Galleries" = "Galleries";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Content for tab {tab} coming soon!";
+"About" = "About";
+"Video" = "Video";
+"See more" = "See more";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Age" = "Age";
+"Unknown" = "Unknown";
+"Comment Under Development" = "Comment section under development...";
+"No description available" = "No description available";
+"Image" = "Image {index}";
+"Videos" = "Videos";
+"Wikipedia: Sagittarius A" = "Wikipedia: Sagittarius A*";
+"Wikipedia: TON 618" = "Wikipedia: TON 618";
+"Wikipedia: M87" = "Wikipedia: Messier 87";
+
+/* M87View */
+"M87 Random Info 1" = "The M87 black hole was the first black hole to be directly imaged in 2019.";
+"M87 Random Info 2" = "It resides in the center of the Messier 87 galaxy, a supergiant elliptical galaxy.";
+"M87 Random Info 3" = "The black hole has a mass of about 6.5 billion solar masses.";
+"M87 Random Info 4" = "Its event horizon is roughly 38 billion kilometers in diameter.";
+"M87 Random Info 5" = "The M87 black hole powers a massive relativistic jet visible in radio wavelengths.";
+
+/* SagittariusAView */
+"Sagittarius A Random Info 1" = "Sagittarius A* is located at the center of the Milky Way.";
+"Sagittarius A Random Info 2" = "It has a mass equivalent to about 4.3 million solar masses.";
+"Sagittarius A Random Info 3" = "It was discovered through the motion of stars orbiting it.";
+"Sagittarius A Random Info 4" = "Its event horizon is about 24 million kilometers in diameter.";
+"Sagittarius A Random Info 5" = "It is actively studied using radio and infrared telescopes.";
+
+/* TON618View */
+"TON 618 Random Info 1" = "TON 618 is one of the most massive black holes ever discovered.";
+"TON 618 Random Info 2" = "Its Schwarzschild radius is about 1,300 AU, larger than our solar system.";
+"TON 618 Random Info 3" = "It is located in a distant quasar in the Canes Venatici constellation.";
+"TON 618 Random Info 4" = "TON 618 powers one of the brightest quasars known.";
+"TON 618 Random Info 5" = "It was first identified in 1970 through optical observations.";
+
+/* AddBlackholeView and EditBlackholeView */
+"Add Your New Blackhole" = "Add Your New Blackhole";
+"Edit Blackhole" = "Edit Blackhole";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Basic information" = "Basic Information";
+"Blackhole name" = "Blackhole Name";
+"Short description" = "Short Description";
+"Blackhole Image" = "Select Blackhole Image";
+"Random information" = "Random Information {index}";
+"Image from Basic Information" = "Image from Basic Information";
+"About description" = "About Description";
+"Your link video" = "Video Link {index}";
+"Select photo" = "Select Photo {index}";
+"Wikipedia link" = "Wikipedia Link";
+"Wikipedia" = "Wikipedia URL";
+"Confirm Delete" = "Confirm Delete";
+"Delete" = "Delete";
+"Are you sure you want to delete {blackhole.name}?" = "Are you sure you want to delete {blackhole.name}?";

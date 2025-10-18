@@ -41,6 +41,8 @@
 /* HomeView */
 "Welcome back" = "Chào mừng trở lại";
 "Cosmos is Now" = "Vũ trụ!";
+"Education" = "Giáo dục";
+"Logout" = "Đăng xuất";
 "Latest Space Discovery" = "Khám phá không gian mới nhất";
 "Map Galaxy" = "Bản đồ thiên hà";
 "Solar System" = "Hệ mặt trời";
@@ -56,6 +58,29 @@
 "Sky Live" = "Bầu trời trực tiếp";
 "Home" = "Trang chủ";
 "Map" = "Bản đồ";
+"Love Cosmos" = "Yêu vũ trụ.";
+"The stars are calling" = "Các ngôi sao đang gọi, hãy trả lời.";
+"Discover the mysteries" = "Khám phá những bí ẩn của vũ trụ.";
+"Falling Star" = "Sao băng♪";
+"Black Hole" = "Hố đen";
+
+/* HomeEducationView */
+"Welcome back" = "Chào mừng trở lại";
+"Cosmos is Now" = "Vũ trụ!";
+"Cosmos" = "Vũ trụ";
+"Logout" = "Đăng xuất";
+"Your Learning Progress" = "Tiến độ học tập của bạn";
+"Flashcards" = "Thẻ học";
+"Learn" = "Học";
+"Test" = "Kiểm tra";
+"Blocks" = "Khối";
+"Blast" = "Nổ";
+"Match" = "Kết hợp";
+"Learn Streaks" = "Chuỗi học tập";
+"Home" = "Trang chủ";
+"Quest" = "Nhiệm vụ";
+"Ranks" = "Xếp hạng";
+"Feed" = "Bảng tin";
 "Love Cosmos" = "Yêu vũ trụ.";
 "The stars are calling" = "Các ngôi sao đang gọi, hãy trả lời.";
 "Discover the mysteries" = "Khám phá những bí ẩn của vũ trụ.";
@@ -734,3 +759,463 @@
 "Neptune Exploration Quote" = "“Chuyến bay ngang qua của Voyager 2 hé lộ thế giới xanh lam rực rỡ và những cơn bão năng động của Sao Hải Vương.”";
 "Content for tab coming soon" = "Nội dung cho tab sẽ sớm ra mắt!";
 "Wikipedia: Neptune" = "Wikipedia: Sao Hải Vương";
+
+/* GalaxyView */
+"Search galaxies" = "Tìm kiếm thiên hà";
+"Galaxy Catalog" = "Danh mục thiên hà";
+"Galaxy" = "Thiên hà";
+"Unfavorite" = "Bỏ yêu thích";
+"Favorite" = "Yêu thích";
+"Edit" = "Chỉnh sửa";
+"Andromeda" = "Andromeda";
+"M32" = "M32";
+"Triangulum" = "Triangulum";
+"Galaxies" = "Thiên hà";
+"See more" = "Xem thêm";
+"360°" = "360°";
+"About" = "Giới thiệu";
+"Video" = "Video";
+"Overview" = "Tổng quan";
+"Information" = "Thông tin";
+"Galleries" = "Bộ sưu tập";
+"Comment" = "Bình luận";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Nội dung cho tab {tab} sắp ra mắt!";
+"Wikipedia: Andromeda" = "Wikipedia: Andromeda";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Age" = "Tuổi";
+"Unknown" = "Không xác định";
+"Comment Under Development" = "Phần bình luận đang phát triển...";
+"No description available" = "Không có mô tả nào";
+"Image" = "Hình ảnh {index}";
+"Videos" = "Video";
+
+/* AndromedaView */
+"Andromeda Random Info 1" = "Thiên hà Andromeda là thiên hà xoắn ốc lớn nhất gần Dải Ngân Hà.";
+"Andromeda Random Info 2" = "Nó chứa khoảng 1 nghìn tỷ ngôi sao, gấp đôi số lượng trong Dải Ngân Hà.";
+"Andromeda Random Info 3" = "Andromeda đang di chuyển về phía Dải Ngân Hà với tốc độ khoảng 110 km/s.";
+"Andromeda Random Info 4" = "Nó có thể được nhìn thấy bằng mắt thường trong điều kiện bầu trời tối.";
+"Andromeda Random Info 5" = "Andromeda có một lỗ đen siêu lớn ở trung tâm.";
+"Andromeda About Description" = "Thiên hà Andromeda, hay Messier 31, là thiên hà xoắn ốc lớn nhất trong Nhóm Địa phương, nằm cách Dải Ngân Hà khoảng 2,5 triệu năm ánh sáng. Với đường kính khoảng 220.000 năm ánh sáng, nó chứa khoảng 1 nghìn tỷ ngôi sao và dự kiến sẽ va chạm với Dải Ngân Hà trong khoảng 4,5 tỷ năm nữa.";
+"Andromeda By The Numbers Radius" = "Bán kính: ~110.000 năm ánh sáng";
+"Andromeda By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~2,537 triệu năm ánh sáng";
+"Andromeda By The Numbers Age" = "Tuổi: ~10 tỷ năm";
+"Wikipedia: Andromeda Galaxy" = "Wikipedia: Thiên hà Andromeda";
+
+/* TriangulumView */
+"Triangulum Random Info 1" = "Thiên hà Triangulum là một thiên hà xoắn ốc nhỏ hơn so với Andromeda.";
+"Triangulum Random Info 2" = "Nó cách Trái Đất khoảng 2,73 triệu năm ánh sáng.";
+"Triangulum Random Info 3" = "Nó chứa khoảng 40 tỷ ngôi sao.";
+"Triangulum Random Info 4" = "Còn được biết đến với tên M33 hoặc NGC 598.";
+"Triangulum Random Info 5" = "Nổi tiếng với các vùng hình thành sao hoạt động.";
+"Triangulum About Description" = "Thiên hà Triangulum, hay Messier 33, là một thiên hà xoắn ốc trong Nhóm Địa phương, nhỏ hơn Andromeda, với đường kính khoảng 60.000 năm ánh sáng.";
+"Comment Under Development" = "Phần bình luận đang phát triển...";
+"Wikipedia: Triangulum Galaxy" = "Wikipedia: Thiên hà Triangulum";
+
+/* M32View */
+"M32 Random Info 1" = "M32 là một thiên hà elip lùn, vệ tinh của Andromeda.";
+"M32 Random Info 2" = "Nó cách Trái Đất khoảng 2,65 triệu năm ánh sáng.";
+"M32 Random Info 3" = "Nó chứa khoảng 10 tỷ ngôi sao.";
+"M32 Random Info 4" = "Còn được biết đến với tên Messier 32 hoặc NGC 221.";
+"M32 Random Info 5" = "Nó có lõi sáng và cấu trúc nhỏ gọn.";
+"M32 About Description" = "M32, hay Messier 32, là một thiên hà elip lùn và vệ tinh của Andromeda, với đường kính khoảng 6.500 năm ánh sáng.";
+"Comment Under Development" = "Phần bình luận đang phát triển...";
+"Wikipedia: Messier 32" = "Wikipedia: Messier 32";
+
+/* AddGalaxyView and EditGalaxyView */
+"Add Your New Galaxy" = "Thêm thiên hà mới của bạn";
+"Edit Galaxy" = "Chỉnh sửa thiên hà";
+"Cancel" = "Hủy";
+"Save" = "Lưu";
+"Basic information" = "Thông tin cơ bản";
+"Galaxy name" = "Tên thiên hà";
+"Short description" = "Mô tả ngắn";
+"Galaxy Image" = "Chọn hình ảnh thiên hà";
+"Overview" = "Tổng quan";
+"Random information" = "Thông tin ngẫu nhiên {index}";
+"Image from Basic Information" = "Hình ảnh từ thông tin cơ bản";
+"Information" = "Thông tin";
+"About description" = "Mô tả giới thiệu";
+"Your link video" = "Liên kết video {index}";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Age" = "Tuổi";
+"Galleries" = "Bộ sưu tập";
+"Select photo" = "Chọn ảnh {index}";
+"Wikipedia link" = "Liên kết Wikipedia";
+"Wikipedia" = "URL Wikipedia";
+"Confirm Delete" = "Xác nhận xóa";
+"Delete" = "Xóa";
+"Are you sure you want to delete {galaxy.name}?" = "Bạn có chắc chắn muốn xóa {galaxy.name}?";
+
+/* GalaxyCatalogView.swift */
+"Galaxy" = "Danh Sách Thiên Hà";
+"Search galaxies" = "Tìm kiếm thiên hà...";
+"Favorite" = "Yêu thích";
+"Unfavorite" = "Bỏ yêu thích";
+"Edit" = "Sửa";
+"Today" = "Hôm nay";
+"Date Format" = "dd/MM/yyyy";
+"Views" = "Lượt xem";
+"Unknown Galaxy" = "Thiên Hà Không Xác Định";
+"Local" = "Local";
+"Local Galaxies" = "%d Thiên Hà Local";
+"Add New Galaxy" = "Thêm Thiên Hà Mới";
+"Name" = "Tên";
+"Description" = "Mô tả";
+"Radius" = "Bán kính";
+"Distance" = "Khoảng cách";
+"Age" = "Tuổi";
+"Save" = "Lưu";
+"Cancel" = "Hủy";
+"Edit Galaxy" = "Sửa Thiên Hà";
+"No Galaxies" = "Chưa có thiên hà nào";
+"Add First Galaxy" = "Thêm thiên hà đầu tiên!";
+"Andromeda" = "Andromeda";
+"M32" = "M32";
+"Triangulum" = "Triangulum";
+"AndromedaDescription" = "Thiên hà Andromeda, thiên hà xoắn ốc lớn nhất trong Nhóm Địa phương.";
+"M32Description" = "M32, thiên hà elip lùn vệ tinh của Andromeda.";
+"TriangulumDescription" = "Thiên hà Tam giác, thiên hà xoắn ốc thứ 3 trong Nhóm Địa phương.";
+
+/* NebulaView */
+"Search nebulas" = "Tìm kiếm các tinh vân";
+"Nebula Catalog" = "Danh mục Tinh vân";
+"Nebula" = "Tinh vân";
+"Unfavorite" = "Bỏ yêu thích";
+"Favorite" = "Yêu thích";
+"Edit" = "Chỉnh sửa";
+"Eagle" = "Đại Bàng";
+"Butterfly" = "Cánh Bướm";
+"Helix" = "Xoắn Ốc";
+"Nebulas" = "Các tinh vân";
+"See more" = "Xem thêm";
+"About" = "Giới thiệu";
+"Video" = "Video";
+"Overview" = "Tổng quan";
+"Information" = "Thông tin";
+"Galleries" = "Thư viện";
+"Comment" = "Bình luận";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Nội dung cho tab {tab} sẽ sớm ra mắt!";
+"Wikipedia: Eagle Nebula" = "Wikipedia: Tinh vân Đại Bàng";
+"Wikipedia: Butterfly Nebula" = "Wikipedia: Tinh vân Cánh Bướm";
+"Wikipedia: Helix Nebula" = "Wikipedia: Tinh vân Xoắn Ốc";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Distance from Earth" = "Khoảng cách từ Trái Đất";
+"Age" = "Tuổi";
+"Unknown" = "Không xác định";
+"Comment Under Development" = "Phần bình luận đang được phát triển...";
+"No description available" = "Không có mô tả nào";
+"Image" = "Hình ảnh {index}";
+"Videos" = "Video";
+"Pinch to Zoom" = "Chụm để phóng to";
+"Invalid URL" = "URL không hợp lệ";
+
+/* EagleView */
+"Eagle Random Info 1" = "Còn gọi là M16, nằm trong chòm sao Serpens.";
+"Eagle Random Info 2" = "Nổi tiếng với các Cột Sáng Tạo.";
+"Eagle Random Info 3" = "Vùng hình thành sao.";
+"Eagle Random Info 4" = "Được Hubble chụp những hình ảnh biểu tượng.";
+"Eagle Random Info 5" = "Tuổi khoảng 5.5 triệu năm.";
+"Eagle About Description" = "Tinh vân Đại Bàng (M16) là một cụm sao trẻ trong chòm sao Serpens, cách Trái Đất khoảng 7,000 năm ánh sáng. Nó nổi tiếng với các Cột Sáng Tạo, những cột khí và bụi khổng lồ nơi các ngôi sao mới được sinh ra.";
+"Eagle By The Numbers Radius" = "Bán kính: ~10 năm ánh sáng";
+"Eagle By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~7,000 năm ánh sáng";
+"Eagle By The Numbers Age" = "Tuổi: ~5.5 triệu năm";
+
+/* ButterflyView */
+"Butterfly Random Info 1" = "Còn gọi là NGC 6302.";
+"Butterfly Random Info 2" = "Nằm trong chòm sao Scorpius.";
+"Butterfly Random Info 3" = "Nổi tiếng với hình dạng giống cánh bướm.";
+"Butterfly Random Info 4" = "Tinh vân hành tinh lưỡng cực.";
+"Butterfly Random Info 5" = "Ngôi sao trung tâm cực kỳ nóng.";
+"Butterfly About Description" = "Tinh vân Cánh Bướm (NGC 6302) là một tinh vân hành tinh lưỡng cực trong chòm sao Scorpius, cách Trái Đất khoảng 2,100 năm ánh sáng. Hình dạng giống cánh bướm của nó là do sự phun khí từ một ngôi sao đang chết.";
+"Butterfly By The Numbers Radius" = "Bán kính: ~2 năm ánh sáng";
+"Butterfly By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~2,100 năm ánh sáng";
+"Butterfly By The Numbers Age" = "Tuổi: Không xác định";
+
+/* HelixView */
+"Helix Random Info 1" = "Còn gọi là NGC 7293.";
+"Helix Random Info 2" = "Nằm trong chòm sao Aquarius.";
+"Helix Random Info 3" = "Một trong những tinh vân hành tinh gần nhất.";
+"Helix Random Info 4" = "Biệt danh là 'Mắt của Chúa.'";
+"Helix Random Info 5" = "Hình thành từ một ngôi sao đang chết.";
+"Helix About Description" = "Tinh vân Xoắn Ốc (NGC 7293) là một tinh vân hành tinh trong chòm sao Aquarius, cách Trái Đất khoảng 650 năm ánh sáng. Hình dạng giống vòng của nó là do khí bị phun ra từ một ngôi sao đang chết, trông giống như một con mắt trong không gian.";
+"Helix By The Numbers Radius" = "Bán kính: ~2.87 năm ánh sáng";
+"Helix By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~650 năm ánh sáng";
+"Helix By The Numbers Age" = "Tuổi: Không xác định";
+
+/* AddNebulaView and EditNebulaView */
+"Add Your New Nebula" = "Thêm Tinh vân Mới của Bạn";
+"Edit Nebula" = "Chỉnh sửa Tinh vân";
+"Cancel" = "Hủy";
+"Save" = "Lưu";
+"Basic Information" = "Thông tin Cơ bản";
+"Nebula Name" = "Tên Tinh vân";
+"Short Description" = "Mô tả Ngắn";
+"Nebula Image" = "Chọn Hình ảnh Tinh vân";
+"Overview" = "Tổng quan";
+"Random Information" = "Thông tin Ngẫu nhiên {index}";
+"Image from Basic Information" = "Hình ảnh từ Thông tin Cơ bản";
+"Information" = "Thông tin";
+"About Description" = "Mô tả Giới thiệu";
+"Your Link Video" = "Link Video {index}";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Distance from Earth" = "Khoảng cách từ Trái Đất";
+"Age" = "Tuổi";
+"Galleries" = "Thư viện";
+"Select Photo" = "Chọn Ảnh {index}";
+"Wikipedia Link" = "Link Wikipedia";
+"Wikipedia" = "URL Wikipedia";
+"Confirm Delete" = "Xác nhận Xóa";
+"Delete" = "Xóa";
+"Are you sure you want to delete {nebula.name}?" = "Bạn có chắc muốn xóa {nebula.name}?";
+
+/* NebulaCatalogView */
+"Nebula" = "Tinh vân";
+"Search nebulas" = "Tìm kiếm các tinh vân...";
+"Favorite" = "Yêu thích";
+"Unfavorite" = "Bỏ yêu thích";
+"Edit" = "Chỉnh sửa";
+"Today" = "Hôm nay";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Lượt xem";
+"Unknown Nebula" = "Tinh vân Không xác định";
+"Local" = "Cục bộ";
+"Local Nebulas" = "%d Tinh vân Cục bộ";
+"Add New Nebula" = "Thêm Tinh vân Mới";
+"Name" = "Tên";
+"Description" = "Mô tả";
+"Radius" = "Bán kính";
+"Distance" = "Khoảng cách";
+"Age" = "Tuổi";
+"Save" = "Lưu";
+"Cancel" = "Hủy";
+"Edit Nebula" = "Chỉnh sửa Tinh vân";
+"No Nebulas" = "Chưa có tinh vân nào";
+"Add First Nebula" = "Thêm tinh vân đầu tiên của bạn!";
+"Eagle" = "Đại Bàng";
+"Butterfly" = "Cánh Bướm";
+"Helix" = "Xoắn Ốc";
+"EagleDescription" = "Cụm sao trẻ trong chòm sao Serpens, nổi tiếng với các Cột Sáng Tạo.";
+"ButterflyDescription" = "Tinh vân hành tinh lưỡng cực trong chòm sao Scorpius với hình dạng giống cánh bướm.";
+"HelixDescription" = "Tinh vân hành tinh trong chòm sao Aquarius, biệt danh là 'Mắt của Chúa.'";
+"VideoListView appeared for" = "VideoListView xuất hiện cho";
+
+/* StarView */
+"Search stars" = "Tìm kiếm các ngôi sao";
+"Star Catalog" = "Danh mục Ngôi sao";
+"Star" = "Ngôi sao";
+"Unfavorite" = "Bỏ yêu thích";
+"Favorite" = "Yêu thích";
+"Edit" = "Chỉnh sửa";
+"Sirius" = "Sirius";
+"Canopus" = "Canopus";
+"Alpha Centauri" = "Alpha Centauri";
+"Stars" = "Các ngôi sao";
+"See more" = "Xem thêm";
+"360°" = "360°";
+"About" = "Giới thiệu";
+"Video" = "Video";
+"Overview" = "Tổng quan";
+"Information" = "Thông tin";
+"Galleries" = "Thư viện";
+"Comment" = "Bình luận";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Nội dung cho tab {tab} sẽ sớm ra mắt!";
+"Wikipedia: Sirius Star" = "Wikipedia: Ngôi sao Sirius";
+"Wikipedia: Canopus Star" = "Wikipedia: Ngôi sao Canopus";
+"Wikipedia: Alpha Centauri Star" = "Wikipedia: Ngôi sao Alpha Centauri";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Distance from Earth" = "Khoảng cách từ Trái Đất";
+"Age" = "Tuổi";
+"Unknown" = "Không xác định";
+"Comment Under Development" = "Phần bình luận đang được phát triển...";
+"No description available" = "Không có mô tả nào";
+"Image" = "Hình ảnh {index}";
+"Videos" = "Video";
+"Pinch to Zoom" = "Chụm để phóng to";
+
+/* SiriusView */
+"Sirius Random Info 1" = "Sirius là ngôi sao sáng nhất trên bầu trời đêm.";
+"Sirius Random Info 2" = "Đây là một hệ nhị phân với Sirius A và B.";
+"Sirius Random Info 3" = "Nằm trong chòm sao Canis Major.";
+"Sirius Random Info 4" = "Sáng gấp 25 lần so với Mặt Trời.";
+"Sirius Random Info 5" = "Tuổi khoảng 242 triệu năm.";
+"Sirius About Description" = "Sirius, ngôi sao sáng nhất trên bầu trời đêm, là một hệ nhị phân thuộc chòm sao Canis Major, cách Trái Đất khoảng 8.6 năm ánh sáng. Nó có bán kính gấp 1.711 lần Mặt Trời và độ sáng gấp 25 lần Mặt Trời.";
+"Sirius By The Numbers Radius" = "Bán kính: ~1.711 lần bán kính Mặt Trời";
+"Sirius By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~8.6 năm ánh sáng";
+"Sirius By The Numbers Age" = "Tuổi: ~242 triệu năm";
+
+/* CanopusView */
+"Canopus Random Info 1" = "Ngôi sao sáng thứ hai trên bầu trời đêm.";
+"Canopus Random Info 2" = "Nằm trong chòm sao Carina.";
+"Canopus Random Info 3" = "Sáng gấp 10,000 lần so với Mặt Trời.";
+"Canopus Random Info 4" = "Ngôi sao khổng lồ sáng.";
+"Canopus Random Info 5" = "Nguồn phát tia X.";
+"Canopus About Description" = "Canopus, ngôi sao sáng thứ hai trên bầu trời đêm, thuộc chòm sao Carina, cách Trái Đất khoảng 310 năm ánh sáng. Nó có bán kính gấp 71 lần Mặt Trời và độ sáng gấp 10,000 lần Mặt Trời.";
+"Canopus By The Numbers Radius" = "Bán kính: ~71 lần bán kính Mặt Trời";
+"Canopus By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~310 năm ánh sáng";
+"Canopus By The Numbers Age" = "Tuổi: ~10-20 triệu năm";
+
+/* AlphaCentauriView */
+"Alpha Centauri Random Info 1" = "Hệ sao gần Mặt Trời nhất.";
+"Alpha Centauri Random Info 2" = "Hệ sao ba gồm A, B, và Proxima.";
+"Alpha Centauri Random Info 3" = "Proxima là ngôi sao riêng lẻ gần nhất.";
+"Alpha Centauri Random Info 4" = "Nằm trong chòm sao Centaurus.";
+"Alpha Centauri Random Info 5" = "Tuổi khoảng 4.85 tỷ năm.";
+"Alpha Centauri About Description" = "Alpha Centauri là hệ sao gần Mặt Trời nhất, cách khoảng 4.37 năm ánh sáng, thuộc chòm sao Centaurus. Nó bao gồm ba ngôi sao: Alpha Centauri A, B, và Proxima Centauri, với bán kính của A gấp 1.223 lần Mặt Trời.";
+"Alpha Centauri By The Numbers Radius" = "Bán kính: ~1.223 lần bán kính Mặt Trời (A)";
+"Alpha Centauri By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~4.37 năm ánh sáng";
+"Alpha Centauri By The Numbers Age" = "Tuổi: ~4.85 tỷ năm";
+
+/* AddStarView and EditStarView */
+"Add Your New Star" = "Thêm Ngôi sao Mới của Bạn";
+"Edit Star" = "Chỉnh sửa Ngôi sao";
+"Cancel" = "Hủy";
+"Save" = "Lưu";
+"Basic Information" = "Thông tin Cơ bản";
+"Star Name" = "Tên Ngôi sao";
+"Short Description" = "Mô tả Ngắn";
+"Star Image" = "Chọn Hình ảnh Ngôi sao";
+"Overview" = "Tổng quan";
+"Random Information" = "Thông tin Ngẫu nhiên {index}";
+"Image from Basic Information" = "Hình ảnh từ Thông tin Cơ bản";
+"Information" = "Thông tin";
+"About Description" = "Mô tả Giới thiệu";
+"Video Link" = "Link Video {index}";
+"Radius" = "Bán kính";
+"Distance from Sun" = "Khoảng cách từ Mặt Trời";
+"Distance from Earth" = "Khoảng cách từ Trái Đất";
+"Age" = "Tuổi";
+"Galleries" = "Thư viện";
+"Select Photo" = "Chọn Ảnh {index}";
+"Wikipedia Link" = "Link Wikipedia";
+"Wikipedia URL" = "URL Wikipedia";
+"Confirm Delete" = "Xác nhận Xóa";
+"Delete" = "Xóa";
+"Are you sure you want to delete {star.name}?" = "Bạn có chắc muốn xóa {star.name}?";
+
+/* StarCatalogView */
+"Stars" = "Ngôi sao";
+"Search stars" = "Tìm kiếm các ngôi sao...";
+"Favorite" = "Yêu thích";
+"Unfavorite" = "Bỏ yêu thích";
+"Edit" = "Chỉnh sửa";
+"Today" = "Hôm nay";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Lượt xem";
+"Unknown Star" = "Ngôi sao Không xác định";
+"Local" = "Cục bộ";
+"Local Stars" = "%d Ngôi sao Cục bộ";
+"Add New Star" = "Thêm Ngôi sao Mới";
+"Name" = "Tên";
+"Description" = "Mô tả";
+"Radius" = "Bán kính";
+"Distance" = "Khoảng cách";
+"Age" = "Tuổi";
+"Save" = "Lưu";
+"Cancel" = "Hủy";
+"Edit Star" = "Chỉnh sửa Ngôi sao";
+"No Stars" = "Chưa có ngôi sao nào";
+"Add First Star" = "Thêm ngôi sao đầu tiên của bạn!";
+"Sirius" = "Sirius";
+"Canopus" = "Canopus";
+"Alpha Centauri" = "Alpha Centauri";
+"SiriusDescription" = "Ngôi sao sáng nhất trên bầu trời đêm, thuộc chòm sao Canis Major.";
+"CanopusDescription" = "Ngôi sao sáng thứ hai, thuộc chòm sao Carina.";
+"AlphaCentauriDescription" = "Hệ sao gần Mặt Trời nhất, thuộc chòm sao Centaurus.";
+"VideoListView appeared for" = "VideoListView xuất hiện cho";
+
+/* BlackholeViewModel */
+"Sagittarius A" = "Sagittarius A*";
+"SagittariusADescription" = "Sagittarius A*, hố đen siêu khối lượng ở trung tâm Dải Ngân Hà.";
+"Sagittarius A About Description" = "Sagittarius A* là một hố đen siêu khối lượng nằm ở trung tâm của Dải Ngân Hà, cách Trái Đất khoảng 26.000 năm ánh sáng. Nó có khối lượng tương đương khoảng 4,3 triệu lần khối lượng Mặt Trời.";
+"TON 618" = "TON 618";
+"TON618Description" = "TON 618, một trong những hố đen khối lượng lớn nhất được biết đến.";
+"TON 618 About Description" = "TON 618 là một hố đen siêu khối lượng nằm trong chòm sao Canes Venatici, cách Trái Đất khoảng 10,4 tỷ năm ánh sáng. Nó có khối lượng ước tính khoảng 66 tỷ lần khối lượng Mặt Trời.";
+"M87" = "M87";
+"M87Description" = "Hố đen siêu khối lượng trong thiên hà Messier 87.";
+"M87 About Description" = "Hố đen siêu khối lượng trong thiên hà Messier 87, cách Trái Đất 53 triệu năm ánh sáng, nổi tiếng với hình ảnh đầu tiên của một hố đen được chụp bởi Kính viễn vọng Chân trời Sự kiện.";
+
+/* BlackholeCatalogView */
+"Blackhole" = "Hố Đen";
+"Search blackholes" = "Tìm kiếm hố đen...";
+"Favorite" = "Yêu Thích";
+"Unfavorite" = "Bỏ Yêu Thích";
+"Edit" = "Chỉnh Sửa";
+"Today" = "Hôm Nay";
+"Date Format" = "dd/MM/yyyy";
+"Views" = "Lượt Xem";
+"Unknown Blackhole" = "Hố Đen Không Xác Định";
+"Local" = "Cục Bộ";
+"Local Blackholes" = "%d Hố Đen Cục Bộ";
+"Add New Blackhole" = "Thêm Hố Đen Mới";
+
+/* BlackholeView */
+"Pinch to Zoom" = "Chụm để Phóng To";
+"Overview" = "Tổng Quan";
+"Information" = "Thông Tin";
+"Galleries" = "Thư Viện";
+"Comment" = "Bình Luận";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Nội dung cho tab {tab} sẽ sớm có!";
+"About" = "Giới Thiệu";
+"Video" = "Video";
+"See more" = "Xem thêm";
+"Radius" = "Bán Kính";
+"Distance from Sun" = "Khoảng Cách từ Mặt Trời";
+"Age" = "Tuổi";
+"Unknown" = "Không Xác Định";
+"Comment Under Development" = "Phần bình luận đang được phát triển...";
+"No description available" = "Không có mô tả";
+"Image" = "Hình ảnh {index}";
+"Videos" = "Video";
+"Wikipedia: Sagittarius A" = "Wikipedia: Sagittarius A*";
+"Wikipedia: TON 618" = "Wikipedia: TON 618";
+"Wikipedia: M87" = "Wikipedia: Messier 87";
+
+/* M87View */
+"M87 Random Info 1" = "Hố đen M87 là hố đen đầu tiên được chụp ảnh trực tiếp vào năm 2019.";
+"M87 Random Info 2" = "Nó nằm ở trung tâm của thiên hà Messier 87, một thiên hà elip siêu lớn.";
+"M87 Random Info 3" = "Hố đen này có khối lượng khoảng 6,5 tỷ lần khối lượng Mặt Trời.";
+"M87 Random Info 4" = "Chân trời sự kiện của nó có đường kính khoảng 38 tỷ kilômét.";
+"M87 Random Info 5" = "Hố đen M87 cung cấp năng lượng cho một tia tương đối tính lớn có thể quan sát được ở bước sóng radio.";
+
+/* SagittariusAView */
+"Sagittarius A Random Info 1" = "Sagittarius A* nằm ở trung tâm của Dải Ngân Hà.";
+"Sagittarius A Random Info 2" = "Nó có khối lượng tương đương khoảng 4,3 triệu lần khối lượng Mặt Trời.";
+"Sagittarius A Random Info 3" = "Nó được phát hiện thông qua chuyển động của các ngôi sao quay quanh nó.";
+"Sagittarius A Random Info 4" = "Chân trời sự kiện của nó có đường kính khoảng 24 triệu kilômét.";
+"Sagittarius A Random Info 5" = "Nó được nghiên cứu tích cực bằng kính viễn vọng vô tuyến và hồng ngoại.";
+
+/* TON618View */
+"TON 618 Random Info 1" = "TON 618 là một trong những hố đen khối lượng lớn nhất từng được phát hiện.";
+"TON 618 Random Info 2" = "Bán kính Schwarzschild của nó khoảng 1.300 AU, lớn hơn hệ Mặt Trời của chúng ta.";
+"TON 618 Random Info 3" = "Nó nằm trong một chuẩn tinh xa xôi ở chòm sao Canes Venatici.";
+"TON 618 Random Info 4" = "TON 618 cung cấp năng lượng cho một trong những chuẩn tinh sáng nhất được biết đến.";
+"TON 618 Random Info 5" = "Nó được xác định lần đầu tiên vào năm 1970 qua quan sát quang học.";
+
+/* AddBlackholeView and EditBlackholeView */
+"Add Your New Blackhole" = "Thêm Hố Đen Mới";
+"Edit Blackhole" = "Chỉnh Sửa Hố Đen";
+"Cancel" = "Hủy";
+"Save" = "Lưu";
+"Basic information" = "Thông Tin Cơ Bản";
+"Blackhole name" = "Tên Hố Đen";
+"Short description" = "Mô Tả Ngắn";
+"Blackhole Image" = "Chọn Hình Ảnh Hố Đen";
+"Random information" = "Thông Tin Ngẫu Nhiên {index}";
+"Image from Basic Information" = "Hình Ảnh từ Thông Tin Cơ Bản";
+"About description" = "Mô Tả Giới Thiệu";
+"Your link video" = "Liên Kết Video {index}";
+"Select photo" = "Chọn Ảnh {index}";
+"Wikipedia link" = "Liên Kết Wikipedia";
+"Wikipedia" = "URL Wikipedia";
+"Confirm Delete" = "Xác Nhận Xóa";
+"Delete" = "Xóa";
+"Are you sure you want to delete {blackhole.name}?" = "Bạn có chắc chắn muốn xóa {blackhole.name}?";
