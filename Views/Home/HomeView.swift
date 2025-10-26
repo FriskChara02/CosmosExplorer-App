@@ -39,7 +39,7 @@ struct HomeView: View {
         "cosmos_background2",
         "constellation_background",
         "zodiac_background",
-        "BlackBG"
+        "skylive_background"
     ]
     
     private let gridItemsLeft = [
@@ -71,7 +71,7 @@ struct HomeView: View {
         "zodiac_background",
         "solarsystem_background",
         "planets_background",
-        "BlackBG"
+        "skylive_background"
     ]
     
     // Timer for auto-scrolling banner
@@ -391,6 +391,30 @@ struct HomeView: View {
                                             .padding(8)
                                             .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
                                         }
+                                    } else if gridItemsLeft[index] == LanguageManager.current.string("Constellation") {
+                                        NavigationLink(destination: ConstellationCatalogView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
                                     } else {
                                         ZStack(alignment: .bottomLeading) {
                                             Image(gridBackgroundImagesLeft[index])
@@ -418,6 +442,54 @@ struct HomeView: View {
                                     // Right Column
                                     if gridItemsRight[index] == LanguageManager.current.string("Solar System") {
                                         NavigationLink(destination: SolarSystemView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                        }
+                                    } else if gridItemsRight[index] == LanguageManager.current.string("Planets") {
+                                        NavigationLink(destination: PlanetsCatalogView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                        }
+                                    } else if gridItemsRight[index] == LanguageManager.current.string("Sky Live") {
+                                        NavigationLink(destination: SkyLiveListView().navigationBarBackButtonHidden(true)) {
                                             ZStack(alignment: .bottomLeading) {
                                                 Image(gridBackgroundImagesRight[index])
                                                     .resizable()

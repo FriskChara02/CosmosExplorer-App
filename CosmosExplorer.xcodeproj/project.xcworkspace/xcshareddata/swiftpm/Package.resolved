@@ -1,5 +1,5 @@
 {
-  "originHash" : "c58369ebb5a133ef2d2dae29b03782b03a6b87b57f303dce387b9807eacdf4de",
+  "originHash" : "06ef58385488ef710987fd226848bc02f0acddbdd578787272775be40a9877ac",
   "pins" : [
     {
       "identity" : "bluesocket",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "356ffe0c43722f192d796300557b3b530a0baebc",
         "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "swiftaa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onekiloparsec/SwiftAA.git",
+      "state" : {
+        "revision" : "18a291abe9c31e483ab4f573da87d050735f434d",
+        "version" : "2.4.0"
       }
     }
   ],

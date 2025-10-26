@@ -477,6 +477,63 @@
 "Content for tab coming soon" = "Content for tab coming soon!";
 "Wikipedia: Earth" = "Wikipedia: Earth";
 
+/* MoonView */
+"Moon Random Info 1" = "The Moon is Earth's only natural satellite.";
+"Moon Random Info 2" = "It is the fifth-largest moon in the Solar System.";
+"Moon Random Info 3" = "The Moon's surface is covered with craters from ancient impacts.";
+"Moon Random Info 4" = "It has no atmosphere, making it unable to support life.";
+"Moon Random Info 5" = "The Moon causes Earth's tides due to its gravitational pull.";
+"Moon About Description" = "The Moon, Earth's closest celestial companion, is a rocky satellite orbiting at an average distance of about 384,400 km. Roughly 4.5 billion years old, it formed from debris ejected during a massive impact between Earth and a Mars-sized body. Its heavily cratered surface, marked by ancient impacts, lacks an atmosphere, resulting in extreme temperature swings from -173°C to 127°C. The Moon's gravitational influence drives Earth's tides and has inspired myths and exploration for centuries.";
+"Moon By The Numbers Type" = "Type: Natural Satellite";
+"Moon By The Numbers Radius" = "Radius: ~1,737.4 km";
+"Moon By The Numbers Distance" = "Distance from Earth: ~384,400 km (average)";
+"Moon By The Numbers Gravity" = "Gravity: ~1.62 m/s²";
+"Moon By The Numbers Tilt" = "Tilt of Axis: ~6.68° (relative to Earth's equator)";
+"Moon By The Numbers Orbital Period" = "Orbital Period: ~27.32 Earth days";
+"Moon By The Numbers Rotation" = "Rotation Period: ~27.32 Earth days (synchronous)";
+"Moon By The Numbers Temperature" = "Temperature: -173°C to 127°C";
+"Moon By The Numbers Age" = "Age: ~4.5 billion years";
+"Moon Myths Title" = "🌙 Moon Myths Across Cultures";
+"Moon Myths Description" = "The Moon has captivated human imagination for millennia, inspiring myths and deities in cultures worldwide.";
+"Greek Myth Culture" = "Greek";
+"Greek Moon God" = "Selene";
+"Greek Moon Description" = "Selene, the Greek Moon goddess, drove her silvery chariot across the night sky, illuminating the world.";
+"Chinese Myth Culture" = "Chinese";
+"Chinese Moon God" = "Changxi";
+"Chinese Moon Description" = "Changxi, a lunar deity, was associated with the Moon and the mother of twelve moons in Chinese mythology.";
+"Egyptian Myth Culture" = "Egyptian";
+"Egyptian Moon God" = "Khonsu";
+"Egyptian Moon Description" = "Khonsu, the Egyptian Moon god, was a protector and traveler, associated with time and healing.";
+"Aztec Myth Culture" = "Aztec";
+"Aztec Moon God" = "Metztli";
+"Aztec Moon Description" = "Metztli, the Aztec Moon deity, symbolized the cyclical nature of time and was revered in rituals.";
+"Moon Internal Title" = "🌙 Internal Structure of the Moon";
+"Moon Layer Crust" = "Crust";
+"Moon Layer Crust Description" = "A rocky, cratered surface, about 50 km thick, formed from ancient volcanic activity and impacts.";
+"Moon Layer Mantle" = "Mantle";
+"Moon Layer Mantle Description" = "A solid, rocky layer beneath the crust, rich in minerals like olivine, extending to about 1,300 km deep.";
+"Moon Layer Core" = "Core";
+"Moon Layer Core Description" = "A small, partially molten iron core, roughly 300-400 km in radius, less active than Earth's.";
+"Moon In Depth Title" = "In-Depth Study of the Moon";
+"Moon In Depth Tides" = "Tidal Effects";
+"Moon In Depth Tides Description" = "The Moon’s gravity causes Earth’s ocean tides, shaping coastal ecosystems and influencing navigation.";
+"Moon In Depth Craters" = "Impact Craters";
+"Moon In Depth Craters Description" = "The Moon’s surface is scarred with craters from meteor impacts, preserving a record of cosmic collisions.";
+"Moon In Depth Libration" = "Libration";
+"Moon In Depth Libration Description" = "The Moon’s slight wobble allows us to see up to 59% of its surface over time, despite tidal locking.";
+"Moon In Depth Missions" = "Scientific Missions";
+"Moon In Depth Missions Description" = "Human and robotic missions, like Apollo and Chang’e, have revealed the Moon’s composition and history.";
+"Moon Exploration Title" = "Exploration of the Moon";
+"Moon Mission Apollo 11" = "Apollo 11 (1969)";
+"Moon Mission Apollo 11 Description" = "The first human landing on the Moon, where astronauts walked and collected lunar samples.";
+"Moon Mission Luna" = "Luna Program (1959-1976)";
+"Moon Mission Luna Description" = "Soviet missions that achieved the first flyby, impact, and sample return from the Moon.";
+"Moon Mission Chang'e" = "Chang’e Program (2007-Present)";
+"Moon Mission Chang'e Description" = "China’s lunar program, including orbiters and rovers, exploring the Moon’s far side.";
+"Moon Exploration Quote" = "“That’s one small step for man, one giant leap for mankind.” – Neil Armstrong";
+"Content for tab coming soon" = "Content for tab coming soon!";
+"Wikipedia: Moon" = "Wikipedia: Moon";
+
 /* MarsView */
 "Mars Random Info 1" = "Mars is known as the Red Planet due to its reddish appearance.";
 "Mars Random Info 2" = "It has the largest volcano in the Solar System, Olympus Mons.";
@@ -1219,3 +1276,294 @@
 "Confirm Delete" = "Confirm Delete";
 "Delete" = "Delete";
 "Are you sure you want to delete {blackhole.name}?" = "Are you sure you want to delete {blackhole.name}?";
+
+/* ConstellationViewModel */
+"Aquarius" = "Aquarius";
+"AquariusDescription" = "Aquarius, the water bearer constellation.";
+"Aquarius About Description" = "Aquarius is a constellation in the zodiac, located between Capricornus and Pisces. It is associated with the water bearer, a figure from mythology carrying a jug of water. It is visible in the southern hemisphere during autumn.";
+
+/* ConstellationCatalogView */
+"Constellations" = "Constellations";
+"Search constellations" = "Search constellations...";
+"Favorite" = "Favorite";
+"Unfavorite" = "Unfavorite";
+"Edit" = "Edit";
+"Today" = "Today";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Views";
+"Unknown Constellation" = "Unknown Constellation";
+"Local" = "Local";
+"Local Constellations" = "%d Local Constellations";
+"Add New Constellation" = "Add New Constellation";
+
+/* ConstellationView */
+"Pinch to Zoom" = "Pinch to Zoom";
+"Overview" = "Overview";
+"Information" = "Information";
+"Galleries" = "Galleries";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Content for tab {tab} coming soon!";
+"About" = "About";
+"Video" = "Video";
+"See more" = "See more";
+"Main Stars" = "Main Stars";
+"Named Stars" = "Named Stars";
+"Unknown" = "Unknown";
+"Comment Under Development" = "Comment section under development...";
+"No description available" = "No description available";
+"Image" = "Image {index}";
+"Videos" = "Videos";
+"Wikipedia: Aquarius Constellation" = "Wikipedia: Aquarius Constellation";
+"360°" = "360°";
+
+/* AquariusCView */
+"Aquarius Random Info 1" = "Aquarius is the 10th largest constellation in the sky.";
+"Aquarius Random Info 2" = "It is one of the 12 zodiac constellations.";
+"Aquarius Random Info 3" = "The brightest star in Aquarius is Sadalsuud.";
+"Aquarius Random Info 4" = "Aquarius is associated with the myth of Ganymede, a water bearer in Greek mythology.";
+"Aquarius Random Info 5" = "It contains several notable deep-sky objects, including the globular clusters M2 and M72.";
+
+/* CancerCView */
+"Cancer" = "Cancer";
+"CancerDescription" = "Cancer, the crab constellation.";
+"Cancer About Description" = "Cancer is a zodiac constellation located between Gemini and Leo. It is associated with the crab from Greek mythology, sent by Hera to hinder Hercules. It is one of the faintest zodiac constellations, visible in the northern hemisphere during spring.";
+"Cancer Random Info 1" = "Cancer is the 31st largest constellation in the sky.";
+"Cancer Random Info 2" = "It is one of the 12 zodiac constellations.";
+"Cancer Random Info 3" = "The brightest star in Cancer is Tarf (Beta Cancri).";
+"Cancer Random Info 4" = "Cancer contains the famous Beehive Cluster (M44), a bright open star cluster.";
+"Cancer Random Info 5" = "The constellation is linked to the myth of Hercules and the Hydra.";
+"Wikipedia: Cancer Constellation" = "Wikipedia: Cancer Constellation";
+
+/* CapricornCView */
+"Capricorn" = "Capricorn";
+"CapricornDescription" = "Capricorn, the sea goat constellation.";
+"Capricorn About Description" = "Capricornus, or Capricorn, is a zodiac constellation located between Sagittarius and Aquarius. It is associated with the mythological sea goat, a creature with the body of a goat and the tail of a fish. It is visible in the southern hemisphere during autumn.";
+"Capricorn Random Info 1" = "Capricornus is the 40th largest constellation in the sky.";
+"Capricorn Random Info 2" = "It is one of the 12 zodiac constellations.";
+"Capricorn Random Info 3" = "The brightest star in Capricornus is Deneb Algedi.";
+"Capricorn Random Info 4" = "Capricornus is associated with the myth of Amalthea, the goat that nursed Zeus.";
+"Capricorn Random Info 5" = "It contains the globular cluster M30, a notable deep-sky object.";
+"Wikipedia: Capricorn Constellation" = "Wikipedia: Capricorn Constellation";
+
+/* AddConstellationView and EditConstellationView */
+"Add Your New Constellation" = "Add Your New Constellation";
+"Edit Constellation" = "Edit Constellation";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Basic information" = "Basic Information";
+"Constellation name" = "Constellation Name";
+"Short description" = "Short Description";
+"Constellation Image" = "Select Constellation Image";
+"Random information" = "Random Information {index}";
+"Image from Basic Information" = "Image from Basic Information";
+"About description" = "About Description";
+"Your link video" = "Video Link {index}";
+"Select photo" = "Select Photo {index}";
+"Wikipedia link" = "Wikipedia Link";
+"Wikipedia" = "Wikipedia URL";
+"Confirm Delete" = "Confirm Delete";
+"Delete" = "Delete";
+"Are you sure you want to delete {constellation.name}?" = "Are you sure you want to delete {constellation.name}?";
+"VideoListView appeared for" = "VideoListView appeared for";
+"Named Star" = "Named Star {index}";
+
+/* PlanetsView */
+"Search planets" = "Search planets";
+"Planets Catalog" = "Planets Catalog";
+"Planets" = "Planets";
+"Unfavorite" = "Unfavorite";
+"Favorite" = "Favorite";
+"Edit" = "Edit";
+"Proxima b" = "Proxima b";
+"Kepler-452b" = "Kepler-452b";
+"55 Cancri e" = "55 Cancri e";
+"See more" = "See more";
+"360°" = "360°";
+"About" = "About";
+"Video" = "Video";
+"Overview" = "Overview";
+"Information" = "Information";
+"Galleries" = "Galleries";
+"Comment" = "Comment";
+"Wiki" = "Wiki";
+"Content for tab coming soon" = "Content for tab {tab} coming soon!";
+"Wikipedia: Proxima b" = "Wikipedia: Proxima b";
+"Wikipedia: Kepler-452b" = "Wikipedia: Kepler-452b";
+"Wikipedia: 55 Cancri e" = "Wikipedia: 55 Cancri e";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Age" = "Age";
+"Unknown" = "Unknown";
+"Comment Under Development" = "Comment section under development...";
+"No description available" = "No description available";
+"Image" = "Image {index}";
+"Videos" = "Videos";
+"Pinch to Zoom" = "Pinch to Zoom";
+
+/* ProximabView */
+"Proxima b Random Info 1" = "Orbits every 11.185 Earth days at 0.048 AU";
+"Proxima b Random Info 2" = "Slightly larger than Earth in habitable zone";
+"Proxima b Random Info 3" = "Super Earth orbiting M-type star";
+"Proxima b Random Info 4" = "Mass about 1.173 Earth masses";
+"Proxima b Random Info 5" = "Year lasts 11.2 Earth days, 4.2 light-years away";
+"Proxima b About Description" = "Proxima b is a potentially habitable super-Earth orbiting the red dwarf star Proxima Centauri, the closest star to the Sun.";
+"Proxima b By The Numbers Radius" = "Radius: ~1.07 Earth radii";
+"Proxima b By The Numbers Distance" = "Distance from Sun: ~4.24 light-years";
+"Proxima b By The Numbers Age" = "Age: Unknown";
+
+/* Kepler452bView */
+"Kepler-452b Random Info 1" = "Mass 3.29 Earths, orbits in 384.8 days";
+"Kepler-452b Random Info 2" = "Star is 6 billion years old, 1.5B older than Sun";
+"Kepler-452b Random Info 3" = "60% larger in diameter than Earth";
+"Kepler-452b Random Info 4" = "Super-Earth size, potentially rocky";
+"Kepler-452b Random Info 5" = "Orbits at distance similar to Earth from its star";
+"Kepler-452b About Description" = "Kepler-452b is a super-Earth exoplanet orbiting in the habitable zone of a Sun-like star, often called Earth's cousin.";
+"Kepler-452b By The Numbers Radius" = "Radius: ~1.6 Earth radii";
+"Kepler-452b By The Numbers Distance" = "Distance from Sun: ~1,400 light-years";
+"Kepler-452b By The Numbers Age" = "Age: ~6 billion years";
+
+/* Cancrie55View */
+"55 Cancri e Random Info 1" = "Mass 7.99 Earths, orbits in 0.7 days";
+"55 Cancri e Random Info 2" = "Super-Earth with possible diamond composition";
+"55 Cancri e Random Info 3" = "Has a thick atmosphere detected by JWST";
+"55 Cancri e Random Info 4" = "Surface temperature nearly 2400K, uninhabitable";
+"55 Cancri e Random Info 5" = "Twice Earth's size, eight times more massive";
+"55 Cancri e About Description" = "55 Cancri e is a super-Earth exoplanet with a possible diamond interior and thick atmosphere, extremely hot and close to its star.";
+"55 Cancri e By The Numbers Radius" = "Radius: ~2 Earth radii";
+"55 Cancri e By The Numbers Distance" = "Distance from Sun: ~40 light-years";
+"55 Cancri e By The Numbers Age" = "Age: Unknown";
+
+/* AddPlanetsView and EditPlanetsView */
+"Add Your New Planets" = "Add Your New Planets";
+"Edit Planets" = "Edit Planets";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Basic information" = "Basic Information";
+"Planets name" = "Planets Name";
+"Short description" = "Short Description";
+"Planets Image" = "Select Planets Image";
+"Overview" = "Overview";
+"Random information" = "Random Information {index}";
+"Image from Basic Information" = "Image from Basic Information";
+"Information" = "Information";
+"About description" = "About Description";
+"Your link video" = "Video Link {index}";
+"Radius" = "Radius";
+"Distance from Sun" = "Distance from Sun";
+"Age" = "Age";
+"Galleries" = "Galleries";
+"Select photo" = "Select Photo {index}";
+"Wikipedia link" = "Wikipedia Link";
+"Wikipedia" = "Wikipedia URL";
+"Confirm Delete" = "Confirm Delete";
+"Delete" = "Delete";
+"Are you sure you want to delete {planets.name}?" = "Are you sure you want to delete {planets.name}?";
+
+/* PlanetsCatalogView */
+"Planets" = "Planets";
+"Search planets" = "Search planets...";
+"Favorite" = "Favorite";
+"Unfavorite" = "Unfavorite";
+"Edit" = "Edit";
+"Today" = "Today";
+"Date Format" = "MM/dd/yyyy";
+"Views" = "Views";
+"Unknown Planets" = "Unknown Planets";
+"Local" = "Local";
+"Local Planets" = "%d Local Planets";
+"Add New Planets" = "Add New Planets";
+"Name" = "Name";
+"Description" = "Description";
+"Radius" = "Radius";
+"Distance" = "Distance";
+"Age" = "Age";
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Edit Planets" = "Edit Planets";
+"No Planets" = "No planets yet";
+"Add First Planets" = "Add your first planet!";
+"Proxima b" = "Proxima b";
+"Kepler-452b" = "Kepler-452b";
+"55 Cancri e" = "55 Cancri e";
+"Proxima b Description" = "A potentially habitable exoplanet in the Proxima Centauri system.";
+"Kepler-452b Description" = "A super-Earth in the habitable zone of a Sun-like star.";
+"55 Cancri e Description" = "A super-Earth with a possible diamond interior, very hot.";
+"VideoListView appeared for" = "VideoListView appeared for";
+
+/*SkyLiveView*/
+"SkyLive" = "Sky Live";
+"Sun" = "Sun";
+"Mercury" = "Mercury";
+"Venus" = "Venus";
+"Earth" = "Earth";
+"Moon" = "Moon";
+"Mars" = "Mars";
+"Jupiter" = "Jupiter";
+"Saturn" = "Saturn";
+"Uranus" = "Uranus";
+"Neptune" = "Neptune";
+"Altitude" = "Altitude";
+"Rise" = "Rise";
+"Set" = "Set";
+"CurrentTime" = "Current Time";
+
+/* SkyLiveView */
+"Altitude" = "Altitude";
+"Rise" = "Rise";
+"Transit" = "Transit";
+"Set" = "Set";
+"Altitude Explanation" = "The height of a celestial body above the horizon, measured in degrees.";
+"Rise Explanation" = "The time when a celestial body first appears above the horizon.";
+"Transit Explanation" = "The moment when a celestial body crosses the observer's meridian, reaching its highest point in the sky.";
+"Set Explanation" = "The time when a celestial body disappears below the horizon.";
+"Sun" = "Sun";
+"Moon" = "Moon";
+"Mercury" = "Mercury";
+"Venus" = "Venus";
+"Earth" = "Earth";
+"Mars" = "Mars";
+"Jupiter" = "Jupiter";
+"Saturn" = "Saturn";
+"Uranus" = "Uranus";
+"Neptune" = "Neptune";
+"Loading Data" = "Loading data...";
+"Up" = "Up";
+"Down" = "Down";
+"Basic Information" = "Basic Information";
+"Orbital Speed" = "Orbital Speed";
+"Current Time" = "Current Time";
+"Day Length" = "Day Length";
+"Night Length" = "Night Length";
+"Season" = "Season";
+"Moon Phase" = "Moon Phase";
+"Next Phase" = "Next Phase";
+"Special Astronomical Events" = "Special Astronomical Events";
+"Date" = "Date";
+"No Special Events Today" = "No special astronomical events today ^^ Come back later!";
+"You Are Living Here" = "You are living here ^^";
+"New Moon" = "New Moon";
+"Waxing Crescent" = "Waxing Crescent";
+"First Quarter" = "First Quarter";
+"Full Moon" = "Full Moon";
+"Last Quarter" = "Last Quarter";
+"Waning Crescent" = "Waning Crescent";
+"Phase Angle" = "Phase Angle";
+"Illuminated Fraction" = "Illuminated Fraction";
+"Elongation" = "Elongation";
+"Elongation Angle" = "Angle";
+"Opposition" = "Opposition";
+"Opposition Description" = "Opposite the Sun";
+"Event Explanations" = "Event Explanations";
+"No Explanations Available" = "No explanations available";
+"Moon Phase Explanation" = "The Moon's phase shows how much of it is illuminated by the Sun as seen from Earth.";
+"Phase Angle Explanation" = "The angle between the Sun, Moon, and Earth, determining the Moon's visible shape.";
+"Illuminated Fraction Explanation" = "The percentage of the Moon's surface that is lit by the Sun.";
+"Elongation Explanation" = "The angular distance between a planet and the Sun, indicating visibility from Earth.";
+"Opposition Explanation" = "When a planet is opposite the Sun in the sky, making it fully illuminated and closest to Earth.";
+"No Explanation Available" = "No explanation available for this event.";
+"hours" = "hours";
+"Spring" = "Spring";
+"Summer" = "Summer";
+"Autumn" = "Autumn";
+"Winter" = "Winter";

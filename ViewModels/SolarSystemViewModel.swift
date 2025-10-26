@@ -140,11 +140,20 @@ class SolarSystemViewModel: ObservableObject {
                 videoURLs: []
             ),
             PlanetModel(
+                id: UUID(uuidString: "00000000-0000-0000-0000-000000000009") ?? UUID(),
+                name: LanguageManager.current.string("Moon"),
+                planetDescription: LanguageManager.current.string("MoonDescription"),
+                viewCount: 0,
+                planet_order: 4,
+                randomInfos: [],
+                videoURLs: []
+            ),
+            PlanetModel(
                 id: UUID(uuidString: "00000000-0000-0000-0000-000000000004") ?? UUID(),
                 name: LanguageManager.current.string("Mars"),
                 planetDescription: LanguageManager.current.string("MarsDescription"),
                 viewCount: 0,
-                planet_order: 4,
+                planet_order: 5,
                 randomInfos: [],
                 videoURLs: []
             ),
@@ -153,7 +162,7 @@ class SolarSystemViewModel: ObservableObject {
                 name: LanguageManager.current.string("Jupiter"),
                 planetDescription: LanguageManager.current.string("JupiterDescription"),
                 viewCount: 0,
-                planet_order: 5,
+                planet_order: 6,
                 randomInfos: [],
                 videoURLs: []
             ),
@@ -162,7 +171,7 @@ class SolarSystemViewModel: ObservableObject {
                 name: LanguageManager.current.string("Saturn"),
                 planetDescription: LanguageManager.current.string("SaturnDescription"),
                 viewCount: 0,
-                planet_order: 6,
+                planet_order: 7,
                 randomInfos: [],
                 videoURLs: []
             ),
@@ -171,7 +180,7 @@ class SolarSystemViewModel: ObservableObject {
                 name: LanguageManager.current.string("Uranus"),
                 planetDescription: LanguageManager.current.string("UranusDescription"),
                 viewCount: 0,
-                planet_order: 7,
+                planet_order: 8,
                 randomInfos: [],
                 videoURLs: []
             ),
@@ -180,7 +189,7 @@ class SolarSystemViewModel: ObservableObject {
                 name: LanguageManager.current.string("Neptune"),
                 planetDescription: LanguageManager.current.string("NeptuneDescription"),
                 viewCount: 0,
-                planet_order: 8,
+                planet_order: 9,
                 randomInfos: [],
                 videoURLs: []
             )

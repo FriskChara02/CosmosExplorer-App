@@ -37,6 +37,8 @@ struct CosmosExplorerApp: App {
         .modelContainer(for: [NebulaModel.self])
         .modelContainer(for: [StarModel.self])
         .modelContainer(for: [BlackholeModel.self])
+        .modelContainer(for: [ConstellationModel.self])
+        .modelContainer(for: [PlanetsModel.self])
         .modelContainer(swiftDataService.container)
     }
 }

@@ -10,6 +10,7 @@
 		7A4FF46E2E61A9EA00ED6904 /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FF46D2E61A9EA00ED6904 /* RealityKit.framework */; };
 		7A4FF4702E6310C900ED6904 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FF46F2E6310C900ED6904 /* WebKit.framework */; };
 		7A4FF4722E64390500ED6904 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4FF4712E64390500ED6904 /* UIKit.framework */; };
+		7AA394042EADC504000C47DA /* SwiftAA in Frameworks */ = {isa = PBXBuildFile; productRef = 7AA394032EADC504000C47DA /* SwiftAA */; };
 		7AB292EF2E74499D00582D0F /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292EE2E74499D00582D0F /* PostgresClientKit */; };
 		7AB292F42E7450F100582D0F /* OpenCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F32E7450F100582D0F /* OpenCombine */; };
 		7AB292F62E7450F100582D0F /* OpenCombineDispatch in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F52E7450F100582D0F /* OpenCombineDispatch */; };
@@ -47,6 +48,7 @@
 		7A5593E52EA16820008C8C27 /* Exceptions for "ViewModels" folder in "CosmosExplorerUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ConstellationViewModel.swift,
 				NebulaViewModel.swift,
 			);
 			target = 7A7F82E32E367C31006291B9 /* CosmosExplorerUITests */;
@@ -54,6 +56,16 @@
 		7A5593EB2EA1686D008C8C27 /* Exceptions for "Views" folder in "CosmosExplorerUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Constellation/AddConstellationView.swift,
+				Constellation/ConstellationCatalogView.swift,
+				Constellation/ConstellationView.swift,
+				Constellation/ConstellationView/Aquarius3D.swift,
+				Constellation/ConstellationView/AquariusCView.swift,
+				Constellation/ConstellationView/Cancer3D.swift,
+				Constellation/ConstellationView/CancerCView.swift,
+				Constellation/ConstellationView/CapricornCView.swift,
+				Constellation/ConstellationView/CapricornOverview3D.swift,
+				Constellation/EditConstellationView.swift,
 				Nebula/AddNebulaView.swift,
 				Nebula/EditNebulaView.swift,
 				Nebula/NebulaCatalogView.swift,
@@ -61,6 +73,16 @@
 				Nebula/NebulaView/ButterflyView.swift,
 				Nebula/NebulaView/EagleView.swift,
 				Nebula/NebulaView/HelixView.swift,
+				Planets/AddPlanetsView.swift,
+				Planets/EditPlanetsView.swift,
+				Planets/PlanetsCatalogView.swift,
+				Planets/PlanetsView.swift,
+				Planets/PlanetsView/Cancrie55View.swift,
+				Planets/PlanetsView/Kepler452bView.swift,
+				Planets/PlanetsView/ProximabView.swift,
+				SkyLive/SkyLiveListView.swift,
+				SkyLive/SolarSysteam3D.swift,
+				SolarSystem/SolarSystemView/MoonView.swift,
 			);
 			target = 7A7F82E32E367C31006291B9 /* CosmosExplorerUITests */;
 		};
@@ -68,10 +90,12 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BlackholeModel.swift,
+				ConstellationModel.swift,
 				GalaxyModel.swift,
 				NebulaModel.swift,
 				NewsModel.swift,
 				PlanetModel.swift,
+				PlanetsModel.swift,
 				SkyLiveModel.swift,
 				StarModel.swift,
 				UserModel.swift,
@@ -148,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA394042EADC504000C47DA /* SwiftAA in Frameworks */,
 				7A4FF4702E6310C900ED6904 /* WebKit.framework in Frameworks */,
 				7A4FF4722E64390500ED6904 /* UIKit.framework in Frameworks */,
 				7A4FF46E2E61A9EA00ED6904 /* RealityKit.framework in Frameworks */,
@@ -241,6 +266,7 @@
 				7AB292F52E7450F100582D0F /* OpenCombineDispatch */,
 				7AB292F72E7450F100582D0F /* OpenCombineFoundation */,
 				7AB292F92E7450F100582D0F /* OpenCombineShim */,
+				7AA394032EADC504000C47DA /* SwiftAA */,
 			);
 			productName = CosmosExplorer;
 			productReference = 7A7F82CB2E367C30006291B9 /* CosmosExplorer.app */;
@@ -329,6 +355,7 @@
 			packageReferences = (
 				7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */,
 				7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */,
+				7AA393FE2EADC504000C47DA /* XCRemoteSwiftPackageReference "SwiftAA" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7A7F82CC2E367C30006291B9 /* Products */;
@@ -699,6 +726,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7AA393FE2EADC504000C47DA /* XCRemoteSwiftPackageReference "SwiftAA" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onekiloparsec/SwiftAA.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 		7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/codewinsdotcom/PostgresClientKit";
@@ -718,6 +753,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7AA394032EADC504000C47DA /* SwiftAA */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AA393FE2EADC504000C47DA /* XCRemoteSwiftPackageReference "SwiftAA" */;
+			productName = SwiftAA;
+		};
 		7AB292EE2E74499D00582D0F /* PostgresClientKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */;

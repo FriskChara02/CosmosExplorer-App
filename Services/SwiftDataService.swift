@@ -19,7 +19,7 @@ class SwiftDataService {
     }
     
     init() {
-        let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self])
+        let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self])
         let containerURL = URL.applicationSupportDirectory.appendingPathComponent("CosmosDB.sqlite")
         
         let configuration = ModelConfiguration(
@@ -1297,6 +1297,425 @@ class SwiftDataService {
             print("✅ Blackhole deleted from PostgreSQL: \(blackhole.name)")
         } catch {
             print("❌ Error deleting blackhole from PostgreSQL: \(error)")
+        }
+    }
+    
+    // MARK: - Save Constellation
+    func saveConstellation(_ constellation: ConstellationModel) {
+        let context = container.mainContext
+        context.insert(constellation)
+        do {
+            try context.save()
+            print("✅ Constellation saved to SwiftData: \(constellation.name)")
+        } catch {
+            print("❌ Error saving constellation to SwiftData: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Failed to connect to PostgreSQL")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO constellations (
+                    id, name, constellation_description, view_count, is_favorite, constellation_order,
+                    image_data, random_infos, about_description, video_urls,
+                    main_stars, named_stars, gallery_image_data, wiki_link
+                )
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+                ON CONFLICT (id) DO UPDATE
+                SET name = $2, constellation_description = $3, view_count = $4, is_favorite = $5, constellation_order = $6,
+                    image_data = $7, random_infos = $8, about_description = $9, video_urls = $10,
+                    main_stars = $11, named_stars = $12, gallery_image_data = $13, wiki_link = $14
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pg(constellation.id),
+                pg(constellation.name),
+                pg(constellation.constellationDescription),
+                pg(constellation.viewCount),
+                pg(constellation.isFavorite),
+                pg(constellation.constellation_order),
+                pg(constellation.imageData),
+                pg(constellation.randomInfosData),
+                pg(constellation.aboutDescription),
+                pg(constellation.videoURLsData),
+                pg(constellation.mainStars),
+                pg(constellation.namedStarsData),
+                pg(constellation.galleryImageData),
+                pg(constellation.wikiLink)
+            ])
+            
+            print("✅ Constellation synced to PostgreSQL: \(constellation.name)")
+        } catch {
+            print("❌ Error syncing constellation to PostgreSQL: \(error)")
+        }
+    }
+    
+    // MARK: - Fetch Constellations
+        func fetchConstellations() -> [ConstellationModel] {
+            let context = container.mainContext
+            var constellations: [ConstellationModel] = []
+            
+            // Fetch from SwiftData
+            do {
+                let descriptor = FetchDescriptor<ConstellationModel>()
+                constellations = try context.fetch(descriptor)
+                print("📱 Fetched \(constellations.count) constellations from SwiftData: \(constellations.map { $0.name })")
+                if !constellations.isEmpty {
+                    return constellations
+                }
+            } catch {
+                print("❌ Error fetching constellations from SwiftData: \(error)")
+            }
+            
+            // Fetch from PostgreSQL if SwiftData is empty
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("❌ Failed to connect to PostgreSQL")
+                return constellations
+            }
+            defer { connection.close() }
+            
+            do {
+                let statement = try connection.prepareStatement(text: """
+                    SELECT id, name, constellation_description, view_count, is_favorite, constellation_order,
+                           image_data, random_infos, about_description, video_urls,
+                           main_stars, named_stars, gallery_image_data, wiki_link
+                    FROM constellations
+                    ORDER BY constellation_order ASC
+                """)
+                defer { statement.close() }
+                
+                let cursor = try statement.execute()
+                for row in cursor {
+                    let columns = try row.get().columns
+                    let id = UUID(uuidString: try columns[0].optionalString() ?? "") ?? UUID()
+                    
+                    let constellation = ConstellationModel(
+                        id: id,
+                        name: try columns[1].optionalString() ?? "",
+                        constellationDescription: try columns[2].optionalString() ?? "",
+                        viewCount: try columns[3].optionalInt() ?? 0,
+                        isFavorite: try columns[4].optionalBool() ?? false,
+                        constellation_order: try columns[5].optionalInt() ?? 0,
+                        imageData: try columns[6].dataFromBytea() ?? Data(),
+                        randomInfos: parseTextArray(try columns[7].optionalString() ?? "{}"),
+                        aboutDescription: try columns[8].optionalString() ?? "",
+                        videoURLs: parseTextArray(try columns[9].optionalString() ?? "{}"),
+                        mainStars: try columns[10].optionalInt() ?? 0,
+                        namedStars: parseTextArray(try columns[11].optionalString() ?? "{}"),
+                        galleryImageData: parseByteaArray(try columns[12].optionalString() ?? "{}"),
+                        wikiLink: try columns[13].optionalString() ?? ""
+                    )
+                    
+                    // Insert or update in SwiftData
+                    if constellations.contains(where: { $0.id == constellation.id }) {
+                        constellations.first(where: { $0.id == constellation.id })?.update(from: constellation)
+                    } else {
+                        context.insert(constellation)
+                        constellations.append(constellation)
+                    }
+                }
+                
+                try context.save()
+                print("✅ Synced \(constellations.count) constellations from PostgreSQL to SwiftData")
+            } catch {
+                print("❌ Error fetching constellations from PostgreSQL: \(error)")
+            }
+            
+            return constellations
+        }
+
+        // MARK: - Update Constellation
+        func updateConstellation(_ constellation: ConstellationModel) {
+            let context = container.mainContext
+            do {
+                try context.save()
+                print("✅ Constellation updated in SwiftData: \(constellation.name)")
+            } catch {
+                print("❌ Error updating constellation in SwiftData: \(error)")
+            }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("❌ Failed to connect to PostgreSQL")
+                return
+            }
+            defer { connection.close() }
+            
+            do {
+                let statement = try connection.prepareStatement(text: """
+                    UPDATE constellations
+                    SET name = $2, constellation_description = $3, view_count = $4, is_favorite = $5, constellation_order = $6,
+                        image_data = $7, random_infos = $8, about_description = $9, video_urls = $10,
+                        main_stars = $11, named_stars = $12, gallery_image_data = $13, wiki_link = $14
+                    WHERE id = $1
+                """)
+                defer { statement.close() }
+                
+                try statement.execute(parameterValues: [
+                    pg(constellation.id),
+                    pg(constellation.name),
+                    pg(constellation.constellationDescription),
+                    pg(constellation.viewCount),
+                    pg(constellation.isFavorite),
+                    pg(constellation.constellation_order),
+                    pg(constellation.imageData),
+                    pg(constellation.randomInfosData),
+                    pg(constellation.aboutDescription),
+                    pg(constellation.videoURLsData),
+                    pg(constellation.mainStars),
+                    pg(constellation.namedStarsData),
+                    pg(constellation.galleryImageData),
+                    pg(constellation.wikiLink)
+                ])
+                
+                print("✅ Constellation updated in PostgreSQL: \(constellation.name)")
+            } catch {
+                print("❌ Error updating constellation in PostgreSQL: \(error)")
+            }
+        }
+
+        // MARK: - Delete Constellation
+        func deleteConstellation(_ constellation: ConstellationModel) {
+            let context = container.mainContext
+            
+            context.delete(constellation)
+            do {
+                try context.save()
+                print("✅ Constellation deleted from SwiftData: \(constellation.name)")
+            } catch {
+                print("❌ Error deleting constellation from SwiftData: \(error)")
+                return
+            }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("❌ Failed to connect to PostgreSQL for delete")
+                return
+            }
+            defer { connection.close() }
+            
+            do {
+                let statement = try connection.prepareStatement(text: "DELETE FROM constellations WHERE id = $1")
+                defer { statement.close() }
+                try statement.execute(parameterValues: [pg(constellation.id)])
+                
+                print("✅ Constellation deleted from PostgreSQL: \(constellation.name)")
+            } catch {
+                print("❌ Error deleting constellation from PostgreSQL: \(error)")
+            }
+        }
+    
+    // MARK: - Save Planets
+    func savePlanets(_ planets: PlanetsModel) {
+        let context = container.mainContext
+        context.insert(planets)
+        do {
+            try context.save()
+            print("✅ Planets saved to SwiftData: \(planets.name)")
+        } catch {
+            print("❌ Error saving planets to SwiftData: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Failed to connect to PostgreSQL")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO planetss (
+                    id, name, planets_description, view_count, is_favorite, planets_order,
+                    image_data, random_infos, about_description, video_urls,
+                    radius, distance_from_sun, age, gallery_image_data, wiki_link
+                )
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+                ON CONFLICT (id) DO UPDATE
+                SET name = $2, planets_description = $3, view_count = $4, is_favorite = $5, planets_order = $6,
+                    image_data = $7, random_infos = $8, about_description = $9, video_urls = $10,
+                    radius = $11, distance_from_sun = $12, age = $13, gallery_image_data = $14, wiki_link = $15
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pg(planets.id),
+                pg(planets.name),
+                pg(planets.planetsDescription),
+                pg(planets.viewCount),
+                pg(planets.isFavorite),
+                pg(planets.planets_order),
+                pg(planets.imageData),
+                pg(planets.randomInfosData),
+                pg(planets.aboutDescription),
+                pg(planets.videoURLsData),
+                pg(planets.radius),
+                pg(planets.distanceFromSun),
+                pg(planets.age),
+                pg(planets.galleryImageData),
+                pg(planets.wikiLink)
+            ])
+            
+            print("✅ Planets synced to PostgreSQL: \(planets.name)")
+        } catch {
+            print("❌ Error syncing planets to PostgreSQL: \(error)")
+        }
+    }
+
+    // MARK: - Fetch Planets
+    func fetchPlanets() -> [PlanetsModel] {
+        let context = container.mainContext
+        var planets: [PlanetsModel] = []
+        
+        // Fetch from SwiftData
+        do {
+            let descriptor = FetchDescriptor<PlanetsModel>()
+            planets = try context.fetch(descriptor)
+            print("📱 Fetched \(planets.count) planets from SwiftData: \(planets.map { $0.name })")
+            if !planets.isEmpty {
+                return planets
+            }
+        } catch {
+            print("❌ Error fetching planets from SwiftData: \(error)")
+        }
+        
+        // Fetch from PostgreSQL if SwiftData is empty
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Failed to connect to PostgreSQL")
+            return planets
+        }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                SELECT id, name, planets_description, view_count, is_favorite, planets_order,
+                       image_data, random_infos, about_description, video_urls,
+                       radius, distance_from_sun, age, gallery_image_data, wiki_link
+                FROM planetss
+                ORDER BY planets_order ASC
+            """)
+            defer { statement.close() }
+            
+            let cursor = try statement.execute()
+            for row in cursor {
+                let columns = try row.get().columns
+                let id = UUID(uuidString: try columns[0].optionalString() ?? "") ?? UUID()
+                
+                let planet = PlanetsModel(
+                    id: id,
+                    name: try columns[1].optionalString() ?? "",
+                    planetsDescription: try columns[2].optionalString() ?? "",
+                    viewCount: try columns[3].optionalInt() ?? 0,
+                    isFavorite: try columns[4].optionalBool() ?? false,
+                    planets_order: try columns[5].optionalInt() ?? 0,
+                    imageData: try columns[6].dataFromBytea() ?? Data(),
+                    randomInfos: parseTextArray(try columns[7].optionalString() ?? "{}"),
+                    aboutDescription: try columns[8].optionalString() ?? "",
+                    videoURLs: parseTextArray(try columns[9].optionalString() ?? "{}"),
+                    radius: try columns[10].optionalString() ?? "",
+                    distanceFromSun: try columns[11].optionalString() ?? "",
+                    age: try columns[12].optionalString() ?? "",
+                    galleryImageData: parseByteaArray(try columns[13].optionalString() ?? "{}"),
+                    wikiLink: try columns[14].optionalString() ?? ""
+                )
+                
+                // Insert or update in SwiftData
+                if planets.contains(where: { $0.id == planet.id }) {
+                    planets.first(where: { $0.id == planet.id })?.update(from: planet)
+                } else {
+                    context.insert(planet)
+                    planets.append(planet)
+                }
+            }
+            
+            try context.save()
+            print("✅ Synced \(planets.count) planets from PostgreSQL to SwiftData")
+        } catch {
+            print("❌ Error fetching planets from PostgreSQL: \(error)")
+        }
+        
+        return planets
+    }
+
+    // MARK: - Update Planets
+    func updatePlanets(_ planets: PlanetsModel) {
+        let context = container.mainContext
+        do {
+            try context.save()
+            print("✅ Planets updated in SwiftData: \(planets.name)")
+        } catch {
+            print("❌ Error updating planets in SwiftData: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Failed to connect to PostgreSQL")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                UPDATE planetss
+                SET name = $2, planets_description = $3, view_count = $4, is_favorite = $5, planets_order = $6,
+                    image_data = $7, random_infos = $8, about_description = $9, video_urls = $10,
+                    radius = $11, distance_from_sun = $12, age = $13, gallery_image_data = $14, wiki_link = $15
+                WHERE id = $1
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pg(planets.id),
+                pg(planets.name),
+                pg(planets.planetsDescription),
+                pg(planets.viewCount),
+                pg(planets.isFavorite),
+                pg(planets.planets_order),
+                pg(planets.imageData),
+                pg(planets.randomInfosData),
+                pg(planets.aboutDescription),
+                pg(planets.videoURLsData),
+                pg(planets.radius),
+                pg(planets.distanceFromSun),
+                pg(planets.age),
+                pg(planets.galleryImageData),
+                pg(planets.wikiLink)
+            ])
+            
+            print("✅ Planets updated in PostgreSQL: \(planets.name)")
+        } catch {
+            print("❌ Error updating planets in PostgreSQL: \(error)")
+        }
+    }
+        
+    // MARK: - Delete Planets
+    func deletePlanets(_ planets: PlanetsModel) {
+        let context = container.mainContext
+        
+        context.delete(planets)
+        do {
+            try context.save()
+            print("✅ Planets deleted from SwiftData: \(planets.name)")
+        } catch {
+            print("❌ Error deleting planets from SwiftData: \(error)")
+            return
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Failed to connect to PostgreSQL for delete")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: "DELETE FROM planets WHERE id = $1")
+            defer { statement.close() }
+            try statement.execute(parameterValues: [pg(planets.id)])
+            
+            print("✅ Planets deleted from PostgreSQL: \(planets.name)")
+        } catch {
+            print("❌ Error deleting planets from PostgreSQL: \(error)")
         }
     }
     
