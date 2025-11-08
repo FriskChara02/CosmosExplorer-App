@@ -98,14 +98,14 @@ struct PlanetsCatalogView: View {
                                 viewModel: viewModel,
                                 editingPlanets: $editingPlanets,
                                 xOffset: 0,
-                                yOffset: -35,
+                                yOffset: -47,
                                 imageXOffset: -3,
                                 imageYOffset: -50,
                                 imageScale: 1.2,
                                 viewCountXOffset: -5,
-                                viewCountYOffset: 30,
+                                viewCountYOffset: 42,
                                 menuXOffset: 3,
-                                menuYOffset: 30,
+                                menuYOffset: 42,
                                 viewCountScale: 1.0,
                                 menuScale: 1.0
                             )

@@ -105,7 +105,7 @@ struct PlanetsView: View {
                 Spacer()
             }
             .ignoresSafeArea(.all, edges: .bottom)
-            .background(Image("Planets_background01").resizable().scaledToFill().ignoresSafeArea())
+            .background(Image("BlackBG").resizable().scaledToFill().ignoresSafeArea())
             .animation(.easeInOut(duration: 1.0), value: glowIntensity)
             .onAppear {
                 updateRandomInfo()

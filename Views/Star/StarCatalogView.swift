@@ -128,7 +128,7 @@ struct StarCatalogView: View {
                     EditStarView(viewModel: viewModel, star: star)
                 }
             }
-            .background(Image("Sirius03").resizable().scaledToFill().ignoresSafeArea())
+            .background(Image("Star_background").resizable().scaledToFill().ignoresSafeArea())
             .ignoresSafeArea(.all, edges: .bottom)
             .animation(.easeInOut(duration: 0.3), value: isSearchActive)
             .if(isSearchActive) { view in

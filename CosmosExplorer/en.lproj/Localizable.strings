@@ -1408,9 +1408,9 @@
 "Proxima b Random Info 4" = "Mass about 1.173 Earth masses";
 "Proxima b Random Info 5" = "Year lasts 11.2 Earth days, 4.2 light-years away";
 "Proxima b About Description" = "Proxima b is a potentially habitable super-Earth orbiting the red dwarf star Proxima Centauri, the closest star to the Sun.";
-"Proxima b By The Numbers Radius" = "Radius: ~1.07 Earth radii";
-"Proxima b By The Numbers Distance" = "Distance from Sun: ~4.24 light-years";
-"Proxima b By The Numbers Age" = "Age: Unknown";
+"Proxima b By The Numbers Radius" = "~1.07 Earth radii";
+"Proxima b By The Numbers Distance" = "~4.24 light-years";
+"Proxima b By The Numbers Age" = "Unknown";
 
 /* Kepler452bView */
 "Kepler-452b Random Info 1" = "Mass 3.29 Earths, orbits in 384.8 days";
@@ -1419,9 +1419,9 @@
 "Kepler-452b Random Info 4" = "Super-Earth size, potentially rocky";
 "Kepler-452b Random Info 5" = "Orbits at distance similar to Earth from its star";
 "Kepler-452b About Description" = "Kepler-452b is a super-Earth exoplanet orbiting in the habitable zone of a Sun-like star, often called Earth's cousin.";
-"Kepler-452b By The Numbers Radius" = "Radius: ~1.6 Earth radii";
-"Kepler-452b By The Numbers Distance" = "Distance from Sun: ~1,400 light-years";
-"Kepler-452b By The Numbers Age" = "Age: ~6 billion years";
+"Kepler-452b By The Numbers Radius" = "~1.6 Earth radii";
+"Kepler-452b By The Numbers Distance" = "~1,400 light-years";
+"Kepler-452b By The Numbers Age" = "~6 billion years";
 
 /* Cancrie55View */
 "55 Cancri e Random Info 1" = "Mass 7.99 Earths, orbits in 0.7 days";
@@ -1430,9 +1430,9 @@
 "55 Cancri e Random Info 4" = "Surface temperature nearly 2400K, uninhabitable";
 "55 Cancri e Random Info 5" = "Twice Earth's size, eight times more massive";
 "55 Cancri e About Description" = "55 Cancri e is a super-Earth exoplanet with a possible diamond interior and thick atmosphere, extremely hot and close to its star.";
-"55 Cancri e By The Numbers Radius" = "Radius: ~2 Earth radii";
-"55 Cancri e By The Numbers Distance" = "Distance from Sun: ~40 light-years";
-"55 Cancri e By The Numbers Age" = "Age: Unknown";
+"55 Cancri e By The Numbers Radius" = "~2 Earth radii";
+"55 Cancri e By The Numbers Distance" = "~40 light-years";
+"55 Cancri e By The Numbers Age" = "Unknown";
 
 /* AddPlanetsView and EditPlanetsView */
 "Add Your New Planets" = "Add Your New Planets";
@@ -1567,3 +1567,1183 @@
 "Summer" = "Summer";
 "Autumn" = "Autumn";
 "Winter" = "Winter";
+
+/*ZodiacHomeView*/
+"back" = "Back";
+"zodiac_title" = "Zodiac Signs";
+"zodiac_legend" = "Legend of 12 Zodiac Signs";
+"zodiac_daily" = "Daily Horoscope for 12 Signs";
+"zodiac_love" = "Love Horoscope for 12 Signs";
+"zodiac_rank" = "Zodiac Ranking";
+"zodiac_secret" = "Secrets of 12 Zodiac Signs";
+
+/*ZodiacLegendView*/
+"zodiac_legend_title" = "Zodiac Legends";
+"legend_detail_placeholder" = "Detailed legend for";
+/*Zodiac Names*/
+"aries" = "Aries";
+"taurus" = "Taurus";
+"gemini" = "Gemini";
+"cancer" = "Cancer";
+"leo" = "Leo";
+"virgo" = "Virgo";
+"libra" = "Libra";
+"scorpio" = "Scorpio";
+"sagittarius" = "Sagittarius";
+"capricorn" = "Capricorn";
+"aquarius" = "Aquarius";
+"pisces" = "Pisces";
+/*Zodiac Dates*/
+"aries_date" = "(Mar 21 - Apr 20)";
+"taurus_date" = "(Apr 21 - May 20)";
+"gemini_date" = "(May 21 - Jun 21)";
+"cancer_date" = "(Jun 22 - Jul 22)";
+"leo_date" = "(Jul 23 - Aug 22)";
+"virgo_date" = "(Aug 23 - Sep 22)";
+"libra_date" = "(Sep 23 - Oct 22)";
+"scorpio_date" = "(Oct 23 - Nov 21)";
+"sagittarius_date" = "(Nov 22 - Dec 21)";
+"capricorn_date" = "(Dec 22 - Jan 19)";
+"aquarius_date" = "(Jan 20 - Feb 19)";
+"pisces_date" = "(Feb 20 - Mar 20)";
+/* Tabs */
+"tab_profile" = "Profile";
+"tab_profile_subtitle" = "Basic Info";
+"tab_legend" = "Legend";
+"tab_legend_subtitle" = "Myth & Symbol";
+"tab_personality" = "Personality";
+"tab_personality_subtitle" = "Traits & Qualities";
+"tab_love" = "Love";
+"tab_love_subtitle" = "Romance & Family";
+"tab_career" = "Career";
+"tab_career_subtitle" = "Work & Finance";
+
+/*AquariusLegendView - Tabs*/
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/*Header*/
+"aquarius" = "Aquarius";
+/*Profile Section*/
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"11th_zodiac" = "11th in Zodiac";
+"nature" = "Nature";
+"organized_symbol" = "Symbol of organization";
+"characteristic" = "Characteristic";
+"immutability" = "Immutability";
+
+"time_luck" = "Time & Luck";
+"weekday" = "Day of Week";
+"saturday" = "Saturday";
+"lucky_day" = "Lucky Day";
+"wednesday" = "Wednesday";
+"lucky_numbers" = "Lucky Numbers";
+"2_3_4_7_8" = "2, 3, 4, 7, 8";
+
+"astronomy" = "Astronomy";
+"ruling_planet" = "Ruling Planet";
+"saturn_uranus" = "Saturn & Uranus";
+"planet" = "Planet";
+"uranus_break_rules" = "Uranus (symbol of breaking rules)";
+"symbol" = "Symbol";
+"water_bearer" = "Water Bearer";
+"element" = "Element";
+"air" = "Air";
+
+"gemstones" = "Gemstones";
+"aquarius_gems" = "Amethyst, jade, pink topaz, moonstone, amber, agate, zircon, deep sapphire, garnet";
+
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"green_black_skyblue" = "Green, black, sky blue, light blue, turquoise";
+"flowers" = "Flowers";
+"azalea_hydrangea_poppy" = "Azalea, hydrangea, poppy";
+"metal" = "Metal";
+"lead_uranium" = "Lead, Uranium";
+"animals" = "Animals";
+"owl_crow_eel" = "Owl, crow, eel";
+
+"health_relations" = "Health & Relations";
+"body_parts" = "Body Parts";
+"heart_back" = "Heart, back";
+"dating_with" = "Dating With";
+"aries_sagittarius" = "Aries, Sagittarius";
+"friends_with" = "Friends With";
+"taurus_scorpio" = "Taurus, Scorpio";
+"compatible_with" = "Compatible With";
+"gemini_libra_aquarius" = "Gemini, Libra, Aquarius";
+"clash_with" = "Clash With";
+"leo_scorpio" = "Leo, Scorpio";
+/*Legend Section*/
+"greek_myth" = "Greek Mythology";
+"zeus_water_bearer" = "Zeus – lord of gods – is called 'Water Bearer'. He creates storms to sustain life. This is the Aquarius constellation.";
+"great_flood" = "Great Flood";
+"deucalion_pyrrha" = "Humanity turned cruel. Zeus flooded the earth, sparing only Deucalion and Pyrrha – the only kind couple. They repopulated the world.";
+"egypt_symbol" = "Egyptian Symbol";
+"hapi_water" = "The hieroglyph 'Mu' means water. God Hapi pours water from two jars, worshipped by Egyptians.";
+"symbol_meaning" = "Symbol Meaning";
+"life_death_jars" = "Man with two jars: one holds life, one holds death. Aquarius distinguishes good from evil, loves science, is sensitive, vulnerable, but always helps others.";
+/*Personality Section*/
+"intelligent_creative" = "Intelligent & Creative";
+"intelligent_creative_desc" = "Top intellect among 12 signs. Creative, eccentric, passionate about science. Two types: shy & eccentric. Weird fashion, curious about everything new.";
+"sensitive_kind" = "Sensitive & Kind";
+"sensitive_kind_desc" = "Easily hurt, guarded. Helps without expecting return. Sensitive, rich inner world, mood swings.";
+"changeable_complex" = "Changeable & Complex";
+"changeable_complex_desc" = "Mood swings: enthusiastic or lonely. Loves compliments, stubborn, but forgiving and not greedy.";
+"dreams_ideals" = "Dreams & Ideals";
+"dreams_ideals_desc" = "Optimistic, simple living: 'do what I love'. No power ambition. Symbol of science, tech, humanity's noble dreams.";
+"observation_memory" = "Observation & Memory";
+"observation_memory_desc" = "Sharp eye, visionary. Good memory for knowledge, but forgets items. Curious, creative, eccentric in imagination.";
+"communication_personality" = "Communication & Personality";
+"communication_personality_desc" = "Honest, loyal, values fairness. Hates broken promises, loneliness. Quick to anger, quick to forgive. Open-minded, free-spirited, but hard to understand.";
+/*Love Section*/
+"late_love" = "Late Love";
+"late_love_desc" = "Shy, keeps distance. Love comes late, needs time. Loyal, romantic, jealous. Love is life force, adds motivation.";
+"family" = "Family";
+"family_desc" = "Psychological parents, teach science. Marry late, strict but loving. Desire happy, bonded home.";
+/*Conquest*/
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Loves freedom, group discussions. Be beautiful & charming.";
+"female" = "Female";
+"female_conquest" = "Loves travel, surprises. Give unique gifts.";
+/*Career Section*/
+"creative_passion" = "Creative Passion";
+"creative_passion_desc" = "Suitable: science research, tech, travel, MC, actor, writer, lawyer, director, journalist, astronomy, history, art.";
+"work" = "Work";
+"work_desc" = "Hardworking, dedicated, pioneering. Easygoing boss, admired. Colleagues love enthusiasm, creativity, independence.";
+"finance" = "Finance";
+"finance_desc" = "Good at earning, not wasteful. Invests in unique, dark, expensive outfits. Not greedy, simple living, contributes to society.";
+
+/* AriesLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"aries" = "Aries";
+/* Profile Section */
+"basic_info" = "Basic Info";
+"other_name" = "Other Name";
+"duong_cuu" = "Ram (Dương Cưu)";
+"zodiac_order" = "Zodiac Order";
+"1st_zodiac" = "1st in Zodiac";
+"nature" = "Nature";
+"leader_pioneer" = "Leader & Pioneer";
+
+"time_luck" = "Time & Luck";
+"weekday" = "Day of Week";
+"tuesday" = "Tuesday";
+"lucky_day" = "Lucky Day";
+"lucky_numbers" = "Lucky Numbers";
+"1_9" = "1 and 9";
+
+"astronomy" = "Astronomy";
+"ruling_planet" = "Ruling Planet";
+"mars" = "Mars (desire, power, courage)";
+"symbol" = "Symbol";
+"ram" = "Ram";
+"element" = "Element";
+"fire" = "Fire";
+
+"gemstones" = "Gemstones";
+"aries_gems" = "Diamond, ruby, red quartz";
+
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"red_orange" = "Deep red, orange";
+"flowers" = "Flowers";
+"carnation_poppy_tulip" = "Carnation, poppy, tulip, broom";
+"metal" = "Metal";
+"iron" = "Iron";
+"animals" = "Animals";
+"wolf_rooster" = "Wolf, rooster";
+
+"health_relations" = "Health & Relations";
+"body_parts" = "Body Parts";
+"head_face" = "Head, face";
+"dating_with" = "Dating With";
+"leo_sagittarius" = "Leo, Sagittarius";
+"friends_with" = "Friends With";
+"cancer_capricorn" = "Cancer, Capricorn";
+"compatible_with" = "Compatible With";
+"aries_leo_sagittarius" = "Aries, Leo, Sagittarius";
+"clash_with" = "Clash With";
+"libra" = "Libra";
+
+/* Legend Section */
+"greek_myth" = "Greek Mythology";
+"athamas_nephele" = "King Athamas married Nephele, had Phrixus and Helle. Later married Ino, who plotted against the children.";
+"golden_fleece" = "Golden Fleece";
+"phrixus_helle" = "Nephele gave a golden ram. Helle fell into the sea, Phrixus reached Colchis.";
+"jason_quest" = "Jason's Quest";
+"jason_argo" = "Phrixus sacrificed the ram. Zeus placed it in the sky. Jason later sought the fleece on the Argo.";
+"symbol_meaning" = "Symbol Meaning";
+"courage_leadership" = "The ram symbolizes courage, leadership, and never giving up.";
+/* Personality Section */
+"brave_pioneer" = "Brave & Pioneer";
+"brave_pioneer_desc" = "Always ready to fight challenges. Strong physically and mentally. Forgiving and optimistic.";
+"impulsive_passionate" = "Impulsive & Passionate";
+"impulsive_passionate_desc" = "Acts quickly, loves adventure. Can be hasty but full of energy.";
+"leadership_ambition" = "Leadership & Ambition";
+"leadership_ambition_desc" = "Born to lead. Ambitious, hates being controlled.";
+"warm_forgiving" = "Warm & Forgiving";
+"warm_forgiving_desc" = "Kind heart, easily forgives. Brings joy to others.";
+"competitive_energy" = "Competitive Energy";
+"competitive_energy_desc" = "Loves sports, competition. High stamina, quick recovery.";
+"honest_direct" = "Honest & Direct";
+"honest_direct_desc" = "Straightforward, hates lies. Values honor and truth.";
+/* Love Section */
+"passionate_love" = "Passionate Love";
+"passionate_love_desc" = "Loves intensely but may lack fidelity. Seeks novelty and adventure.";
+"family" = "Family";
+"family_desc" = "Loves children, protective. Wants a stable future for family.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Don’t be too bold. Let him lead. Be charming and kind. Serve meat on first date.";
+"female" = "Female";
+"female_conquest" = "Be energetic, funny, athletic. Give surprise gifts. Let her choose date location.";
+/* Career Section */
+"leadership_career" = "Leadership Career";
+"leadership_career_desc" = "Suitable: Politics, business, military, sports, journalism, law, engineering.";
+"work" = "Work";
+"work_desc" = "Hardworking, creative, efficient. Great boss, inspires others.";
+"finance" = "Finance";
+"finance_desc" = "Spends freely on travel, fun. Not greedy, lives for joy.";
+
+/*TaurusLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"taurus" = "Taurus";
+/* Profile */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"2nd_zodiac" = "2nd in Zodiac";
+"nature" = "Nature";
+"organized" = "Symbol of organization";
+"ruling_planet" = "Ruling Planet";
+"venus" = "Venus (charm, art, sweetness)";
+
+"time_luck" = "Time & Luck";
+"weekday" = "Day of Week";
+"friday" = "Friday";
+"lucky_numbers" = "Lucky Numbers";
+"2_8" = "2 and 8";
+
+"astronomy" = "Astronomy";
+"symbol" = "Symbol";
+"bull_seal" = "Bull, Seal";
+"element" = "Element";
+"earth" = "Earth";
+
+"gemstones" = "Gemstones";
+"taurus_gems" = "Emerald, jade, turquoise";
+
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"pink_green" = "Pink, green";
+
+"health_relations" = "Relations";
+"dating_with" = "Dating With";
+"virgo_capricorn" = "Virgo, Capricorn";
+"friends_with" = "Friends With";
+"leo_aquarius" = "Leo, Aquarius";
+"clash_with" = "Clash With";
+"scorpio" = "Scorpio";
+/* Legend */
+"greek_myth" = "Greek Mythology";
+"europa_zeus" = "Europa saw a white bull by the river. It was Zeus in disguise.";
+"zeus_transform" = "Zeus Transformation";
+"zeus_transform" = "Zeus carried Europa across the sea to Crete.";
+"continent_name" = "Continent Name";
+"continent_name" = "They lived in Crete. The land was named Europa (Europe).";
+"strength_stability" = "Symbol Meaning";
+"strength_stability" = "Bull represents strength, stability, and success.";
+/* Personality */
+"patient_persistent" = "Patient & Persistent";
+"patient_persistent_desc" = "Slow, careful, never rush. Loyal and reliable.";
+"loyal_practical" = "Loyal & Practical";
+"loyal_practical_desc" = "Faithful in love, realistic, possessive.";
+"love_nature_food" = "Love Nature & Food";
+"love_nature_food_desc" = "Loves eating, nature, comfort. Enjoys luxury.";
+"slow_careful" = "Slow & Careful";
+"slow_careful_desc" = "Thinks deeply before acting. Hates change.";
+"stubborn_possessive" = "Stubborn & Possessive";
+"stubborn_possessive_desc" = "Hard to change mind. Protects what’s theirs.";
+"friendly_reliable" = "Friendly & Reliable";
+"friendly_reliable_desc" = "Warm, trustworthy. Great long-term friend.";
+/* Love */
+"faithful_love" = "Faithful Love";
+"faithful_love_desc" = "Loves deeply, wants stability. Shows love by actions.";
+"family" = "Family";
+"family_desc" = "Values home, tradition. Loves family meals and travel.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Don’t rush. Be patient, invite to dinner. Serve meat, soft music.";
+"female" = "Female";
+"female_conquest" = "Be decisive, patient. Give perfume, surprises. Let her choose place.";
+/* Career */
+"stable_career" = "Stable Career";
+"stable_career_desc" = "Suitable: Architecture, finance, art, cooking, farming.";
+"finance" = "Finance";
+"finance_desc" = "Good at saving, enjoys luxury. Invests wisely.";
+"artistic_talent" = "Artistic Talent";
+"artistic_talent_desc" = "Great at design, music, beauty. Loves aesthetics.";
+
+/*Gemini Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"gemini" = "Gemini";
+/* Profile */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"3rd_zodiac" = "3rd in Zodiac";
+"nature" = "Nature";
+"changeable" = "Changeable, inconsistent";
+"ruling_planet" = "Ruling Planet";
+"mercury" = "Mercury (intelligence, communication)";
+
+"time_luck" = "Time & Luck";
+"weekday" = "Day of Week";
+"wednesday" = "Wednesday";
+"lucky_numbers" = "Lucky Numbers";
+"3_4_7" = "3, 4, 7";
+
+"astronomy" = "Astronomy";
+"symbol" = "Symbol";
+"twins" = "Twin brothers";
+"element" = "Element";
+"air" = "Air";
+
+"gemstones" = "Gemstones";
+"gemini_gems" = "Jade, magnetite, cat's eye, agate";
+
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"green_blue_gray" = "Green, blue, gray";
+"flowers" = "Flowers";
+"daisy_forgetmenot" = "Daisy, forget-me-not";
+
+"body_parts" = "Body & Senses";
+"body" = "Body Parts";
+"lungs_arms" = "Lungs, arms";
+"perfume" = "Perfume";
+"juniper_lavender" = "Juniper, lavender, citrus";
+
+"health_relations" = "Relations";
+"dating_with" = "Dating With";
+"libra_aquarius" = "Libra, Aquarius";
+"friends_with" = "Friends With";
+"virgo_pisces" = "Virgo, Pisces";
+"clash_with" = "Clash With";
+"sagittarius" = "Sagittarius";
+/* Legend */
+"castor_pollux" = "Castor & Pollux";
+"castor_pollux_desc" = "Sons of Zeus and Sparta's queen. Brave twins on the Argo.";
+"castor_death" = "Castor's Death";
+"castor_death_desc" = "Castor died in battle. Pollux, immortal, begged Zeus to die too.";
+"eternal_brotherhood" = "Eternal Brotherhood";
+"eternal_brotherhood_desc" = "Zeus placed them in sky. One shines, one dims — alternating days.";
+"twins_symbol" = "Symbol Meaning";
+"twins_symbol" = "Two boys: Castor and Pollux. Opposite but united.";
+/* Personality */
+"intelligent_curious" = "Intelligent & Curious";
+"intelligent_curious_desc" = "Sharp mind, vast knowledge. Always exploring new things.";
+"communicative_witty" = "Communicative & Witty";
+"communicative_witty_desc" = "Great talker, humorous. Can be chatty or cold in seconds.";
+"adaptable_adventurous" = "Adaptable & Adventurous";
+"adaptable_adventurous_desc" = "Loves travel, freedom. Thrives in new environments.";
+"changeable_dual" = "Changeable & Dual";
+"changeable_dual_desc" = "Two personalities. Hard to predict. Hates routine.";
+"restless_inconsistent" = "Restless & Inconsistent";
+"restless_inconsistent_desc" = "Bored easily. Starts many things, finishes few.";
+"sociable_fun" = "Sociable & Fun";
+"sociable_fun_desc" = "Brings joy, energy. Great friend — full of surprises.";
+/* Love */
+"playful_love" = "Playful Love";
+"playful_love_desc" = "Flirtatious, fun. Needs humor, freedom. Loyal when committed.";
+"family_friends" = "Family & Friends";
+"family_friends_desc" = "Loves family time. Many friends. Great parent — treats kids like friends.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Be fun, surprising. Don’t control. Try exotic food on first date.";
+"female" = "Female";
+"female_conquest" = "Be unique, intellectual. Debate, surprise. Music + books = perfect date.";
+/* Career */
+"creative_careers" = "Creative Careers";
+"creative_careers_desc" = "Writer, designer, director, inventor, scientist.";
+"communication_jobs" = "Communication Jobs";
+"communication_jobs_desc" = "Journalist, MC, marketer, lawyer, teacher.";
+"travel_freedom" = "Travel & Freedom";
+"travel_freedom_desc" = "Tour guide, pilot, trader, event planner. Needs movement.";
+
+/*Cancer Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"cancer" = "Cancer";
+/* Profile */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"4th_zodiac" = "4th in Zodiac";
+"nature" = "Nature";
+"leader" = "Leader, protective";
+"ruling_planet" = "Ruling Planet";
+"moon" = "Moon (emotions, instincts)";
+
+"time_luck" = "Time & Luck";
+"weekday" = "Day of Week";
+"monday" = "Monday";
+"lucky_numbers" = "Lucky Numbers";
+"4_6" = "4, 6";
+
+"astronomy" = "Astronomy";
+"symbol" = "Symbol";
+"crab" = "Crab";
+"element" = "Element";
+"water" = "Water";
+
+"gemstones" = "Gemstones";
+"cancer_gems" = "Pearl, emerald, cat's eye, moonstone";
+
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"gray_silver_white" = "Gray, silver, white";
+"flowers" = "Flowers";
+"lily_jasmine" = "Lily, jasmine, gardenia";
+
+"body_parts" = "Body & Senses";
+"body" = "Body Parts";
+"chest_digestion" = "Chest, digestive system";
+"metal" = "Metal";
+"silver" = "Silver";
+
+"health_relations" = "Relations";
+"dating_with" = "Dating With";
+"scorpio_pisces" = "Scorpio, Pisces";
+"friends_with" = "Friends With";
+"aries_libra" = "Aries, Libra";
+"clash_with" = "Clash With";
+"capricorn" = "Capricorn";
+/* Legend */
+"hercules_hydra" = "Hercules vs Hydra";
+"hercules_hydra_desc" = "Hercules fought Hydra. Crab tried to help his friend.";
+"crab_fight" = "Crab's Sacrifice";
+"crab_fight_desc" = "Crab pinched Hercules. Died instantly but showed loyalty.";
+"eternal_friendship" = "Eternal Friendship";
+"eternal_friendship_desc" = "Gods placed all three in sky as constellation.";
+"crab_symbol" = "Symbol Meaning";
+"crab_symbol" = "Hard shell, soft heart. Protective, emotional.";
+/* Personality */
+"emotional_sensitive" = "Emotional & Sensitive";
+"emotional_sensitive_desc" = "Deep feelings. Moody but caring. Hard shell, soft inside.";
+"family_oriented" = "Family-Oriented";
+"family_oriented_desc" = "Loves home. Collects memories. Great parent.";
+"moody_romantic" = "Moody & Romantic";
+"moody_romantic_desc" = "Changes like moon. Deeply romantic, nostalgic.";
+"protective_cautious" = "Protective & Cautious";
+"protective_cautious_desc" = "Guards loved ones. Thinks carefully before acting.";
+"nostalgic_collector" = "Nostalgic Collector";
+"nostalgic_collector_desc" = "Loves antiques, history. Keeps old things.";
+"loyal_caring" = "Loyal & Caring";
+"loyal_caring_desc" = "Devoted friend. Helps quietly. Never forgets kindness.";
+/* Love */
+"romantic_devoted" = "Romantic & Devoted";
+"romantic_devoted_desc" = "Seeks deep love. Protective, emotional. Early marriage.";
+"family_first" = "Family First";
+"family_first_desc" = "Puts family above all. Great parent. Loves kids.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Be gentle, caring. Loves kids. Don’t tease too much.";
+"female" = "Female";
+"female_conquest" = "Be sweet, patient. Give gifts, flowers. Comfort her mood swings.";
+/* Career */
+"home_related" = "Home & Design";
+"home_related_desc" = "Interior decorator, chef, homemaker, antiques.";
+"caring_professions" = "Caring Professions";
+"caring_professions_desc" = "Nurse, teacher, counselor, social worker.";
+"history_culture" = "History & Culture";
+"history_culture_desc" = "Museum curator, historian, archaeologist.";
+
+/*Leo Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"leo" = "Leo";
+/* Profile */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"5th_zodiac" = "5th in Zodiac";
+"nature" = "Nature";
+"organized" = "Organized, leadership";
+"ruling_planet" = "Ruling Planet";
+"sun" = "Sun (power, pride)";
+
+"time_luck" = "Time & Luck";
+"weekday" = "Day of Week";
+"sunday" = "Sunday";
+"lucky_numbers" = "Lucky Numbers";
+"1_4_6" = "1, 4, 6";
+
+"astronomy" = "Astronomy";
+"symbol" = "Symbol";
+"lion" = "Lion";
+"element" = "Element";
+"fire" = "Fire";
+
+"gemstones" = "Gemstones";
+"leo_gems" = "Ruby, diamond, peridot";
+
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"red_gold_orange" = "Red, gold, orange";
+"flowers" = "Flowers";
+"sunflower_marigold" = "Sunflower, marigold";
+
+"body_parts" = "Body & Senses";
+"body" = "Body Parts";
+"heart_back" = "Heart, back";
+"metal" = "Metal";
+"gold" = "Gold";
+
+"health_relations" = "Relations";
+"dating_with" = "Dating With";
+"aries_sagittarius" = "Aries, Sagittarius";
+"friends_with" = "Friends With";
+"taurus_scorpio" = "Taurus, Scorpio";
+"clash_with" = "Clash With";
+"aquarius" = "Aquarius";
+/* Legend */
+"hercules_nemea" = "Hercules vs Nemean Lion";
+"hercules_nemea_desc" = "Hercules killed invincible lion with bare hands.";
+"strangle_lion" = "Strangled to Death";
+"strangle_lion_desc" = "Lion's skin was impenetrable. Hercules choked it.";
+"eternal_glory" = "Eternal Glory";
+"eternal_glory_desc" = "Lion's soul ascended to stars as constellation.";
+"lion_symbol" = "Symbol Meaning";
+"lion_symbol" = "Strength, pride, leadership. King of the jungle.";
+/* Personality */
+"proud_leadership" = "Proud & Leadership";
+"proud_leadership_desc" = "Born leader. Confident, ambitious, wants respect.";
+"energetic_generous" = "Energetic & Generous";
+"energetic_generous_desc" = "Full of life. Gives freely. Loves luxury.";
+"optimistic_charismatic" = "Optimistic & Charismatic";
+"optimistic_charismatic_desc" = "Always positive. Center of attention. Inspires others.";
+"ambitious_showy" = "Ambitious & Showy";
+"ambitious_showy_desc" = "Loves fame. Dramatic. Needs praise.";
+"loyal_protective" = "Loyal & Protective";
+"loyal_protective_desc" = "Fiercely loyal. Defends loved ones. Never betrays.";
+"social_love_attention" = "Social & Loves Attention";
+"social_love_attention_desc" = "Hates being alone. Thrives in crowds. Born performer.";
+/* Love */
+"passionate_loyal" = "Passionate & Loyal";
+"passionate_loyal_desc" = "Loves deeply. Demands loyalty. Romantic and dramatic.";
+"demands_respect" = "Demands Respect";
+"demands_respect_desc" = "Wants admiration. Jealous. Needs to feel special.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Listen to his stories. Praise his achievements. Be his biggest fan.";
+"female" = "Female";
+"female_conquest" = "Take her to luxury places. Give expensive gifts. Admire her beauty.";
+/* Career */
+"leadership_roles" = "Leadership & Management";
+"leadership_roles_desc" = "CEO, director, politician, manager.";
+"entertainment_fame" = "Entertainment & Fame";
+"entertainment_fame_desc" = "Actor, singer, TV host, performer.";
+"business_luxury" = "Business & Luxury";
+"business_luxury_desc" = "Entrepreneur, real estate, fashion, jewelry.";
+
+"virgo" = "Virgo";
+
+/*VirgolegenedView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Profile */
+"6th_zodiac" = "6th in Zodiac";
+"changeable_nature" = "Changeable, inconsistent";
+"perfectionist" = "Perfectionist";
+
+"2_5_7" = "2, 5, 7";
+
+"mercury" = "Mercury (symbol of reason, awareness, dedication, communication)";
+"mercury_reason" = "Mercury – symbol of reason and communication";
+"virgin" = "Virgin";
+"earth" = "Earth";
+
+"virgo_gems" = "Sardonyx, jade, emerald, topaz, diamond, pearl";
+
+"light_colors" = "Light colors, silver, shiny materials (white, yellow, green, brown, light purple)";
+"vervain_night_bloom" = "Vervain, night-blooming jasmine";
+"mercury_metal" = "Mercury";
+"dog_swallow" = "Dog, swallow";
+
+"stomach_intestines" = "Stomach, intestines";
+"taurus_capricorn" = "Taurus, Capricorn";
+"gemini_sagittarius" = "Gemini, Sagittarius";
+"taurus_cancer_virgo_capricorn" = "Taurus, Cancer, Virgo, Capricorn";
+"pisces_libra" = "Pisces, Libra";
+/* Legend */
+"persephone_myth" = "Persephone & Demeter";
+"persephone_demeter" = "Persephone, daughter of Demeter, was abducted by Hades. Demeter grieved, causing famine. Zeus ordered her return, but she ate pomegranate seeds and must spend half the year in the underworld, explaining seasons.";
+
+"golden_age" = "Golden Age & Pandora";
+"prometheus_pandora" = "In the Golden Age, Prometheus stole fire for humans. Zeus sent Pandora, whose box released evils. Women were seen as trouble. Astraea was the last goddess to leave Earth.";
+
+"astraea" = "Astraea – Symbol of Virtue";
+"astraea_virtue" = "Astraea, daughter of Zeus and Themis, was the last to leave Earth. Virgo represents her purity, kindness, and hope to return to humanity.";
+/* Personality */
+"perfectionist_detailed" = "Perfectionist & Detailed";
+"perfectionist_detailed_desc" = "Meticulous, disciplined, clean, and organized. Never wastes anything, especially money. Keeps home tidy with sparkling decor.";
+
+"loyal_responsible" = "Loyal & Responsible";
+"loyal_responsible_desc" = "Loyal in love and friendship. Never betrays. Talented in crafts but sometimes relies on others.";
+
+"analytical_intelligent" = "Analytical & Intelligent";
+"analytical_intelligent_desc" = "Sharp intellect, suitable for science, tech, research. Loves analysis and precision.";
+
+"caring_practical" = "Caring & Practical";
+"caring_practical_desc" = "Emotional, empathetic, helps others subtly. Practical in love and life.";
+
+"critical_selfaware" = "Critical & Self-Aware";
+"critical_selfaware_desc" = "Seeks perfection, hates chaos. Can be overly critical but strives for improvement.";
+
+"family_oriented" = "Family-Oriented";
+"family_oriented_desc" = "Devoted to family, responsible, builds stable home. Marries late, prioritizes career first.";
+/* Love */
+"late_love_virgo_desc" = "Loves rationally. Shy in romance. Builds love on understanding, not passion. Loyal and caring.";
+"family_virgo_desc" = "Responsible parents. Teaches discipline. Creates orderly, loving home.";
+/* Conquest */
+"male_virgo_conquest" = "Be neat, elegant, family-oriented. Show sincerity and good manners.";
+"female_virgo_conquest" = "Be honest, shy, thoughtful. Take her to concerts or movies. Avoid flashy gestures.";
+/* Career */
+"analytical_careers" = "Suitable Careers";
+"analytical_careers_desc" = "Scientist, technician, engineer, doctor, accountant, teacher, writer, editor, designer, beautician, healthcare.";
+"work_virgo_desc" = "Hardworking, systematic, responsible. Hates unfinished work. Excellent analyst and organizer.";
+"finance_virgo_desc" = "Frugal, plans savings. Earns well, invests wisely. Avoids waste.";
+
+"libra" = "Libra";
+/*LibraLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Profile */
+"7th_zodiac" = "7th in Zodiac";
+"venus" = "Venus (symbol of grace, harmony, elegance)";
+"scale" = "The Scale";
+"libra_gems" = "Cat's eye stone, Sapphire";
+"kidneys" = "Kidneys";
+"1_2_7" = "1, 2, 7";
+"green" = "Green";
+"gemini_aquarius" = "Gemini, Aquarius";
+"cancer_capricorn" = "Cancer, Capricorn";
+/* Legend */
+"golden_age" = "Golden Age";
+"golden_age_desc" = "In Greek mythology's Golden Age, humans were made of gold. Goddess Astraea ensured justice and fairness.";
+"astraea" = "Astraea";
+"astraea_desc" = "As humanity turned selfish, gods left Earth. Only Astraea stayed to uphold justice. She later ascended to become Libra.";
+"scale_symbol_desc" = "The Scale of Justice represents balance. Libra weighs every situation carefully, seeing both right and wrong.";
+/* Personality */
+"fair_considerate" = "Fair & Considerate";
+"fair_considerate_desc" = "Always thinks carefully, rarely makes serious mistakes. Accurate, focused, and balanced in thought and action.";
+"emotional_caring" = "Emotional & Caring";
+"emotional_caring_desc" = "Rich emotions, craves love. Cares deeply for others. Lazy at times, follows routines, avoids going against the flow.";
+"indecisive_lazy" = "Indecisive & Lazy";
+"indecisive_lazy_desc" = "Procrastinates, overthinks. Among top spenders. Loves entertainment, exotic food, and romantic fantasies.";
+"romantic_dreamy" = "Romantic & Dreamy";
+"romantic_dreamy_desc" = "Dreams of fairy-tale love. After heartbreak, becomes reserved but appears cheerful. Seeks harmony in life.";
+"artistic_refined" = "Artistic & Refined";
+"artistic_refined_desc" = "Loves books, art, music. Elegant taste. Home is neat, harmonious, and uniquely stylish.";
+/* Love */
+"romantic_love" = "Romantic Love";
+"romantic_love_desc" = "Shy in love, expresses subtly. Loyal, traditional. Fears loneliness. Needs harmony and understanding.";
+"family_libra_desc" = "Responsible parent, fair and strict. Values family harmony. Sensitive to conflicts.";
+/* Conquest */
+"male_libra_conquest" = "Be honest, join group activities. Don't isolate him. Respond playfully to teasing.";
+"female_libra_conquest" = "Be sincere, elegant. Avoid prying. Let her take time to open up.";
+/* Career */
+"suitable_jobs" = "Suitable Jobs";
+"suitable_jobs_desc" = "Lawyer, diplomat, MC, designer, architect, critic, consultant, psychologist, politician.";
+"work_libra_desc" = "Organized, diplomatic. Works well in teams. Persuasive, fair, and creative. Avoids conflict.";
+"finance_libra_desc" = "Loves luxury but balanced. Shops slowly. Invests in beauty, art, and harmony.";
+
+/*ScorpioLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"scorpio" = "Scorpio";
+/* Profile Section */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"8th_zodiac" = "8th in Zodiac";
+"other_names" = "Other Names";
+"scorpion_names" = "Scorpio, Farmer God, Tiger Scorpion, Heaven Scorpion, Heaven Grain";
+"characteristic" = "Characteristic";
+"fixed" = "Fixed";
+"symbol" = "Symbol";
+"scorpion" = "Scorpion";
+"time_luck" = "Time & Luck";
+"lucky_numbers" = "Lucky Numbers";
+"2_7_9" = "2, 7, and 9";
+"astronomy" = "Astronomy";
+"ruling_planet" = "Ruling Planet";
+"pluto" = "Pluto (awareness, reproduction, death, gradual development, rebirth, secrecy)";
+"element" = "Element";
+"water" = "Water";
+"gemstones" = "Gemstones";
+"scorpio_gems" = "Topaz, fine Opal (symbol of passion and sincerity)";
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"red_chestnut" = "Red and chestnut";
+"metal" = "Metal";
+"steel" = "Steel";
+"health_relations" = "Health & Relations";
+"body_parts" = "Body Parts";
+"reproductive_organs" = "Reproductive organs";
+"dating_with" = "Dating With";
+"cancer_pisces" = "Cancer, Pisces";
+"friends_with" = "Friends With";
+"aquarius_leo" = "Aquarius, Leo";
+"clash_with" = "Clash With";
+"taurus" = "Taurus";
+/* Legend Section */
+"greek_myth_orion" = "Greek Mythology - Orion";
+"hera_scorpion_orion" = "Goddess Hera ordered a scorpion to kill hunter Orion. The scorpion emerged from the ground and stung Orion fatally. Both became constellations, placed opposite each other. Some say Apollo sent the scorpion out of jealousy over Artemis. Later, Apollo placed Orion in the sky as an apology.";
+"phaethon_story" = "Phaethon and the Giant Scorpion";
+"phaethon_scorpion" = "Helios' son Phaethon begged to drive the sun chariot. The horses panicked at a giant scorpion and lost control. Zeus struck Phaethon down to end the chaos.";
+"symbol_meaning" = "Symbol Meaning";
+"scorpion_behavior" = "The scorpion lives in deserts and jungles, with a hard shell, nocturnal habits, and a venomous tail used for defense and hunting. It fights to the death, even against itself. Scorpions in Sahara and Mexico are the most dangerous.";
+/* Personality Section */
+"strong_will" = "Strong Will & Determination";
+"strong_will_desc" = "Scorpio is the most powerful sign. Children are wise beyond years. Deep, lasting relationships. Hard outer shell hides a complex inner world. Even close people can't fully understand them.";
+"mysterious_eyes" = "Hypnotic Eyes";
+"mysterious_eyes_desc" = "Striking eyes in any color, with magnetic, intimidating power. Tall, attractive appearance. Brave, approachable, kind, but possessive and vengeful.";
+"passionate_vindictive" = "Passionate & Vindictive";
+"passionate_vindictive_desc" = "Extreme emotions: calm to fierce. Plans revenge meticulously. Fights to the end, even at self-sacrifice. Doesn't accept defeat easily.";
+"three_levels" = "Three Evolutionary Levels";
+"three_levels_desc" = "1. Scorpion: dangerous, vengeful criminals.\n2. Eagle: ambitious, successful in business, turns defeat into victory.\n3. Phoenix: outstanding, talented, high status.";
+"intuition_thinking" = "Intuition & Thinking";
+"intuition_thinking_desc" = "Decides by instinct more than logic. Suspicious, tests relationships. Silent strength to extract information. Suitable for lawyer, detective.";
+"loyal_protective" = "Loyal & Protective";
+"loyal_protective_desc" = "Protects self and loved ones. Plans ahead. Doesn't give up easily. Honest, straightforward, respected for integrity.";
+/* Love Section */
+"intense_love" = "Intense Love";
+"intense_love_desc" = "Private, chooses intelligent, loyal partners. Loves passionately, builds lasting relationships. High emotional needs.";
+"family_scorpio_desc" = "Cares deeply for family. Makes time despite work. Brings humor even in tough times. Complex emotions: love mixed with suspicion.";
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest_scorpio" = "Competitive, loves to conquer. Realistic, acts more than talks. Possessive and jealous.";
+"female" = "Female";
+"female_conquest_scorpio" = "Deep emotions, loyal, sacrifices for love. Devoted wife, ensures family never lacks.";
+"dating_tips" = "Dating Tips";
+"dating_tips_desc" = "DO: Dress attractively, choose mysterious venues, listen attentively, be honest, give surprises.\nDON'T: Lie, pry into privacy, argue fiercely, post online, be overly clingy.";
+/* Career Section */
+"suitable_careers" = "Suitable Careers";
+"suitable_careers_desc" = "Scientist, chemist, detective, spy, doctor, politician, police, explorer. Women: nurse, doctor. Men: politician, detective.";
+"work_style" = "Work Style";
+"work_style_desc" = "Focused, precise, respectful. Hardworking, intelligent, brave. High discipline as boss. Key to success: diligence, intelligence, stamina.";
+"finance_scorpio_desc" = "Good at earning, frugal. Accumulates wealth, lives luxuriously but not wastefully.";
+
+/*SagittariusLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"sagittarius" = "Sagittarius";
+/* Profile Section */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"9th_zodiac" = "9th in Zodiac";
+"ruling_planet" = "Ruling Planet";
+"jupiter" = "Jupiter (luckiest planet)";
+"symbol" = "Symbol";
+"archer" = "Archer";
+"element" = "Element";
+"fire" = "Fire";
+"characteristic" = "Characteristic";
+"mutability" = "Mutability";
+"time_luck" = "Time & Luck";
+"lucky_numbers" = "Lucky Numbers";
+"3_5_8" = "3, 5, 8";
+"colors" = "Colors";
+"deep_purple" = "Deep purple";
+"gemstones" = "Gemstones";
+"turquoise" = "Turquoise";
+"health_relations" = "Health & Relations";
+"body_parts" = "Body Parts";
+"hips_thighs" = "Hips, thighs";
+"dating_with" = "Dating With";
+"leo_aries" = "Leo, Aries";
+"friends_with" = "Friends With";
+"virgo_pisces" = "Virgo, Pisces";
+"clash_with" = "Clash With";
+"gemini" = "Gemini";
+/* Legend Section */
+"centaur_chiron" = "Centaur Chiron";
+"centaur_chiron_desc" = "Most Centaurs are foolish and violent. But Chiron, grandson of Oceanus and son of Kronos, is intelligent, wise, and kind. He helps the needy and teaches children.";
+"heracles_arrow" = "Heracles' Arrow";
+"heracles_arrow_desc" = "While fighting beasts that harmed villagers, Chiron was accidentally shot by Heracles' poisoned arrow. He suffered greatly but could not die as a god.";
+"prometheus_sacrifice" = "Prometheus' Sacrifice";
+"prometheus_sacrifice_desc" = "Witnessing Chiron's pain, Prometheus turned him mortal so his soul could ascend. The Sagittarius constellation commemorates Chiron.";
+"archer_symbol_desc" = "Symbolized by a sharp arrow. Known in Sumerian myths as a fierce centaur, but in Roman myths as wise Chiron. Reflects dual nature: humorous yet fierce.";
+/* Personality Section */
+"cheerful_generous" = "Cheerful & Generous";
+"cheerful_generous_desc" = "Cute, fun, sociable, generous. Open, shares plans freely, no lies. Loves learning, passionate in interests. Sometimes blunt, but honest. Spends freely, often broke from shopping.";
+"knowledge_exploration" = "Knowledge & Exploration";
+"knowledge_exploration_desc" = "Full of life, loves discovering new things. Enjoys travel to beautiful, peaceful places. Outgoing, enthusiastic in helping others. Always refreshing self positively.";
+"adventurous_brave" = "Adventurous & Brave";
+"adventurous_brave_desc" = "Daring, loves risky games. Suited for challenging jobs like spy, detective. Jupiter gives intelligence; balancing traits hits targets accurately.";
+"sociable_humorous" = "Sociable & Humorous";
+"sociable_humorous_desc" = "Funny, open, trustworthy. Sometimes too honest, hurts feelings. Hates lies; gets angry at dishonesty.";
+"optimistic_philosophical" = "Optimistic & Philosophical";
+"optimistic_philosophical_desc" = "Thinks deeply, lectures often. Many famous writers, journalists. Seen as boastful, but visionary. Simple style, comfortable clothes, bright home.";
+"blunt_impatient" = "Blunt & Impatient";
+"blunt_impatient_desc" = "Rude, careless in speech. Most romantic sign. Wild, free like a horse. Quick to act, hates constraints.";
+/* Love Section */
+"passionate_love" = "Passionate Love";
+"passionate_love_desc" = "Funny, brings joy. Loyal when committed, high standards. Loves freedom, hard to tie down. Mature: seeks deep connection. Faithful but needs space.";
+"family_sagittarius_desc" = "Loves big gatherings, not small family life. Teaches independence. Seen as irresponsible, but brings joy. Prioritizes freedom and travel.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest_sagittarius" = "Loves adventure, humor, freedom. Be fun, independent, join travels.";
+"female" = "Female";
+"female_conquest_sagittarius" = "Attracted to intelligence, optimism. Share dreams, explore together.";
+/* Career Section */
+"suitable_careers" = "Suitable Careers";
+"suitable_careers_desc" = "Explorer, journalist, teacher, marketer, tour guide, diplomat, interpreter, businessman. Loves freedom, communication, inspiration.";
+"finance_sagittarius_desc" = "Good earner, lavish spender. Rarely lacks but never rich. Optimistic, energetic despite hardships.";
+"work_style" = "Work Style";
+"work_style_desc" = "Dynamic, quick, motivated. Hates routine. Great boss: inspiring, creative. Colleagues love humor, optimism.";
+
+/*CapricornLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"capricorn" = "Capricorn";
+/* Profile Section */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"10th_zodiac" = "10th in Zodiac";
+"nature" = "Nature";
+"leader_nature" = "Symbol of leader, master";
+"weekday" = "Day of Week";
+"saturday" = "Saturday";
+"element" = "Element";
+"earth" = "Earth";
+"astronomy" = "Astronomy";
+"ruling_planet" = "Ruling Planet";
+"saturn" = "Saturn";
+"symbol" = "Symbol";
+"sea_goat" = "Sea Goat";
+"gemstones" = "Gemstones";
+"capricorn_gems" = "Garnet, amber, black onyx, jade, quartz";
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"dark_colors" = "Dark colors, brown, black, navy blue, yellow";
+"flowers" = "Flowers";
+"gardenia_violet" = "Gardenia, chrysanthemum, violet, daffodil";
+"metal" = "Metal";
+"lead" = "Lead";
+"animals" = "Animals";
+"crocodile_sheep" = "Crocodile, sheep, red-necked bird";
+"health_relations" = "Health & Relations";
+"body_parts" = "Body Parts";
+"skin_bones_knees" = "Skin, teeth, bones, knees";
+"dating_with" = "Dating With";
+"taurus_virgo" = "Taurus, Virgo";
+"friends_with" = "Friends With";
+"aries_libra" = "Aries, Libra";
+"compatible_with" = "Compatible With";
+"taurus_virgo_capricorn_pisces" = "Taurus, Virgo, Capricorn, Pisces";
+"clash_with" = "Clash With";
+"cancer" = "Cancer";
+"lucky_numbers" = "Lucky Numbers";
+"6_8_9" = "6, 8, 9";
+/* Legend Section */
+"babylon_god" = "Babylonian God";
+"ea_sea_goat" = "God Ea has a body half human, half animal: fish tail, goat body, human head. He guards the land by day and returns to the ocean at night. Capricorn (Seagoat) is his symbol.";
+"greek_myth" = "Greek Mythology";
+"pan_hermes" = "Pan, son of Hermes and Nymph, was born half human, half goat. Hermes brought him to Olympus. Pan became the god of livestock and shepherds, living in forests.";
+"symbol_meaning" = "Symbol Meaning";
+"nam_duong_nile" = "In Greek legend, Nam Duong jumped into the Nile during the Titan war and transformed into a half-goat, half-fish creature. The symbol of Capricorn represents the goat's head.";
+/* Personality Section */
+"ambitious_determined" = "Ambitious & Determined";
+"ambitious_desc" = "Full of dreams and aspirations. Never gives up. Works diligently with clear goals. Seizes every opportunity with detailed plans.";
+"disciplined_patient" = "Disciplined & Patient";
+"disciplined_desc" = "Lives by principles and rules. Serious, not humorous. Forgiving, harmonious. Success comes from patience and perseverance.";
+"reserved_principled" = "Reserved & Principled";
+"reserved_desc" = "Shy, introverted, cautious in relationships. Keeps plans secret. Does not believe in fate, creates own destiny.";
+"goal_oriented" = "Goal-Oriented";
+"goal_desc" = "Success is the ultimate goal: money, power, love. Self-motivated. Overcomes failures with stronger resolve.";
+"logical_practical" = "Logical & Practical";
+"logical_desc" = "Careful, analytical. Avoids risks. Turns failures into success. Works methodically, never rushes.";
+"responsible_leader" = "Responsible Leader";
+"responsible_desc" = "Independent, hardworking. Respected for discipline and dedication. Fair boss, clear rewards and punishments.";
+/* Love Section */
+"cautious_love" = "Cautious in Love";
+"cautious_love_desc" = "Serious in love. Does not confess easily. Needs time to trust. Loyal, faithful, but shy in expressing feelings.";
+"family" = "Family";
+"family_desc" = "Strict but loving parents. Teaches discipline. Keeps home tidy and organized. Frugal, avoids waste.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest" = "Break the cold shell. Show warmth and sincerity. Send morning messages.";
+"female" = "Female";
+"female_conquest" = "Be patient, calm. Take her to quiet, impressive places: concerts, cinemas. Avoid rushing.";
+/* Career Section */
+"career" = "Career";
+"career_desc" = "Ambitious, organized. Excellent in finance, real estate, law. Fair and disciplined leader.";
+"finance" = "Finance";
+"finance_desc" = "Good at earning and saving. Frugal, invests wisely. Never wasteful.";
+"suitable_jobs" = "Suitable Jobs";
+"suitable_jobs_desc" = "Real estate, banking, law, politics, management, science, history, technology, medicine.";
+
+/*PiscesLegendView Tabs */
+"tab_0" = "Profile";
+"tab_1" = "Legend";
+"tab_2" = "Personality";
+"tab_3" = "Love";
+"tab_4" = "Career";
+/* Header */
+"pisces" = "Pisces";
+/* Profile Section */
+"basic_info" = "Basic Info";
+"zodiac_order" = "Zodiac Order";
+"12th_zodiac" = "12th in Zodiac (Last Sign)";
+"nature" = "Nature";
+"inconstant_changeable" = "Inconstant, prone to change";
+"weekday" = "Day of Week";
+"tuesday" = "Tuesday";
+"element" = "Element";
+"water" = "Water";
+"astronomy" = "Astronomy";
+"ruling_planet" = "Ruling Planet";
+"neptune_jupiter" = "Neptune & Jupiter";
+"planet" = "Planet";
+"neptune_dreams" = "Neptune (dreams, illusions, music, mystery, poetry)";
+"symbol" = "Symbol";
+"two_fish" = "Two Fish";
+"gemstones" = "Gemstones";
+"pisces_gems" = "Bloodstone (red with green), red coral, aquamarine, moonstone";
+"colors_symbols" = "Colors & Symbols";
+"colors" = "Colors";
+"purple_gray_blue" = "Purple, gray, blue";
+"flowers" = "Flowers";
+"lotus_iris_camellia" = "Lotus, iris, camellia, jasmine, lily";
+"metal" = "Metal";
+"tin" = "Tin";
+"animals" = "Animals";
+"elephant_dolphin_dog" = "Elephant, dolphin, dog";
+"health_relations" = "Health & Relations";
+"body_parts" = "Body Parts";
+"feet" = "Feet";
+"dating_with" = "Dating With";
+"cancer_scorpio" = "Cancer, Scorpio";
+"friends_with" = "Friends With";
+"gemini_sagittarius" = "Gemini, Sagittarius";
+"compatible_with" = "Compatible With";
+"cancer_scorpio_pisces" = "Cancer, Scorpio, Pisces";
+"clash_with" = "Clash With";
+"virgo" = "Virgo";
+"time_luck" = "Time & Luck";
+"lucky_numbers" = "Lucky Numbers";
+"1_3_4_9" = "1, 3, 4, 9";
+/* Legend Section */
+"greek_myth" = "Greek Mythology";
+"aphrodite_eros_typhon" = "Aphrodite and Eros escaped monster Typhon by turning into fish. Two fish guided them to safety, becoming the Pisces symbol.";
+"symbol_meaning" = "Symbol Meaning";
+"two_fish_connected" = "Two fish linked by a cord — separate but connected. Pisces are optimistic, dreamy, and live in a fantasy world.";
+/* Personality Section */
+"mysterious_dual" = "Mysterious & Dual";
+"mysterious_dual_desc" = "Dual nature: divine or demonic. Intuitive, artistic, open, but secretive and prone to escapism.";
+"intuitive_artistic" = "Intuitive & Artistic";
+"intuitive_artistic_desc" = "Sharp intuition, talented in music, painting. Open but easily hurt.";
+"kind_sensitive" = "Kind & Sensitive";
+"kind_sensitive_desc" = "Helpful, empathetic, but fragile. Avoid confrontation, escape into dreams.";
+"dreamy_escapist" = "Dreamy & Escapist";
+"dreamy_escapist_desc" = "Rich imagination, avoid reality. Lazy, dependent, lack ambition.";
+"sociable_open" = "Sociable & Open";
+"sociable_open_desc" = "Friendly, trusting, stylish. Love quiet, romantic spaces.";
+"imaginative_lazy" = "Imaginative & Lazy";
+"imaginative_lazy_desc" = "Creative but lack follow-through. Work by mood, not plan.";
+/* Love Section */
+"romantic_love" = "Romantic Love";
+"romantic_love_desc" = "Romantic, sentimental, slow to commit. Need deep emotional connection.";
+"family" = "Family";
+"family_desc" = "Caring parents, strict but loving. Want harmonious, happy home.";
+/* Conquest */
+"conquest" = "Conquest";
+"male" = "Male";
+"male_conquest_pisces" = "Be gentle, understanding, listen to his dreams.";
+"female" = "Female";
+"female_conquest_pisces" = "Talk a lot, share emotions, enter her dream world.";
+/* Career Section */
+"creative_career" = "Creative Career";
+"creative_career_desc" = "Musician, doctor, architect, designer, programmer, actor, writer, poet, artist.";
+"work" = "Work";
+"work_desc" = "Intuitive, imaginative, caring. Good in charity, art, healing.";
+"finance" = "Finance";
+"finance_desc" = "Earn well but not greedy. Spend on loved ones, not wasteful.";
+
+/* ZodiacLoveView */
+"zodiac_love_title" = "Zodiac Love";
+"male_zodiacs" = "Male Zodiacs";
+"female_zodiacs" = "Female Zodiacs";
+"result_button" = "Result Table";
+"zodiac_love_result_title" = "Love Compatibility";
+"love_compatibility_placeholder" = "Love compatibility details for";
+"aries" = "Aries";
+"taurus" = "Taurus";
+"gemini" = "Gemini";
+"cancer" = "Cancer";
+"leo" = "Leo";
+"virgo" = "Virgo";
+"libra" = "Libra";
+"scorpio" = "Scorpio";
+"sagittarius" = "Sagittarius";
+"capricorn" = "Capricorn";
+"aquarius" = "Aquarius";
+"pisces" = "Pisces";
+"aries_date" = "Mar 21 - Apr 19";
+"taurus_date" = "Apr 20 - May 20";
+"gemini_date" = "May 21 - Jun 20";
+"cancer_date" = "Jun 21 - Jul 22";
+"leo_date" = "Jul 23 - Aug 22";
+"virgo_date" = "Aug 23 - Sep 22";
+"libra_date" = "Sep 23 - Oct 22";
+"scorpio_date" = "Oct 23 - Nov 21";
+"sagittarius_date" = "Nov 22 - Dec 21";
+"capricorn_date" = "Dec 22 - Jan 19";
+"aquarius_date" = "Jan 20 - Feb 18";
+"pisces_date" = "Feb 19 - Mar 20";
+
+/*ZodiacSecretView*/
+"zodiac_secret_title" = "Zodiac Secrets";
+"secret_golden_pairs" = "Golden Couples of the Zodiac";
+"secret_quick_love" = "Love Fast, Break Fast Couples";
+"secret_incompatible" = "Most Incompatible Zodiac Pairs";
+"secret_forbidden_colors" = "Forbidden Colors for Each Zodiac";
+"secret_golden_pairs_content" = "These zodiac couples, once together, cannot be separated. Their love is gentle yet profound, and they bring each other great luck in both money and emotions. Let's explore these zodiac signs below!\n\n1. Pisces & Cancer:\n\nCancer is gentle and lovable, though a bit reserved, but still very endearing. They don’t like socializing but have good fate. Pisces blends strength and cuteness, is humorous, and enjoys life. Both value emotions and prefer a calm life, making their relationship very harmonious.\n\nCancer is sensitive and moody, but with Pisces, they become more settled. Pisces is perceptive and builds trust. Together, they offer comfort and emotional support.\n\nThis is considered a \"golden couple\" because their compatibility extends to work. With shared ideals, they achieve great success. Pisces’ intelligence and Cancer’s calmness create a perfect world for themselves.\n\n2. Pisces & Taurus:\n\nTaurus is mature, stable, but also demanding. They seek a loyal, kind, and caring partner. Pisces is gentle, nurturing, and mature in thought — a great match.\n\nTheir love is not fiery but harmonious and romantic. Taurus has high ideals and plans for the future even early in love.\n\nThey form a perfect family: Taurus earns, Pisces manages the home. Both are loyal and sincere, making their bond strong and beautiful.\n\n3. Libra & Aries:\n\nLibra appears elegant but is secretly playful. They treat friends and strangers very differently. In love, they tease and act silly. With Aries, it’s an explosive, spectacular match.\n\nLibra never refuses Aries’ requests, even supporting wild ideas. Both love fun, adventure, and taking risks.\n\nThey’re not just lovers but great partners. Aries’ ambition + Libra’s bold thinking = perfect synergy. They energize each other endlessly.\n\n4. Aries & Sagittarius:\n\nAries is free-spirited and hard to tame, but Sagittarius is one of the few who can. Sagittarius is strong, principled, and responsible, helping Aries mature.\n\nThough cool, Sagittarius is not dry — they joke, care, and inspire respect in Aries. Their love is gentle and deep.\n\nSagittarius supports Aries’ dreams and growth. In work, they help each other build a career. Their love is lasting, and they know how to please each other. Nothing seems to shake them.\n\nIn family life, conflicts are rare and resolved peacefully. Both are responsible and hardworking, making life better and more prosperous.";
+
+"secret_quick_love_content" = "First impressions are crucial. Many couples fall in love at first sight, but once they truly know each other, they part ways. Here are zodiac pairs that love fast but don’t last long.\n\n1. Aries - Scorpio:\n\nThey fall in love instantly — Aries’ boldness meets Scorpio’s mystery. Passionate and romantic at first. But differences soon create barriers. Aries feels suffocated by Scorpio’s intensity. Scorpio values loyalty, but Aries’ actions seem disrespectful. They part when patience runs out.\n\n2. Taurus - Aquarius:\n\nOn the surface, they seem perfect: Taurus strong, Aquarius kind. But harmony leads to boredom. They can’t understand each other’s thoughts. Taurus is practical; when it fails, they move on. Aquarius is proud and won’t beg. Breakup is swift and clean.\n\n3. Gemini - Pisces:\n\nBoth curious and adventurous, they connect fast and bring excitement. But Gemini loves freedom and hates control. Pisces is emotional and serious in love. Once curiosity fades, cracks appear. Pisces realizes Gemini isn’t right for them.\n\n4. Cancer - Libra:\n\nCancer falls for Libra’s charm. Early days are sweet and romantic. But Libra has many social ties — love isn’t everything. Cancer needs security and can’t accept that. Misunderstandings grow, and the relationship ends.";
+
+"secret_incompatible_content" = "These zodiac signs have such similar personalities that they click perfectly. Let’s learn more!\n\n1. Cancer & Scorpio:\n\nScorpio is hard to approach but lets Cancer in — they sense similarity. Both are quiet and reserved. Scorpio is cold, Cancer is calm — their life views align.\n\nDespite Scorpio’s moodiness, Cancer’s understanding softens them. Both value emotions deeply and avoid hurting each other.\n\nThey read each other’s minds. Great business partners with shared goals. Careful and attentive, success is guaranteed.\n\n2. Aries & Gemini:\n\nAries is passionate and free; Gemini is lively and witty. They connect fast and deeply.\n\nSimilar traits: Gemini brings joy, Aries loves the energy. Both love adventure and crowds. Travel strengthens their bond.\n\nGemini is creative, Aries is bold — together, unstoppable. At work, they’re a powerhouse of energy and dedication.\n\nThey teach each other resilience and growth. With optimism and strength, they overcome all challenges.\n\n3. Sagittarius & Leo:\n\nBoth powerful — their energy explodes. Love is intense and blinding. Leo is proud but softens for love. Sagittarius is clever and strategic.\n\nNeither wants to lose control, but their love is deep. They understand each other perfectly.\n\nThey tease each other to bond, but unite against outsiders. Both hold grudges and plan revenge quietly.\n\n4. Capricorn & Taurus:\n\n\"Simple and sincere\" — both are stable, mature, and loyal. Once committed, they never betray.\n\nNot passionate, but warm and genuine. They value sincerity and loyalty. Born for each other, they seek peace. But they fully support each other’s dreams. At work, both are serious and capable — success is natural.";
+
+"secret_forbidden_colors_content" = "1. Aries: Gray\n\nAries is full of energy, clear in love and hate. Gray is confusing and unacceptable to them. It makes them dizzy and they avoid it instantly.\n\n2. Taurus: Red\n\nRed means luxury and power, but Taurus prefers simplicity and nature. They dislike this flashy color.\n\nColors reveal personality. Besides lucky colors, some bring bad luck. Let’s see which colors each zodiac should avoid!\n\n3. Gemini: Green\n\nSome say green protects eyes, others say it means betrayal. Gemini finds it glaring and annoying.\n\n4. Cancer: Black\n\nCancer treats everyone sincerely. The darkness of black doesn’t suit kind-hearted people like them.\n\n5. Leo: Green\n\nLeo fears green as a symbol of betrayal. They avoid it to prevent bad luck.\n\n6. Virgo: Red\n\nVirgo fears blood. Red makes them dizzy and anxious. It brings discomfort and bad luck.\n\n7. Libra: Pink\n\nPink means gentleness — fits Libra’s charm. But sadly, it brings them misfortune.\n\n8. Scorpio: White\n\nWhite is pure and simple. It clashes with Scorpio’s mysterious, intense nature. They avoid it.\n\n9. Sagittarius: Black\n\nSagittarius has feared black since childhood. It brings bad vibes and kills joy.\n\n10. Capricorn: Red\n\nRed brings gloom and depression. Capricorn prefers blue and yellow for luck.\n\n11. Aquarius: Yellow\n\nAquarius is dynamic. Rusty yellow feels restrictive and brings bad luck.\n\n12. Pisces: Blue\n\nPisces loves fantasy and dreams of the sky, but blue is not their lucky color. Avoid it to prevent misfortune.";
+
+
+/*ZodiacRankView*/
+"zodiac_rank_title" = "Zodiac Ranking";
+"rank_question" = "Which zodiac sign:";
+"rank_select_placeholder" = "-- Select --";
+// Menu items
+"rank_chanh" = "Arrogant";
+"rank_da_tinh" = "Flirtatious";
+"rank_dai_gai" = "Girl-Crazy";
+"rank_de_xom" = "Nosy";
+"rank_dien" = "Crazy";
+"rank_fa_nhieu" = "Often Single";
+"rank_gan_da" = "Brave";
+"rank_gia_nai" = "Fake Innocent";
+"rank_ham_hoc" = "Studious";
+"rank_hat_hay" = "Great Singer";
+"rank_lau_ca" = "Cunning";
+"rank_lua_tinh" = "Love Scammer";
+"rank_luoi_bieng" = "Lazy";
+"rank_luy_tinh" = "Love-Struck";
+"rank_me_choi_game" = "Game Addict";
+"rank_me_trai" = "Boy-Crazy";
+"rank_nghiem_tuc" = "Serious";
+"rank_nhat_gan" = "Cowardly";
+"rank_noi_doi" = "Liar";
+"rank_sang_tao" = "Creative";
+"rank_mong_mo" = "Dreamy";
+"rank_so_xau" = "Vain";
+"rank_than_thien" = "Friendly";
+"rank_thanh_thien" = "Saintly";
+"rank_vi_ban_be" = "Loyal Friend";
+"rank_vo_tinh" = "Cold";
+"rank_nhieu_tinh_xau_nhat" = "Most Flaws";
+"rank_yeu_doi" = "Optimistic";
+// Zodiac names
+"zodiac_aries" = "Aries";
+"zodiac_taurus" = "Taurus";
+"zodiac_gemini" = "Gemini";
+"zodiac_cancer" = "Cancer";
+"zodiac_leo" = "Leo";
+"zodiac_virgo" = "Virgo";
+"zodiac_libra" = "Libra";
+"zodiac_scorpio" = "Scorpio";
+"zodiac_sagittarius" = "Sagittarius";
+"zodiac_capricorn" = "Capricorn";
+"zodiac_aquarius" = "Aquarius";
+"zodiac_pisces" = "Pisces";
+// Date ranges
+"zodiac_aries_date" = "Mar 21 - Apr 19";
+"zodiac_taurus_date" = "Apr 20 - May 20";
+"zodiac_gemini_date" = "May 21 - Jun 20";
+"zodiac_cancer_date" = "Jun 21 - Jul 22";
+"zodiac_leo_date" = "Jul 23 - Aug 22";
+"zodiac_virgo_date" = "Aug 23 - Sep 22";
+"zodiac_libra_date" = "Sep 23 - Oct 22";
+"zodiac_scorpio_date" = "Oct 23 - Nov 21";
+"zodiac_sagittarius_date" = "Nov 22 - Dec 21";
+"zodiac_capricorn_date" = "Dec 22 - Jan 19";
+"zodiac_aquarius_date" = "Jan 20 - Feb 18";
+"zodiac_pisces_date" = "Feb 19 - Mar 20";
+/* Rank */
+"rank_champion" = "Champion";
+"rank_runner_up" = "Runner-up";
+"rank_third_place" = "3rd Place";
+"rank_prefix" = "Rank";
+
+/* ZodiacDailyView */
+"zodiac_love_title" = "Love Today";
+"zodiac_search_placeholder" = "Search zodiac sign...";
+"zodiac_search_no_results" = "No zodiac sign found";
+"zodiac_loading" = "Loading horoscope...";
+"zodiac_no_data" = "No data available";
+"zodiac_daily_prefix" = "Today";
+"zodiac_compatibility" = "Compatibility";
+"zodiac_lucky_time" = "Lucky Time";
+"zodiac_lucky_number" = "Lucky Number";
+"zodiac_color" = "Color";
+"zodiac_mood" = "Mood";
+"zodiac_detail_description" = "Detailed Prediction";
+

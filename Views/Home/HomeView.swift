@@ -15,17 +15,17 @@ struct HomeView: View {
     }
     
     private let bannerItems = [
-        LanguageManager.current.string("Galaxy"),
-        LanguageManager.current.string("Black Hole"),
-        LanguageManager.current.string("Nebula"),
-        LanguageManager.current.string("Map Galaxy"),
-        LanguageManager.current.string("Solar System"),
-        LanguageManager.current.string("Planets"),
-        LanguageManager.current.string("Stars"),
-        LanguageManager.current.string("Astronomical News"),
-        LanguageManager.current.string("Constellation"),
-        LanguageManager.current.string("12 Zodiac Signs"),
-        LanguageManager.current.string("Sky Live")
+        NavItem(id: UUID(), title: LanguageManager.current.string("Galaxy"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Black Hole"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Nebula"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Map Galaxy"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Solar System"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Planets"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Stars"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Astronomical News"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Constellation"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("12 Zodiac Signs"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Sky Live"), icon: "")
     ]
 
     private let backgroundImages = [
@@ -131,7 +131,7 @@ struct HomeView: View {
                                             }
                                             
                                             // Education
-                                            NavigationLink(destination: HomeEducationView().navigationBarBackButtonHidden(true)) {
+                                            NavigationLink(destination: WelcomeEducationView().navigationBarBackButtonHidden(true)) {
                                                 HStack {
                                                     Image(systemName: "book.fill")
                                                         .foregroundColor(.white)
@@ -213,27 +213,29 @@ struct HomeView: View {
                         ZStack {
                             TabView(selection: $selectedBannerIndex) {
                                 ForEach(0..<bannerItems.count, id: \.self) { index in
-                                    ZStack {
-                                        Image(backgroundImages[index])
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(height: 200)
-                                            .clipped()
-                                            .cornerRadius(25)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 25)
-                                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
-                                            )
-                                        Text(bannerItems[index])
-                                            .font(.title2)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.white)
-                                            .padding()
-                                            .background(Color.black.opacity(0.2))
-                                            .cornerRadius(25)
-                                            .padding(.bottom, 20)
+                                    NavigationLink(destination: destinationForBanner(at: index)) {
+                                        ZStack {
+                                            Image(backgroundImages[index])
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(height: 200)
+                                                .clipped()
+                                                .cornerRadius(25)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 25)
+                                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                )
+                                            Text(bannerItems[index].title)
+                                                .font(.title2)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .background(Color.black.opacity(0.2))
+                                                .cornerRadius(25)
+                                                .padding(.bottom, 20)
+                                        }
+                                        .tag(index)
                                     }
-                                    .tag(index)
                                 }
                             }
                             .frame(height: 200)
@@ -512,6 +514,30 @@ struct HomeView: View {
                                             .padding(8)
                                             .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
                                         }
+                                    } else if gridItemsRight[index] == LanguageManager.current.string("12 Zodiac Signs") {
+                                        NavigationLink(destination: ZodiacHomeView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                        }
                                     } else {
                                         ZStack(alignment: .bottomLeading) {
                                             Image(gridBackgroundImagesRight[index])
@@ -661,6 +687,37 @@ struct HomeView: View {
         case LanguageManager.current.string("Profile"):
             ProfileView()
                 .environmentObject(authViewModel)
+        default:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    private func destinationForBanner(at index: Int) -> some View {
+        let title = bannerItems[index].title
+        switch title {
+        case LanguageManager.current.string("Galaxy"):
+            GalaxyCatalogView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Black Hole"):
+            BlackholeCatalogView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Nebula"):
+            NebulaCatalogView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Map Galaxy"):
+            EmptyView()
+        case LanguageManager.current.string("Solar System"):
+            SolarSystemView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Planets"):
+            PlanetsCatalogView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Stars"):
+            StarCatalogView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Astronomical News"):
+            EmptyView()
+        case LanguageManager.current.string("Constellation"):
+            ConstellationCatalogView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("12 Zodiac Signs"):
+            ZodiacHomeView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Sky Live"):
+            SkyLiveListView().navigationBarBackButtonHidden(true)
         default:
             EmptyView()
         }

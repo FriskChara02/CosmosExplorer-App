@@ -5,37 +5,46 @@
 //  Created by Loi Nguyen on 28/7/25.
 //
 
-import Foundation
-import SwiftData
-import PostgresClientKit
-import UIKit
+    import Foundation
+    import SwiftData
+    import PostgresClientKit
+    import UIKit
 
-@MainActor
-class SwiftDataService {
-    public let container: ModelContainer
-    
-    init(container: ModelContainer) {
-        self.container = container
-    }
-    
-    init() {
-        let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self])
-        let containerURL = URL.applicationSupportDirectory.appendingPathComponent("CosmosDB.sqlite")
+    @MainActor
+    class SwiftDataService {
+        public let container: ModelContainer
         
-        let configuration = ModelConfiguration(
-            schema: schema,
-            url: containerURL,
-            allowsSave: true
-        )
+        init(container: ModelContainer) {
+                self.container = container
+            }
         
-        do {
-            container = try ModelContainer(for: schema, configurations: configuration)
-            print("✅ ModelContainer created successfully with entities: \(schema.entities.map { $0.name })")
-        } catch {
-            print("❌ Failed to create ModelContainer: \(error)")
-            fatalError("Could not create ModelContainer: \(error)")
+        init() {
+            ValueTransformer.registerIfNeeded()
+            
+            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self])
+            let containerURL = URL.applicationSupportDirectory.appendingPathComponent("CosmosDB.sqlite")
+            
+            let configuration = ModelConfiguration(
+                schema: schema,
+                url: containerURL,
+                allowsSave: true
+            )
+            
+            do {
+                container = try ModelContainer(for: schema, configurations: configuration)
+                print("✅ ModelContainer created successfully with entities: \(schema.entities.map { $0.name })")
+            } catch {
+                print("❌ Failed to create ModelContainer: \(error)")
+                fatalError("Could not create ModelContainer: \(error)")
+            }
         }
-    }
+        
+        init(inMemory: Bool = false) {
+            ValueTransformer.registerIfNeeded()
+            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self])
+            let config = ModelConfiguration(isStoredInMemoryOnly: inMemory)
+            self.container = try! ModelContainer(for: schema, configurations: config)
+        }
     
     // MARK: - Save Planet
     func savePlanet(_ planet: PlanetModel) {
@@ -1769,6 +1778,523 @@ class SwiftDataService {
             return []
         }
     }
+        
+    private func syncQuizToPostgreSQL(_ quiz: Quiz) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("Failed to connect to PostgreSQL")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO quizzes (
+                    id, title, description, is_public, created_by, created_at, updated_at, categories
+                )
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                ON CONFLICT (id) DO UPDATE
+                SET title = $2, description = $3, is_public = $4, created_by = $5,
+                    created_at = $6, updated_at = $7, categories = $8
+            """)
+            defer { statement.close() }
+            
+            let parameters: [PostgresValueConvertible?] = [
+                pg(Int64(quiz.id)),
+                pg(quiz.title),
+                pg(quiz.quizDescription),
+                pg(quiz.isPublic),
+                pg(quiz.createdBy?.uuidString),
+                pg(quiz.createdAt),
+                pg(quiz.updatedAt),
+                pgArray(quiz.categories)
+            ]
+            
+            try statement.execute(parameterValues: parameters.compactMap { $0 })
+            
+            let deleteCards = try connection.prepareStatement(text: "DELETE FROM cards WHERE quiz_id = $1")
+            try deleteCards.execute(parameterValues: [pg(Int64(quiz.id))])
+            deleteCards.close()
+            
+            for card in quiz.cards {
+                let cardStmt = try connection.prepareStatement(text: """
+                    INSERT INTO cards (
+                        id, quiz_id, term, definition, hint, image_data,
+                        term_formatting, definition_formatting
+                    )
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                """)
+                defer { cardStmt.close() }
+                
+                let cardParams: [PostgresValueConvertible?] = [
+                    pg(Int64(card.id)),
+                    pg(Int64(quiz.id)),
+                    pg(card.term),
+                    pg(card.definition),
+                    pg(card.hint),
+                    pg(card.imageData),
+                    pg(card.termFormatting),
+                    pg(card.definitionFormatting)
+                ]
+                
+                try cardStmt.execute(parameterValues: cardParams.compactMap { $0 })
+            }
+            
+            print("Quiz synced to PostgreSQL: \(quiz.title) (id: \(quiz.id))")
+        } catch {
+            print("Error syncing quiz to PostgreSQL: \(error)")
+        }
+    }
+    
+    // MARK: Save Quiz
+    func saveQuiz(_ quiz: Quiz) {
+        let context = container.mainContext
+        
+        context.insert(quiz)
+            if quiz.id == 0 {
+                quiz.id = Int64(Date().timeIntervalSince1970 * 1000)
+            }
+        do {
+            try context.save()
+            print("Quiz saved to SwiftData: \(quiz.title)")
+        } catch {
+            print("Error saving quiz to SwiftData: \(error)")
+        }
+
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("Failed to connect to PostgreSQL")
+            return
+        }
+        defer { connection.close() }
+
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO quizzes (
+                    id, title, description, is_public, created_by, created_at, updated_at, categories
+                )
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                ON CONFLICT (id) DO UPDATE
+                SET title = $2, description = $3, is_public = $4, created_by = $5,
+                    created_at = $6, updated_at = $7, categories = $8
+            """)
+            defer { statement.close() }
+
+            let parameters: [PostgresValueConvertible?] = [
+                pg(Int64(quiz.id)),
+                pg(quiz.title),
+                pg(quiz.quizDescription),
+                pg(quiz.isPublic),
+                pg(quiz.createdBy?.uuidString),
+                pg(quiz.createdAt),
+                pg(quiz.updatedAt),
+                pgArray(quiz.categories)
+            ]
+
+            try statement.execute(parameterValues: parameters.compactMap { $0 })
+
+            let deleteCards = try connection.prepareStatement(text: "DELETE FROM cards WHERE quiz_id = $1")
+            defer { deleteCards.close() }
+            try deleteCards.execute(parameterValues: [pg(Int64(quiz.id))].compactMap { $0 })
+
+            for card in quiz.cards {
+                let cardStmt = try connection.prepareStatement(text: """
+                    INSERT INTO cards (
+                        id, quiz_id, term, definition, hint, image_data,
+                        term_formatting, definition_formatting
+                    )
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                """)
+                defer { cardStmt.close() }
+
+                let cardParams: [PostgresValueConvertible?] = [
+                    pg(Int64(card.id)),
+                    pg(Int64(quiz.id)),
+                    pg(card.term),
+                    pg(card.definition),
+                    pg(card.hint),
+                    pg(card.imageData),
+                    pg(card.termFormatting),
+                    pg(card.definitionFormatting)
+                ]
+
+                try cardStmt.execute(parameterValues: cardParams.compactMap { $0 })
+            }
+
+            print("Quiz synced to PostgreSQL: \(quiz.title)")
+        } catch {
+            print("Error syncing quiz to PostgreSQL: \(error)")
+        }
+    }
+
+    // MARK: Fetch Quizzes
+    func fetchQuizzes() -> [Quiz] {
+        let context = container.mainContext
+        var quizzes: [Quiz] = []
+
+        // SwiftData
+        do {
+            let descriptor = FetchDescriptor<Quiz>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+            quizzes = try context.fetch(descriptor)
+            if !quizzes.isEmpty { return quizzes }
+        } catch {
+            print("Error fetching from SwiftData: \(error)")
+        }
+
+        // PostgreSQL
+        guard let connection = try? DatabaseConfig.createConnection() else { return quizzes }
+        defer { connection.close() }
+
+        do {
+            let stmt = try connection.prepareStatement(text: """
+                SELECT id, title, description, is_public, created_by, created_at, updated_at, categories
+                FROM quizzes ORDER BY created_at DESC
+            """)
+            defer { stmt.close() }
+
+            let cursor = try stmt.execute()
+            for row in cursor {
+                let cols = try row.get().columns
+                let quizId: Int64 = try Int64(cols[0].int())
+                
+                let rawCategories = try cols[7].optionalString() ?? "{}"
+
+                let categories: [String] = {
+                    let str = rawCategories
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    guard !str.isEmpty, str != "{}" else { return [] }
+                    
+                    return str
+                        .replacingOccurrences(of: "{", with: "")
+                        .replacingOccurrences(of: "}", with: "")
+                        .split(separator: ",")
+                        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                        .filter { !$0.isEmpty }
+                }()
+
+                let quiz = Quiz(
+                    id: quizId,
+                    title: try cols[1].string(),
+                    quizDescription: try cols[2].string(),
+                    isPublic: try cols[3].bool(),
+                    createdBy: UUID(uuidString: try cols[4].optionalString() ?? ""),
+                    categories: categories
+                )
+                quiz.createdAt = try cols[5].timestamp().date(in: .gmt)
+                quiz.updatedAt = try cols[6].timestamp().date(in: .gmt)
+                quiz.cards = try fetchRelatedCards(connection: connection, quizId: quizId)
+
+                if let existing = quizzes.first(where: { $0.id == quiz.id }) {
+                    existing.update(
+                        updatedTitle: quiz.title,
+                        updatedDescription: quiz.quizDescription,
+                        updatedIsPublic: quiz.isPublic,
+                        updatedCategories: quiz.categories
+                    )
+                    existing.cards = quiz.cards
+                    existing.createdAt = quiz.createdAt
+                    existing.updatedAt = quiz.updatedAt
+                    existing.createdBy = quiz.createdBy
+                } else {
+                    context.insert(quiz)
+                    quizzes.append(quiz)
+                }
+            }
+            try context.save()
+        } catch {
+            print("Error fetching from PostgreSQL: \(error)")
+        }
+        return quizzes
+    }
+
+    private func fetchRelatedCards(connection: Connection, quizId: Int64) throws -> [Card] {
+        let stmt = try connection.prepareStatement(text: """
+            SELECT id, term, definition, hint, image_data, term_formatting, definition_formatting
+            FROM cards WHERE quiz_id = $1
+        """)
+        defer { stmt.close() }
+
+        let cursor = try stmt.execute(parameterValues: [pg(quizId)].compactMap { $0 })
+        var cards: [Card] = []
+        for row in cursor {
+            let cols = try row.get().columns
+            let card = Card(
+                id: try Int64(cols[0].int()),
+                term: try cols[1].string(),
+                definition: try cols[2].string(),
+                hint: try cols[3].optionalString(),
+                imageData: try cols[4].optionalByteA()?.data,
+                termFormatting: try cols[5].optionalByteA()?.data,
+                definitionFormatting: try cols[6].optionalByteA()?.data
+            )
+            cards.append(card)
+        }
+        return cards
+    }
+
+    // MARK: Update Quiz
+    func updateQuiz(_ quiz: Quiz) {
+        let context = container.mainContext
+        do { try context.save() } catch { print("SwiftData update error: \(error)") }
+
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+
+        do {
+            let stmt = try connection.prepareStatement(text: """
+                UPDATE quizzes SET title = $2, description = $3, is_public = $4, created_by = $5,
+                    created_at = $6, updated_at = $7, categories = $8 WHERE id = $1
+            """)
+            defer { stmt.close() }
+
+            try stmt.execute(parameterValues: [
+                pg(Int64(quiz.id)),
+                pg(quiz.title),
+                pg(quiz.quizDescription),
+                pg(quiz.isPublic),
+                pg(quiz.createdBy?.uuidString),
+                pg(quiz.createdAt),
+                pg(quiz.updatedAt),
+                pgArray(quiz.categories)
+            ].compactMap { $0 })
+
+            let del = try connection.prepareStatement(text: "DELETE FROM cards WHERE quiz_id = $1")
+            defer { del.close() }
+            try del.execute(parameterValues: [pg(Int64(quiz.id))].compactMap { $0 })
+
+            for card in quiz.cards {
+                let cardStmt = try connection.prepareStatement(text: """
+                    INSERT INTO cards (id, quiz_id, term, definition, hint, image_data, term_formatting, definition_formatting)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                """)
+                defer { cardStmt.close() }
+
+                try cardStmt.execute(parameterValues: [
+                    pg(Int64(card.id)),
+                    pg(Int64(quiz.id)),
+                    pg(card.term),
+                    pg(card.definition),
+                    pg(card.hint),
+                    pg(card.imageData),
+                    pg(card.termFormatting),
+                    pg(card.definitionFormatting)
+                ].compactMap { $0 })
+            }
+        } catch {
+            print("PostgreSQL update error: \(error)")
+        }
+    }
+
+    // MARK: Delete Quiz
+        func deleteQuiz(_ quiz: Quiz) {
+            let context = container.mainContext
+            
+            let quizId = quiz.id
+            let attemptPredicate = #Predicate<Attempt> { $0.quizId == quizId }
+            if let attempts = try? context.fetch(FetchDescriptor<Attempt>(predicate: attemptPredicate)) {
+                attempts.forEach { context.delete($0) }
+            }
+            
+            context.delete(quiz)
+            
+            do { try context.save() } catch { print("Delete SwiftData error: \(error)") }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else { return }
+            defer { connection.close() }
+            
+            do {
+                let deleteAttempts = try connection.prepareStatement(text: "DELETE FROM attempts WHERE quiz_id = $1")
+                defer { deleteAttempts.close() }
+                try deleteAttempts.execute(parameterValues: [pg(Int64(quiz.id))].compactMap { $0 })
+                
+                let deleteQuiz = try connection.prepareStatement(text: "DELETE FROM quizzes WHERE id = $1")
+                defer { deleteQuiz.close() }
+                try deleteQuiz.execute(parameterValues: [pg(Int64(quiz.id))].compactMap { $0 })
+            } catch {
+                print("PostgreSQL delete error: \(error)")
+            }
+        }
+
+    // MARK: - Attempt Methods
+    func loadOrCreateAttempt(for quizId: Int64, mode: String, userId: UUID) -> Attempt {
+        let context = container.mainContext
+        let predicate = #Predicate<Attempt> { $0.userId == userId && $0.quizId == quizId && $0.mode == mode }
+        if let existing = try? context.fetch(FetchDescriptor<Attempt>(predicate: predicate)).first {
+            return existing
+        }
+
+        guard quizId != 0 else {
+            fatalError("quizId không hợp lệ (0) – không thể tạo Attempt")
+        }
+        let newAttempt = Attempt(userId: userId, quizId: quizId, mode: mode)
+        context.insert(newAttempt)
+        try? context.save()
+        saveOrUpdateAttempt(newAttempt, isUpdate: false)
+        return newAttempt
+    }
+
+    func updateAttempt(_ attempt: Attempt) {
+        let context = container.mainContext
+        try? context.save()
+        saveOrUpdateAttempt(attempt, isUpdate: true)
+    }
+
+    public func saveOrUpdateAttempt(_ attempt: Attempt, isUpdate: Bool) {
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+
+        do {
+            let userAnswersJSON = String(data: try JSONEncoder().encode(attempt.userAnswers), encoding: .utf8)!
+
+            let correctCardsPG = attempt.correctCardsPG
+
+            let sql = isUpdate ? """
+                UPDATE attempts 
+                SET user_id = $2, quiz_id = $3, mode = $4, started_at = $5, last_updated = $6,
+                    is_completed = $7, current_index = $8, correct_count = $9, incorrect_count = $10,
+                    user_answers = $11::jsonb, 
+                    correct_cards = $12::bigint[]
+                WHERE id = $1
+                """ : """
+                INSERT INTO attempts (
+                    id, user_id, quiz_id, mode, started_at, last_updated,
+                    is_completed, current_index, correct_count, incorrect_count,
+                    user_answers, correct_cards
+                )
+                VALUES (
+                    $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,
+                    $11::jsonb, $12
+                )
+                ON CONFLICT (id) DO UPDATE SET
+                    user_id=EXCLUDED.user_id,
+                    quiz_id=EXCLUDED.quiz_id,
+                    mode=EXCLUDED.mode,
+                    started_at=EXCLUDED.started_at,
+                    last_updated=EXCLUDED.last_updated,
+                    is_completed=EXCLUDED.is_completed,
+                    current_index=EXCLUDED.current_index,
+                    correct_count=EXCLUDED.correct_count,
+                    incorrect_count=EXCLUDED.incorrect_count,
+                    user_answers=EXCLUDED.user_answers,
+                    correct_cards=EXCLUDED.correct_cards
+                """
+
+            let stmt = try connection.prepareStatement(text: sql)
+            defer { stmt.close() }
+
+            try stmt.execute(parameterValues: [
+                pg(attempt.id),
+                pg(attempt.userId.uuidString),
+                pg(attempt.quizId),
+                pg(attempt.mode),
+                pg(attempt.startedAt),
+                pg(attempt.lastUpdated),
+                pg(attempt.isCompleted),
+                pg(attempt.currentIndex),
+                pg(attempt.correctCount),
+                pg(attempt.incorrectCount),
+                pg(userAnswersJSON),
+                correctCardsPG
+            ].compactMap { $0 })
+
+        } catch {
+            print("Attempt sync error: \(error)")
+        }
+    }
+    
+
+    // MARK: - Favorite Methods
+
+    func addFavorite(cardId: Int64, quizId: Int64, userId: UUID) {
+        let context = container.mainContext
+        let favorite = Favorite(userId: userId, cardId: cardId, quizId: quizId)
+        context.insert(favorite)
+        try? context.save()
+
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+
+        do {
+            let stmt = try connection.prepareStatement(text: """
+                INSERT INTO favorites (id, user_id, card_id, quiz_id, added_at)
+                VALUES ($1, $2, $3, $4, $5)
+            """)
+            defer { stmt.close() }
+            try stmt.execute(parameterValues: [
+                pg(favorite.id),
+                pg(userId.uuidString),
+                pg(cardId),
+                pg(quizId),
+                pg(favorite.addedAt)
+            ].compactMap { $0 })
+        } catch {
+            print("Add favorite error: \(error)")
+        }
+    }
+
+    func removeFavorite(cardId: Int64, userId: UUID) {
+        let context = container.mainContext
+        let predicate = #Predicate<Favorite> { $0.userId == userId && $0.cardId == cardId }
+        let favorites = try? context.fetch(FetchDescriptor<Favorite>(predicate: predicate))
+        favorites?.forEach { context.delete($0) }
+        try? context.save()
+
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+
+        do {
+            let stmt = try connection.prepareStatement(text: "DELETE FROM favorites WHERE user_id = $1 AND card_id = $2")
+            defer { stmt.close() }
+            try stmt.execute(parameterValues: [
+                pg(userId.uuidString),
+                pg(cardId)
+            ].compactMap { $0 })
+        } catch {
+            print("Remove favorite error: \(error)")
+        }
+    }
+
+    func isFavorite(cardId: Int64, userId: UUID) -> Bool {
+        let context = container.mainContext
+        let predicate = #Predicate<Favorite> { $0.userId == userId && $0.cardId == cardId }
+        return (try? context.fetchCount(FetchDescriptor<Favorite>(predicate: predicate))) ?? 0 > 0
+    }
+
+    // MARK: - UserProgress
+        func updateUserProgress(_ progress: UserProgress) {
+            let context = container.mainContext
+            try? context.save()
+
+            guard let connection = try? DatabaseConfig.createConnection() else { return }
+            defer { connection.close() }
+
+            do {
+                let stmt = try connection.prepareStatement(text: """
+                    INSERT INTO user_progress (
+                        user_id, streak_days, last_completed_date, 
+                        weekly_completions, total_completions
+                    )
+                    VALUES ($1, $2, $3, $4::text[], $5)
+                    ON CONFLICT (user_id) DO UPDATE SET
+                        streak_days = EXCLUDED.streak_days,
+                        last_completed_date = EXCLUDED.last_completed_date,
+                        weekly_completions = EXCLUDED.weekly_completions,
+                        total_completions = EXCLUDED.total_completions
+                    """)
+                defer { stmt.close() }
+
+                try stmt.execute(parameterValues: [
+                    pg(progress.userId.uuidString),
+                    pg(progress.streakDays),
+                    pg(progress.lastCompletedDate),
+                    pg(progress.weeklyCompletionsPG),
+                    pg(progress.totalCompletions)
+                ].compactMap { $0 })
+
+                print("UserProgress synced thành công!")
+            } catch {
+                print("UserProgress sync error: \(error)")
+            }
+        }
     
     // MARK: - Helper Methods
     private func pg(_ value: Any?) -> PostgresValue {
@@ -1788,21 +2314,68 @@ class SwiftDataService {
         default: return PostgresValue(nil)
         }
     }
+
+    private func pg(_ value: Any?) -> PostgresValueConvertible? {
+        switch value {
+        case let v as String:
+            if v.hasPrefix("{") && v.hasSuffix("}") {
+                return v
+            }
+            return v
+        case let v as Int:
+            return v
+        case let v as Int64:
+            return Int(v)
+        case let v as Bool:
+            return v
+        case let v as UUID:
+            return v.uuidString
+        case let v as Data:
+            return PostgresByteA(data: v)
+        case let v as Date:
+            return PostgresTimestamp(date: v, in: .gmt)
+        case let v as [String]:
+            guard !v.isEmpty else { return "{}" }
+            let escaped = v.map { value in
+                "\"" + value.replacingOccurrences(of: "\"", with: "\\\"") + "\""
+            }
+            return "{" + escaped.joined(separator: ",") + "}"
+        case let v as [Data]:
+            let encoded = v.map { PostgresByteA(data: $0).description }
+            return encoded.isEmpty ? "{}" : "{\(encoded.joined(separator: ","))}"
+        case nil:
+            return nil
+        default:
+            print("Unsupported type for pg(): \(type(of: value))")
+            return nil
+        }
+    }
+        
+    private func pgArray(_ array: [String]) -> String {
+        guard !array.isEmpty else { return "{}" }
+        let escaped = array.map { component in
+            let trimmed = component.trimmingCharacters(in: .whitespacesAndNewlines)
+            return "\"\(trimmed.replacingOccurrences(of: "\"", with: "\\\""))\""
+        }
+        return "{\(escaped.joined(separator: ","))}"
+    }
     
     private func parseTextArray(_ rawString: String) -> [String] {
-        let cleanString = rawString
-            .trimmingCharacters(in: CharacterSet(charactersIn: "{}"))
-            .replacingOccurrences(of: "\\\"", with: "\"")
+        var cleanString = rawString.trimmingCharacters(in: CharacterSet(charactersIn: "{}"))
         
-        if cleanString.isEmpty {
-            return []
-        }
+        cleanString = cleanString.replacingOccurrences(of: "\\\"", with: "\"")
+        
+        guard !cleanString.isEmpty else { return [] }
         
         let components = cleanString.components(separatedBy: ",")
-        return components.compactMap { component in
-            let trimmed = component.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
+        
+        let result = components.compactMap { component -> String? in
+            let trimmed = component
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+                .trimmingCharacters(in: CharacterSet(charactersIn: "\""))
             return trimmed.isEmpty ? nil : trimmed
         }
+        return result
     }
     
     private func parseByteaArray(_ rawString: String) -> [Data] {

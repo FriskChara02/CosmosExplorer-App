@@ -10,18 +10,63 @@ import SwiftData
 import PostgresClientKit
 import CryptoKit
 
+// MARK: - AuthManager
+final class AuthManager {
+    static let shared = AuthManager()
+    
+    @Published var currentUserId: UUID?
+    @Published var isSignedIn = false
+    @Published var username: String?
+    
+    private let userIdKey = "currentUserId"
+    
+    private init() {
+        loadSavedUser()
+    }
+    
+    private func loadSavedUser() {
+        if let savedId = UserDefaults.standard.string(forKey: userIdKey),
+           let uuid = UUID(uuidString: savedId) {
+            self.currentUserId = uuid
+            self.isSignedIn = true
+        }
+    }
+    
+    func signIn(userId: UUID, username: String? = nil) {
+        self.currentUserId = userId
+        self.username = username
+        self.isSignedIn = true
+        UserDefaults.standard.set(userId.uuidString, forKey: userIdKey)
+    }
+    
+    func signOut() {
+        self.currentUserId = nil
+        self.username = nil
+        self.isSignedIn = false
+        UserDefaults.standard.removeObject(forKey: userIdKey)
+    }
+}
+
+// MARK: - AuthViewModel (Quản lý đăng nhập, đăng ký, v.v.)
 class AuthViewModel: ObservableObject {
     @Published var isSignedIn = false
     @Published var username: String?
-    private var modelContext: ModelContext?
-
+    public var modelContext: ModelContext?
+    
+    private let authManager = AuthManager.shared
+    
     init() {
-        // Kiểm tra user đã đăng nhập từ SwiftData
+        self.isSignedIn = authManager.isSignedIn
+        self.username = authManager.username
+        
         if let context = modelContext {
             do {
                 if let user = try context.fetch(FetchDescriptor<UserModel>()).first {
-                    self.isSignedIn = true
-                    self.username = user.username
+                    if authManager.currentUserId == nil {
+                        authManager.signIn(userId: user.id, username: user.username)
+                        self.isSignedIn = true
+                        self.username = user.username
+                    }
                 }
             } catch {
                 print("Lỗi khi kiểm tra user trong SwiftData: \(error)")
@@ -44,19 +89,22 @@ class AuthViewModel: ObservableObject {
             defer { cursor.close() }
             
             if let row = try cursor.next()?.get() {
-                self.username = try row.columns[0].string()
+                let fetchedUsername = try row.columns[0].string()
+                self.username = fetchedUsername
+                authManager.username = fetchedUsername
             }
         } catch {
             print("Lỗi khi lấy username: \(error)")
         }
     }
 
-    func hashPassword(_ password: String) -> String {
+    private func hashPassword(_ password: String) -> String {
         let inputData = Data(password.utf8)
         let hashed = SHA256.hash(data: inputData)
         return hashed.compactMap { String(format: "%02x", $0) }.joined()
     }
 
+    // MARK: - Sign Up
     func signUp(email: String, username: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let connection = try? DatabaseConfig.createConnection() else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
@@ -65,7 +113,8 @@ class AuthViewModel: ObservableObject {
         defer { connection.close() }
 
         do {
-            let id = UUID().uuidString
+            let id = UUID()
+            let idString = id.uuidString
             let hashedPassword = hashPassword(password)
             let statement = try connection.prepareStatement(text: """
                 INSERT INTO users (id, email, username, password, created_at)
@@ -73,22 +122,27 @@ class AuthViewModel: ObservableObject {
                 """)
             defer { statement.close() }
             let date = ISO8601DateFormatter().string(from: Date())
-            try statement.execute(parameterValues: [id, email, username, hashedPassword, date])
+            try statement.execute(parameterValues: [idString, email, username, hashedPassword, date])
 
+            // Lưu vào SwiftData
             if let context = modelContext {
-                let newUser = UserModel(id: UUID(uuidString: id)!, email: email, username: username, password: hashedPassword)
+                let newUser = UserModel(id: id, email: email, username: username, password: hashedPassword)
                 context.insert(newUser)
                 try context.save()
             }
 
+            // Cập nhật AuthManager
+            authManager.signIn(userId: id, username: username)
             self.isSignedIn = true
             self.username = username
+            
             completion(.success(()))
         } catch {
             completion(.failure(error))
         }
     }
-
+    
+    // MARK: - Sign In
     func signIn(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let connection = try? DatabaseConfig.createConnection() else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
@@ -103,18 +157,25 @@ class AuthViewModel: ObservableObject {
             defer { cursor.close() }
             
             if let row = try cursor.next()?.get(),
-               let id = try? row.columns[0].string(),
+               let idString = try? row.columns[0].string(),
+               let userId = UUID(uuidString: idString),
                let username = try? row.columns[1].string(),
                let storedPassword = try? row.columns[2].string() {
+                
                 let hashedPassword = hashPassword(password)
                 if hashedPassword == storedPassword {
+                    // Cập nhật AuthManager
+                    authManager.signIn(userId: userId, username: username)
                     self.isSignedIn = true
                     self.username = username
+
+                    // Lưu vào SwiftData
                     if let context = modelContext {
-                        let newUser = UserModel(id: UUID(uuidString: id)!, email: email, username: username, password: storedPassword)
+                        let newUser = UserModel(id: userId, email: email, username: username, password: storedPassword)
                         context.insert(newUser)
                         try context.save()
                     }
+                    
                     completion(.success(()))
                 } else {
                     completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Mật khẩu không đúng nhaaaaa"])))
@@ -126,31 +187,36 @@ class AuthViewModel: ObservableObject {
             completion(.failure(error))
         }
     }
-
+    
+    // MARK: - Reset Password
     func resetPassword(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let connection = try? DatabaseConfig.createConnection() else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
             return
         }
         defer { connection.close() }
-
+        
         do {
             let newPassword = UUID().uuidString.prefix(8)
             let hashedPassword = hashPassword(String(newPassword))
             let statement = try connection.prepareStatement(text: "UPDATE users SET password = $1 WHERE email = $2")
             defer { statement.close() }
             try statement.execute(parameterValues: [hashedPassword, email])
-
+            
             print("Mật khẩu mới cho \(email): \(newPassword)")
             completion(.success(()))
         } catch {
             completion(.failure(error))
         }
     }
-
+    
+    // MARK: - Sign Out
     func signOut() {
+        authManager.signOut()
         self.isSignedIn = false
         self.username = nil
+
+        // Xóa SwiftData
         if let context = modelContext {
             do {
                 try context.delete(model: UserModel.self)

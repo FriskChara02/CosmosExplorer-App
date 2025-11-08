@@ -1406,9 +1406,9 @@
 "Proxima b Random Info 4" = "Khối lượng khoảng 1,173 lần khối lượng Trái Đất";
 "Proxima b Random Info 5" = "Một năm kéo dài 11,2 ngày Trái Đất, cách 4,2 năm ánh sáng";
 "Proxima b About Description" = "Proxima b là một siêu Trái Đất có khả năng sinh sống, quay quanh sao lùn đỏ Proxima Centauri, ngôi sao gần Mặt Trời nhất.";
-"Proxima b By The Numbers Radius" = "Bán kính: ~1,07 lần bán kính Trái Đất";
-"Proxima b By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~4,24 năm ánh sáng";
-"Proxima b By The Numbers Age" = "Tuổi: Không rõ";
+"Proxima b By The Numbers Radius" = "~1,07 lần bán kính Trái Đất";
+"Proxima b By The Numbers Distance" = "~4,24 năm ánh sáng";
+"Proxima b By The Numbers Age" = "Không rõ";
 
 /* Kepler452bView */
 "Kepler-452b Random Info 1" = "Khối lượng 3,29 lần Trái Đất, quỹ đạo 384,8 ngày";
@@ -1417,9 +1417,9 @@
 "Kepler-452b Random Info 4" = "Kích thước siêu Trái Đất, có thể là đá";
 "Kepler-452b Random Info 5" = "Quỹ đạo ở khoảng cách tương tự Trái Đất với ngôi sao của nó";
 "Kepler-452b About Description" = "Kepler-452b là một siêu Trái Đất nằm trong vùng có thể sinh sống của một ngôi sao giống Mặt Trời, thường được gọi là anh em họ của Trái Đất.";
-"Kepler-452b By The Numbers Radius" = "Bán kính: ~1,6 lần bán kính Trái Đất";
-"Kepler-452b By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~1.400 năm ánh sáng";
-"Kepler-452b By The Numbers Age" = "Tuổi: ~6 tỷ năm";
+"Kepler-452b By The Numbers Radius" = "~1,6 lần bán kính Trái Đất";
+"Kepler-452b By The Numbers Distance" = "~1.400 năm ánh sáng";
+"Kepler-452b By The Numbers Age" = "~6 tỷ năm";
 
 /* Cancrie55View */
 "55 Cancri e Random Info 1" = "Khối lượng 7,99 lần Trái Đất, quỹ đạo 0,7 ngày";
@@ -1428,9 +1428,9 @@
 "55 Cancri e Random Info 4" = "Nhiệt độ bề mặt gần 2400K, không thể sinh sống";
 "55 Cancri e Random Info 5" = "Gấp đôi kích thước Trái Đất, nặng gấp tám lần";
 "55 Cancri e About Description" = "55 Cancri e là một siêu Trái Đất với lõi có thể là kim cương và bầu khí quyển dày, rất nóng và gần ngôi sao của nó.";
-"55 Cancri e By The Numbers Radius" = "Bán kính: ~2 lần bán kính Trái Đất";
-"55 Cancri e By The Numbers Distance" = "Khoảng cách từ Mặt Trời: ~40 năm ánh sáng";
-"55 Cancri e By The Numbers Age" = "Tuổi: Không rõ";
+"55 Cancri e By The Numbers Radius" = "~2 lần bán kính Trái Đất";
+"55 Cancri e By The Numbers Distance" = "~40 năm ánh sáng";
+"55 Cancri e By The Numbers Age" = "Không rõ";
 
 /* AddPlanetsView and EditPlanetsView */
 "Add Your New Planets" = "Thêm Hành tinh Mới";
@@ -1566,3 +1566,1157 @@
 "Summer" = "Hè";
 "Autumn" = "Thu";
 "Winter" = "Đông";
+
+/*ZodiacHomeView*/
+"back" = "Quay lại";
+"zodiac_title" = "Cung Hoàng Đạo";
+"zodiac_legend" = "Truyền thuyết 12 cung hoàng đạo";
+"zodiac_daily" = "Tử vi hàng ngày 12 cung hoàng đạo";
+"zodiac_love" = "Bói tình yêu 12 cung hoàng đạo";
+"zodiac_rank" = "Bảng xếp hạng 12 cung hoàng đạo";
+"zodiac_secret" = "Bí mật 12 cung hoàng đạo";
+
+/*ZodiacLegendView*/
+"zodiac_legend_title" = "Cung Hoàng Đạo Truyền Thuyết";
+"legend_detail_placeholder" = "Truyền thuyết chi tiết cho";
+/*Zodiac Names*/
+"aries" = "Bạch Dương";
+"taurus" = "Kim Ngưu";
+"gemini" = "Song Tử";
+"cancer" = "Cự Giải";
+"leo" = "Sư Tử";
+"virgo" = "Xử Nữ";
+"libra" = "Thiên Bình";
+"scorpio" = "Thiên Yết";
+"sagittarius" = "Nhân Mã";
+"capricorn" = "Ma Kết";
+"aquarius" = "Bảo Bình";
+"pisces" = "Song Ngư";
+/*Zodiac Dates*/
+"aries_date" = "(21/3 - 20/4)";
+"taurus_date" = "(21/4 - 20/5)";
+"gemini_date" = "(21/5 - 21/6)";
+"cancer_date" = "(22/6 - 22/7)";
+"leo_date" = "(23/7 - 22/8)";
+"virgo_date" = "(23/8 - 22/9)";
+"libra_date" = "(23/9 - 22/10)";
+"scorpio_date" = "(23/10 - 21/11)";
+"sagittarius_date" = "(22/11 - 21/12)";
+"capricorn_date" = "(22/12 - 19/1)";
+"aquarius_date" = "(20/1 - 19/2)";
+"pisces_date" = "(20/2 - 20/3)";
+/* Tabs */
+"tab_profile" = "Sơ Yếu";
+"tab_profile_subtitle" = "Sơ yếu lý lịch";
+"tab_legend" = "Truyền Thuyết";
+"tab_legend_subtitle" = "Thần thoại & Biểu tượng";
+"tab_personality" = "Tính Cách";
+"tab_personality_subtitle" = "Đặc trưng & Phẩm chất";
+"tab_love" = "Tình Yêu";
+"tab_love_subtitle" = "Tình yêu & Gia đình";
+"tab_career" = "Sự Nghiệp";
+"tab_career_subtitle" = "Công việc & Tài chính";
+
+/*AquariusLegendView - Tabs*/
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/*Header*/
+"aquarius" = "Bảo Bình";
+/*Profile Section*/
+"basic_info" = "Thông tin cơ bản";
+"zodiac_order" = "Cung thứ";
+"11th_zodiac" = "11 trong Hoàng Đạo";
+"nature" = "Tính chất";
+"organized_symbol" = "Tượng trưng cho người có tổ chức";
+"characteristic" = "Đặc trưng";
+"immutability" = "Sự bất biến";
+
+"time_luck" = "Thời gian & May mắn";
+"weekday" = "Ngày trong tuần";
+"saturday" = "Thứ Bảy";
+"lucky_day" = "Ngày hên";
+"wednesday" = "Thứ Tư";
+"lucky_numbers" = "Số hên";
+"2_3_4_7_8" = "2, 3, 4, 7, 8";
+
+"astronomy" = "Thiên văn";
+"ruling_planet" = "Sao chiếu mệnh";
+"saturn_uranus" = "Sao Thổ & Sao Thiên Vương";
+"planet" = "Hành tinh";
+"uranus_break_rules" = "Thiên Vương Tinh (biểu tượng bứt phá khỏi quy định)";
+"symbol" = "Biểu tượng";
+"water_bearer" = "Người Mang Nước";
+"element" = "Nguyên tố";
+"air" = "Không khí";
+
+"gemstones" = "Đá quý";
+"aquarius_gems" = "Thạch anh tím, ngọc bích, topaze hồng, moonstone, hổ phách, mã não, zircon, saphire xanh thẫm, ngọc thạch lựu";
+
+"colors_symbols" = "Màu sắc & Biểu tượng";
+"colors" = "Màu sắc";
+"green_black_skyblue" = "Xanh lá, đen, xanh da trời, xanh lơ, ngọc lam";
+"flowers" = "Hoa";
+"azalea_hydrangea_poppy" = "Đỗ quyên, tú cầu, anh túc";
+"metal" = "Kim loại";
+"lead_uranium" = "Chì, Uranium";
+"animals" = "Động vật";
+"owl_crow_eel" = "Chim cú, quạ, lươn";
+
+"health_relations" = "Sức khỏe & Quan hệ";
+"body_parts" = "Bộ phận";
+"heart_back" = "Trái tim, lưng";
+"dating_with" = "Hẹn hò với";
+"aries_sagittarius" = "Bạch Dương, Nhân Mã";
+"friends_with" = "Làm bạn với";
+"taurus_scorpio" = "Kim Ngưu, Bọ Cạp";
+"compatible_with" = "Cung hợp";
+"gemini_libra_aquarius" = "Song Tử, Thiên Bình, Bảo Bình";
+"clash_with" = "Cung khắc";
+"leo_scorpio" = "Sư Tử, Bọ Cạp";
+/*Legend Section*/
+"greek_myth" = "Thần thoại Hy Lạp";
+"zeus_water_bearer" = "Zeus – chúa tể các vị thần – được gọi là 'Thần mang nước'. Ông tạo mưa bão để duy trì sự sống. Biểu tượng này chính là chòm sao Bảo Bình.";
+"great_flood" = "Lụt đại hồng thủy";
+"deucalion_pyrrha" = "Con người trở nên tàn bạo, chiến tranh khắp nơi. Zeus nhấn chìm trái đất bằng lũ lụt, chỉ tha cho Deucalion và Pyrrha – cặp vợ chồng nhân hậu duy nhất. Họ tái tạo nhân loại mới.";
+"egypt_symbol" = "Biểu tượng Ai Cập";
+"hapi_water" = "Chữ 'Mu' tượng hình nghĩa là nước. Thần Hapi đổ nước từ hai bình lớn xuống trái đất, được người Ai Cập tôn thờ.";
+"symbol_meaning" = "Ý nghĩa biểu tượng";
+"life_death_jars" = "Người đàn ông mang hai bình: một bình chứa sự sống, một bình chứa sự chết. Bảo Bình phân biệt rõ thiện ác, yêu khoa học, nhạy cảm, dễ tổn thương nhưng luôn giúp đỡ người khác.";
+/*Personality Section*/
+"intelligent_creative" = "Thông minh & Sáng tạo";
+"intelligent_creative_desc" = "Quán quân trí tuệ 12 cung. Sáng tạo, lập dị, đam mê khoa học. Có hai kiểu: nhút nhát & lập dị. Phong cách ăn mặc kỳ lạ, tò mò mọi thứ mới mẻ.";
+"sensitive_kind" = "Nhạy cảm & Nhân hậu";
+"sensitive_kind_desc" = "Dễ tổn thương, khép kín, xây tường bảo vệ. Giúp đỡ không cần đền đáp. Nhạy cảm, thế giới nội tâm phong phú, dễ buồn vui thất thường.";
+"changeable_complex" = "Thay đổi & Khó hiểu";
+"changeable_complex_desc" = "Tính cách thất thường: lúc nhiệt tình, lúc cô độc. Ưa nịnh, thích khen, không nhận sai. Ngoan cố, cứng đầu, nhưng vị tha, không tham lam.";
+"dreams_ideals" = "Ước mơ & Lý tưởng";
+"dreams_ideals_desc" = "Lạc quan, sống đơn giản: 'làm điều mình thích'. Không tham vọng quyền lực. Là biểu tượng khoa học, công nghệ, ước mơ cao đẹp của nhân loại.";
+"observation_memory" = "Quan sát & Trí nhớ";
+"observation_memory_desc" = "Con mắt tinh tế, nhìn xa trông rộng. Trí nhớ tốt với kiến thức, nhưng hay quên đồ. Tò mò, sáng tạo, lập dị khi trí tưởng tượng bùng nổ.";
+"communication_personality" = "Giao tiếp & Tính cách";
+"communication_personality_desc" = "Thật thà, trung thành, yêu công bằng. Ghét thất hứa, cô đơn. Nóng giận nhanh qua, không thù hằn. Sống phóng khoáng, cởi mở, nhưng khó hiểu.";
+/*Love Section*/
+"late_love" = "Tình yêu muộn";
+"late_love_desc" = "Rụt rè, giữ khoảng cách. Tình yêu đến muộn, cần thời gian tìm hiểu. Chung thủy, lãng mạn, dễ ghen mù quáng. Tình yêu như nguồn sống, tiếp thêm động lực.";
+"family" = "Gia đình";
+"family_desc" = "Làm cha mẹ tâm lý, dạy con khoa học. Kết hôn muộn, nghiêm khắc nhưng yêu thương. Mong tổ ấm hạnh phúc, gắn bó.";
+/*Conquest*/
+"conquest" = "Chinh phục";
+"male" = "Nam giới";
+"male_conquest" = "Thích tự do, bàn luận đám đông. Hãy đẹp & quyến rũ.";
+"female" = "Nữ giới";
+"female_conquest" = "Thích du lịch, bất ngờ. Tặng quà độc đáo.";
+/*Career Section*/
+"creative_passion" = "Đam mê sáng tạo";
+"creative_passion_desc" = "Phù hợp: nghiên cứu khoa học, công nghệ, du lịch, MC, diễn viên, nhà văn, luật sư, đạo diễn, nhà báo, thiên văn, lịch sử, nghệ thuật.";
+"work" = "Làm việc";
+"work_desc" = "Chăm chỉ, tận tâm, tiên phong ý tưởng. Sếp dễ tính, nhân viên ngưỡng mộ. Đồng nghiệp yêu mến vì nhiệt tình, sáng tạo, độc lập.";
+"finance" = "Tài chính";
+"finance_desc" = "Kiếm tiền giỏi, không lãng phí. Đầu tư trang phục đắt tiền, độc lạ, tối màu. Không tham lam, sống đơn giản, cống hiến cho xã hội.";
+
+/* AriesLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"aries" = "Bạch Dương";
+/* Profile Section */
+"basic_info" = "Thông Tin Cơ Bản";
+"other_name" = "Tên Gọi Khác";
+"duong_cuu" = "Dương Cưu";
+"zodiac_order" = "Cung Thứ";
+"1st_zodiac" = "Cung thứ 1 trong Hoàng Đạo";
+"nature" = "Tính Chất Chung";
+"leader_pioneer" = "Chủ nhân, thủ lĩnh";
+
+"time_luck" = "Thời Gian & May Mắn";
+"weekday" = "Ngày Trong Tuần";
+"tuesday" = "Thứ Ba";
+"lucky_day" = "Ngày May Mắn";
+"lucky_numbers" = "Con Số May Mắn";
+"1_9" = "1 và 9";
+
+"astronomy" = "Chiêm Tinh";
+"ruling_planet" = "Sao Chiếu Mệnh";
+"mars" = "Sao Hỏa (khát vọng, quyền lực, chiến tranh)";
+"symbol" = "Biểu Tượng";
+"ram" = "Con cừu đực";
+"element" = "Nguyên Tố";
+"fire" = "Lửa";
+
+"gemstones" = "Đá Quý";
+"aries_gems" = "Kim cương, hồng ngọc, ngọc thạch anh đỏ";
+
+"colors_symbols" = "Màu Sắc & Biểu Tượng";
+"colors" = "Màu Sắc";
+"red_orange" = "Đỏ thắm, cam";
+"flowers" = "Hoa";
+"carnation_poppy_tulip" = "Cẩm chướng, anh túc, tulip, đậu chổi";
+"metal" = "Kim Loại";
+"iron" = "Sắt";
+"animals" = "Động Vật";
+"wolf_rooster" = "Sói, gà trống";
+
+"health_relations" = "Sức Khỏe & Quan Hệ";
+"body_parts" = "Bộ Phận Cơ Thể";
+"head_face" = "Đầu, khuôn mặt";
+"dating_with" = "Hẹn Hò Với";
+"leo_sagittarius" = "Sư Tử, Nhân Mã";
+"friends_with" = "Làm Bạn Với";
+"cancer_capricorn" = "Cự Giải, Ma Kết";
+"compatible_with" = "Hợp Với";
+"aries_leo_sagittarius" = "Bạch Dương, Sư Tử, Nhân Mã";
+"clash_with" = "Xung Khắc Với";
+"libra" = "Thiên Bình";
+
+/* Legend Section */
+"greek_myth" = "Thần Thoại Hy Lạp";
+"athamas_nephele" = "Vua Athamas cưới Nephele, sinh Phrixus và Helle. Sau cưới Ino, mưu hại con riêng.";
+"golden_fleece" = "Bộ Lông Vàng";
+"phrixus_helle" = "Nephele tặng cừu vàng. Helle rơi xuống biển, Phrixus đến Colchis.";
+"jason_quest" = "Hành Trình Jason";
+"jason_argo" = "Phrixus hiến tế cừu. Zeus đặt lên trời. Jason tìm lông vàng trên tàu Argo.";
+"symbol_meaning" = "Ý Nghĩa Biểu Tượng";
+"courage_leadership" = "Biểu tượng cho lòng dũng cảm, lãnh đạo, không bỏ cuộc.";
+/* Personality Section */
+"brave_pioneer" = "Dũng Cảm & Tiên Phong";
+"brave_pioneer_desc" = "Luôn sẵn sàng chiến đấu. Mạnh mẽ thể chất và tinh thần. Dễ tha thứ, lạc quan.";
+"impulsive_passionate" = "Bốc Đồng & Đam Mê";
+"impulsive_passionate_desc" = "Hành động nhanh, yêu phiêu lưu. Có thể vội vàng nhưng tràn năng lượng.";
+"leadership_ambition" = "Lãnh Đạo & Tham Vọng";
+"leadership_ambition_desc" = "Sinh ra để lãnh đạo. Thích chỉ huy, ghét bị sai khiến.";
+"warm_forgiving" = "Ấm Áp & Bao Dung";
+"warm_forgiving_desc" = "Trái tim nhân hậu, dễ tha thứ. Mang niềm vui cho mọi người.";
+"competitive_energy" = "Cạnh Tranh & Năng Lượng";
+"competitive_energy_desc" = "Yêu thể thao, cạnh tranh. Sức đề kháng cao, hồi phục nhanh.";
+"honest_direct" = "Thật Thà & Thẳng Thắn";
+"honest_direct_desc" = "Nói thật, ghét dối trá. Đề cao danh dự và sự thật.";
+/* Love Section */
+"passionate_love" = "Tình Yêu Nồng Nhiệt";
+"passionate_love_desc" = "Yêu mãnh liệt nhưng khó chung thủy. Thích mới mẻ, phiêu lưu.";
+"family" = "Gia Đình";
+"family_desc" = "Yêu con, bảo vệ gia đình. Mong con cái thành đạt.";
+/* Conquest */
+"conquest" = "Cách Chinh Phục";
+"male" = "Nam";
+"male_conquest" = "Đừng quá chủ động. Hãy để anh ấy dẫn dắt. Dễ thương, tốt bụng. Món ăn có thịt.";
+"female" = "Nữ";
+"female_conquest" = "Năng động, hài hước, thể thao. Tặng quà bất ngờ. Để cô ấy chọn địa điểm.";
+
+/*TaurusLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"taurus" = "Kim Ngưu";
+/* Profile */
+"basic_info" = "Thông Tin Cơ Bản";
+"zodiac_order" = "Cung Thứ";
+"2nd_zodiac" = "Cung thứ 2 trong Hoàng Đạo";
+"nature" = "Tính Chất Chung";
+"organized" = "Tượng trưng cho tổ chức";
+"ruling_planet" = "Sao Chiếu Mệnh";
+"venus" = "Sao Kim (quyến rũ, nghệ thuật, ngọt ngào)";
+
+"time_luck" = "Thời Gian & May Mắn";
+"weekday" = "Ngày Trong Tuần";
+"friday" = "Thứ Sáu";
+"lucky_numbers" = "Con Số May Mắn";
+"2_8" = "2 và 8";
+
+"astronomy" = "Chiêm Tinh";
+"symbol" = "Biểu Tượng";
+"bull_seal" = "Bò đực, hải cẩu";
+"element" = "Nguyên Tố";
+"earth" = "Đất";
+
+"gemstones" = "Đá May Mắn";
+"taurus_gems" = "Ngọc lục bảo, ngọc bích, ngọc lam";
+
+"colors_symbols" = "Màu Sắc";
+"colors" = "Màu Sắc";
+"pink_green" = "Hồng, xanh lục";
+
+"health_relations" = "Quan Hệ";
+"dating_with" = "Hẹn Hò Với";
+"virgo_capricorn" = "Xử Nữ, Ma Kết";
+"friends_with" = "Làm Bạn Với";
+"leo_aquarius" = "Sư Tử, Bảo Bình";
+"clash_with" = "Không Hợp Với";
+"scorpio" = "Bọ Cạp";
+/* Legend */
+"greek_myth" = "Thần Thoại Hy Lạp";
+"europa_zeus" = "Europa thấy con bò trắng bên sông. Đó là Zeus hóa thân.";
+"zeus_transform" = "Zeus Biến Hóa";
+"zeus_transform" = "Zeus chở Europa qua biển đến đảo Crete.";
+"continent_name" = "Tên Châu Lục";
+"continent_name" = "Họ sống ở Crete. Vùng đất được đặt tên Europa (Châu Âu).";
+"strength_stability" = "Ý Nghĩa Biểu Tượng";
+"strength_stability" = "Bò đực biểu thị sức mạnh, kiên định, thành công.";
+/* Personality */
+"patient_persistent" = "Kiên Nhẫn & Bền Bỉ";
+"patient_persistent_desc" = "Chậm rãi, cẩn thận, không vội vàng. Trung thành, đáng tin.";
+"loyal_practical" = "Trung Thành & Thực Tế";
+"loyal_practical_desc" = "Chung thủy trong tình yêu, thực tế, sở hữu.";
+"love_nature_food" = "Yêu Thiên Nhiên & Ẩm Thực";
+"love_nature_food_desc" = "Thích ăn ngon, thiên nhiên, tiện nghi. Yêu xa xỉ.";
+"slow_careful" = "Chậm Mà Chắc";
+"slow_careful_desc" = "Suy nghĩ kỹ trước khi làm. Ghét thay đổi.";
+"stubborn_possessive" = "Cố Chấp & Chiếm Hữu";
+"stubborn_possessive_desc" = "Khó thay đổi ý kiến. Bảo vệ những gì thuộc về mình.";
+"friendly_reliable" = "Thân Thiện & Đáng Tin";
+"friendly_reliable_desc" = "Ấm áp, trung thành. Bạn lâu dài tuyệt vời.";
+/* Love */
+"faithful_love" = "Tình Yêu Chung Thủy";
+"faithful_love_desc" = "Yêu sâu đậm, muốn ổn định. Thể hiện bằng hành động.";
+"family" = "Gia Đình";
+"family_desc" = "Trân trọng gia đình, truyền thống. Thích bữa ăn quây quần.";
+/* Conquest */
+"conquest" = "Cách Chinh Phục";
+"male" = "Nam";
+"male_conquest" = "Đừng vội. Mời ăn tối, món thịt, nhạc nhẹ.";
+"female" = "Nữ";
+"female_conquest" = "Quyết đoán, kiên nhẫn. Tặng nước hoa, bất ngờ. Để nàng chọn chỗ.";
+/* Career */
+"stable_career" = "Sự Nghiệp Ổn Định";
+"stable_career_desc" = "Phù hợp: Kiến trúc, tài chính, nghệ thuật, nấu ăn, nông trại.";
+"finance" = "Tài Chính";
+"finance_desc" = "Giỏi tiết kiệm, thích xa xỉ. Đầu tư khôn ngoan.";
+"artistic_talent" = "Tài Năng Nghệ Thuật";
+"artistic_talent_desc" = "Giỏi thiết kế, âm nhạc, thẩm mỹ. Yêu cái đẹp.";
+
+/*Gemini Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"gemini" = "Song Tử";
+/* Profile */
+"basic_info" = "Thông Tin Cơ Bản";
+"zodiac_order" = "Cung Thứ";
+"3rd_zodiac" = "Cung thứ 3 trong Hoàng Đạo";
+"nature" = "Tính Chất Chung";
+"changeable" = "Không kiên định, hay thay đổi";
+"ruling_planet" = "Sao Chiếu Mệnh";
+"mercury" = "Sao Thủy (thông minh, giao tiếp)";
+
+"time_luck" = "Thời Gian & May Mắn";
+"weekday" = "Ngày Trong Tuần";
+"wednesday" = "Thứ Tư";
+"lucky_numbers" = "Con Số May Mắn";
+"3_4_7" = "3, 4, 7";
+
+"astronomy" = "Chiêm Tinh";
+"symbol" = "Biểu Tượng";
+"twins" = "Hai anh em song sinh";
+"element" = "Nguyên Tố";
+"air" = "Không khí";
+
+"gemstones" = "Đá May Mắn";
+"gemini_gems" = "Ngọc bích, quặng Manhetit, ngọc mắt mèo, đá mã não";
+
+"colors_symbols" = "Màu Sắc & Biểu Tượng";
+"colors" = "Màu Sắc";
+"green_blue_gray" = "Xanh lá, xanh da trời, xám";
+"flowers" = "Hoa";
+"daisy_forgetmenot" = "Cúc, cỏ lưu ly";
+
+"body_parts" = "Cơ Thể & Giác Quan";
+"body" = "Bộ Phận";
+"lungs_arms" = "Phổi, cánh tay";
+"perfume" = "Nước Hoa";
+"juniper_lavender" = "Cây bách xù, oải hương, quýt";
+
+"health_relations" = "Quan Hệ";
+"dating_with" = "Hẹn Hò Với";
+"libra_aquarius" = "Thiên Bình, Bảo Bình";
+"friends_with" = "Làm Bạn Với";
+"virgo_pisces" = "Xử Nữ, Song Ngư";
+"clash_with" = "Không Hợp Với";
+"sagittarius" = "Nhân Mã";
+/* Legend */
+"castor_pollux" = "Castor & Pollux";
+"castor_pollux_desc" = "Con trai Zeus và nữ hoàng Sparta. Dũng cảm, cùng chiến đấu trên tàu Argo.";
+"castor_death" = "Cái Chết Của Castor";
+"castor_death_desc" = "Castor chết trận. Pollux bất tử, xin chết theo anh.";
+"eternal_brotherhood" = "Tình Anh Em Vĩnh Cửu";
+"eternal_brotherhood_desc" = "Zeus đưa lên trời. Một sáng, một tối — luân phiên sống.";
+"twins_symbol" = "Ý Nghĩa Biểu Tượng";
+"twins_symbol" = "Hai cậu bé song sinh: Castor và Pollux. Trái ngược nhưng đoàn kết.";
+/* Personality */
+"intelligent_curious" = "Thông Minh & Tò Mò";
+"intelligent_curious_desc" = "Trí nhớ tốt, thích học. Luôn tìm hiểu điều mới.";
+"communicative_witty" = "Giao Tiếp & Hài Hước";
+"communicative_witty_desc" = "Nói nhiều, dí dỏm. Có thể lạnh lùng bất ngờ.";
+"adaptable_adventurous" = "Thích Nghi & Mạo Hiểm";
+"adaptable_adventurous_desc" = "Yêu du lịch, tự do. Dễ thích nghi mọi môi trường.";
+"changeable_dual" = "Hay Đổi & Đa Nhân Cách";
+"changeable_dual_desc" = "Hai tính cách. Khó đoán. Ghét lặp lại.";
+"restless_inconsistent" = "Bồn Chồn & Không Kiên Định";
+"restless_inconsistent_desc" = "Dễ chán. Bắt đầu nhiều, hoàn thành ít.";
+"sociable_fun" = "Hòa Đồng & Vui Vẻ";
+"sociable_fun_desc" = "Mang niềm vui, năng lượng. Bạn tuyệt vời đầy bất ngờ.";
+/* Love */
+"playful_love" = "Tình Yêu Vui Nhộn";
+"playful_love_desc" = "Đào hoa, thích đùa. Cần hài hước, tự do. Chung thủy khi yêu thật.";
+"family_friends" = "Gia Đình & Bạn Bè";
+"family_friends_desc" = "Yêu gia đình. Nhiều bạn. Làm cha mẹ như bạn thân.";
+/* Conquest */
+"conquest" = "Cách Chinh Phục";
+"male" = "Nam";
+"male_conquest" = "Vui vẻ, bất ngờ. Đừng kiểm soát. Món ăn lạ trong bữa đầu.";
+"female" = "Nữ";
+"female_conquest" = "Độc đáo, trí tuệ. Tranh luận, bất ngờ. Âm nhạc + sách = hoàn hảo.";
+/* Career */
+"creative_careers" = "Công Việc Sáng Tạo";
+"creative_careers_desc" = "Nhà văn, thiết kế, đạo diễn, nhà khoa học.";
+"communication_jobs" = "Công Việc Giao Tiếp";
+"communication_jobs_desc" = "Phóng viên, MC, marketing, luật sư, giáo viên.";
+"travel_freedom" = "Du Lịch & Tự Do";
+"travel_freedom_desc" = "Hướng dẫn viên, phi công, kinh doanh, tổ chức sự kiện.";
+
+/*Cancer Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"cancer" = "Cự Giải";
+/* Profile */
+"basic_info" = "Thông Tin Cơ Bản";
+"zodiac_order" = "Cung Thứ";
+"4th_zodiac" = "Cung thứ 4 trong Hoàng Đạo";
+"nature" = "Tính Chất Chung";
+"leader" = "Chủ nhân, thủ lĩnh";
+"ruling_planet" = "Sao Chiếu Mệnh";
+"moon" = "Mặt Trăng (bản năng, tâm trạng, lãng mạn)";
+
+"time_luck" = "Thời Gian & May Mắn";
+"weekday" = "Ngày Trong Tuần";
+"monday" = "Thứ Hai";
+"lucky_numbers" = "Con Số May Mắn";
+"4_6" = "4, 6";
+
+"astronomy" = "Chiêm Tinh";
+"symbol" = "Biểu Tượng";
+"crab" = "Con cua";
+"element" = "Nguyên Tố";
+"water" = "Nước";
+
+"gemstones" = "Đá May Mắn";
+"cancer_gems" = "Ngọc trai, ngọc lục bảo, ngọc mắt mèo, đá mặt trăng";
+
+"colors_symbols" = "Màu Sắc & Biểu Tượng";
+"colors" = "Màu Sắc";
+"gray_silver_white" = "Xám, bạc, trắng";
+"flowers" = "Hoa";
+"lily_jasmine" = "Huệ tây, hoa nhài, cây dành dành";
+
+"body_parts" = "Cơ Thể & Kim Loại";
+"body" = "Bộ Phận";
+"chest_digestion" = "Ngực, bộ tiêu hóa";
+"metal" = "Kim Loại";
+"silver" = "Bạc";
+
+"health_relations" = "Quan Hệ";
+"dating_with" = "Hợp Với";
+"scorpio_pisces" = "Bò Cạp, Song Ngư";
+"friends_with" = "Làm Bạn Với";
+"aries_libra" = "Aries, Thiên Bình";
+"clash_with" = "Không Hợp Với";
+"capricorn" = "Ma Kết";
+
+/* Legend */
+"hercules_hydra" = "Hercules & Hydra";
+"hercules_hydra_desc" = "Hercules chiến đấu Hydra. Cua giúp bạn.";
+"crab_fight" = "Sự Hy Sinh Của Cua";
+"crab_fight_desc" = "Cua kẹp Hercules. Chết ngay nhưng thể hiện tình bạn.";
+"eternal_friendship" = "Tình Bạn Bất Diệt";
+"eternal_friendship_desc" = "Thần đưa cả ba lên trời thành chòm sao.";
+"crab_symbol" = "Ý Nghĩa Biểu Tượng";
+"crab_symbol" = "Vỏ cứng, tim mềm. Bảo vệ, cảm xúc sâu.";
+/* Personality */
+"emotional_sensitive" = "Nhạy Cảm & Cảm Xúc";
+"emotional_sensitive_desc" = "Cảm xúc sâu. Thay đổi tâm trạng. Vỏ cứng, tim mềm.";
+"family_oriented" = "Yêu Gia Đình";
+"family_oriented_desc" = "Yêu nhà cửa. Lưu giữ kỷ niệm. Cha mẹ tuyệt vời.";
+"moody_romantic" = "Thất Thường & Lãng Mạn";
+"moody_romantic_desc" = "Thay đổi như trăng. Rất lãng mạn, hoài cổ.";
+"protective_cautious" = "Bảo Vệ & Cẩn Thận";
+"protective_cautious_desc" = "Che chở người thân. Suy nghĩ kỹ trước khi làm.";
+"nostalgic_collector" = "Hoài Cổ & Sưu Tầm";
+"nostalgic_collector_desc" = "Thích đồ cổ, lịch sử. Giữ gìn vật cũ.";
+"loyal_caring" = "Trung Thành & Quan Tâm";
+"loyal_caring_desc" = "Bạn trung thành. Giúp đỡ lặng lẽ. Không quên ơn.";
+/* Love */
+"romantic_devoted" = "Lãng Mạn & Chung Thủy";
+"romantic_devoted_desc" = "Tìm tình yêu sâu đậm. Bảo vệ, cảm xúc. Kết hôn sớm.";
+"family_first" = "Gia Đình Là Tất Cả";
+"family_first_desc" = "Đặt gia đình lên đầu. Cha mẹ tuyệt vời. Yêu trẻ con.";
+/* Conquest */
+"conquest" = "Cách Chinh Phục";
+"male" = "Nam";
+"male_conquest" = "Dịu dàng, quan tâm. Yêu trẻ. Đừng trêu quá.";
+"female" = "Nữ";
+"female_conquest" = "Ngọt ngào, kiên nhẫn. Tặng quà, hoa. Dỗ dành khi giận.";
+/* Career */
+"home_related" = "Nhà Cửa & Thiết Kế";
+"home_related_desc" = "Trang trí nhà, đầu bếp, nội trợ, đồ cổ.";
+"caring_professions" = "Nghề Chăm Sóc";
+"caring_professions_desc" = "Y tá, giáo viên, tư vấn, từ thiện.";
+"history_culture" = "Lịch Sử & Văn Hóa";
+"history_culture_desc" = "Bảo tàng, khảo cổ, nghiên cứu lịch sử.";
+
+/*Leo Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"leo" = "Sư Tử";
+/* Profile */
+"basic_info" = "Thông Tin Cơ Bản";
+"zodiac_order" = "Cung Thứ";
+"5th_zodiac" = "Cung thứ 5 trong Hoàng Đạo";
+"nature" = "Tính Chất Chung";
+"organized" = "Có tổ chức, lãnh đạo";
+"ruling_planet" = "Sao Chiếu Mệnh";
+"sun" = "Mặt Trời (sức mạnh, kiêu hãnh)";
+
+"time_luck" = "Thời Gian & May Mắn";
+"weekday" = "Ngày Trong Tuần";
+"sunday" = "Chủ nhật";
+"lucky_numbers" = "Con Số May Mắn";
+"1_4_6" = "1, 4, 6";
+
+"astronomy" = "Chiêm Tinh";
+"symbol" = "Biểu Tượng";
+"lion" = "Sư Tử";
+"element" = "Nguyên Tố";
+"fire" = "Lửa";
+
+"gemstones" = "Đá May Mắn";
+"leo_gems" = "Hồng ngọc, kim cương, đá ruby";
+
+"colors_symbols" = "Màu Sắc & Biểu Tượng";
+"colors" = "Màu Sắc";
+"red_gold_orange" = "Đỏ, vàng, cam";
+"flowers" = "Hoa";
+"sunflower_marigold" = "Hướng dương, hoa trinh nữ";
+
+"body_parts" = "Cơ Thể & Kim Loại";
+"body" = "Bộ Phận";
+"heart_back" = "Trái tim, lưng";
+"metal" = "Kim Loại";
+"gold" = "Vàng";
+
+"health_relations" = "Quan Hệ";
+"dating_with" = "Hợp Với";
+"aries_sagittarius" = "Bạch Dương, Nhân Mã";
+"friends_with" = "Làm Bạn Với";
+"taurus_scorpio" = "Kim Ngưu, Bọ Cạp";
+"clash_with" = "Không Hợp Với";
+"aquarius" = "Bảo Bình";
+/* Legend */
+"hercules_nemea" = "Hercules & Sư Tử Nemea";
+"hercules_nemea_desc" = "Hercules bóp chết sư tử bất khả xâm phạm.";
+"strangle_lion" = "Bóp Chết Bằng Tay";
+"strangle_lion_desc" = "Da sư tử không xuyên thủng. Hercules siết cổ.";
+"eternal_glory" = "Vinh Quang Vĩnh Cửu";
+"eternal_glory_desc" = "Linh hồn sư tử lên trời thành chòm sao.";
+"lion_symbol" = "Ý Nghĩa Biểu Tượng";
+"lion_symbol" = "Sức mạnh, kiêu hãnh, lãnh đạo. Chúa tể rừng xanh.";
+/* Personality */
+"proud_leadership" = "Kiêu Hãnh & Lãnh Đạo";
+"proud_leadership_desc" = "Lãnh đạo bẩm sinh. Tự tin, tham vọng, muốn được tôn trọng.";
+"energetic_generous" = "Năng Động & Hào Phóng";
+"energetic_generous_desc" = "Tràn đầy sức sống. Cho đi thoải mái. Yêu xa hoa.";
+"optimistic_charismatic" = "Lạc Quan & Quyến Rũ";
+"optimistic_charismatic_desc" = "Luôn vui vẻ. Trung tâm chú ý. Truyền cảm hứng.";
+"ambitious_showy" = "Tham Vọng & Khoa Trương";
+"ambitious_showy_desc" = "Yêu danh tiếng. Kịch tính. Cần được khen ngợi.";
+"loyal_protective" = "Trung Thành & Bảo Vệ";
+"loyal_protective_desc" = "Trung thành tuyệt đối. Bảo vệ người thân. Không phản bội.";
+"social_love_attention" = "Xã Giao & Yêu Chú Ý";
+"social_love_attention_desc" = "Ghét cô đơn. Thích đám đông. Diễn viên bẩm sinh.";
+/* Love */
+"passionate_loyal" = "Say Đắm & Trung Thành";
+"passionate_loyal_desc" = "Yêu cuồng nhiệt. Đòi hỏi chung thủy. Lãng mạn, kịch tính.";
+"demands_respect" = "Đòi Hỏi Tôn Trọng";
+"demands_respect_desc" = "Muốn được ngưỡng mộ. Ghen tuông. Cần cảm thấy đặc biệt.";
+/* Conquest */
+"conquest" = "Cách Chinh Phục";
+"male" = "Nam";
+"male_conquest" = "Nghe anh ấy kể công. Khen ngợi thành tích. Là fan số 1.";
+"female" = "Nữ";
+"female_conquest" = "Đưa đến nơi sang trọng. Tặng quà đắt tiền. Ngưỡng mộ vẻ đẹp.";
+/* Career */
+"leadership_roles" = "Lãnh Đạo & Quản Lý";
+"leadership_roles_desc" = "Giám đốc, chính trị gia, quản lý.";
+"entertainment_fame" = "Giải Trí & Danh Tiếng";
+"entertainment_fame_desc" = "Diễn viên, ca sĩ, MC, nghệ sĩ.";
+"business_luxury" = "Kinh Doanh & Xa Hoa";
+"business_luxury_desc" = "Doanh nhân, bất động sản, thời trang, trang sức.";
+
+"virgo" = "Xử Nữ";
+/*VirgolegendView Profile */
+"6th_zodiac" = "thứ 6 trong Hoàng Đạo";
+"changeable_nature" = "người không kiên định, hay thay đổi";
+"perfectionist" = "cầu toàn, tỉ mỉ";
+
+"2_5_7" = "2, 5 và 7";
+
+"mercury" = "sao Thủy (tượng trưng cho sự hợp lý, nhận thức, sự tận tâm và giao tiếp)";
+"mercury_reason" = "sao Thủy – biểu tượng của lý trí và giao tiếp";
+"virgin" = "Trinh nữ";
+"earth" = "đất";
+
+"virgo_gems" = "đá Xacdonic, ngọc bích, ngọc lục bảo, đá topaz, kim cương và ngọc trai";
+
+"light_colors" = "những gam màu nhạt hoặc bạc, những vật liệu lung linh (trắng, vàng, xanh lá cây, nâu, màu tía phớt xanh)";
+"vervain_night_bloom" = "cỏ roi ngựa, lan dạ hương";
+"mercury_metal" = "thuỷ ngân";
+"dog_swallow" = "chó, chim nhạn";
+
+"stomach_intestines" = "dạ dày, nội tạng";
+"taurus_capricorn" = "Kim Ngưu, Ma Kết";
+"gemini_sagittarius" = "Song Tử, Nhân Mã";
+"taurus_cancer_virgo_capricorn" = "Kim Ngưu, Cự Giải, Xử Nữ, Ma Kết";
+"pisces_libra" = "Song Ngư, Thiên Bình";
+/* Legend */
+"persephone_myth" = "Công chúa Persephone";
+"persephone_demeter" = "Persephone bị Hades bắt xuống địa ngục. Demeter đau buồn khiến đất khô cằn. Zeus ra lệnh trả nàng, nhưng nàng đã ăn hạt lựu nên phải ở lại nửa năm, tạo ra các mùa.";
+
+"golden_age" = "Thời đại vàng & Pandora";
+"prometheus_pandora" = "Prometheus lấy lửa cho loài người. Zeus gửi Pandora, chiếc hộp mở ra tai họa. Phụ nữ bị coi là nguồn rắc rối. Astraea là vị thần cuối cùng rời Trái Đất.";
+
+"astraea" = "Astraea – Biểu tượng Đức hạnh";
+"astraea_virtue" = "Astraea là con gái Zeus, vị thần cuối cùng rời Trái Đất. Xử Nữ đại diện cho sự trong sạch, nhân ái và hy vọng trở lại với con người.";
+/* Personality */
+"perfectionist_detailed" = "Cầu Toàn & Tỉ Mỉ";
+"perfectionist_detailed_desc" = "Sống kỷ luật, sạch sẽ, ngăn nắp. Không lãng phí, đặc biệt là tiền. Nhà cửa luôn gọn gàng, trang trí lung linh.";
+
+"loyal_responsible" = "Trung Thành & Trách Nhiệm";
+"loyal_responsible_desc" = "Trung thành trong tình yêu và tình bạn. Không phản bội. Khéo tay nhưng đôi khi ỷ lại.";
+
+"analytical_intelligent" = "Phân Tích & Thông Minh";
+"analytical_intelligent_desc" = "Trí tuệ sắc sảo, phù hợp nghiên cứu khoa học, kỹ thuật, chế tạo. Yêu thích sự chính xác.";
+
+"caring_practical" = "Quan Tâm & Thực Tế";
+"caring_practical_desc" = "Dễ xúc động, giúp đỡ tinh tế. Yêu bằng lý trí, thực tế trong cuộc sống.";
+
+"critical_selfaware" = "Phê Phán & Tự Nhận Thức";
+"critical_selfaware_desc" = "Theo đuổi hoàn mỹ, ghét hỗn loạn. Hay phê bình nhưng luôn cố gắng cải thiện.";
+
+"family_oriented" = "Hướng Nội Gia Đình";
+"family_oriented_desc" = "Yêu thương gia đình, trách nhiệm cao. Kết hôn muộn, ưu tiên sự nghiệp trước.";
+/* Love */
+"late_love_virgo_desc" = "Yêu bằng lý trí. E thẹn trong tình cảm. Xây dựng tình yêu trên sự thấu hiểu, không cảm xúc thoáng qua.";
+"family_virgo_desc" = "Cha mẹ có trách nhiệm. Dạy dỗ nghiêm khắc nhưng yêu thương. Xây dựng gia đình ngăn nắp, hạnh phúc.";
+/* Conquest */
+"male_virgo_conquest" = "Gọn gàng, thanh lịch, gia đình. Thể hiện sự chân thành, lịch sự.";
+"female_virgo_conquest" = "Chân thật, nhút nhát, chu đáo. Mời đi xem phim, hòa nhạc. Tránh phô trương.";
+/* Career */
+"analytical_careers" = "Nghề Nghiệp Phù Hợp";
+"analytical_careers_desc" = "Nhà khoa học, kỹ thuật viên, kỹ sư, bác sĩ, kế toán, giáo viên, nhà văn, biên tập, thiết kế, chăm sóc sắc đẹp, y tế.";
+"work_virgo_desc" = "Chăm chỉ, có hệ thống, trách nhiệm. Ghét công việc dang dở. Phân tích và tổ chức xuất sắc.";
+"finance_virgo_desc" = "Tiết kiệm, lập kế hoạch. Kiếm tiền tốt, đầu tư khôn ngoan. Tránh lãng phí.";
+
+"libra" = "Thiên Bình";
+/*LibraLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Profile */
+"7th_zodiac" = "7 trong Hoàng Đạo";
+"venus" = "sao Kim (biểu tượng cho sự dịu dàng, hài hòa, duyên dáng, văn hóa và rất chừng mực)";
+"scale" = "cái cân";
+"libra_gems" = "ngọc mắt mèo, đá Sapphire";
+"kidneys" = "thận";
+"1_2_7" = "1, 2 và 7";
+"green" = "màu xanh lá cây";
+"gemini_aquarius" = "Song Tử, Bảo Bình";
+"cancer_capricorn" = "Cự Giải, Ma Kết";
+/* Legend */
+"golden_age" = "Thời Đại Vàng";
+"golden_age_desc" = "Trong thần thoại Hy Lạp, con người được tạo bằng vàng. Nữ thần Astraea giữ công bằng, phân định thiện ác.";
+"astraea" = "Nữ Thần Astraea";
+"astraea_desc" = "Khi con người ích kỷ, các thần rời đi. Chỉ Astraea ở lại. Nàng sau này lên trời thành chòm Thiên Bình.";
+"scale_symbol_desc" = "Chiếc cân công lý biểu tượng cho sự cân bằng. Thiên Bình suy nghĩ kỹ, nhìn nhận đúng sai tinh tế.";
+/* Personality */
+"fair_considerate" = "Công Bằng & Cân Nhắc";
+"fair_considerate_desc" = "Luôn suy nghĩ kỹ, hiếm sai lầm nghiêm trọng. Chính xác, tập trung, cân bằng giữa suy nghĩ và hành động.";
+"emotional_caring" = "Giàu Cảm Xúc & Quan Tâm";
+"emotional_caring_desc" = "Dễ xúc động, thích được yêu thương. Lười biếng, theo lối mòn, quan tâm người thân, thích giải trí, món lạ.";
+"indecisive_lazy" = "Do Dự & Lười Biếng";
+"indecisive_lazy_desc" = "Hay trì hoãn, suy nghĩ nhiều. Nằm trong top tiêu tiền. Thích tưởng tượng tình yêu cổ tích.";
+"romantic_dreamy" = "Lãng Mạn & Mơ Mộng";
+"romantic_dreamy_desc" = "Khao khát tình yêu lãng mạn. Sau tổn thương, khép kín nhưng vẫn vui vẻ. Tìm kiếm sự hòa hợp.";
+"artistic_refined" = "Nghệ Thuật & Tinh Tế";
+"artistic_refined_desc" = "Yêu sách, nghệ thuật, âm nhạc. Nhà cửa gọn gàng, hài hòa, phong cách độc đáo.";
+/* Love */
+"romantic_love" = "Tình Yêu Lãng Mạn";
+"romantic_love_desc" = "E thẹn, thể hiện tinh tế. Trung thành, truyền thống. Sợ cô đơn. Cần sự thấu hiểu và hòa hợp.";
+"family_libra_desc" = "Cha mẹ có trách nhiệm, công bằng, nghiêm khắc. Nhạy cảm với xung đột gia đình.";
+/* Conquest */
+"male_libra_conquest" = "Thật thà, tham gia nhóm. Đừng tách anh ấy ra. Đáp lại trêu đùa vui vẻ.";
+"female_libra_conquest" = "Chân thành, thanh lịch. Tránh hỏi dồn. Cho cô ấy thời gian mở lòng.";
+/* Career */
+"suitable_jobs" = "Nghề Phù Hợp";
+"suitable_jobs_desc" = "Luật sư, nhà ngoại giao, MC, thiết kế, kiến trúc sư, nhà phê bình, tư vấn, tâm lý, chính trị.";
+"work_libra_desc" = "Tổ chức tốt, khéo léo. Làm việc nhóm hiệu quả. Thuyết phục, công bằng, sáng tạo. Tránh xung đột.";
+"finance_libra_desc" = "Yêu xa xỉ nhưng cân bằng. Mua sắm chậm rãi. Đầu tư vào vẻ đẹp, nghệ thuật, hài hòa.";
+
+/*ScorpioLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"scorpio" = "Bọ Cạp";
+/* Profile Section */
+"basic_info" = "Thông tin cơ bản";
+"zodiac_order" = "Cung thứ";
+"8th_zodiac" = "8 trên Hoàng Đạo";
+"other_names" = "Tên gọi khác";
+"scorpion_names" = "Cung Thần Nông, Hổ Cáp, Thiên Yết, Thiên Hạt";
+"characteristic" = "Đặc trưng";
+"fixed" = "Sự cố định";
+"symbol" = "Biểu tượng";
+"scorpion" = "Con bọ cạp";
+"time_luck" = "Thời gian & May mắn";
+"lucky_numbers" = "Con số may mắn";
+"2_7_9" = "2, 7, và 9";
+"astronomy" = "Thiên văn";
+"ruling_planet" = "Hành tinh cai quản";
+"pluto" = "Sao Diêm Vương (nhận thức, sinh sôi, cái chết, tái sinh, thầm kín)";
+"element" = "Nguyên tố";
+"water" = "Nước";
+"gemstones" = "Đá quý";
+"scorpio_gems" = "Hoàng ngọc, đá Opal mịn màng lấp lánh (tượng trưng cho nồng nhiệt, chân thành)";
+"colors_symbols" = "Màu sắc & Biểu tượng";
+"colors" = "Màu sắc";
+"red_chestnut" = "Màu đỏ và màu hạt dẻ";
+"metal" = "Kim loại";
+"steel" = "Thép";
+"health_relations" = "Sức khỏe & Quan hệ";
+"body_parts" = "Bộ phận cơ thể";
+"reproductive_organs" = "Cơ quan sinh sản";
+"dating_with" = "Hẹn hò với";
+"cancer_pisces" = "Cự Giải, Song Ngư";
+"friends_with" = "Làm bạn với";
+"aquarius_leo" = "Bảo Bình, Sư Tử";
+"clash_with" = "Không hợp";
+"taurus" = "Kim Ngưu";
+/* Legend Section */
+"greek_myth_orion" = "Thần thoại Hy Lạp - Orion";
+"hera_scorpion_orion" = "Nữ thần Hera ra lệnh cho bọ cạp giết thợ săn Orion. Bọ cạp chui từ đất lên tấn công khiến Orion không kịp trở tay. Cả hai hóa thành chòm sao, nằm đối lập. Có ý kiến cho rằng Apollo ghen tị với Artemis nên sai khiến bọ cạp. Sau hối hận, Apollo đưa Orion lên trời.";
+"phaethon_story" = "Phaethon và Bọ Cạp Khổng Lồ";
+"phaethon_scorpion" = "Phaethon nài nỉ cha Helios cho lái cỗ xe mặt trời. Ngựa hoảng loạn vì bọ cạp khổng lồ, mất kiểm soát. Zeus hất Phaethon khỏi xe để chấm dứt hỗn loạn.";
+"symbol_meaning" = "Ý nghĩa biểu tượng";
+"scorpion_behavior" = "Bọ cạp sống ở sa mạc, rừng rậm, vỏ cứng, hoạt động ban đêm. Đuôi có nọc độc dùng để săn mồi và tự vệ. Chiến đấu đến chết, kể cả tự sát. Bọ cạp ở Sahara và Mexico nguy hiểm nhất.";
+/* Personality Section */
+"strong_will" = "Ý chí mạnh mẽ & Quyết đoán";
+"strong_will_desc" = "Cung mạnh mẽ nhất. Trẻ em khôn ngoan trước tuổi. Quan hệ sâu sắc, bền chặt. Lớp vỏ lạnh lùng che giấu nội tâm phức tạp.";
+"mysterious_eyes" = "Đôi mắt thôi miên";
+"mysterious_eyes_desc" = "Đôi mắt cuốn hút, đáng sợ. Cao ráo, ưa nhìn. Dũng cảm, dễ gần, tốt bụng nhưng sở hữu và thù dai.";
+"passionate_vindictive" = "Nồng nhiệt & Thù hận";
+"passionate_vindictive_desc" = "Cảm xúc cực đoan: bình tĩnh đến dữ dội. Lên kế hoạch trả thù. Chiến đấu đến cùng, không chấp nhận thất bại.";
+"three_levels" = "Ba tầng tiến hóa";
+"three_levels_desc" = "1. Bọ cạp: nguy hiểm, tội phạm.\n2. Đại bàng: tham vọng, thành công kinh doanh.\n3. Phượng hoàng: xuất chúng, quyền lực.";
+"intuition_thinking" = "Trực giác & Tư duy";
+"intuition_thinking_desc" = "Quyết định theo cảm tính. Đa nghi, thử thách mối quan hệ. Im lặng ép đối phương nói. Phù hợp làm luật sư, thám tử.";
+"loyal_protective" = "Trung thành & Bảo vệ";
+"loyal_protective_desc" = "Bảo vệ bản thân và người thân. Lập kế hoạch trước. Chăm chỉ, thẳng thắn, được tôn trọng.";
+/* Love Section */
+"intense_love" = "Tình yêu mãnh liệt";
+"intense_love_desc" = "Kín đáo, chọn người thông minh, trung thành. Yêu nồng nhiệt, xây dựng mối quan hệ lâu dài.";
+"family_scorpio_desc" = "Chăm sóc gia đình tận tâm. Luôn dành thời gian. Mang tiếng cười dù khó khăn. Cảm xúc phức tạp: yêu thương xen nghi ngờ.";
+"conquest" = "Chinh phục";
+"male" = "Nam";
+"male_conquest_scorpio" = "Hiếu thắng, thích chinh phục. Thực tế, hành động nhiều hơn nói. Sở hữu và ghen tuông.";
+"female" = "Nữ";
+"female_conquest_scorpio" = "Giàu tình cảm, hy sinh, chung thủy. Vợ đảm đang, không để gia đình thiếu thốn.";
+"dating_tips" = "Mẹo hẹn hò";
+"dating_tips_desc" = "NÊN: Ăn mặc nổi bật, chọn địa điểm bí ẩn, lắng nghe, chân thành, tặng quà bất ngờ.\nKHÔNG NÊN: Nói dối, hỏi riêng tư, tranh cãi, đăng mạng xã hội, quá thân mật.";
+
+/*SagittariusLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"sagittarius" = "Nhân Mã";
+/* Profile Section */
+"basic_info" = "Thông Tin Cơ Bản";
+"zodiac_order" = "Cung Thứ";
+"9th_zodiac" = "9 trên Hoàng Đạo";
+"ruling_planet" = "Sao Chiếu Mệnh";
+"jupiter" = "sao Mộc (cung may mắn nhất)";
+"symbol" = "Biểu Tượng";
+"archer" = "người bắn cung";
+"element" = "Nguyên Tố";
+"fire" = "Hỏa";
+"characteristic" = "Đặc Trưng";
+"mutability" = "sự thay đổi";
+"time_luck" = "Thời Gian & May Mắn";
+"lucky_numbers" = "Số May Mắn";
+"3_5_8" = "3, 5 và 8";
+"colors" = "Màu Sắc";
+"deep_purple" = "màu tím đậm";
+"gemstones" = "Đá May Mắn";
+"turquoise" = "ngọc lam";
+"health_relations" = "Sức Khỏe & Quan Hệ";
+"body_parts" = "Bộ Phận Cơ Thể";
+"hips_thighs" = "hông, đùi";
+"dating_with" = "Hẹn Hò Với";
+"leo_aries" = "Sư Tử, Bạch Dương";
+"friends_with" = "Làm Bạn Với";
+"virgo_pisces" = "Xử Nữ, Song Ngư";
+"clash_with" = "Không Hợp";
+"gemini" = "Song Tử";
+/* Legend Section */
+"centaur_chiron" = "Chiron - Người Ngựa";
+"centaur_chiron_desc" = "Đa số Centaurs ngu dốt, bạo lực. Nhưng Chiron - cháu thần biển Ocesnus, con Kronos - thông minh, khôn ngoan, tốt bụng. Giúp người khó khăn, dạy trẻ nhỏ.";
+"heracles_arrow" = "Mũi Tên Heracles";
+"heracles_arrow_desc" = "Tiêu diệt ác thú, Chiron bị Heracles bắn nhầm mũi tên tẩm độc rắn. Đau đớn tột cùng nhưng không chết được vì là thần.";
+"prometheus_sacrifice" = "Sự Hy Sinh Của Prometheus";
+"prometheus_sacrifice_desc" = "Prometheus biến Chiron thành người thường để linh hồn bay lên trời. Chòm sao Nhân Mã tưởng nhớ Chiron.";
+"archer_symbol_desc" = "Biểu tượng mũi tên sắc nhọn. Trong thần thoại Sumeria là quái vật hung dữ, trong Rome là Chiron thông minh. Phản ánh tính cách: vui vẻ nhưng cũng ghê gớm.";
+/* Personality Section */
+"cheerful_generous" = "Vui Vẻ & Hào Phóng";
+"cheerful_generous_desc" = "Dễ thương, hòa đồng, hào phóng. Cởi mở, chia sẻ kế hoạch, không giấu diếm. Ham học, say mê lĩnh vực yêu thích. Thô lỗ nhưng thật thà. Chi tiêu thoải mái, hay hết tiền.";
+"knowledge_exploration" = "Kiến Thức & Khám Phá";
+"knowledge_exploration_desc" = "Sống động, đam mê khám phá. Thích du lịch nơi đẹp, yên bình. Hướng ngoại, nhiệt tình giúp người. Luôn làm mới bản thân tích cực.";
+"adventurous_brave" = "Mạo Hiểm & Dũng Cảm";
+"adventurous_brave_desc" = "Gan dạ, thích trò chơi nguy hiểm. Phù hợp công việc thử thách: điệp viên, thám tử. Sao Mộc ban trí tuệ, cân bằng tính cách để thành công.";
+"sociable_humorous" = "Giao Tiếp & Hài Hước";
+"sociable_humorous_desc" = "Hài hước, hòa đồng, đáng tin. Thẳng thắn quá có thể làm mất lòng. Ghét nói dối, nổi giận khi phát hiện dối trá.";
+"optimistic_philosophical" = "Lạc Quan & Triết Lý";
+"optimistic_philosophical_desc" = "Suy nghĩ sâu, hay diễn thuyết. Nhiều nhà văn, nhà báo nổi tiếng. Bị cho là khoe khoang nhưng có tầm nhìn. Ăn mặc giản dị, nhà sáng sủa, hài hòa.";
+"blunt_impatient" = "Thẳng Thắn & Nóng Vội";
+"blunt_impatient_desc" = "Thô lỗ, thiếu tế nhị. Cung đa tình nhất. Hoang dã, tự do như ngựa. Hành động nhanh, không thích ràng buộc.";
+/* Love Section */
+"passionate_love" = "Tình Yêu Nồng Nhiệt";
+"passionate_love_desc" = "Hài hước, mang niềm vui. Trung thành khi yêu, tiêu chuẩn cao. Yêu tự do, khó kiểm soát. Trưởng thành: tìm mối quan hệ sâu sắc. Chung thủy nhưng cần không gian.";
+"family_sagittarius_desc" = "Thích tụ tập đông, không thích gia đình nhỏ. Dạy con tự lập. Bị xem vô trách nhiệm nhưng mang niềm vui. Ưu tiên tự do, viễn du.";
+/* Conquest */
+"conquest" = "Chinh Phục";
+"male" = "Nam";
+"male_conquest_sagittarius" = "Thích mạo hiểm, hài hước, tự do. Hãy vui vẻ, độc lập, cùng khám phá.";
+"female" = "Nữ";
+"female_conquest_sagittarius" = "Hấp dẫn bởi trí tuệ, lạc quan. Chia sẻ ước mơ, cùng trải nghiệm.";
+/* Career Section */
+"suitable_careers" = "Nghề Nghiệp Phù Hợp";
+"suitable_careers_desc" = "Nhà thám hiểm, nhà báo, giáo viên, tiếp thị, hướng dẫn viên, ngoại giao, phiên dịch, kinh doanh. Yêu tự do, giao tiếp, truyền cảm hứng.";
+"finance_sagittarius_desc" = "Kiếm tiền giỏi, chi tiêu phóng khoáng. Hiếm khi thiếu nhưng không dư dả. Lạc quan, tràn năng lượng dù khó khăn.";
+"work_style" = "Phong Cách Làm Việc";
+"work_style_desc" = "Năng động, nhanh nhẹn, có động lực. Ghét lặp lại. Sếp tuyệt vời: truyền cảm hứng, sáng tạo. Đồng nghiệp yêu sự hài hước, lạc quan.";
+
+/*CapricornLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"capricorn" = "Ma Kết";
+/* Profile Section */
+"basic_info" = "Thông tin cơ bản";
+"zodiac_order" = "Cung thứ";
+"10th_zodiac" = "10 trong Hoàng Đạo";
+"nature" = "Tính chất chung";
+"leader_nature" = "là cung số của người chủ nhân, người thủ lĩnh";
+"weekday" = "Ngày trong tuần";
+"saturday" = "thứ Bảy";
+"element" = "Nguyên tố";
+"earth" = "đất";
+"astronomy" = "Chiêm tinh";
+"ruling_planet" = "Sao chiếu mệnh";
+"saturn" = "sao Thần Nông (sao Thổ)";
+"symbol" = "Biểu tượng";
+"sea_goat" = "con dê biển";
+"gemstones" = "Đá biểu tượng";
+"capricorn_gems" = "ngọc hồng lựu, hổ phách, mã não đen, ngọc bích, thạch anh";
+"colors_symbols" = "Màu sắc & Biểu tượng";
+"colors" = "Màu sắc may mắn";
+"dark_colors" = "các màu tối, đặc biệt là màu nâu, đen, xanh biển, vàng";
+"flowers" = "Hoa";
+"gardenia_violet" = "dành dành, hoa cúc, hoa violet, hoa thuỷ tiên";
+"metal" = "Kim loại";
+"lead" = "chì";
+"animals" = "Động vật";
+"crocodile_sheep" = "cá sấu, cừu, chim cổ đỏ";
+"health_relations" = "Sức khỏe & Quan hệ";
+"body_parts" = "Bộ phận cơ thể";
+"skin_bones_knees" = "da, răng, xương, đầu gối";
+"dating_with" = "Hẹn hò với";
+"taurus_virgo" = "Kim Ngưu, Xử Nữ";
+"friends_with" = "Làm bạn với";
+"aries_libra" = "Bạch Dương, Thiên Bình";
+"compatible_with" = "Hợp với";
+"taurus_virgo_capricorn_pisces" = "Kim Ngưu, Xử Nữ, Ma Kết, Song Ngư";
+"clash_with" = "Khắc với";
+"cancer" = "Cự Giải";
+"lucky_numbers" = "Con số may mắn";
+"6_8_9" = "6, 8 và 9";
+/* Legend Section */
+"babylon_god" = "Thần Babylon";
+"ea_sea_goat" = "Thần Ea có cơ thể nửa người nửa động vật: đuôi cá, mình dê đầu người. Ban ngày canh giữ đất liền, đêm về đại dương. Ma Kết (dê biển) là hình ảnh biểu tượng.";
+"greek_myth" = "Thần thoại Hy Lạp";
+"pan_hermes" = "Pan – con của Hermes và Nymph – sinh ra nửa người nửa dê. Hermes đưa lên Olympus. Pan trở thành thần gia súc, sống trong rừng.";
+"symbol_meaning" = "Ý nghĩa biểu tượng";
+"nam_duong_nile" = "Nam Dương nhảy xuống sông Nile trong cuộc chiến Titans, biến thành sinh vật nửa dê nửa cá. Biểu tượng Ma Kết là đầu dê.";
+/* Personality Section */
+"ambitious_determined" = "Tham vọng & Kiên định";
+"ambitious_desc" = "Nhiều ước mơ, hoài bão. Không bao giờ đầu hàng. Làm việc cần mẫn, có định hướng rõ ràng. Nắm bắt mọi cơ hội.";
+"disciplined_patient" = "Kỷ luật & Kiên nhẫn";
+"disciplined_desc" = "Sống theo nguyên tắc, coi trọng luật lệ. Nghiêm túc, không hài hước. Tha thứ, nhường nhịn. Thành công nhờ kiên nhẫn.";
+"reserved_principled" = "Kín đáo & Nguyên tắc";
+"reserved_desc" = "Nhút nhát, sống nội tâm. Cẩn thận trong quan hệ. Giữ kín kế hoạch. Tự tạo số phận.";
+"goal_oriented" = "Hướng mục tiêu";
+"goal_desc" = "Thành công là đích đến: tiền bạc, quyền lực, tình yêu. Tự thúc đẩy bản thân. Vượt thất bại bằng ý chí mạnh mẽ.";
+"logical_practical" = "Logic & Thực tế";
+"logical_desc" = "Cẩn thận, phân tích. Tránh rủi ro. Biến xấu thành tốt. Làm việc chậm rãi, không vội vàng.";
+"responsible_leader" = "Trách nhiệm & Lãnh đạo";
+"responsible_desc" = "Độc lập, chăm chỉ. Được ngưỡng mộ vì kỷ luật. Sếp công tư phân minh, thưởng phạt rõ ràng.";
+/* Love Section */
+"cautious_love" = "Tình yêu thận trọng";
+"cautious_love_desc" = "Nghiêm túc trong tình yêu. Không dễ bày tỏ. Cần thời gian tin tưởng. Chung thủy, trung thành.";
+"family" = "Gia đình";
+"family_desc" = "Cha mẹ nghiêm khắc nhưng yêu thương. Giữ nhà sạch sẽ, ngăn nắp. Tiết kiệm, không lãng phí.";
+/* Conquest */
+"conquest" = "Chinh phục";
+"male" = "Nam";
+"male_conquest" = "Phá vỡ lớp vỏ lạnh lùng. Thể hiện sự ấm áp, chân thành. Nhắn tin buổi sáng.";
+"female" = "Nữ";
+"female_conquest" = "Kiên nhẫn, chậm rãi. Đưa đến nơi yên tĩnh: hòa nhạc, rạp phim. Tránh vội vàng.";
+/* Career Section */
+"career" = "Sự nghiệp";
+"career_desc" = "Tham vọng lớn, tổ chức tốt. Xuất sắc trong tài chính, bất động sản, luật pháp. Lãnh đạo công bằng.";
+"finance" = "Tài chính";
+"finance_desc" = "Giỏi kiếm tiền và tiết kiệm. Không hoang phí. Đầu tư khôn ngoan.";
+"suitable_jobs" = "Công việc phù hợp";
+"suitable_jobs_desc" = "Bất động sản, ngân hàng, luật sư, chính trị, quản lý, khoa học, lịch sử, công nghệ, y khoa.";
+
+/*PiscesLegendView Tabs */
+"tab_0" = "Sơ Yếu";
+"tab_1" = "Truyền Thuyết";
+"tab_2" = "Tính Cách";
+"tab_3" = "Tình Yêu";
+"tab_4" = "Sự Nghiệp";
+/* Header */
+"pisces" = "Song Ngư";
+/* Profile Section */
+"basic_info" = "Thông tin cơ bản";
+"zodiac_order" = "Thứ tự cung";
+"12th_zodiac" = "Cung thứ 12 trong Hoàng Đạo (Cung cuối cùng)";
+"nature" = "Tính chất chung";
+"inconstant_changeable" = "Không kiên định, hay thay đổi";
+"weekday" = "Ngày trong tuần";
+"tuesday" = "Thứ Ba";
+"element" = "Nguyên tố";
+"water" = "Nước";
+"astronomy" = "Chiêm tinh";
+"ruling_planet" = "Sao chiếu mệnh";
+"neptune_jupiter" = "Sao Hải Vương & sao Mộc";
+"planet" = "Hành tinh";
+"neptune_dreams" = "Sao Hải Vương (giấc mơ, ảo tưởng, âm nhạc, bí ẩn, thơ ca)";
+"symbol" = "Biểu tượng";
+"two_fish" = "Hai con cá";
+"gemstones" = "Đá quý";
+"pisces_gems" = "Đá heliotrope đỏ ánh xanh, san hô đỏ, lam ngọc, ngọc xanh biển, đá mặt trăng";
+"colors_symbols" = "Màu sắc & Biểu tượng";
+"colors" = "Màu sắc";
+"purple_gray_blue" = "Tím, xám, xanh dương";
+"flowers" = "Hoa";
+"lotus_iris_camellia" = "Sen, cây irit, hoa trà, hoa nhài, hoa huệ tây";
+"metal" = "Kim loại";
+"tin" = "Thiếc";
+"animals" = "Động vật";
+"elephant_dolphin_dog" = "Voi, cá heo, chó";
+"health_relations" = "Sức khỏe & Quan hệ";
+"body_parts" = "Bộ phận cơ thể";
+"feet" = "Đôi chân";
+"dating_with" = "Hẹn hò với";
+"cancer_scorpio" = "Cự Giải, Hổ Cáp";
+"friends_with" = "Làm bạn với";
+"gemini_sagittarius" = "Song Tử, Nhân Mã";
+"compatible_with" = "Hợp với";
+"cancer_scorpio_pisces" = "Cự Giải, Hổ Cáp, Song Ngư";
+"clash_with" = "Khắc với";
+"virgo" = "Xử Nữ";
+"time_luck" = "Thời gian & May mắn";
+"lucky_numbers" = "Con số may mắn";
+"1_3_4_9" = "1, 3, 4, 9";
+/* Legend Section */
+"greek_myth" = "Thần thoại Hy Lạp";
+"aphrodite_eros_typhon" = "Aphrodite và Eros biến thành cá để trốn quỷ Typhon. Hai con cá dẫn đường, trở thành biểu tượng Song Ngư.";
+"symbol_meaning" = "Ý nghĩa biểu tượng";
+"two_fish_connected" = "Hai con cá liên kết bằng dây — riêng biệt nhưng gắn bó. Song Ngư lạc quan, mơ mộng, sống trong thế giới ảo.";
+/* Personality Section */
+"mysterious_dual" = "Bí ẩn & Hai mặt";
+"mysterious_dual_desc" = "Tính cách kép: thần thánh hoặc ác quỷ. Trực giác mạnh, nghệ thuật, cởi mở nhưng nhạy cảm, trốn tránh.";
+"intuitive_artistic" = "Trực giác & Nghệ thuật";
+"intuitive_artistic_desc" = "Nhạy bén, tài năng âm nhạc, hội họa. Cởi mở nhưng dễ tổn thương.";
+"kind_sensitive" = "Tốt bụng & Nhạy cảm";
+"kind_sensitive_desc" = "Giúp đỡ, đồng cảm, nhưng yếu đuối. Tránh xung đột, trốn vào mộng mơ.";
+"dreamy_escapist" = "Mơ mộng & Trốn tránh";
+"dreamy_escapist_desc" = "Tưởng tượng phong phú, lười biếng, ỷ lại, thiếu tham vọng.";
+"sociable_open" = "Hòa đồng & Cởi mở";
+"sociable_open_desc" = "Thân thiện, tin người, thời trang. Yêu không gian yên tĩnh, lãng mạn.";
+"imaginative_lazy" = "Sáng tạo & Lười biếng";
+"imaginative_lazy_desc" = "Ý tưởng hay nhưng thiếu thực hiện. Làm việc theo cảm hứng.";
+/* Love Section */
+"romantic_love" = "Tình yêu lãng mạn";
+"romantic_love_desc" = "Lãng mạn, đa cảm, chậm gắn bó. Cần kết nối sâu sắc về tâm hồn.";
+"family" = "Gia đình";
+"family_desc" = "Cha mẹ tâm lý, nghiêm nhưng yêu thương. Mong gia đình hòa thuận, hạnh phúc.";
+/* Conquest */
+"conquest" = "Chinh phục";
+"male" = "Nam";
+"male_conquest_pisces" = "Dịu dàng, thấu hiểu, lắng nghe giấc mơ của anh ấy.";
+"female" = "Nữ";
+"female_conquest_pisces" = "Nói chuyện nhiều, chia sẻ cảm xúc, bước vào thế giới mộng mơ.";
+
+/* ZodiacLoveView */
+"zodiac_love_title" = "Tình Yêu Hoàng Đạo";
+"male_zodiacs" = "Cung Hoàng Đạo Nam";
+"female_zodiacs" = "Cung Hoàng Đạo Nữ";
+"result_button" = "Bảng Kết Quả";
+"zodiac_love_result_title" = "Tương Hợp Tình Yêu";
+"love_compatibility_placeholder" = "Chi tiết tương hợp tình yêu cho";
+"aries" = "Bạch Dương";
+"taurus" = "Kim Ngưu";
+"gemini" = "Song Tử";
+"cancer" = "Cự Giải";
+"leo" = "Sư Tử";
+"virgo" = "Xử Nữ";
+"libra" = "Thiên Bình";
+"scorpio" = "Thiên Yết";
+"sagittarius" = "Nhân Mã";
+"capricorn" = "Ma Kết";
+"aquarius" = "Bảo Bình";
+"pisces" = "Song Ngư";
+"aries_date" = "21/3 - 19/4";
+"taurus_date" = "20/4 - 20/5";
+"gemini_date" = "21/5 - 20/6";
+"cancer_date" = "21/6 - 22/7";
+"leo_date" = "23/7 - 22/8";
+"virgo_date" = "23/8 - 22/9";
+"libra_date" = "23/9 - 22/10";
+"scorpio_date" = "23/10 - 21/11";
+"sagittarius_date" = "22/11 - 21/12";
+"capricorn_date" = "22/12 - 19/1";
+"aquarius_date" = "20/1 - 18/2";
+"pisces_date" = "19/2 - 20/3";
+
+/*ZodiacSecretView*/
+"zodiac_secret_title" = "Bí Mật Hoàng Đạo";
+"secret_golden_pairs" = "Những cặp đôi \"vàng\" trong 12 cung hoàng đạo";
+"secret_quick_love" = "Những cặp đôi yêu nhanh nhưng cũng tan nhanh";
+"secret_incompatible" = "Top những cặp đôi \"không thể ăn ý\"";
+"secret_forbidden_colors" = "Những màu sắc tối kỵ trong 12 cung hoàng đạo";
+"secret_golden_pairs_content" = "Những cặp đôi cung hoàng đạo dưới đây một khi đã \"dính\" phải nhau thì không thể tách rời, tình yêu của họ nhẹ nhàng mà sâu lắng, không những vậy còn đem đến cho nhau rất nhiều may mắn trong cả tiền bạc lẫn tình cảm. Cùng đọc bài viết dưới đây để khám phá và tìm hiểu về các cung hoàng đạo này nhé!\n\n1. Song Ngư với Cự Giải:\n\nCự Giải hiền lành, đáng yêu, tuy tính cách có chút trầm nhưng đây vẫn là một người vô cùng đáng mến. Trong cuộc sống họ không thích giao lưu hay kết bạn gì nhưng nhân duyên lại khá tốt. Song Ngư tính cách có sự pha trộn giữa mạnh mẽ và đáng yêu, họ là người khá hài hước và rất biết tận hưởng cuộc sống. Điểm chung của hai cung hoàng đạo này khá nhiều, cả hai đều là những người trọng tình cảm và thích một cuộc sống nhẹ nhàng, nhìn chung mối quan hệ giữa họ rất hài hòa.\n\nCự Giải là người đa sầu đa cảm, tính cách \"thất thường\", cảm xúc lại hay thay đổi tuy nhiên khi ở bên cạnh Song Ngư họ lại khá \"an phận\". Song Ngư tinh tế, luôn biết cách tạo niềm tin ở người kia. Bên cạnh nhau họ đem đến cho nhau sự thoải mái, cho chỗ dựa tinh thần cho nhau.\n\nCặp đôi này được coi là \"cặp đôi vàng\" trong 12 cung hoang dao nguyên nhân không chỉ là tính cách rất hợp và trong công việc, nếu cùng chung lý tưởng, cả hai sẽ gặt hái được rất nhiều thành công. Phối hợp ăn ý, Song Ngư thông minh cùng Cự Giải điềm tĩnh tạo nên một khoảng trời cho riêng mình, họ hướng về một cuộc sống không chỉ thoải mái về tinh thần mà còn cả vật chất nữa.\n\n2. Song Ngư với Kim Ngưu:\n\nKim Ngưu thành thục, ổn trọng đi bên cạnh đó cũng rất khó tính. Trong cuộc sống họ yêu cầu rất nghiêm khắc và cả trong tình yêu cũng vậy. Kim Ngưu luôn mong muốn tìm được một người phù hợp, trọng tình trọng nghĩa, bao dung và nhân ái. Song Ngư với tính cách hiền lành, biết chăm sóc người khác, suy nghĩ cũng khá chín chắn, cặp đôi này nhìn chung có vẻ rất hợp nhau.\n\nTình yêu của Song ngư và Kim Ngưu tuy không nóng bỏng, nồng nhiệt nhưng cũng rất hài hòa và lãng mạn. Kim Ngưu vốn là một người có lý tưởng cho vậy khi yêu họ càng cảm thấy bản thân phải cố gắng hơn nữa, con người này rất nghiêm túc và lo xa, mới yêu nhau mà họ đã nghĩ tới sau này rồi.\n\nCặp đôi là sự kết hợp hoàn mỹ tạo nên một gia đình hạnh phúc, Kim Ngưu lo chuyện kiếm tiền còn Song Ngư lo chuyện gia đình, ai cũng có chức trách và nhiệm vụ riêng của mình. Quan điểm tình yêu của cả hai cũng rất giống nhau, họ chung thủy và chân thành với đối phương, cũng không phải là người dễ xúc động do vậy mà mối quan hệ vô cùng tốt đẹp và hòa hợp.\n\n3. Thiên Bình với Bạch Dương:\n\nMột Thiên Bình vẻ ngoài luôn tỏ ra lịch sự tao nhã nhưng bản chất bên trong lại rất \"bán manh\", cách đối xử với người quen và người xa lạ khác nhau một trời một vực. Ẩn sâu trong vẻ hiền lành đáng thương chính là một tính cách \"vô cùng cổ quái\". Khi yêu Thiên Bình rất thích chọc cho người đó vui và đôi khi còn làm ra những hành động ngốc nghếch nữa. Bạch Dương với Thiên Bình chắc chắn là một sự kết hợp vô cùng \"bùng nổ\" và hoành tráng.\n\nThiên Bình không bao giờ từ chối bất kỳ những yêu cầu gì của đối phương, nhiều khi họ còn ủng hộ những suy nghĩ hão huyền của Bạch Dương nữa. Cả hai con người này đều thích \"làm trò\", khá là chịu chơi, ưu phiêu lưu mạo hiểm.\n\nKhông chỉ là một cặp đôi gắn bó, Bạch dương với Thiên Bình còn là những đối tác, cộng sự vô cùng tuyệt vời của nhau, với lý tưởng cao cả của Bạch Dương cùng suy nghĩ táo bạo của Thiên Bình \"không mưu mà hợp\" tạo nên sự ăn ý đến bất ngờ. Bên cạnh nhau cả hai đều cảm thấy vui vẻ, nguồn năng lượng vô tận từ đối phương khiến họ không hề cảm thấy mỏi mệt.\n\n4. Bạch Dương với Nhân Mã:\n\nBạch Dương tính cách phóng khoáng và thích tự do, rất khó có người khiến họ phải dừng bước chân trên con đường rong chơi của mình nhưng Nhân Mã lại là một trong số những người hiếm hoi đó. Nhân Mã mạnh mẽ, làm người rất có nguyên tắc và sống vô cùng trách nhiệm, chính họ đã khiến Bạch Dương trở nên trưởng thành hơn.\n\nTuy lãnh đạm nhưng Nhân Mã không hề khô khan một chút nào, họ cũng biết vui đùa, quan tâm và lo lắng tới người khác. Ở Nhân Mã có điều gì đó khiến Bạch Dương nể phục và tin tưởng. Tình cảm của hai người nhẹ nhàng mà sâu lắng.\n\nNhân Mã cũng rất ủng hộ Bạch Dương thực hiện ước mơ, họ không bao giờ ngăn trở người kia phát triển, trong công việc cũng vậy, cả hai giúp đỡ lẫn nhau, chung tay để tạo nên sự nghiệp của riêng mình. Chuyện tình của hai người bền chặt và lâu dài, cả hai rất biết cách để chiều lòng đối phương, tính cách điềm tĩnh, thấu đáo khiến mối quan hệ cặp đôi luôn tốt đẹp, dường như không có điều gì có thể ảnh hưởng tới họ vậy.\n\nTrong mối quan hệ gia đình, cả hai cũng rất ít khi xảy ra mâu thuẫn, dù có thì họ cũng sẽ giải quyết rất êm đẹp. Đều là những người có trách nhiệm, kiên trì và biết phấn đấu Bạch Dương - Nhân Mã ngày càng làm cho cuộc sống tốt đẹp, thoải mái và dễ chịu hơn, họ rất có năng lực trên phương diện kiếm tiền.";
+
+"secret_quick_love_content" = "Ấn tượng ban đầu là điều vô cùng cần thiết và quan trọng để gây sự chú ý tới một ai đó. Nhiều cặp đôi đến với nhau chỉ qua một ánh nhìn, sự thích thú nhất thời, khi đã hiểu rõ về đối phương hoặc cảm thấy không hợp hai con người này sẵn sàng \"mỗi người một ngả\" đi tìm cho mình hạnh phúc mới. Dưới đây là những cặp đôi đến nhanh nhưng tình yêu của họ cũng chẳng thể kéo dài được trong 12 cung hoang dao. Cùng xem nhé!\n\n1. Bạch Dương - Thiên Yết:\n\nĐến với nhau chỉ qua một ánh mắt, ngay từ giây phút đầu, Bạch Dương phóng khoáng, hào sảng đã phải lòng một Thiên Yết thần bí mà cuốn hút. Tình yêu của họ đến rất nhanh chóng, cuồng nhiệt nhưng cũng không kém phần lãng mạn. Họ cảm thấy đối phương có nhiều điều thật thú vị, từ cách ứng xử cho tới lời nói đều mang một phong thái khác hẳn mình. Do không giống nhau nên họ thu hút lẫn nhau, như một cục nam châm vậy.\n\nBạch Dương - Thiên Yết tạo nên một mối tình rất đẹp nhưng sau một thời gian những khác biệt giữa họ tạo nên một màng ngăn cách. Càng tìm hiểu họ lại càng không thể thấu hiểu được đối phương. Nhiều trường hợp cặp đôi này, xung đột về quan điểm và sự thể hiện trong tình yêu của họ. Bạch Dương cảm thấy ngột ngạt trước tính cách có phần âm trầm của người kia. Thiên Yết đề cao sự chung thủy nhưng những hành động của Bạch Dương lại khiến con người này không cảm nhận được sự tôn trọng và quý trọng. Cặp đôi sẽ đường ai nấy đi khi mà họ không còn đủ kiên nhẫn với đối phương nữa.\n\n2. Kim Ngưu - Bảo Bình:\n\nNếu nhìn bề ngoài và tính cách thì rất nhiều người cho rằng cặp đôi này vô cùng hợp nhau và sẽ sống bên nhau đến trọn đời nhưng thực tế chỉ đúng một nửa. Quả thật họ rất hợp nhau, Kim Ngưu chín chắn, mạnh mẽ cùng Bảo Bình hiền lành và chu đáo, tạo nên một mối quan hệ rất hòa hợp nhưng chính sự hòa hợp đó là một trong số những nguyên nhân làm họ dần không nhiệt tình với đối phương nữa.\n\nTrong cuộc sống cũng có rất nhiều lúc cả hai không thể hiểu được đối phương cần gì và nghĩ gì. Cho dù cố tìm hiểu nhưng Kim Ngưu vẫn không thể có cùng một mạch suy nghĩ với người kia được. Họ cảm thấy hai người cứ như một đường thẳng song song vậy, giống nhau nhưng chẳng bao giờ có thể chạm vào được đối phương.\n\nMặt khác Kim Ngưu là những người rất thực tế, khi họ cảm thấy mối quan hệ này không thể tiếp tục được, cung hoàng đạo này sẽ có xu hướng tìm cho mình một đối tượng khác. Bảo Bình lại là người nhạy cảm nhưng cũng khá kiêu ngạo, họ sẽ không bao giờ hạ mình xuống để níu giữ mối tình không kết quả. Cặp đôi này một khi đã chia tay thì rất nhanh chóng và dứt khoát, không vấn vương, không níu kéo.\n\n3. Song Tử - Song Ngư:\n\nSong Tử và Song Ngư đều là những con người thích khám phá, họ thuộc tuýp người hay tò mò và sẽ không bao giờ chịu ngồi yên một chỗ. Quen nhau một cách bất ngờ và đến với nhau vô cùng nhanh chóng. Cả hai đem lại nhiều điều thú vị cho cuộc sống đối phương.\n\nNhưng Song Tử lại là người thích tự do, họ ghét bị quản chế, nhất là trong vấn đề tình cảm, con người này khi đã không còn cảm thấy hứng thú hay tò mò họ dễ dàng bị những điều mới mẻ khác thu hút hơn. Song Ngư tuy ham vui nhưng lại là những người hết sức tình cảm, họ trọng tình trọng nghĩa và quan trọng là họ thật sự rất nghiêm túc trong mối quan hệ này. Có nhiều điều khác nhau trong suy nghĩ dẫn đến những nứt vỡ trong tình cảm. Khi đã hiểu hết về đối phương Song Ngư sẽ cảm thấy Song Tử không phải là một người thích hợp với họ.\n\n4. Cự Giải - Thiên Bình:\n\nCự Giải dễ dàng bị vẻ bề ngoài và tính cách lịch thiệp, tao nhã của một Thiên Bình đốn gục. Cả hai đến với nhau do sự ngộ nhận tình cảm đối với đối phương. Ban đầu mối quan hệ này vô cùng tốt đẹp, ấm áp, lãng mạn và không có bất cứ sự mâu thuẫn nào. Nhưng dần dần cả hai nhận thấy nhiều điểm vô cùng khác biệt.\n\nTrong cuộc sống Thiên Bình sẽ không bao giờ dành trọn vẹn thời gian cho Cự Giải, họ có nhiều mối quan hệ bạn bè và người thân nữa nên tình yêu trong Thiên Bình không phải là duy nhất. Nhưng Cự Giải lại là những người rất nhạy cảm và thiếu cảm giác an toàn họ sẽ không chấp nhận được điều đó. Cả hai đều có những khúc mắc trong tình yêu này, nhiều nguyên nhân dẫn tới việc họ không thể duy trì được lâu mối quan hệ tình cảm đó.";
+
+"secret_incompatible_content" = "Với tính cách gần như tương đồng những cung hoang dao sau đây nếu thành một cặp sẽ vô cùng ăn ý. Cùng xem bài viết dưới đây để biết rõ hơn về các cặp đôi này nhé!\n\n1. Cự Giải với Thiên Yết:\n\nMột Thiên Yết khó gần nhưng lại chấp nhận cho Cự Giải tiếp cận bởi họ cảm nhận được ở đối phương có những điều rất giống mình. Cả hai đều là người trầm tính và ít nói. Thiên Yết theo khuynh hướng lạnh lùng và thờ ở trong khi đó Cư Giải lại thuộc tuýp người trầm tính và yên tĩnh, nhìn chung thì quan điểm sống của họ cũng khá giống nhau.\n\nDù là một người rất khó tính và hay thay đổi thất thường nhưng bên cạnh một Cự Giải thấu tình đạt lý Thiên Yết cũng bất giác trở nên ngoan hiền hơn. Cả Thiên Yết và Cự Giải đều là những người rất trọng tình cảm, một khi đã phải lòng đối phương họ nhất định sẽ không làm ra những chuyện khiến người kia phiền lòng.\n\nCả hai có một sự vô cùng ăn ý trong hành động và suy nghĩ, trong một vài trường hợp không cần người này nói ra người kia đã biết họ muốn gì rồi. Cặp đôi sẽ trở thành những cộng sự tuyệt vời nếu như hai người có chung ý tưởng kinh doanh hoặc cùng tạo dựng sự nghiệp cho bản thân mình. Đều là người cẩn thận và chu đáo cặp đôi chắc chắn sẽ đạt được nhiều kết quả tốt đẹp.\n\n2. Bạch Dương với Song Tử:\n\nBạch Dương tính cách nhiệt tình và phóng khoáng, họ yêu thích tự do, thích tham gia các hoạt động náo nhiệt. Song Tử thuộc tuýp người không thể ngồi yên một chỗ, với tính cách hoạt bát cùng khả năng nói chuyện dí dỏm, bản thân họ rất được chào đón trong đám đông. Cặp đôi này đến với nhau nhanh chóng nhưng tình cảm giữa họ cũng rất thắm thiết.\n\nTính cách có rất nhiều điểm giống nhau, Song Tử đem đến cho Bạch dương cảm giác vui vẻ mỗi khi ở bên, những câu chuyện mà họ kể khiến đối phương hứng thú tới nỗi không muốn tách rời. Bản chất cả hai đều là những người ưa phiêu lưu và thích náo nhiệt, Bạch Dương với Song Tử sẽ không thể bỏ qua những chuyến đi chơi, vừa thỏa mãn sở thích nhân tiện còn có thể bồi dưỡng tình cảm.\n\nSong Tử thông minh và lắm ý tưởng, Bạch Dương cũng là người rất xông xáo, cả hai ăn ý tạo nên những phút giây vui vẻ và thư giãn bên nhau. Trong công việc nếu hai người này bắt tay lại sẽ tạo nên một nguồn \"năng lượng\" vô tận, họ luôn nhiệt tình, làm đúng chức trách, cố gắng hoàn thành cho dù có khó khăn cỡ nào.\n\nBên cạnh nhau người này cũng giúp đỡ người kia rất nhiều, họ dạy cho nhau biết thế nào là kiên cường độc lập, trưởng thành hơn sau mỗi chuyến đi, với nghị lực mạnh mẽ và tính cách lạc quan, họ cổ vũ động viên nhau cùng vượt qua tất cả sóng gió.\n\n3. Nhân Mã với Sư Tử:\n\nCả hai đều là những người mạnh mẽ, bên cạnh nhau cặp đôi này chắc chắn sẽ khiến \"năng lượng bùng nổ\". Tình yêu của họ mãnh liệt tới nỗi làm con người ta phải \"mù mắt\". Sư Tử bản tính kiêu ngạo, lạnh lùng là thế nhưng khi đứng trước người mà họ yêu thương bản thân con người này cũng chỉ như một chú mèo nhỏ mà thôi, dễ thương và không có khả năng phản kháng. Nhân Mã thông minh, khéo léo tuy cũng thuộc tuýp người mạnh mẽ nhưng bản thân những người này cũng rất giỏi trong việc \"tính kế\" người khác.\n\nCặp đôi là sự kết hợp tạo nên một tình yêu mãnh liệt, trong mối quan hệ tình cảm này không ai là không muốn làm chủ cuộc chơi, cả Nhân Mã và Sư Tử đều rất muốn mình ở vị trí cao hơn. Sử Tử thích nắm mọi thứ trong tay và Nhân Mã cũng vậy, họ đối chọi gay gắt nhưng không thể phủ nhận tình yêu giữa họ rất sâu sắc và nồng nàn. Họ hiểu rõ đối phương như lòng bàn tay.\n\nCả hai thích \"bắt nạt\" đối phương bởi họ cho rằng đây cũng là một phương thức hay ho để bồi dưỡng tình cảm nhưng tuy nhiên nếu như có một người nào khác chèn ép tình yêu của họ thì hai con người này sẽ chung tay góp sức đập chết đối phương.\n\nCả hai đều không phải là người hiền lành, ngược lại họ rất thù dai, cặp đôi sẽ nhớ mãi không quên những người từng đắc tội họ và âm thầm tìm cách trả thù sau.\n\n4. Ma Kết với Kim Ngưu:\n\n\"Giản dị mà mộc mạc\" đó chính là những từ chính xác nhất để hình dung về hai con người này. Cả ma Kết và Kim Ngưu đều là những người trầm ổn, tính cách trưởng thành và không dễ xúc động. Một khi cả hai thừa nhận tình cảm của mình dành cho đối phương tức là bản thân họ sẽ không bao giờ phản bội tình yêu đó.\n\nĐến với nhau không nồng nàn nhiệt huyết nhưng ở họ lại luôn toát ra những điều thật gần gũi, thân thương, cả hai coi trọng tình cảm chân thành của đối phương, họ đề cao sự chung thủy. Với tính cách giống nhau tới từng chi tiết, bản thân những người này sinh ra là để dành cho nhau vậy, hị thích trải qua một cuộc sống yên bình và thầm lặng. Tuy nhiên nếu như người này muốn thực hiện điều gì người kia chắc chắn sẽ dốc hết sức giúp đỡ. Trong công việc, cả hai đều là những người rất có thực lực, họ luôn nghiêm túc và thận trọng do vậy mà thành công là điều hiển nhiên mà thôi.";
+
+"secret_forbidden_colors_content" = "1. Bạch Dương: Màu xám\n\nMật ngữ 12 chòm sao bật mí, Bạch Dương tràn đầy năng lượng, yêu ghét mọi thứ rõ ràng, đen ra đen, trắng ra trắng, không có chuyện mập mờ cảm xúc.\n\nTrong muôn vàn màu sắc bắt mắt trong cuộc sống, màu xám rất kinh tởm đối với Dương Dương và hoàn toàn không thể chấp nhận được trong suy nghĩ của chòm sao này.\n\nVì vậy, mỗi lần tôi nhìn thấy màu xám, họ sẽ cảm thấy chóng mặt và tìm cách tránh xa ngay lập tức.\n\n2. Kim Ngưu: Màu đỏ\n\nMàu đỏ tượng trưng cho sự sang trọng, quyền lực và hấp dẫn. Tuy nhiên, hầu hết những người thuộc cung Kim Ngưu đều ghét gam màu này, bởi họ yêu thích những gì giản dị, gần gũi với tự nhiên hơn.\n\nMàu sắc quanh ta vô cùng sặc sỡ và bắt mắt. Mỗi cung hoàng đạo đại diện cho một màu sắc riêng và chúng có thể nói lên khá nhiều khía cạnh trong tính cách của bạn.\n\nBên cạnh những màu sắc được xem là “bùa hộ mệnh” cho 12 chòm sao thì cũng có những màu sắc phá hủy sự may mắn của họ, thậm chí khiến họ gặp xui xẻo triền miên. Hãy cùng Lịch Ngày Tốt bật mí xem 12 chòm sao kỵ màu gì nhé!\n\n3. Song Tử: Màu xanh lá cây\n\nNhiều người nói rằng màu xanh lá cây giúp bảo vệ đôi mắt, nhưng nhiều người lại cho rằng màu này tượng trưng cho sự phản bội.\n\nĐối với bản thân Song Tử, màu xanh lá cây khiến họ cảm thấy chói lóa và bực bội nên họ rất ghét màu này.\n\n4. Cự Giải: Màu đen\n\nTheo tử vi 12 cung hoàng đạo, cả đàn ông và phụ nữ cung Cự Giải đều thích đối xử với mọi người bằng sự chân thành. Họ không bao giờ lừa dối và phản bội bất cứ ai.\n\nDo đó,sự tối tăm của màu đen rất không phù hợp với những người tốt như vậy, và đây được coi là màu kỵ đối với Giải Giải.\n\n5. Sư Tử: Màu xanh lá cây\n\nSư Tử có thể nói là một nhóm người khá sợ màu xanh lá cây. Họ hiểu màu xanh trực tiếp là sự phản bội và không muốn đối mặt, chịu đựng sự phản bội này.\n\nDo đó, màu xanh lá cây là màu không mang lại may mắn cho cung hoàng đạo này. Nhìn thấy màu xanh lá cây ở bất cứ đâu là họ lập tức tránh xa.\n\n6. Xử Nữ: Màu đỏ\n\nLịch vạn niên cho hay, Xử Nữ thuộc nhóm người rất sợ \"nhìn thấy máu\". Hầu hết họ đều cảm thấy hoa mắt, chóng mặt và nghiêm trọng hóa vấn đề khi nhìn thấy màu đỏ, đặc biệt là màu máu.\n\nNếuthấy màu đỏ, Xử Nhi sẽ bắt đầu cảm thấy khó chịu. Do đó, màu đỏ cũng là màu không may mắn của chòm sao này.\n\n7. Thiên Bình: Màu hồng\n\n12 chòm sao kỵ màu gì? Màu hồng tượng trưng cho sự dịu dàng và đáng yêu, cũng giống như tính cách của Thiên Bình: rất dễ gần, dễ mến.\n\nTính cách ấy có thể nói là hoàn toàn phù hợp với gam màu hồng, nhưng thật không may, Thiên Bình lại rất kỵ với màu sắc này, bởi nó mang đến những điều không may mắn cho chòm sao này mỗi khi sử dụng gam màu hồng ở bất cứ đâu.\n\n8. Hổ Cáp: Màu trắng\n\nMàu trắng là màu mang vẻ đẹp thuần khiết, trong sáng, dễ nắm bắt. So với vẻ lạnh lùng, bí hiểm, khó đoán định của Hổ Cáp thì gam màu này luôn không cân xứng.\n\nNhìn thấy màu trắng, Cáp Cáp sẽ trở nên khó chịu và muốn tránh xa. Do đó, màu kỵ với cung hoàng đạo này chính là màu trắng.\n\n9. Nhân Mã: Màu đen\n\nMột điều rất tự nhiên là ngay từ khi còn bé, Nhân Mã đã rất sợ màu đen, họ sẽ có linh cảm đáng ngại mỗi khi nhìn thấy màu đen.\n\nDo đó, màu đen có thể nói là màu không may mắn của số một Nhân Mã, nhìn thấy màu đen là Mã Nhi đã mất hơn một nửa niềm vui.\n\n10. Ma Kết: Màu đỏ\n\nMa Kết thông minh, rất siêng năng học tập, màu may mắn và phù hợp với Ma Kết Nữ đó là màu xanh nước biển và vàng.\n\nCòn màu đỏ là màu không may mắn nhất trong chòm sao này bởi nó mang đến tâm trạng u sầu, chán nản cho Kết Kết.\n\n11. Bảo Bình: Màu vàng\n\nBảo Bình rất năng động trong suy nghĩ. Do đó, màu \"gỉ\" như màu vàng mang đến những ràng buộc cho Bình Nhi, khiến họ thêm bực bội.\n\nVà mỗi khi sử dụng những thứ liên quan đến gam màu này, dường như một loạt những điều không may mắn lại đến với họ.\n\n12. Song Ngư: Màu xanh\n\n12 chòm sao kỵ màu gì? Song Ngư rất thích ảo mộng, có thể nói rằng họ rất phù hợp với màu xanh của bầu trời, nhưng tiếc là màu xanh không trở thành màu may mắn cho những chú cá nhỏ.\n\nDo đó, bạn nên hạn chế sử dụng gam màu này trong cuộc sống của mình để không gặp phải xui xẻo.";
+
+
+/*ZodiacRankView*/
+"zodiac_rank_title" = "Xếp Hạng Cung Hoàng Đạo";
+"rank_question" = "Cung hoàng đạo nào:";
+"rank_select_placeholder" = "-- Lựa chọn --";
+// Các mục menu
+"rank_chanh" = "Chảnh";
+"rank_da_tinh" = "Đa Tình";
+"rank_dai_gai" = "Dại Gái";
+"rank_de_xom" = "Dê Xòm";
+"rank_dien" = "Điên";
+"rank_fa_nhieu" = "FA Nhiều";
+"rank_gan_da" = "Gan Dạ";
+"rank_gia_nai" = "Giả Nai";
+"rank_ham_hoc" = "Ham Học";
+"rank_hat_hay" = "Hát Hay";
+"rank_lau_ca" = "Láu Cá";
+"rank_lua_tinh" = "Lừa Tình";
+"rank_luoi_bieng" = "Lười Biếng";
+"rank_luy_tinh" = "Lụy Tình";
+"rank_me_choi_game" = "Mê Chơi Game";
+"rank_me_trai" = "Mê Trai";
+"rank_nghiem_tuc" = "Nghiêm Túc";
+"rank_nhat_gan" = "Nhát Gan";
+"rank_noi_doi" = "Nói Dối";
+"rank_sang_tao" = "Sáng Tạo";
+"rank_mong_mo" = "Mộng Mơ";
+"rank_so_xau" = "Sợ Xấu";
+"rank_than_thien" = "Thân Thiện";
+"rank_thanh_thien" = "Thánh Thiện";
+"rank_vi_ban_be" = "Vì Bạn Bè";
+"rank_vo_tinh" = "Vô Tình";
+"rank_nhieu_tinh_xau_nhat" = "Nhiều Tính Xấu Nhất";
+"rank_yeu_doi" = "Yêu Đời";
+// Tên cung hoàng đạo
+"zodiac_aries" = "Bạch Dương";
+"zodiac_taurus" = "Kim Ngưu";
+"zodiac_gemini" = "Song Tử";
+"zodiac_cancer" = "Cự Giải";
+"zodiac_leo" = "Sư Tử";
+"zodiac_virgo" = "Xử Nữ";
+"zodiac_libra" = "Thiên Bình";
+"zodiac_scorpio" = "Thiên Yết";
+"zodiac_sagittarius" = "Nhân Mã";
+"zodiac_capricorn" = "Ma Kết";
+"zodiac_aquarius" = "Bảo Bình";
+"zodiac_pisces" = "Song Ngư";
+// Ngày tháng
+"zodiac_aries_date" = "21/3 - 19/4";
+"zodiac_taurus_date" = "20/4 - 20/5";
+"zodiac_gemini_date" = "21/5 - 20/6";
+"zodiac_cancer_date" = "21/6 - 22/7";
+"zodiac_leo_date" = "23/7 - 22/8";
+"zodiac_virgo_date" = "23/8 - 22/9";
+"zodiac_libra_date" = "23/9 - 22/10";
+"zodiac_scorpio_date" = "23/10 - 21/11";
+"zodiac_sagittarius_date" = "22/11 - 21/12";
+"zodiac_capricorn_date" = "22/12 - 19/1";
+"zodiac_aquarius_date" = "20/1 - 18/2";
+"zodiac_pisces_date" = "19/2 - 20/3";
+/* Rank */
+"rank_champion" = "Quán Quân";
+"rank_runner_up" = "Á Quân";
+"rank_third_place" = "Quý Quân";
+"rank_prefix" = "Hạng";
+
+
+/* ZodiacDailyView */
+"zodiac_love_title" = "Tình Yêu Hôm Nay";
+"zodiac_search_placeholder" = "Tìm cung hoàng đạo...";
+"zodiac_search_no_results" = "Không tìm thấy cung hoàng đạo";
+"zodiac_loading" = "Đang tải dự đoán...";
+"zodiac_no_data" = "Không có dữ liệu";
+"zodiac_daily_prefix" = "Hôm nay";
+"zodiac_compatibility" = "Tương hợp";
+"zodiac_lucky_time" = "Giờ may mắn";
+"zodiac_lucky_number" = "Số may mắn";
+"zodiac_color" = "Màu sắc";
+"zodiac_mood" = "Tâm trạng";
+"zodiac_detail_description" = "Dự đoán chi tiết";

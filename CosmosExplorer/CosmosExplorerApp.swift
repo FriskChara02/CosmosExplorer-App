@@ -12,6 +12,10 @@ import SwiftData
 struct CosmosExplorerApp: App {
     let swiftDataService = SwiftDataService()
     
+        init() {
+            ValueTransformer.registerIfNeeded()
+        }
+    
     // MARK: - SwiftData ModelContainer
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -39,6 +43,11 @@ struct CosmosExplorerApp: App {
         .modelContainer(for: [BlackholeModel.self])
         .modelContainer(for: [ConstellationModel.self])
         .modelContainer(for: [PlanetsModel.self])
+        .modelContainer(for: [Quiz.self])
+        .modelContainer(for: [Card.self])
+        .modelContainer(for: [Attempt.self])
+        .modelContainer(for: [Favorite.self])
+        .modelContainer(for: [UserProgress.self])
         .modelContainer(swiftDataService.container)
     }
 }

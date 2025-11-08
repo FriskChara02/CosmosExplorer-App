@@ -190,7 +190,7 @@ struct HomeEducationView: View {
                         ZStack {
                             TabView(selection: $selectedBannerIndex) {
                                 ForEach(0..<bannerItems.count, id: \.self) { index in
-                                    NavigationLink(destination: EmptyView()) {
+                                    NavigationLink(destination: destinationForBanner(at: index)) {
                                         ZStack {
                                             Image(backgroundImages[index])
                                                 .resizable()
@@ -273,52 +273,154 @@ struct HomeEducationView: View {
                         ], spacing: 10) {
                             ForEach(0..<gridItemsLeft.count, id: \.self) { index in
                                 Group {
-                                    NavigationLink(destination: EmptyView()) {
-                                        ZStack(alignment: .bottomLeading) {
-                                            Image(gridBackgroundImagesLeft[index])
-                                                .resizable()
-                                                .frame(height: 115)
-                                                .clipped()
-                                                .cornerRadius(25)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 25)
-                                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
-                                                )
-                                            Text(gridItemsLeft[index])
-                                                .font(.caption)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                                .padding(8)
-                                                .background(Color.black.opacity(0.5))
-                                                .cornerRadius(25)
-                                                .padding([.leading, .bottom], 10)
+                                    // Left Column
+                                    if gridItemsLeft[index] == LanguageManager.current.string("Flashcards") {
+                                        NavigationLink(destination: viewForMode("Flashcards")) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
                                         }
-                                        .padding(8)
-                                        .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                    } else if gridItemsLeft[index] == LanguageManager.current.string("Learn") {
+                                        NavigationLink(destination: viewForMode("Learn")) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
+                                    } else if gridItemsLeft[index] == LanguageManager.current.string("Test") {
+                                        NavigationLink(destination: viewForMode("Test")) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesLeft[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsLeft[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "left_\(gridItemsLeft[index])", in: animation)
+                                        }
                                     }
                                     
-                                    NavigationLink(destination: EmptyView()) {
-                                        ZStack(alignment: .bottomLeading) {
-                                            Image(gridBackgroundImagesRight[index])
-                                                .resizable()
-                                                .frame(height: 115)
-                                                .clipped()
-                                                .cornerRadius(25)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 25)
-                                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
-                                                )
-                                            Text(gridItemsRight[index])
-                                                .font(.caption)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                                .padding(8)
-                                                .background(Color.black.opacity(0.5))
-                                                .cornerRadius(25)
-                                                .padding([.leading, .bottom], 10)
+                                    // Right Column
+                                    if gridItemsRight[index] == LanguageManager.current.string("Blocks") {
+                                        NavigationLink(destination: viewForMode("Blocks")) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
                                         }
-                                        .padding(8)
-                                        .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                    } else if gridItemsRight[index] == LanguageManager.current.string("Blast") {
+                                        NavigationLink(destination: viewForMode("Blast")) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                        }
+                                    } else if gridItemsRight[index] == LanguageManager.current.string("Match") {
+                                        NavigationLink(destination: viewForMode("Match")) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                        }
                                     }
                                 }
                             }
@@ -485,14 +587,60 @@ struct HomeEducationView: View {
             EmptyView()
         }
     }
+    
+    @ViewBuilder
+    private func viewForMode(_ mode: String) -> some View {
+        switch mode {
+        case "Flashcards":
+            FlashcardsCatalogView()
+                .navigationBarBackButtonHidden(true)
+        case "Learn":
+            LearnCatalogView()
+                .navigationBarBackButtonHidden(true)
+        case "Test":
+            TestCatalogView()
+                .navigationBarBackButtonHidden(true)
+        case "Blocks":
+            BlocksCatalogView()
+                .navigationBarBackButtonHidden(true)
+        case "Blast":
+            BlastCatalogView()
+                .navigationBarBackButtonHidden(true)
+        case "Match":
+            MatchCatalogView()
+                .navigationBarBackButtonHidden(true)
+        default:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    private func destinationForBanner(at index: Int) -> some View {
+        let title = bannerItems[index].title
+        let mode = title
+        viewForMode(mode)
+    }
 }
 
-// ViewModel
+// MARK: - ViewModel
+@MainActor
 class HomeEducationViewModel: ObservableObject {
     @Published var userName: String = "User"
     @Published var randomCosmosQuote: String = ""
     @Published var selectedNavItem: UUID?
-    @Published var streakDays: Int = 7 // Giả lập số ngày streak
+    @Published var streakDays: Int = 7
+    
+    let service = SwiftDataService()
+    
+    var currentUserId: UUID {
+        if let context = authViewModel?.modelContext,
+           let user = try? context.fetch(FetchDescriptor<UserModel>()).first {
+            return user.id
+        }
+        return UUID()
+    }
+    
+    private var authViewModel: AuthViewModel?
     
     let navItems: [NavItem] = [
         NavItem(id: UUID(), title: LanguageManager.current.string("Home"), icon: "house.fill"),
@@ -516,8 +664,6 @@ class HomeEducationViewModel: ObservableObject {
         LanguageManager.current.string("Falling Star")
     ]
     
-    private var authViewModel: AuthViewModel?
-    
     init(authViewModel: AuthViewModel? = nil) {
         self.authViewModel = authViewModel
         self.userName = authViewModel?.username ?? "User"
@@ -525,9 +671,18 @@ class HomeEducationViewModel: ObservableObject {
     }
     
     func isDayCompleted(index: Int) -> Bool {
-        // Giả lập: ngày hiện tại được hoàn thành
         let today = Calendar.current.component(.weekday, from: Date()) - 2
         return index == today
+    }
+    
+    func demoQuiz(for mode: String) -> Quiz {
+        return Quiz(
+            title: "Demo \(mode)",
+            quizDescription: "This is a demo quiz for \(mode) mode.",
+            isPublic: true,
+            createdBy: nil,
+            categories: [mode]
+        )
     }
 }
 
