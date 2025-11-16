@@ -110,7 +110,7 @@ struct HomeEducationView: View {
                                                 .background(Color.purple.opacity(0.6))
                                                 .cornerRadius(25)
                                             }
-                                            NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)) {
+                                            NavigationLink(destination: WelcomeView().navigationBarBackButtonHidden(true)) {
                                                 HStack {
                                                     Image(systemName: "book.fill")
                                                         .foregroundColor(.white)

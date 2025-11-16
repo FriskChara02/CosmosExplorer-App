@@ -18,7 +18,7 @@ struct HomeView: View {
         NavItem(id: UUID(), title: LanguageManager.current.string("Galaxy"), icon: ""),
         NavItem(id: UUID(), title: LanguageManager.current.string("Black Hole"), icon: ""),
         NavItem(id: UUID(), title: LanguageManager.current.string("Nebula"), icon: ""),
-        NavItem(id: UUID(), title: LanguageManager.current.string("Map Galaxy"), icon: ""),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Story"), icon: ""),
         NavItem(id: UUID(), title: LanguageManager.current.string("Solar System"), icon: ""),
         NavItem(id: UUID(), title: LanguageManager.current.string("Planets"), icon: ""),
         NavItem(id: UUID(), title: LanguageManager.current.string("Stars"), icon: ""),
@@ -51,7 +51,7 @@ struct HomeView: View {
     ]
     
     private let gridItemsRight = [
-        LanguageManager.current.string("Map Galaxy"),
+        LanguageManager.current.string("Story"),
         LanguageManager.current.string("12 Zodiac Signs"),
         LanguageManager.current.string("Solar System"),
         LanguageManager.current.string("Planets"),
@@ -538,6 +538,30 @@ struct HomeView: View {
                                             .padding(8)
                                             .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
                                         }
+                                    } else if gridItemsRight[index] == LanguageManager.current.string("Story") {
+                                        NavigationLink(destination: ChapterListView().navigationBarBackButtonHidden(true)) {
+                                            ZStack(alignment: .bottomLeading) {
+                                                Image(gridBackgroundImagesRight[index])
+                                                    .resizable()
+                                                    .frame(height: 115)
+                                                    .clipped()
+                                                    .cornerRadius(25)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 25)
+                                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
+                                                    )
+                                                Text(gridItemsRight[index])
+                                                    .font(.caption)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                    .background(Color.black.opacity(0.5))
+                                                    .cornerRadius(25)
+                                                    .padding([.leading, .bottom], 10)
+                                            }
+                                            .padding(8)
+                                            .matchedGeometryEffect(id: "right_\(gridItemsRight[index])", in: animation)
+                                        }
                                     } else {
                                         ZStack(alignment: .bottomLeading) {
                                             Image(gridBackgroundImagesRight[index])
@@ -576,29 +600,31 @@ struct HomeView: View {
                                 .padding(.leading, 15)
                                 .offset(y: -40)
                             
-                            HStack {
-                                Image("cosmos_background")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 100, height: 100)
-                                    .clipped()
-                                    .cornerRadius(10)
-                                
-                                VStack(alignment: .leading) {
-                                    Text(LanguageManager.current.string("Latest Space Discovery"))
-                                        .font(.headline)
+                            NavigationLink(destination: AstronomicalNewsView().navigationBarBackButtonHidden(true)) {
+                                HStack {
+                                    Image("cosmos_background")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .clipped()
+                                        .cornerRadius(10)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(LanguageManager.current.string("Latest Space Discovery"))
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                        Text(DateHelper.formatDate(Date()))
+                                            .font(.caption)
+                                            .foregroundColor(.white.opacity(0.8))
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
                                         .foregroundColor(.white)
-                                    Text("Sep 11/2025")
-                                        .font(.caption)
-                                        .foregroundColor(.white.opacity(0.8))
                                 }
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.white)
+                                .padding()
+                                .background(Color.black.opacity(0.3))
+                                .cornerRadius(10)
                             }
-                            .padding()
-                            .background(Color.black.opacity(0.3))
-                            .cornerRadius(10)
                             .padding(.horizontal, 15)
                             .offset(y: -40)
                         }
@@ -676,17 +702,15 @@ struct HomeView: View {
     private func destinationView(for item: NavItem) -> some View {
         switch item.title {
         case LanguageManager.current.string("Home"):
-            EmptyView()
+            HomeView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Astronomical News"):
-            EmptyView()
-        case LanguageManager.current.string("Map"):
+            AstronomicalNewsView().navigationBarBackButtonHidden(true)
+        case LanguageManager.current.string("Friends"):
             EmptyView()
         case LanguageManager.current.string("Settings"):
-            SettingsView()
-                .navigationBarBackButtonHidden(true)
+            SettingsView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Profile"):
-            ProfileView()
-                .environmentObject(authViewModel)
+            ProfileView().environmentObject(authViewModel)
         default:
             EmptyView()
         }
@@ -702,8 +726,8 @@ struct HomeView: View {
             BlackholeCatalogView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Nebula"):
             NebulaCatalogView().navigationBarBackButtonHidden(true)
-        case LanguageManager.current.string("Map Galaxy"):
-            EmptyView()
+        case LanguageManager.current.string("Story"):
+            ChapterListView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Solar System"):
             SolarSystemView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Planets"):
@@ -711,7 +735,7 @@ struct HomeView: View {
         case LanguageManager.current.string("Stars"):
             StarCatalogView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Astronomical News"):
-            EmptyView()
+            AstronomicalNewsView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Constellation"):
             ConstellationCatalogView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("12 Zodiac Signs"):
@@ -733,7 +757,7 @@ class HomeViewModel: ObservableObject {
     let navItems: [NavItem] = [
         NavItem(id: UUID(), title: LanguageManager.current.string("Home"), icon: "house.fill"),
         NavItem(id: UUID(), title: LanguageManager.current.string("Astronomical News"), icon: "newspaper.fill"),
-        NavItem(id: UUID(), title: LanguageManager.current.string("Map"), icon: "map.fill"),
+        NavItem(id: UUID(), title: LanguageManager.current.string("Friends"), icon: "person.2.circle.fill"),
         NavItem(id: UUID(), title: LanguageManager.current.string("Settings"), icon: "gearshape.fill"),
         NavItem(id: UUID(), title: LanguageManager.current.string("Profile"), icon: "person.fill")
     ]

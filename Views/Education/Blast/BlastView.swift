@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 // Blast game: Question top, floating answers, tap correct/green wrong/red.
 struct BlastView: View {
@@ -109,7 +110,7 @@ struct BlastView: View {
             }
             .padding()
             
-            // Floating Options với animation bay lơ lửng
+            // Floating Bubbles
             GeometryReader { geometry in
                 ZStack {
                     ForEach(viewModel.floatingOptions, id: \.0) { option, position in
@@ -119,7 +120,6 @@ struct BlastView: View {
                             isTapped: tappedOption == option,
                             geometry: geometry,
                             onTap: {
-                                // Xử lý tap
                                 withAnimation(.spring(response: 0.4)) {
                                     tappedOption = option
                                 }
@@ -143,7 +143,7 @@ struct BlastView: View {
     }
 }
 
-// MARK: - Floating Option with Local Explosion
+// MARK: - Floating Option with Circular Bubble & Explosion
 struct FloatingOptionView: View {
     let option: String
     let isCorrect: Bool
@@ -151,106 +151,149 @@ struct FloatingOptionView: View {
     let geometry: GeometryProxy
     let onTap: () -> Void
     
-    @State private var offset: CGSize = .zero
+    @State private var floatOffset: CGSize = .zero
     @State private var rotation: Double = 0
     @State private var showExplosion: Bool = false
+    @State private var pulseScale: CGFloat = 1.0
+    
+    private let bubbleSize: CGFloat = 100
     
     var body: some View {
         ZStack {
-            // Nội dung đáp án
-            Text(option)
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .padding(12)
-                .frame(maxWidth: 150)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(isTapped ? (isCorrect ? Color.green.opacity(0.3) : Color.red.opacity(0.3)) : Color.gray.opacity(0.2))
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(isTapped ? (isCorrect ? Color.green : Color.red) : Color.gray, lineWidth: 2)
-                )
-                .scaleEffect(isTapped ? 1.1 : 1.0)
-                .offset(offset)
-                .rotationEffect(.degrees(rotation))
-                .animation(.spring(response: 0.3), value: isTapped)
-                .zIndex(1)
+            // Quả bóng tròn
+            ZStack {
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: isTapped
+                                ? (isCorrect ? [.green.opacity(0.5), .green.opacity(0.3)] : [.red.opacity(0.5), .red.opacity(0.3)])
+                                : [.white.opacity(0.7), .white.opacity(0.4)],
+                            center: .center,
+                            startRadius: 10,
+                            endRadius: bubbleSize / 2
+                        )
+                    )
+                    .frame(width: bubbleSize, height: bubbleSize)
+                    .shadow(color: .black.opacity(0.15), radius: 8, x: 0, y: 4)
+                    .scaleEffect(isTapped ? 1.15 : pulseScale)
+                
+                Circle()
+                    .strokeBorder(
+                        isTapped
+                            ? (isCorrect ? Color.green : Color.red)
+                            : Color.gray.opacity(0.6),
+                        lineWidth: isTapped ? 4 : 2
+                    )
+                    .frame(width: bubbleSize, height: bubbleSize)
+                
+                Text(option)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(isTapped ? .white : .primary)
+                    .padding(8)
+                    .frame(maxWidth: bubbleSize - 20)
+            }
+            .offset(floatOffset)
+            .rotationEffect(.degrees(rotation))
+            .zIndex(1)
+            .onTapGesture {
+                guard !isTapped else { return }
+                triggerTapFeedback()
+                onTap()
+            }
             
+            // Hiệu ứng nổ
             if showExplosion {
-                ExplosionEffect()
+                BubbleExplosionEffect()
+                    .frame(width: 140, height: 140)
                     .zIndex(0)
             }
         }
         .onAppear {
             startFloatingAnimation()
-        }
-        .onTapGesture {
-            guard !isTapped else { return }
-            showExplosion = true
-            onTap()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                showExplosion = false
-            }
+            startPulseAnimation()
         }
     }
     
     private func startFloatingAnimation() {
         withAnimation(
-            Animation.easeInOut(duration: Double.random(in: 2...4))
+            Animation.easeInOut(duration: Double.random(in: 2.5...4.0))
                 .repeatForever(autoreverses: true)
         ) {
-            offset = CGSize(
-                width: CGFloat.random(in: -30...30),
-                height: CGFloat.random(in: -30...30)
+            floatOffset = CGSize(
+                width: CGFloat.random(in: -25...25),
+                height: CGFloat.random(in: -25...25)
             )
-            rotation = Double.random(in: -10...10)
+            rotation = Double.random(in: -8...8)
+        }
+    }
+    
+    private func startPulseAnimation() {
+        withAnimation(
+            Animation.easeInOut(duration: 1.5)
+                .repeatForever(autoreverses: true)
+        ) {
+            pulseScale = 1.05
+        }
+    }
+    
+    private func triggerTapFeedback() {
+        showExplosion = true
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            showExplosion = false
         }
     }
 }
 
-// MARK: - Explosion Effect
-struct ExplosionEffect: View {
-    @State private var scale: CGFloat = 0.0
+// MARK: - Bubble Explosion Effect
+struct BubbleExplosionEffect: View {
+    @State private var scale: CGFloat = 0.3
     @State private var opacity: Double = 1.0
-    @State private var particleOffsets: [CGSize] = []
+    @State private var particles: [Particle] = []
+    
+    struct Particle: Identifiable {
+        let id = UUID()
+        let offset: CGSize
+        let delay: Double
+    }
     
     var body: some View {
         ZStack {
-            // Vòng tròn chính
             Circle()
-                .fill(RadialGradient(
-                    gradient: Gradient(colors: [.yellow, .orange, .red]),
-                    center: .center,
-                    startRadius: 0,
-                    endRadius: 60
-                ))
-                .frame(width: 120, height: 120)
+                .fill(RadialGradient(colors: [.yellow.opacity(0.8), .orange.opacity(0.4), .clear], center: .center, startRadius: 5, endRadius: 70))
+                .frame(width: 140, height: 140)
                 .scaleEffect(scale)
                 .opacity(opacity)
             
-            // Particles bay ra xung quanh
-            ForEach(0..<8, id: \.self) { index in
+            ForEach(particles) { particle in
                 Circle()
-                    .fill(Color.orange)
-                    .frame(width: 20, height: 20)
-                    .offset(particleOffsets.indices.contains(index) ? particleOffsets[index] : .zero)
+                    .fill(Color.orange.opacity(0.9))
+                    .frame(width: 16, height: 16)
+                    .offset(particle.offset)
                     .opacity(opacity)
+                    .scaleEffect(scale)
+                    .animation(
+                        Animation.easeOut(duration: 0.6).delay(particle.delay),
+                        value: scale
+                    )
             }
         }
         .onAppear {
-            particleOffsets = (0..<8).map { index in
-                let angle = Double(index) * (360.0 / 8.0) * .pi / 180.0
-                let distance: CGFloat = 80
-                return CGSize(
-                    width: cos(angle) * distance,
-                    height: sin(angle) * distance
+            particles = (0..<12).map { i in
+                let angle = Double(i) * 30 * .pi / 180
+                let distance: CGFloat = CGFloat.random(in: 60...100)
+                return Particle(
+                    offset: CGSize(width: cos(angle) * distance, height: sin(angle) * distance),
+                    delay: Double.random(in: 0...0.15)
                 )
             }
             
             withAnimation(.easeOut(duration: 0.6)) {
-                scale = 2.0
-                opacity = 0.0
+                scale = 1.8
+                opacity = 0
             }
         }
     }

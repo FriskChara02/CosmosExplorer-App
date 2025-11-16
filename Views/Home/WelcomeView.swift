@@ -52,7 +52,7 @@ struct WelcomeView: View {
                 }
             )
             .onAppear {
-                Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
+                Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
                     if progress < 100 {
                         progress += 1
                     } else {
@@ -61,7 +61,7 @@ struct WelcomeView: View {
                 }
 
                 //Chuyển HomeView sau 5s:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     showHomeView = true
                 }
             }

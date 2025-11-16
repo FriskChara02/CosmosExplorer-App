@@ -44,7 +44,7 @@
 "Education" = "Education";
 "Logout" = "Logout";
 "Latest Space Discovery" = "Latest Space Discovery";
-"Map Galaxy" = "Map Galaxy";
+"Story" = "Story";
 "Solar System" = "Solar System";
 "Planets" = "Planets";
 "Stars" = "Stars";
@@ -57,7 +57,7 @@
 "12 Zodiac Signs" = "12 Zodiac Signs";
 "Sky Live" = "Sky Live";
 "Home" = "Home";
-"Map" = "Map";
+"Friends" = "Friends";
 "Love Cosmos" = "Love Cosmos.";
 "The stars are calling" = "The stars are calling, let's answer.";
 "Discover the mysteries" = "Discover the mysteries of the cosmos.";
@@ -2747,3 +2747,56 @@
 "zodiac_mood" = "Mood";
 "zodiac_detail_description" = "Detailed Prediction";
 
+/* ChapterListView */
+"Story Chapters" = "Story Chapters";
+"Explore the mysteries of the universe" = "Explore the mysteries of the universe";
+"Back" = "Back";
+"Chapter 01" = "Chapter 01";
+"Chapter 02" = "Chapter 02";
+"Chapter 03" = "Chapter 03";
+"Chapter 04" = "Chapter 04";
+"Love in the Cosmos" = "Love in the Cosmos";
+"Stars and Their Secrets" = "Stars and Their Secrets";
+"Life and Death in the Universe" = "Life and Death in the Universe";
+"To be continued..." = "To be continued...";
+"Tap to explore" = "Tap to explore";
+"Complete previous chapters" = "Complete previous chapters";
+
+/* Chapters */
+"Chapters" = "Chapters";
+"I've Finished Reading" = "I've Finished Reading";
+
+/* Chapter 01 */
+"Love in the Cosmos" = "Love in the Cosmos";
+"chapter01_story" = "In the vast expanse of the cosmos, where stars twinkle like distant lovers' eyes, there exists a tale of eternal love between two celestial beings: Nova and Orion.\n\nNova, a radiant supernova, burst into existence with a passion that lit up entire galaxies. Orion, a steadfast constellation, watched over the night sky with unwavering devotion. Their love story began when Nova's explosive energy reached Orion's stars, creating a bond that transcended time and space.\n\nAs they danced through the universe, their connection formed beautiful nebulae, cradles for new stars – symbols of their enduring affection.";
+"chapter01_funfacts" = "Fun Fact: Binary stars, or 'star couples,' orbit each other in a cosmic dance, sometimes merging in spectacular events called stellar mergers, much like a passionate embrace!\n\nFun Fact: The heart of our galaxy, the Milky Way, contains a supermassive black hole named Sagittarius A*, around which stars whirl in orbits that resemble the pull of irresistible love.\n\nFun Fact: In astronomy, 'eclipsing binaries' are star pairs that periodically block each other's light, creating a rhythmic heartbeat visible from Earth – a reminder that even in the void, love finds its rhythm.";
+
+/* Chapter 02 */
+"Stars and Their Secrets" = "Stars and Their Secrets";
+"chapter02_story" = "Amidst the infinite darkness, stars emerge as beacons of light and mystery. Each star has its own story, from birth in dusty nebulae to their fiery ends.\n\nImagine Sirius, the brightest star in our night sky, shining with the intensity of a thousand suns. Or Betelgeuse, a red giant on the verge of supernova, holding secrets of stellar evolution.\n\nStars are the universe's alchemists, forging elements in their cores that become the building blocks of planets and life itself.";
+"chapter02_funfacts" = "Fun Fact: The Sun, our closest star, converts 600 million tons of hydrogen into helium every second through nuclear fusion – that's the power of a star's heart!\n\nFun Fact: Neutron stars are so dense that a teaspoon of their material would weigh about a billion tons on Earth – talk about compact power!\n\nFun Fact: The oldest known star, HD 140283 (nicknamed Methuselah), is estimated to be 14.5 billion years old, almost as old as the universe itself.";
+
+/* Chapter 03 */
+"Life and Death in the Universe" = "Life and Death in the Universe";
+"chapter03_story" = "The universe is a cycle of creation and destruction, where life blooms and fades in the grand cosmic theater.\n\nFrom the Big Bang's explosive birth to the quiet death of stars collapsing into black holes, existence is a delicate balance.\n\nPlanets like Earth harbor life, nurtured by stars, yet face potential extinction from cosmic events. Black holes devour, but also seed new beginnings through Hawking radiation.";
+"chapter03_funfacts" = "Fun Fact: Stars 'die' in spectacular ways – small ones become white dwarfs, while massive ones explode as supernovae, scattering elements essential for life.\n\nFun Fact: The Fermi Paradox questions why we haven't found extraterrestrial life, given the universe's age – perhaps life is rare, or civilizations self-destruct.\n\nFun Fact: Extremophiles on Earth, like tardigrades, can survive space's vacuum, hinting that life might persist in the harshest cosmic environments.";
+
+/*Astronomical News*/
+"astronomical_news" = "Astronomical News";
+"loading_news" = "Loading cosmic news...";
+"search_news" = "Search news...";
+"show_more" = "Show more";
+"loading" = "Loading...";
+"copy_link" = "Copy Link";
+"copied" = "Copied!";
+"favorite" = "Favorite";
+"saved" = "Saved";
+"calendar" = "Calendar";
+"summary" = "Summary";
+"detail" = "Detail";
+"full_detail" = "Full Detail";
+"generating_summary" = "Generating smart summary...";
+"no_summary_yet" = "No summary yet. Loading...";
+"favorites" = "Favorites";
+"no_favorites" = "No Favorites Yet";
+"no_favorites_desc" = "Start exploring and tap the heart icon to save your favorite astronomical discoveries!";

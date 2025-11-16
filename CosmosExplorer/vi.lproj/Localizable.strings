@@ -44,7 +44,7 @@
 "Education" = "Giáo dục";
 "Logout" = "Đăng xuất";
 "Latest Space Discovery" = "Khám phá không gian mới nhất";
-"Map Galaxy" = "Bản đồ thiên hà";
+"Story" = "Cốt truyện";
 "Solar System" = "Hệ mặt trời";
 "Planets" = "Hành tinh";
 "Stars" = "Ngôi sao";
@@ -57,7 +57,7 @@
 "12 Zodiac Signs" = "12 cung hoàng đạo";
 "Sky Live" = "Bầu trời trực tiếp";
 "Home" = "Trang chủ";
-"Map" = "Bản đồ";
+"Friends" = "Bạn bè";
 "Love Cosmos" = "Yêu vũ trụ.";
 "The stars are calling" = "Các ngôi sao đang gọi, hãy trả lời.";
 "Discover the mysteries" = "Khám phá những bí ẩn của vũ trụ.";
@@ -2720,3 +2720,57 @@
 "zodiac_color" = "Màu sắc";
 "zodiac_mood" = "Tâm trạng";
 "zodiac_detail_description" = "Dự đoán chi tiết";
+
+/* ChapterListView */
+"Story Chapters" = "Các Chương Truyện";
+"Explore the mysteries of the universe" = "Khám phá bí ẩn của vũ trụ";
+"Back" = "Quay lại";
+"Chapter 01" = "Chương 01";
+"Chapter 02" = "Chương 02";
+"Chapter 03" = "Chương 03";
+"Chapter 04" = "Chương 04";
+"Love in the Cosmos" = "Tình Yêu Trong Vũ Trụ";
+"Stars and Their Secrets" = "Những Ngôi Sao & Bí Mật";
+"Life and Death in the Universe" = "Sống & Chết Trong Vũ Trụ";
+"To be continued..." = "Sắp ra mắt...";
+"Tap to explore" = "Chạm để khám phá";
+"Complete previous chapters" = "Hoàn thành chương trước để mở khóa";
+
+/* Chapters */
+"Chapters" = "Các Chương";
+"I've Finished Reading" = "Tôi Đã Đọc Xong";
+
+/* Chapter 01 */
+"Love in the Cosmos" = "Tình Yêu Trong Vũ Trụ";
+"chapter01_story" = "Trong không gian bao la của vũ trụ, nơi các ngôi sao lấp lánh như đôi mắt người yêu xa xôi, tồn tại một câu chuyện tình yêu vĩnh cửu giữa hai thực thể thiên thể: Nova và Orion.\n\nNova, một siêu tân tinh rực rỡ, bùng nổ với đam mê thắp sáng cả thiên hà. Orion, một chòm sao kiên định, canh giữ bầu trời đêm với tình yêu bất diệt. Câu chuyện tình yêu của họ bắt đầu khi năng lượng nổ tung của Nova chạm đến các ngôi sao của Orion, tạo nên một mối liên kết vượt thời gian và không gian.\n\nKhi họ nhảy múa qua vũ trụ, mối liên kết của họ hình thành những tinh vân tuyệt đẹp – cái nôi cho các ngôi sao mới, biểu tượng của tình yêu bền vững.";
+"chapter01_funfacts" = "Fun Fact: Các ngôi sao đôi, hay 'cặp sao,' xoay quanh nhau trong điệu nhảy vũ trụ, đôi khi hợp nhất, tạo sự kiện hợp nhất sao rực rỡ – giống như một cái ôm nồng nàn!\n\nFun Fact: Trung tâm thiên hà của chúng ta, Dải Ngân Hà, chứa một hố đen siêu lớn tên Sagittarius A*, các ngôi sao xoay quanh nó như bị hút bởi tình yêu không thể cưỡng lại.\n\nFun Fact: Trong thiên văn học, 'sao đôi che khuất' là cặp sao định kỳ che ánh sáng của nhau, tạo nhịp tim có thể thấy từ Trái Đất – nhắc nhở rằng ngay cả trong hư không, tình yêu vẫn có nhịp điệu.";
+
+/* Chapter 02 */
+"Stars and Their Secrets" = "Những Ngôi Sao & Bí Mật";
+"chapter02_story" = "Giữa bóng tối vô tận, các ngôi sao hiện lên như ngọn hải đăng của ánh sáng và bí ẩn. Mỗi ngôi sao có câu chuyện riêng, từ khi sinh ra trong tinh vân bụi đến cái chết rực lửa.\n\nHãy tưởng tượng Sirius, ngôi sao sáng nhất bầu trời đêm, tỏa sáng gấp nghìn lần Mặt Trời. Hay Betelgeuse, một sao khổng lồ đỏ sắp siêu tân tinh, chứa đựng bí mật về tiến hóa sao.\n\nCác ngôi sao là nhà giả kim của vũ trụ, rèn luyện nguyên tố trong lõi, trở thành khối xây dựng cho hành tinh và sự sống.";
+"chapter02_funfacts" = "Fun Fact: Mặt Trời, ngôi sao gần nhất, chuyển 600 triệu tấn hydro thành heli mỗi giây qua phản ứng hạt nhân – đó là sức mạnh của trái tim ngôi sao!\n\nFun Fact: Sao neutron đặc đến mức một thìa vật chất của nó nặng khoảng một tỷ tấn trên Trái Đất – sức mạnh siêu nén!\n\nFun Fact: Ngôi sao cổ nhất được biết, HD 140283 (biệt danh Methuselah), ước tính 14,5 tỷ năm tuổi, gần bằng tuổi vũ trụ.";
+
+/* Chapter 03 */
+"Life and Death in the Universe" = "Sống & Chết Trong Vũ Trụ";
+"chapter03_story" = "Vũ trụ là vòng tuần hoàn của sáng tạo và hủy diệt, nơi sự sống nở rộ và tàn lụi trong sân khấu vũ trụ vĩ đại.\n\nTừ vụ nổ Big Bang đến cái chết lặng lẽ của sao sụp thành hố đen, sự tồn tại là sự cân bằng tinh tế.\n\nCác hành tinh như Trái Đất nuôi dưỡng sự sống nhờ sao, nhưng cũng đối mặt tuyệt chủng từ sự kiện vũ trụ. Hố đen nuốt chửng, nhưng cũng gieo mầm mới qua bức xạ Hawking.";
+"chapter03_funfacts" = "Fun Fact: Sao 'chết' theo cách ngoạn mục – sao nhỏ thành sao lùn trắng, sao lớn nổ siêu tân tinh, phân tán nguyên tố cần cho sự sống.\n\nFun Fact: Nghịch lý Fermi đặt câu hỏi tại sao chưa tìm thấy sự sống ngoài hành tinh, dù vũ trụ đã 13,8 tỷ năm – có lẽ sự sống hiếm, hoặc nền văn minh tự hủy diệt.\n\nFun Fact: Sinh vật cực đoan trên Trái Đất như tardigrade có thể sống sót trong chân không vũ trụ, gợi ý sự sống có thể tồn tại ở môi trường khắc nghiệt nhất.";
+
+/*Astronomical News*/
+"astronomical_news" = "Tin Tức Vũ Trụ";
+"loading_news" = "Đang tải tin tức vũ trụ...";
+"search_news" = "Tìm kiếm tin tức...";
+"show_more" = "Xem thêm";
+"loading" = "Đang tải...";
+"copy_link" = "Sao chép Link";
+"copied" = "Đã sao chép!";
+"favorite" = "Yêu thích";
+"saved" = "Đã lưu";
+"calendar" = "Lịch";
+"summary" = "Tóm tắt";
+"detail" = "Chi tiết";
+"full_detail" = "Chi tiết đầy đủ";
+"generating_summary" = "Đang tạo tóm tắt thông minh...";
+"no_summary_yet" = "Chưa có tóm tắt. Đang tải...";
+"favorites" = "Yêu thích";
+"no_favorites" = "Chưa có yêu thích";
+"no_favorites_desc" = "Khám phá vũ trụ và chạm vào biểu tượng trái tim để lưu những bài viết yêu thích của bạn!";

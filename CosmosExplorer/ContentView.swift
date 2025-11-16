@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             Group {
                 if viewModel.isSignedIn {
-                    WelcomeView()
+                    LogoVideoView()
                 } else {
                     LoginView()
                 }

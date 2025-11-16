@@ -240,7 +240,7 @@ struct LoginView: View {
                 }
                 .padding()
                 .navigationDestination(isPresented: $showWelcomeView) {
-                    WelcomeView()
+                    LogoVideoView()
                         .environmentObject(viewModel)
                         .navigationBarBackButtonHidden(true)
                 }
