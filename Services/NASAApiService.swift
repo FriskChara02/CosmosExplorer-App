@@ -6,7 +6,15 @@
 //
 
 import Foundation
-import SwiftData
+
+private struct FailableAPOD: Decodable {
+    let instance: APOD?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self.instance = try? container.decode(APOD.self)
+    }
+}
 
 struct APOD: Codable, Identifiable {
     let id = UUID()
@@ -21,12 +29,18 @@ struct APOD: Codable, Identifiable {
 }
 
 class NASAApiService {
-    private let apiKey: String = "DEMO_KEY"  // THAY BẰNG KEY CỦA BẠN Ở ĐÂY - hoặc dùng DEMO_KEY
+    private let apiKey: String = "DEMO_KEY" // THAY BẰNG KEY CỦA BẠN Ở ĐÂY - hoặc dùng DEMO_KEY
     
     private var cache: [APOD] = []
     private var lastFetch: Date?
     private let cacheDuration: TimeInterval = 3600 // 1 giờ
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
     func fetchAPOD(count: Int = 10) async throws -> [APOD] {
         let now = Date()
         
@@ -43,9 +57,6 @@ class NASAApiService {
         guard let startDate = calendar.date(byAdding: .day, value: -(count - 1), to: today) else {
             throw URLError(.badURL)
         }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let startDateStr = dateFormatter.string(from: startDate)
         let endDateStr = dateFormatter.string(from: today)
@@ -69,7 +80,8 @@ class NASAApiService {
             print("Rate Limit: \(remaining)/\(limit)")
         }
         
-        let apods = try JSONDecoder().decode([APOD].self, from: data)
+        let apods = try JSONDecoder().decode([FailableAPOD].self, from: data)
+            .compactMap { $0.instance }
         
         let sortedApods = apods.sorted { $0.date > $1.date }
         
@@ -80,22 +92,17 @@ class NASAApiService {
     }
     
     func fetchMoreAPOD(count: Int = 10, beforeDate: String) async throws -> [APOD] {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
         guard let endDate = dateFormatter.date(from: beforeDate) else {
             throw URLError(.badURL)
         }
         
         let calendar = Calendar.current
-        guard let startDate = calendar.date(byAdding: .day, value: -count, to: endDate) else {
+        guard let startDate = calendar.date(byAdding: .day, value: -count, to: endDate),
+              let adjustedEndDate = calendar.date(byAdding: .day, value: -1, to: endDate) else {
             throw URLError(.badURL)
         }
         
         let startDateStr = dateFormatter.string(from: startDate)
-        guard let adjustedEndDate = calendar.date(byAdding: .day, value: -1, to: endDate) else {
-            throw URLError(.badURL)
-        }
         let endDateStr = dateFormatter.string(from: adjustedEndDate)
         
         var components = URLComponents(string: "https://api.nasa.gov/planetary/apod")!
@@ -108,7 +115,9 @@ class NASAApiService {
         guard let url = components.url else { throw URLError(.badURL) }
         
         let (data, _) = try await URLSession.shared.data(from: url)
-        let apods = try JSONDecoder().decode([APOD].self, from: data)
+        
+        let apods = try JSONDecoder().decode([FailableAPOD].self, from: data)
+            .compactMap { $0.instance }
         
         return apods.sorted { $0.date > $1.date }
     }

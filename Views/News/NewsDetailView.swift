@@ -50,9 +50,11 @@ struct NewsDetailView: View {
                                 EmptyView()
                             }
                         }
-                        .frame(height: 300)
-                        .aspectRatio(contentMode: .fill)
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(16/9, contentMode: .fit)
                         .clipped()
+                        .cornerRadius(25)
+                        .shadow(color: .black.opacity(0.4), radius: 12, x: 0, y: 8)
                         .padding(.horizontal)
                         
                         // Gradient

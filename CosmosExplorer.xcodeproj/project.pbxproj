@@ -16,6 +16,7 @@
 		7AB292F62E7450F100582D0F /* OpenCombineDispatch in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F52E7450F100582D0F /* OpenCombineDispatch */; };
 		7AB292F82E7450F100582D0F /* OpenCombineFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F72E7450F100582D0F /* OpenCombineFoundation */; };
 		7AB292FA2E7450F100582D0F /* OpenCombineShim in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F92E7450F100582D0F /* OpenCombineShim */; };
+		7AEA5DF72ED165AE00AB3181 /* EmojiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEA5DF62ED165AE00AB3181 /* EmojiKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,10 @@
 		7A5593E52EA16820008C8C27 /* Exceptions for "ViewModels" folder in "CosmosExplorerUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ChatsViewModel.swift,
 				ConstellationViewModel.swift,
+				FriendsViewModel.swift,
+				GroupsViewModel.swift,
 				NebulaViewModel.swift,
 				QuizViewModel.swift,
 			);
@@ -57,6 +61,11 @@
 		7A5593EB2EA1686D008C8C27 /* Exceptions for "Views" folder in "CosmosExplorerUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Community/Chats/ChatDetailView.swift,
+				Community/Chats/ChatsView.swift,
+				Community/Friends/FriendsView.swift,
+				Community/Groups/GroupChatView.swift,
+				Community/Groups/GroupsView.swift,
 				Constellation/AddConstellationView.swift,
 				Constellation/ConstellationCatalogView.swift,
 				Constellation/ConstellationView.swift,
@@ -111,8 +120,11 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BlackholeModel.swift,
+				ChatModel.swift,
 				ConstellationModel.swift,
+				FriendsModel.swift,
 				GalaxyModel.swift,
+				GroupModel.swift,
 				NebulaModel.swift,
 				NewsModel.swift,
 				PlanetModel.swift,
@@ -200,6 +212,7 @@
 				7A4FF46E2E61A9EA00ED6904 /* RealityKit.framework in Frameworks */,
 				7AB292F42E7450F100582D0F /* OpenCombine in Frameworks */,
 				7AB292F62E7450F100582D0F /* OpenCombineDispatch in Frameworks */,
+				7AEA5DF72ED165AE00AB3181 /* EmojiKit in Frameworks */,
 				7AB292EF2E74499D00582D0F /* PostgresClientKit in Frameworks */,
 				7AB292F82E7450F100582D0F /* OpenCombineFoundation in Frameworks */,
 				7AB292FA2E7450F100582D0F /* OpenCombineShim in Frameworks */,
@@ -289,6 +302,7 @@
 				7AB292F72E7450F100582D0F /* OpenCombineFoundation */,
 				7AB292F92E7450F100582D0F /* OpenCombineShim */,
 				7AA394032EADC504000C47DA /* SwiftAA */,
+				7AEA5DF62ED165AE00AB3181 /* EmojiKit */,
 			);
 			productName = CosmosExplorer;
 			productReference = 7A7F82CB2E367C30006291B9 /* CosmosExplorer.app */;
@@ -378,6 +392,7 @@
 				7AB292ED2E74499D00582D0F /* XCRemoteSwiftPackageReference "PostgresClientKit" */,
 				7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */,
 				7AA393FE2EADC504000C47DA /* XCRemoteSwiftPackageReference "SwiftAA" */,
+				7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7A7F82CC2E367C30006291B9 /* Products */;
@@ -772,6 +787,14 @@
 				minimumVersion = 0.14.0;
 			};
 		};
+		7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/EmojiKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -804,6 +827,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */;
 			productName = OpenCombineShim;
+		};
+		7AEA5DF62ED165AE00AB3181 /* EmojiKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */;
+			productName = EmojiKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

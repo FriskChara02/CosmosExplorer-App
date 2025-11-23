@@ -94,7 +94,7 @@ struct HomeView: View {
                                     .font(.title2)
                                     .foregroundColor(.white)
                             }
-                            Text(LanguageManager.current.string("Welcome back") + ", \(viewModel.userName)")
+                            Text("\(LanguageManager.current.string("Welcome back")), \(authViewModel.username ?? "User")")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .offset(y: 1)
@@ -104,10 +104,13 @@ struct HomeView: View {
                                     showUserMenu.toggle()
                                 }
                             }) {
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
+                                UserAvatarView(authViewModel: authViewModel)
                                     .frame(width: 40, height: 40)
-                                    .foregroundColor(.white)
+                                    .clipShape(Circle())
+                                    .onAppear {
+                                        authViewModel.loadCurrentUserIfNeeded { user in
+                                        }
+                                    }
                             }
                             .overlay(
                                 ZStack {
@@ -706,7 +709,7 @@ struct HomeView: View {
         case LanguageManager.current.string("Astronomical News"):
             AstronomicalNewsView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Friends"):
-            EmptyView()
+            FriendsView().environmentObject(authViewModel).navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Settings"):
             SettingsView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Profile"):
@@ -795,5 +798,35 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(AuthViewModel())
+    }
+}
+
+public struct UserAvatarView: View {
+    @ObservedObject var authViewModel: AuthViewModel
+    
+    public var body: some View {
+        Group {
+            if let avatar = authViewModel.currentUser?.avatar,
+               let url = URL(string: avatar) {
+                AsyncImage(url: url) { phase in
+                    if let image = phase.image {
+                        image.resizable().scaledToFill()
+                    } else {
+                        fallbackAvatar
+                    }
+                }
+            } else {
+                fallbackAvatar
+            }
+        }
+        .onAppear {
+            authViewModel.loadCurrentUserIfNeeded { _ in }
+        }
+    }
+    
+    private var fallbackAvatar: some View {
+        Image(systemName: "person.circle.fill")
+            .resizable()
+            .foregroundColor(.white)
     }
 }

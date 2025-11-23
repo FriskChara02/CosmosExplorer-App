@@ -21,7 +21,7 @@
         init() {
             ValueTransformer.registerIfNeeded()
             
-            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self])
+            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self, FriendRequestModel.self, FriendshipModel.self, ChatModel.self, MessageModel.self, GroupModel.self, GroupMemberModel.self, GroupMessageModel.self, GroupWordFilterModel.self])
             let containerURL = URL.applicationSupportDirectory.appendingPathComponent("CosmosDB.sqlite")
             
             let configuration = ModelConfiguration(
@@ -41,7 +41,7 @@
         
         init(inMemory: Bool = false) {
             ValueTransformer.registerIfNeeded()
-            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self])
+            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self, FriendRequestModel.self, FriendshipModel.self, ChatModel.self, MessageModel.self, GroupModel.self, GroupMemberModel.self, GroupMessageModel.self, GroupWordFilterModel.self])
             let config = ModelConfiguration(isStoredInMemoryOnly: inMemory)
             self.container = try! ModelContainer(for: schema, configurations: config)
         }
@@ -1728,56 +1728,152 @@
         }
     }
     
-    // MARK: - Save User
-    func saveUser(_ user: UserModel) {
-        let context = container.mainContext
-        context.insert(user)
-        do {
-            try context.save()
-            print("✅ User saved to SwiftData")
-        } catch {
-            print("❌ Error saving user to SwiftData: \(error)")
+        // MARK: - Save User
+        func saveUser(_ user: UserModel) {
+            let context = container.mainContext
+            context.insert(user)
+            do {
+                try context.save()
+                print("✅ User saved to SwiftData")
+            } catch {
+                print("❌ Error saving user to SwiftData: \(error)")
+            }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("❌ Failed to connect to PostgreSQL")
+                return
+            }
+            defer { connection.close() }
+            
+            do {
+                let statement = try connection.prepareStatement(text: """
+                    INSERT INTO users (id, email, username, created_at, avatar, user_description, date_of_birth, 
+                                     location, gender, hobbies, bio, rank, score, token, status, role)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+                    ON CONFLICT (id) DO UPDATE
+                    SET email = $2, username = $3, created_at = $4, avatar = $5, user_description = $6,
+                        date_of_birth = $7, location = $8, gender = $9, hobbies = $10, bio = $11,
+                        rank = $12, score = $13, token = $14, status = $15, role = $16
+                """)
+                defer { statement.close() }
+                
+                let dateOfBirthString = user.dateOfBirth != nil ? ISO8601DateFormatter().string(from: user.dateOfBirth!) : nil
+                
+                try statement.execute(parameterValues: [
+                    pg(user.id),
+                    pg(user.email),
+                    pg(user.username),
+                    pg(ISO8601DateFormatter().string(from: user.createdAt)),
+                    pg(user.avatar),
+                    pg(user.userDescription),
+                    pg(dateOfBirthString),
+                    pg(user.location),
+                    pg(user.gender),
+                    pg(user.hobbies),
+                    pg(user.bio),
+                    pg(user.rank),
+                    pg(user.score),
+                    pg(user.token),
+                    pg(user.status),
+                    pg(user.role)
+                ])
+                print("✅ User synced to PostgreSQL")
+            } catch {
+                print("❌ Error syncing user to PostgreSQL: \(error)")
+            }
         }
-        
-        guard let connection = try? DatabaseConfig.createConnection() else {
-            print("❌ Failed to connect to PostgreSQL")
-            return
+
+        // MARK: - Update User
+        func updateUser(_ user: UserModel) {
+            let context = container.mainContext
+            do {
+                try context.save()
+                print("✅ User updated in SwiftData")
+            } catch {
+                print("❌ Error updating user in SwiftData: \(error)")
+            }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("❌ Failed to connect to PostgreSQL")
+                return
+            }
+            defer { connection.close() }
+            
+            do {
+                let statement = try connection.prepareStatement(text: """
+                    UPDATE users
+                    SET email = $2, username = $3, avatar = $4, user_description = $5, date_of_birth = $6,
+                        location = $7, gender = $8, hobbies = $9, bio = $10, rank = $11, score = $12,
+                        token = $13, status = $14, role = $15
+                    WHERE id = $1
+                """)
+                defer { statement.close() }
+                
+                let dateOfBirthString = user.dateOfBirth != nil ? ISO8601DateFormatter().string(from: user.dateOfBirth!) : nil
+                
+                try statement.execute(parameterValues: [
+                    pg(user.id),
+                    pg(user.email),
+                    pg(user.username),
+                    pg(user.avatar),
+                    pg(user.userDescription),
+                    pg(dateOfBirthString),
+                    pg(user.location),
+                    pg(user.gender),
+                    pg(user.hobbies),
+                    pg(user.bio),
+                    pg(user.rank),
+                    pg(user.score),
+                    pg(user.token),
+                    pg(user.status),
+                    pg(user.role)
+                ])
+                print("✅ User updated in PostgreSQL")
+            } catch {
+                print("❌ Error updating user in PostgreSQL: \(error)")
+            }
         }
-        defer { connection.close() }
-        
-        do {
-            let statement = try connection.prepareStatement(text: """
-                INSERT INTO users (id, email, username, created_at)
-                VALUES ($1, $2, $3, $4)
-                ON CONFLICT (id) DO UPDATE
-                SET email = $2, username = $3, created_at = $4
-            """)
-            defer { statement.close() }
-            try statement.execute(parameterValues: [
-                pg(user.id),
-                pg(user.email),
-                pg(user.username),
-                pg(ISO8601DateFormatter().string(from: user.createdAt))
-            ])
-            print("✅ User synced to PostgreSQL")
-        } catch {
-            print("❌ Error syncing user to PostgreSQL: \(error)")
+
+        // MARK: - Delete User
+        func deleteUser(_ user: UserModel) {
+            let context = container.mainContext
+            context.delete(user)
+            do {
+                try context.save()
+                print("✅ User deleted from SwiftData")
+            } catch {
+                print("❌ Error deleting user from SwiftData: \(error)")
+            }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("❌ Failed to connect to PostgreSQL")
+                return
+            }
+            defer { connection.close() }
+            
+            do {
+                let statement = try connection.prepareStatement(text: "DELETE FROM users WHERE id = $1")
+                defer { statement.close() }
+                try statement.execute(parameterValues: [pg(user.id)])
+                print("✅ User deleted from PostgreSQL")
+            } catch {
+                print("❌ Error deleting user from PostgreSQL: \(error)")
+            }
         }
-    }
-    
-    // MARK: - Fetch Users
-    func fetchUsers() -> [UserModel] {
-        let context = container.mainContext
-        let descriptor = FetchDescriptor<UserModel>()
-        do {
-            let users = try context.fetch(descriptor)
-            print("✅ Fetched \(users.count) users from SwiftData")
-            return users
-        } catch {
-            print("❌ Error fetching users: \(error)")
-            return []
+
+        // MARK: - Fetch Users
+        func fetchUsers() -> [UserModel] {
+            let context = container.mainContext
+            let descriptor = FetchDescriptor<UserModel>()
+            do {
+                let users = try context.fetch(descriptor)
+                print("✅ Fetched \(users.count) users from SwiftData")
+                return users
+            } catch {
+                print("❌ Error fetching users: \(error)")
+                return []
+            }
         }
-    }
         
     private func syncQuizToPostgreSQL(_ quiz: Quiz) {
         guard let connection = try? DatabaseConfig.createConnection() else {
@@ -2295,6 +2391,437 @@
                 print("UserProgress sync error: \(error)")
             }
         }
+
+    // MARK: - Friend Requests
+    func saveFriendRequest(_ request: FriendRequestModel) {
+        let context = container.mainContext
+        context.insert(request)
+        do {
+            try context.save()
+            print("✅ Friend request saved to SwiftData")
+        } catch {
+            print("❌ Error saving friend request: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO friend_requests (id, sender_id, receiver_id, status, created_at, updated_at)
+                VALUES ($1, $2, $3, $4, $5, $6)
+                ON CONFLICT (id) DO UPDATE
+                SET status = $3, updated_at = $6
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(request.id),
+                pgg(request.senderId),
+                pgg(request.receiverId),
+                pgg(request.status),
+                pgg(request.createdAt),
+                pgg(request.updatedAt)
+            ])
+            print("✅ Friend request synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing friend request: \(error)")
+        }
+    }
+    
+    // MARK: - Friendships
+    func saveFriendship(_ friendship: FriendshipModel) {
+        let context = container.mainContext
+        context.insert(friendship)
+        do {
+            try context.save()
+            print("✅ Friendship saved to SwiftData")
+        } catch {
+            print("❌ Error saving friendship: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO friendships (id, user_id1, user_id2, created_at)
+                VALUES ($1, $2, $3, $4)
+                ON CONFLICT (id) DO NOTHING
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(friendship.id),
+                pgg(friendship.userId1),
+                pgg(friendship.userId2),
+                pgg(friendship.createdAt)
+            ])
+            print("✅ Friendship synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing friendship: \(error)")
+        }
+    }
+
+    func deleteFriendship(_ friendship: FriendshipModel) {
+        let context = container.mainContext
+        context.delete(friendship)
+        do {
+            try context.save()
+            print("✅ Friendship deleted from SwiftData")
+        } catch {
+            print("❌ Error deleting friendship: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: "DELETE FROM friendships WHERE id = $1")
+            defer { statement.close() }
+            try statement.execute(parameterValues: [pg(friendship.id)])
+            print("✅ Friendship deleted from PostgreSQL")
+        } catch {
+            print("❌ Error deleting friendship from PostgreSQL: \(error)")
+        }
+    }
+
+    // MARK: - Chats
+    func saveChat(_ chat: ChatModel) {
+        let context = container.mainContext
+        context.insert(chat)
+        do {
+            try context.save()
+            print("✅ Chat saved to SwiftData")
+        } catch {
+            print("❌ Error saving chat: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO chats (id, participant1_id, participant2_id, created_at, updated_at,
+                                 last_message_content, last_message_time, is_blocked, blocked_by,
+                                 custom_nickname1, custom_nickname2, theme_color, quick_reaction_emoji, background_name)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+                ON CONFLICT (id) DO UPDATE
+                SET last_message_content = $6, last_message_time = $7, is_blocked = $8,
+                    blocked_by = $9, custom_nickname1 = $10, custom_nickname2 = $11,
+                    theme_color = $12, quick_reaction_emoji = $13, background_name = $14, updated_at = $5
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(chat.id),
+                pgg(chat.participant1Id),
+                pgg(chat.participant2Id),
+                pgg(chat.createdAt),
+                pgg(chat.updatedAt),
+                pgg(chat.lastMessageContent),
+                pgg(chat.lastMessageTime),
+                pgg(chat.isBlocked),
+                pgg(chat.blockedBy),
+                pgg(chat.customNickname1),
+                pgg(chat.customNickname2),
+                pgg(chat.themeColor),
+                pgg(chat.quickReactionEmoji),
+                pgg(chat.backgroundName)
+            ])
+            print("✅ Chat synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing chat: \(error)")
+        }
+    }
+
+    func deleteChat(_ chat: ChatModel) {
+        let context = container.mainContext
+        context.delete(chat)
+        do {
+            try context.save()
+            print("✅ Chat deleted from SwiftData")
+        } catch {
+            print("❌ Error deleting chat: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: "DELETE FROM chats WHERE id = $1")
+            defer { statement.close() }
+            try statement.execute(parameterValues: [pg(chat.id)])
+            print("✅ Chat deleted from PostgreSQL")
+        } catch {
+            print("❌ Error deleting chat from PostgreSQL: \(error)")
+        }
+    }
+
+    // MARK: - Messages
+    func saveMessage(_ message: MessageModel) {
+        let context = container.mainContext
+        context.insert(message)
+        do {
+            try context.save()
+            print("✅ Message saved to SwiftData")
+        } catch {
+            print("❌ Error saving message: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO messages (id, chat_id, sender_id, content, message_type, reactions,
+                                    created_at, is_read, reply_to_message_id)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                ON CONFLICT (id) DO UPDATE
+                SET is_read = $8, reactions = $6
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(message.id),
+                pgg(message.chatId),
+                pgg(message.senderId),
+                pgg(message.content),
+                pgg(message.messageType),
+                pgg(message.reactions),
+                pgg(message.createdAt),
+                pgg(message.isRead),
+                pgg(message.replyToMessageId)
+            ])
+            print("✅ Message synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing message: \(error)")
+        }
+    }
+
+    // MARK: - Groups
+    func saveGroup(_ group: GroupModel) {
+        let context = container.mainContext
+        context.insert(group)
+        do {
+            try context.save()
+            print("✅ Group saved to SwiftData")
+        } catch {
+            print("❌ Error saving group: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO groups (id, title, avatar, created_at, updated_at, created_by,
+                                  last_message_content, last_message_time)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                ON CONFLICT (id) DO UPDATE
+                SET title = $2, avatar = $3, last_message_content = $7,
+                    last_message_time = $8, updated_at = $5
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(group.id),
+                pgg(group.title),
+                pgg(group.avatar),
+                pgg(group.createdAt),
+                pgg(group.updatedAt),
+                pgg(group.createdBy),
+                pgg(group.lastMessageContent),
+                pgg(group.lastMessageTime)
+            ])
+            print("✅ Group synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing group: \(error)")
+        }
+    }
+
+    func deleteGroup(_ group: GroupModel) {
+        let context = container.mainContext
+        context.delete(group)
+        do {
+            try context.save()
+            print("✅ Group deleted from SwiftData")
+        } catch {
+            print("❌ Error deleting group: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: "DELETE FROM groups WHERE id = $1")
+            defer { statement.close() }
+            try statement.execute(parameterValues: [pg(group.id)])
+            print("✅ Group deleted from PostgreSQL")
+        } catch {
+            print("❌ Error deleting group from PostgreSQL: \(error)")
+        }
+    }
+
+    // MARK: - Group Members
+    func saveGroupMember(_ member: GroupMemberModel) {
+        let context = container.mainContext
+        context.insert(member)
+        do {
+            try context.save()
+            print("✅ Group member saved to SwiftData")
+        } catch {
+            print("❌ Error saving group member: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO group_members (id, group_id, user_id, role, joined_at)
+                VALUES ($1, $2, $3, $4, $5)
+                ON CONFLICT (id) DO UPDATE
+                SET role = $4
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(member.id),
+                pgg(member.groupId),
+                pgg(member.userId),
+                pgg(member.role),
+                pgg(member.joinedAt)
+            ])
+            print("✅ Group member synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing group member: \(error)")
+        }
+    }
+
+    // MARK: - Group Messages
+    func saveGroupMessage(_ message: GroupMessageModel) {
+        let context = container.mainContext
+        context.insert(message)
+        do {
+            try context.save()
+            print("✅ Group message saved to SwiftData")
+        } catch {
+            print("❌ Error saving group message: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO group_messages (id, group_id, sender_id, content, message_type,
+                                          reactions, created_at, reply_to_message_id)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                ON CONFLICT (id) DO UPDATE
+                SET reactions = $6
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(message.id),
+                pgg(message.groupId),
+                pgg(message.senderId),
+                pgg(message.content),
+                pgg(message.messageType),
+                pgg(message.reactions),
+                pgg(message.createdAt),
+                pgg(message.replyToMessageId)
+            ])
+            print("✅ Group message synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing group message: \(error)")
+        }
+    }
+
+    // MARK: - Group Word Filters
+    func saveGroupWordFilter(_ filter: GroupWordFilterModel) {
+        let context = container.mainContext
+        context.insert(filter)
+        do {
+            try context.save()
+            print("✅ Word filter saved to SwiftData")
+        } catch {
+            print("❌ Error saving word filter: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO group_word_filters (id, group_id, banned_word, replacement, created_at)
+                VALUES ($1, $2, $3, $4, $5)
+                ON CONFLICT (id) DO UPDATE
+                SET banned_word = $3, replacement = $4
+            """)
+            defer { statement.close() }
+            
+            try statement.execute(parameterValues: [
+                pgg(filter.id),
+                pgg(filter.groupId),
+                pgg(filter.bannedWord),
+                pgg(filter.replacement),
+                pgg(filter.createdAt)
+            ])
+            print("✅ Word filter synced to PostgreSQL")
+        } catch {
+            print("❌ Error syncing word filter: \(error)")
+        }
+    }
+
+    func deleteGroupWordFilter(_ filter: GroupWordFilterModel) {
+        let context = container.mainContext
+        context.delete(filter)
+        do {
+            try context.save()
+            print("✅ Word filter deleted from SwiftData")
+        } catch {
+            print("❌ Error deleting word filter: \(error)")
+        }
+        
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let statement = try connection.prepareStatement(text: "DELETE FROM group_word_filters WHERE id = $1")
+            defer { statement.close() }
+            try statement.execute(parameterValues: [pg(filter.id)])
+            print("✅ Word filter deleted from PostgreSQL")
+        } catch {
+            print("❌ Error deleting word filter from PostgreSQL: \(error)")
+        }
+    }
+        
+    // MARK: - Helper Function
+    private func pgg(_ value: Any?) -> PostgresValueConvertible? {
+        guard let value = value else { return nil }
+        
+        if let uuid = value as? UUID {
+            return uuid.uuidString
+        } else if let string = value as? String {
+            return string
+        } else if let int = value as? Int {
+            return int
+        } else if let bool = value as? Bool {
+            return bool
+        } else if let date = value as? Date {
+            return ISO8601DateFormatter().string(from: date)
+        } else if let data = value as? Data {
+            return PostgresByteA(data: data)
+        } else if let array = value as? [String] {
+            let escaped = array.map { "\"\($0.replacingOccurrences(of: "\"", with: "\\\""))\"" }
+            return "{\(escaped.joined(separator: ","))}"
+        }
+        
+        print("⚠️ Unsupported type for pgg(): \(type(of: value))")
+        return nil
+    }
     
     // MARK: - Helper Methods
     private func pg(_ value: Any?) -> PostgresValue {
@@ -2466,4 +2993,8 @@ extension PlanetModel {
         infoCards = other.infoCards
         missions = other.missions
     }
+}
+
+extension SwiftDataService {
+    static let shared = SwiftDataService()
 }

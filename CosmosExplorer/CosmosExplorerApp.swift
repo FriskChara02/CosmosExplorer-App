@@ -48,6 +48,14 @@ struct CosmosExplorerApp: App {
         .modelContainer(for: [Attempt.self])
         .modelContainer(for: [Favorite.self])
         .modelContainer(for: [UserProgress.self])
+        .modelContainer(for: [FriendRequestModel.self])
+        .modelContainer(for: [FriendshipModel.self])
+        .modelContainer(for: [ChatModel.self])
+        .modelContainer(for: [MessageModel.self])
+        .modelContainer(for: [GroupModel.self])
+        .modelContainer(for: [GroupMemberModel.self])
+        .modelContainer(for: [GroupMessageModel.self])
+        .modelContainer(for: [GroupWordFilterModel.self])
         .modelContainer(swiftDataService.container)
     }
 }

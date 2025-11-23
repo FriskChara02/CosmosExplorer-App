@@ -1,6 +1,7 @@
 import SwiftUI
 import AVFoundation
 import Combine
+import SwiftData
 
 enum MusicRepeatMode {
     case none, repeatOne, repeatAll, shuffle
@@ -192,6 +193,7 @@ class HamburgerMenuViewModel: ObservableObject {
 // MARK: - Hamburger Menu View
 struct HamburgerMenuView: View {
     @Binding var isPresented: Bool
+    @EnvironmentObject var authViewModel: AuthViewModel
     @StateObject private var viewModel = HamburgerMenuViewModel()
     @ObservedObject private var audioManager = AudioManager.shared
     @Namespace private var animationNamespace
@@ -241,27 +243,36 @@ struct HamburgerMenuView: View {
     
     private var userSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Image(systemName: "person.circle.fill")
-                .resizable()
+            UserAvatarView(authViewModel: authViewModel)
                 .frame(width: 60, height: 60)
-                .foregroundColor(.white)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white.opacity(0.3), lineWidth: 2))
             
-            NavigationLink(destination: ProfileView()) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Cosmos User")
+            NavigationLink(destination: ProfileView().environmentObject(authViewModel)) {
+                HStack(spacing: 16) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Cosmos \(authViewModel.username ?? "User")")
                             .font(.headline)
                             .foregroundColor(.white)
+                        
                         Text("View Profile")
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white.opacity(0.7))
                     }
+                    
                     Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.white)
+                    
+                    Image(systemName: "lasso.badge.sparkles")
+                        .foregroundColor(.white.opacity(0.6))
                 }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 25).fill(Color.gray.opacity(0.2)))
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding()
+            .background(Color.white.opacity(0.05))
+            .cornerRadius(16)
+            .onAppear {
+                authViewModel.loadCurrentUserIfNeeded { _ in }
             }
         }
     }
@@ -480,9 +491,16 @@ struct HamburgerMenuView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Cosmos Explorer")
                 .font(.caption)
-                .foregroundColor(.gray)
-            menuItem(icon: "message.fill", title: "My Chats")
-            menuItem(icon: "person.2.fill", title: "Friends")
+                .foregroundColor(.white.opacity(0.7))
+            
+            NavigationLink(destination: ChatsView().environmentObject(authViewModel).navigationBarBackButtonHidden(true)) {
+                menuItem(icon: "message.fill", title: "My Chats")
+            }
+            
+            NavigationLink(destination: FriendsView().environmentObject(authViewModel).navigationBarBackButtonHidden(true)) {
+                menuItem(icon: "person.2.fill", title: "Friends")
+            }
+            
             Divider().background(Color.gray)
         }
     }
@@ -491,7 +509,7 @@ struct HamburgerMenuView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Other")
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(.white.opacity(0.7))
             menuItem(icon: "gearshape.fill", title: "Settings")
             menuItem(icon: "questionmark.circle.fill", title: "Help and Settings")
         }
