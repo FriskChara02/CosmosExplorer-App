@@ -38,7 +38,8 @@ struct BlocksView: View {
                             withAnimation {
                                 viewModel.isCompleted = false
                             }
-                        }
+                        },
+                        onQuizCompleted: {}
                     )
                     .transition(.scale.combined(with: .opacity))
                 } else {

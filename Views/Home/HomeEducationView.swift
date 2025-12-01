@@ -77,7 +77,7 @@ struct HomeEducationView: View {
                                     .font(.title2)
                                     .foregroundColor(.white)
                             }
-                            Text(LanguageManager.current.string("Welcome back") + ", \(viewModel.userName)")
+                            Text("\(LanguageManager.current.string("Welcome back")), \(authViewModel.username ?? "User")")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .offset(y: 1)
@@ -87,10 +87,13 @@ struct HomeEducationView: View {
                                     showUserMenu.toggle()
                                 }
                             }) {
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
+                                UserAvatarView(authViewModel: authViewModel)
                                     .frame(width: 40, height: 40)
-                                    .foregroundColor(.white)
+                                    .clipShape(Circle())
+                                    .onAppear {
+                                        authViewModel.loadCurrentUserIfNeeded { user in
+                                        }
+                                    }
                             }
                             .overlay(
                                 ZStack {
@@ -570,19 +573,17 @@ struct HomeEducationView: View {
     private func destinationView(for item: NavItem) -> some View {
         switch item.title {
         case LanguageManager.current.string("Home"):
-            EmptyView()
+            HomeEducationView().navigationBarHidden(true).navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Quest"):
-            EmptyView()
+            QuestsView().navigationBarHidden(true).navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Ranks"):
-            EmptyView()
+            RanksView().navigationBarHidden(true).navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Feed"):
-            EmptyView()
+            FeedsView().navigationBarHidden(true).navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Settings"):
-            SettingsView()
-                .navigationBarBackButtonHidden(true)
+            SettingsView().navigationBarBackButtonHidden(true)
         case LanguageManager.current.string("Profile"):
-            ProfileView()
-                .environmentObject(authViewModel)
+            ProfileView().environmentObject(authViewModel)
         default:
             EmptyView()
         }

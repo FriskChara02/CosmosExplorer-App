@@ -79,6 +79,17 @@ struct TestCompletionView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(accuracy >= 80 ? .green : accuracy >= 50 ? .orange : .red)
                 }
+                
+                HStack {
+                    Text("Points")
+                        .font(.headline)
+                        .foregroundColor(.blue)
+                    Spacer()
+                    Text("+\(correct * 20) score!")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.blue)
+                }
             }
             .padding()
             .background(Color(.systemBackground))

@@ -335,7 +335,7 @@ struct FriendsView: View {
                         .padding(.vertical, 8)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white.opacity(0.1))
+                                .fill(Color.red.opacity(0.5))
                         )
                 }
             }
@@ -758,11 +758,11 @@ struct ProfileViewContent: View {
     
     private func rankColor(for rank: Int) -> Color {
         switch rank {
-        case 0..<1000: return .red
-        case 1000..<1200: return .yellow
+        case 1..<1000: return .green
+        case 1000..<1200: return .blue
         case 1200..<1400: return .purple
-        case 1400..<1600: return .blue
-        case 1600..<1800: return .green
+        case 1400..<1600: return .yellow
+        case 1600..<999999: return .red
         default: return .white
         }
     }

@@ -72,7 +72,8 @@ struct LearnView: View {
             continueAction: {
                 viewModel.reset()
                 viewModel.isCompleted = false
-            }
+            },
+            onQuizCompleted: {}
         )
     }
 

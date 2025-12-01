@@ -11,6 +11,7 @@ struct MatchCompletionView: View {
     let correct: Int
     let total: Int
     let continueAction: () -> Void
+    let onQuizCompleted: () -> Void
     
     private var accuracy: Double {
         total > 0 ? Double(correct) / Double(total) * 100 : 0
@@ -41,6 +42,7 @@ struct MatchCompletionView: View {
             VStack(spacing: 20) {
                 StatRow(label: "Matched", value: "\(correct)/\(total)")
                 StatRow(label: "Accuracy", value: String(format: "%.0f%%", accuracy), color: accuracy >= 80 ? .green : .orange)
+                StatRow(label: "Points", value: "+\(correct * 20) score!", color: .blue)
             }
             .font(.title3)
             .fontWeight(.medium)
@@ -69,6 +71,15 @@ struct MatchCompletionView: View {
         .padding(.top, 40)
         .padding(.horizontal)
         .background(Color(.systemBackground))
+        .onAppear {
+            Task {
+                await updateFeedsAndQuests()
+                onQuizCompleted()
+            }
+        }
+    }
+    func updateFeedsAndQuests() async {
+        NotificationCenter.default.post(name: NSNotification.Name("QuizCompleted"), object: nil)
     }
 }
 
@@ -94,6 +105,7 @@ private struct StatRow: View {
     MatchCompletionView(
         correct: 7,
         total: 8,
-        continueAction: { print("Play again") }
+        continueAction: { print("Play again") },
+        onQuizCompleted: {}
     )
 }

@@ -268,7 +268,10 @@ struct ChatDetailView: View {
                             .foregroundColor(.white.opacity(0.5))
                     }
                 }
-                .padding(12)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color.white.opacity(0.1))

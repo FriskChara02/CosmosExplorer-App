@@ -209,7 +209,7 @@ struct ProfileView: View {
             
             Text("•").foregroundColor(.white.opacity(0.3))
             
-            Text("Rank \(currentUser?.rank ?? 2000)")
+            Text("Elo \(currentUser?.rank ?? 0)")
                 .font(.system(size: 14, weight: .medium, design: .monospaced))
                 .foregroundColor(.white.opacity(0.7))
             
@@ -392,11 +392,11 @@ struct ProfileView: View {
     private func getRankUIColor() -> Color {
         let rank = currentUser?.rank ?? 2000
         switch rank {
-        case 0..<1000: return .red
-        case 1000..<1200: return .yellow
+        case 1..<1000: return .green
+        case 1000..<1200: return .blue
         case 1200..<1400: return .purple
-        case 1400..<1600: return .blue
-        case 1600..<1800: return .green
+        case 1400..<1600: return .yellow
+        case 1600..<999999: return .red
         default: return .white
         }
     }

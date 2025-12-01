@@ -1875,6 +1875,19 @@
             }
         }
         
+    func updateUserScoreAndRank(userId: UUID, score: Int, rank: Int) async {
+        guard let connection = try? DatabaseConfig.createConnection() else { return }
+        defer { connection.close() }
+        
+        do {
+            let stmt = try connection.prepareStatement(text: "UPDATE users SET score = $1, rank = $2 WHERE id = $3")
+            defer { stmt.close() }
+            try stmt.execute(parameterValues: [score, rank, userId.uuidString])
+        } catch {
+            print("Lỗi cập nhật score/rank lên server: \(error)")
+        }
+    }
+        
     private func syncQuizToPostgreSQL(_ quiz: Quiz) {
         guard let connection = try? DatabaseConfig.createConnection() else {
             print("Failed to connect to PostgreSQL")
@@ -2222,6 +2235,9 @@
             fatalError("quizId không hợp lệ (0) – không thể tạo Attempt")
         }
         let newAttempt = Attempt(userId: userId, quizId: quizId, mode: mode)
+        if newAttempt.id == 0 {
+                newAttempt.id = Int64(Date().timeIntervalSince1970 * 1000) + Int64.random(in: 0..<1000)
+            }
         context.insert(newAttempt)
         try? context.save()
         saveOrUpdateAttempt(newAttempt, isUpdate: false)
@@ -2294,6 +2310,70 @@
 
         } catch {
             print("Attempt sync error: \(error)")
+        }
+    }
+        
+    func syncAttemptToPostgreSQL(_ attempt: Attempt) async {
+        print("🔄 Bắt đầu sync attempt: id=\(attempt.id), completed=\(attempt.isCompleted), correct=\(attempt.correctCount), incorrect=\(attempt.incorrectCount)")
+        
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Không thể tạo kết nối database")
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let checkQuery = "SELECT is_completed, correct_count, incorrect_count FROM attempts WHERE id = $1"
+            let existsStmt = try connection.prepareStatement(text: checkQuery)
+            if let existingRow = try existsStmt.execute(parameterValues: [pg(attempt.id)]).next() {
+                let existingCompleted = try existingRow.get().columns[0].bool()
+                print("📋 Attempt đã tồn tại trong database: completed=\(existingCompleted)")
+            } else {
+                print("➕ Attempt chưa tồn tại trong database")
+            }
+            
+            let userAnswersJSON = String(data: try JSONEncoder().encode(attempt.userAnswers), encoding: .utf8) ?? "{}"
+            
+            if attempt.isCompleted {
+                let upsertQuery = """
+                INSERT INTO attempts (
+                    id, user_id, quiz_id, mode, started_at, last_updated,
+                    is_completed, current_index, correct_count, incorrect_count,
+                    user_answers, correct_cards
+                ) VALUES (
+                    $1, $2::uuid, $3, $4, $5, NOW(),
+                    $6, $7, $8, $9, $10::jsonb, $11::bigint[]
+                )
+                ON CONFLICT (id) DO UPDATE SET
+                    is_completed = $6,
+                    correct_count = $8,
+                    incorrect_count = $9,
+                    last_updated = NOW(),
+                    user_answers = $10::jsonb,
+                    correct_cards = $11::bigint[]
+                """
+                
+                try connection.prepareStatement(text: upsertQuery).execute(parameterValues: [
+                    pg(attempt.id),
+                    pg(attempt.userId.uuidString),
+                    pg(attempt.quizId),
+                    pg(attempt.mode),
+                    pg(attempt.startedAt),
+                    pg(attempt.isCompleted),
+                    pg(attempt.currentIndex),
+                    pg(attempt.correctCount),
+                    pg(attempt.incorrectCount),
+                    pg(userAnswersJSON),
+                    attempt.correctCardsPG
+                ].compactMap { $0 })
+                
+                print("✅ Đã đồng bộ attempt vào database: id=\(attempt.id), completed=\(attempt.isCompleted)")
+            } else {
+                print("⏳ Attempt chưa hoàn thành, không đồng bộ đầy đủ")
+            }
+            
+        } catch {
+            print("❌ Lỗi sync attempt \(attempt.id): \(error)")
         }
     }
     

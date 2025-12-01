@@ -390,7 +390,10 @@ struct ReplyPreviewBar: View {
             Spacer()
             dismissButton
         }
-        .padding(12)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity)
+        .frame(height: 56)
         .background(replyBackground)
         .padding(.horizontal)
         .transition(.move(edge: .bottom).combined(with: .opacity))

@@ -143,7 +143,11 @@ class Attempt {
         }
 
     init(id: Int64 = 0, userId: UUID, quizId: Int64, mode: String) {
-        self.id = id
+        if id == 0 {
+                self.id = Int64(Date().timeIntervalSince1970 * 1000) + Int64.random(in: 0..<1000)
+            } else {
+                self.id = id
+            }
         self.userId = userId
         self.quizId = quizId
         self.mode = mode

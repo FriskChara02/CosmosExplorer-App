@@ -26,7 +26,8 @@ struct MatchView: View {
                     MatchCompletionView(
                         correct: viewModel.correctCount,
                         total: viewModel.matchedPairs.count,
-                        continueAction: viewModel.reset
+                        continueAction: viewModel.reset,
+                        onQuizCompleted: {}
                     )
                     .transition(.scale.combined(with: .opacity))
                 } else {

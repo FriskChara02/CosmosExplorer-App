@@ -38,7 +38,8 @@ struct BlastView: View {
                             withAnimation {
                                 viewModel.isCompleted = false
                             }
-                        }
+                        },
+                        onQuizCompleted: {}
                     )
                     .transition(.scale.combined(with: .opacity))
                 } else if viewModel.quiz.cards.isEmpty {

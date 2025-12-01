@@ -13,6 +13,7 @@ struct LearnCompletionView: View {
     let total: Int
     let backToLast: () -> Void
     let continueAction: () -> Void
+    let onQuizCompleted: () -> Void
 
     private var accuracy: Double {
         total > 0 ? Double(correct) / Double(total) * 100 : 0
@@ -79,6 +80,17 @@ struct LearnCompletionView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(accuracy >= 80 ? .blue : accuracy >= 50 ? .orange : .red)
                 }
+                
+                HStack {
+                    Text("Points")
+                        .font(.headline)
+                        .foregroundColor(.blue)
+                    Spacer()
+                    Text("+\(correct * 20) score!")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.blue)
+                }
             }
             .padding()
             .background(Color(.systemBackground))
@@ -101,6 +113,15 @@ struct LearnCompletionView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
         .animation(.easeInOut, value: correct)
+        .onAppear {
+            Task {
+                await updateFeedsAndQuests()
+                onQuizCompleted()
+            }
+        }
+    }
+    func updateFeedsAndQuests() async {
+        NotificationCenter.default.post(name: NSNotification.Name("QuizCompleted"), object: nil)
     }
 }
 
@@ -109,6 +130,7 @@ struct LearnCompletionView: View {
         correct: 7,
         total: 10,
         backToLast: { print("Back...") },
-        continueAction: { print("Retry...") }
+        continueAction: { print("Retry...") },
+        onQuizCompleted: {}
     )
 }

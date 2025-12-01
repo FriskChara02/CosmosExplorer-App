@@ -37,7 +37,8 @@ struct FlashcardsView: View {
                             continueAction: {
                                 viewModel.reset()
                                 viewModel.isCompleted = false
-                            }
+                            },
+                            onQuizCompleted: {}
                         )
                         .transition(.scale.combined(with: .opacity))
                     } else if let card = viewModel.currentCard {

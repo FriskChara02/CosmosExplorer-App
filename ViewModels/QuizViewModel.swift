@@ -878,6 +878,7 @@ class FlashcardsViewModel: ObservableObject {
             isCompleted = true
             correctCount = attempt.correctCount
             incorrectCount = attempt.incorrectCount
+            completeQuiz()
         }
     }
     
@@ -889,6 +890,14 @@ class FlashcardsViewModel: ObservableObject {
         guard let cardId = currentCard?.id else { return }
         attempt.updateProgress(correct: correct, cardId: cardId)
         service.updateAttempt(attempt)
+        if attempt.currentIndex >= quiz.cards.count {
+            attempt.isCompleted = true
+            isCompleted = true
+            correctCount = attempt.correctCount
+            incorrectCount = attempt.incorrectCount
+            completeQuiz()
+            return
+        }
         loadCurrentCard()
     }
     
@@ -948,6 +957,44 @@ class FlashcardsViewModel: ObservableObject {
     var totalCount: Int {
         quiz.cards.count
     }
+    
+    func completeQuiz() {
+        let earnedPoints = attempt.correctCount * 20
+        
+        guard let userId = AuthManager.shared.currentUserId else {
+            print("Không có userId → không cộng điểm")
+            return
+        }
+        
+        AuthViewModel().fetchUserFromServer(id: userId.uuidString) { serverUser in
+            guard let user = serverUser else {
+                print("Không lấy được user từ server")
+                return
+            }
+            
+            print("✅BEFORE: Score = \(user.score), Rank = \(user.rank)")
+            
+            user.score += earnedPoints
+            user.rank = max(1, user.rank + earnedPoints)
+            
+            print("✅AFTER: Score = \(user.score), Rank = \(user.rank), +\(earnedPoints) điểm")
+            
+            Task { @MainActor in
+                await self.service.updateUserScoreAndRank(userId: userId, score: user.score, rank: user.rank)
+                
+                if let localUser = try? self.service.container.mainContext.fetch(FetchDescriptor<UserModel>()).first {
+                    localUser.score = user.score
+                    localUser.rank = user.rank
+                    try? self.service.container.mainContext.save()
+                }
+                AuthViewModel().loadCurrentUserIfNeeded { _ in }
+                await self.service.syncAttemptToPostgreSQL(self.attempt)
+                await QuizCompletionHelper.notifyQuizCompleted()
+            }
+            
+            EducationViewModel(service: self.service).markSessionComplete()
+        }
+    }
 }
 
 // MARK: - LearnViewModel
@@ -988,6 +1035,7 @@ class LearnViewModel: ObservableObject {
             isCompleted = true
             correctCount = attempt.correctCount
             incorrectCount = attempt.incorrectCount
+            completeQuiz()
         }
     }
     
@@ -1024,6 +1072,17 @@ class LearnViewModel: ObservableObject {
             service.updateAttempt(attempt)
             
             selectedOption = nil
+            if attempt.currentIndex >= quiz.cards.count {
+                attempt.isCompleted = true
+                Task {
+                    await self.service.syncAttemptToPostgreSQL(attempt)
+                }
+                isCompleted = true
+                correctCount = attempt.correctCount
+                incorrectCount = attempt.incorrectCount
+                completeQuiz()
+                return
+            }
             loadCurrentCard()
         }
     
@@ -1053,6 +1112,44 @@ class LearnViewModel: ObservableObject {
             attempt.currentIndex -= 1
             service.updateAttempt(attempt)
             loadCurrentCard()
+        }
+    }
+    
+    func completeQuiz() {
+        let earnedPoints = attempt.correctCount * 20
+        
+        guard let userId = AuthManager.shared.currentUserId else {
+            print("Không có userId → không cộng điểm")
+            return
+        }
+        
+        AuthViewModel().fetchUserFromServer(id: userId.uuidString) { serverUser in
+            guard let user = serverUser else {
+                print("Không lấy được user từ server")
+                return
+            }
+            
+            print("✅BEFORE: Score = \(user.score), Rank = \(user.rank)")
+            
+            user.score += earnedPoints
+            user.rank = max(1, user.rank + earnedPoints)
+            
+            print("✅AFTER: Score = \(user.score), Rank = \(user.rank), +\(earnedPoints) điểm")
+            
+            Task { @MainActor in
+                await self.service.updateUserScoreAndRank(userId: userId, score: user.score, rank: user.rank)
+                
+                if let localUser = try? self.service.container.mainContext.fetch(FetchDescriptor<UserModel>()).first {
+                    localUser.score = user.score
+                    localUser.rank = user.rank
+                    try? self.service.container.mainContext.save()
+                }
+                AuthViewModel().loadCurrentUserIfNeeded { _ in }
+                await self.service.syncAttemptToPostgreSQL(self.attempt)
+                await QuizCompletionHelper.notifyQuizCompleted()
+            }
+            
+            EducationViewModel(service: self.service).markSessionComplete()
         }
     }
 }
@@ -1119,9 +1216,15 @@ class TestViewModel: ObservableObject {
             default: break
             }
         } else {
+            attempt.isCompleted = true
+            Task {
+                await self.service.syncAttemptToPostgreSQL(attempt)
+            }
+            service.updateAttempt(attempt)
             isCompleted = true
             correctCount = attempt.correctCount
             incorrectCount = attempt.incorrectCount
+            completeQuiz()
         }
     }
     
@@ -1221,6 +1324,44 @@ class TestViewModel: ObservableObject {
             loadCurrentCard()
         }
     }
+    
+    func completeQuiz() {
+        let earnedPoints = attempt.correctCount * 20
+        
+        guard let userId = AuthManager.shared.currentUserId else {
+            print("Không có userId → không cộng điểm")
+            return
+        }
+        
+        AuthViewModel().fetchUserFromServer(id: userId.uuidString) { serverUser in
+            guard let user = serverUser else {
+                print("Không lấy được user từ server")
+                return
+            }
+            
+            print("✅BEFORE: Score = \(user.score), Rank = \(user.rank)")
+            
+            user.score += earnedPoints
+            user.rank = max(1, user.rank + earnedPoints)
+            
+            print("✅AFTER: Score = \(user.score), Rank = \(user.rank), +\(earnedPoints) điểm")
+            
+            Task { @MainActor in
+                await self.service.updateUserScoreAndRank(userId: userId, score: user.score, rank: user.rank)
+                
+                if let localUser = try? self.service.container.mainContext.fetch(FetchDescriptor<UserModel>()).first {
+                    localUser.score = user.score
+                    localUser.rank = user.rank
+                    try? self.service.container.mainContext.save()
+                }
+                AuthViewModel().loadCurrentUserIfNeeded { _ in }
+                await self.service.syncAttemptToPostgreSQL(self.attempt)
+                await QuizCompletionHelper.notifyQuizCompleted()
+            }
+            
+            EducationViewModel(service: self.service).markSessionComplete()
+        }
+    }
 }
 
 // MARK: - BlocksViewModel
@@ -1265,9 +1406,15 @@ class BlocksViewModel: ObservableObject {
         
         // Kiểm tra hoàn thành: khi đủ số lần đặt = số câu hỏi × 2
         if placeCount >= quiz.cards.count * 2 {
+            attempt.isCompleted = true
+            Task {
+                await self.service.syncAttemptToPostgreSQL(attempt)
+            }
+            service.updateAttempt(attempt)
             isCompleted = true
             correctCount = attempt.correctCount
             incorrectCount = attempt.incorrectCount
+            completeQuiz()
         }
     }
     
@@ -1342,6 +1489,44 @@ class BlocksViewModel: ObservableObject {
     }
     
     private func loadCurrentCard() { }
+    
+    func completeQuiz() {
+        let earnedPoints = attempt.correctCount * 20
+        
+        guard let userId = AuthManager.shared.currentUserId else {
+            print("Không có userId → không cộng điểm")
+            return
+        }
+        
+        AuthViewModel().fetchUserFromServer(id: userId.uuidString) { serverUser in
+            guard let user = serverUser else {
+                print("Không lấy được user từ server")
+                return
+            }
+            
+            print("✅BEFORE: Score = \(user.score), Rank = \(user.rank)")
+            
+            user.score += earnedPoints
+            user.rank = max(1, user.rank + earnedPoints)
+            
+            print("✅AFTER: Score = \(user.score), Rank = \(user.rank), +\(earnedPoints) điểm")
+            
+            Task { @MainActor in
+                await self.service.updateUserScoreAndRank(userId: userId, score: user.score, rank: user.rank)
+                
+                if let localUser = try? self.service.container.mainContext.fetch(FetchDescriptor<UserModel>()).first {
+                    localUser.score = user.score
+                    localUser.rank = user.rank
+                    try? self.service.container.mainContext.save()
+                }
+                AuthViewModel().loadCurrentUserIfNeeded { _ in }
+                await self.service.syncAttemptToPostgreSQL(self.attempt)
+                await QuizCompletionHelper.notifyQuizCompleted()
+            }
+            
+            EducationViewModel(service: self.service).markSessionComplete()
+        }
+    }
 }
 
 // MARK: - BlastViewModel
@@ -1375,9 +1560,15 @@ class BlastViewModel: ObservableObject {
             currentCard = quiz.cards[attempt.currentIndex]
             generateFloatingOptions()
         } else {
+            attempt.isCompleted = true
+            Task {
+                await self.service.syncAttemptToPostgreSQL(attempt)
+            }
+            service.updateAttempt(attempt)
             isCompleted = true
             correctCount = attempt.correctCount
             incorrectCount = attempt.incorrectCount
+            completeQuiz()
         }
     }
     
@@ -1447,6 +1638,44 @@ class BlastViewModel: ObservableObject {
             attempt.currentIndex -= 1
             service.updateAttempt(attempt)
             loadCurrentCard()
+        }
+    }
+    
+    func completeQuiz() {
+        let earnedPoints = attempt.correctCount * 20
+        
+        guard let userId = AuthManager.shared.currentUserId else {
+            print("Không có userId → không cộng điểm")
+            return
+        }
+        
+        AuthViewModel().fetchUserFromServer(id: userId.uuidString) { serverUser in
+            guard let user = serverUser else {
+                print("Không lấy được user từ server")
+                return
+            }
+            
+            print("✅BEFORE: Score = \(user.score), Rank = \(user.rank)")
+            
+            user.score += earnedPoints
+            user.rank = max(1, user.rank + earnedPoints)
+            
+            print("✅AFTER: Score = \(user.score), Rank = \(user.rank), +\(earnedPoints) điểm")
+            
+            Task { @MainActor in
+                await self.service.updateUserScoreAndRank(userId: userId, score: user.score, rank: user.rank)
+                
+                if let localUser = try? self.service.container.mainContext.fetch(FetchDescriptor<UserModel>()).first {
+                    localUser.score = user.score
+                    localUser.rank = user.rank
+                    try? self.service.container.mainContext.save()
+                }
+                AuthViewModel().loadCurrentUserIfNeeded { _ in }
+                await self.service.syncAttemptToPostgreSQL(self.attempt)
+                await QuizCompletionHelper.notifyQuizCompleted()
+            }
+            
+            EducationViewModel(service: self.service).markSessionComplete()
         }
     }
 }
@@ -1551,8 +1780,12 @@ class MatchViewModel: ObservableObject {
             let totalPairs = gridItems.count / 2
             if matchedPairs.count == totalPairs {
                 attempt.isCompleted = true
+                Task {
+                    await self.service.syncAttemptToPostgreSQL(attempt)
+                }
                 service.updateAttempt(attempt)
                 isCompleted = true
+                completeQuiz()
             }
         } else {
                 attempt.updateProgress(correct: false, cardId: item1.cardId)
@@ -1601,6 +1834,44 @@ class MatchViewModel: ObservableObject {
         incorrectCount = attempt.incorrectCount
         isCompleted = attempt.isCompleted
     }
+    
+    func completeQuiz() {
+        let earnedPoints = attempt.correctCount * 20
+        
+        guard let userId = AuthManager.shared.currentUserId else {
+            print("Không có userId → không cộng điểm")
+            return
+        }
+        
+        AuthViewModel().fetchUserFromServer(id: userId.uuidString) { serverUser in
+            guard let user = serverUser else {
+                print("Không lấy được user từ server")
+                return
+            }
+            
+            print("✅BEFORE: Score = \(user.score), Rank = \(user.rank)")
+            
+            user.score += earnedPoints
+            user.rank = max(1, user.rank + earnedPoints)
+            
+            print("✅AFTER: Score = \(user.score), Rank = \(user.rank), +\(earnedPoints) điểm")
+            
+            Task { @MainActor in
+                await self.service.updateUserScoreAndRank(userId: userId, score: user.score, rank: user.rank)
+                
+                if let localUser = try? self.service.container.mainContext.fetch(FetchDescriptor<UserModel>()).first {
+                    localUser.score = user.score
+                    localUser.rank = user.rank
+                    try? self.service.container.mainContext.save()
+                }
+                AuthViewModel().loadCurrentUserIfNeeded { _ in }
+                await self.service.syncAttemptToPostgreSQL(self.attempt)
+                await QuizCompletionHelper.notifyQuizCompleted()
+            }
+            
+            EducationViewModel(service: self.service).markSessionComplete()
+        }
+    }
 }
 
 // MARK: - Match Item Model
@@ -1616,6 +1887,16 @@ struct MatchItem: Identifiable, Equatable {
     
     static func == (lhs: MatchItem, rhs: MatchItem) -> Bool {
         lhs.id == rhs.id
+    }
+}
+
+struct QuizCompletionHelper {
+    static func notifyQuizCompleted() async {
+        await updateFeedsAndQuests()
+    }
+    
+    private static func updateFeedsAndQuests() async {
+        NotificationCenter.default.post(name: NSNotification.Name("QuizCompleted"), object: nil)
     }
 }
 
