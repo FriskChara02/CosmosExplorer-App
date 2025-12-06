@@ -100,3 +100,26 @@ extension NebulaModel {
         wikiLink = other.wikiLink
     }
 }
+
+@Model
+final class NebulaComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var nebulaId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        nebulaId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.nebulaId = nebulaId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}

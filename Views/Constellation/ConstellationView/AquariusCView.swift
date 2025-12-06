@@ -9,6 +9,7 @@ import SwiftUI
 import WebKit
 import UIKit
 import RealityKit
+import SwiftData
 
 struct AquariusCView: View {
     let constellation: ConstellationModel
@@ -20,6 +21,10 @@ struct AquariusCView: View {
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
+    @StateObject private var commentVM = ConstellationViewModel.ConstellationCommentViewModel()
+    @EnvironmentObject var authVM: AuthViewModel
+    private var constellationId: UUID { constellation.id }
+    @Environment(\.modelContext) private var modelContext
     
     private let infoItems: [String] = [
         LanguageManager.current.string("Aquarius Random Info 1"),
@@ -90,7 +95,7 @@ struct AquariusCView: View {
                     } else if selectedTab == LanguageManager.current.string("Galleries") {
                         GalleriesAquariusView(animation: animation)
                     } else if selectedTab == LanguageManager.current.string("Comment") {
-                        CommentAquariusView()
+                        CommentAquariusView(constellationId: constellationId).environmentObject(commentVM)
                     } else if selectedTab == LanguageManager.current.string("Wiki") {
                         VStack {
                             Text(LanguageManager.current.string("Wikipedia: Aquarius Constellation"))
@@ -119,6 +124,9 @@ struct AquariusCView: View {
             .background(Image("BlackBG").resizable().scaledToFill().ignoresSafeArea().overlay(Color.black.opacity(0.4)))
             .animation(.easeInOut(duration: 1.0), value: glowIntensity)
             .onAppear {
+                if let userId = authVM.currentUser?.id {
+                    commentVM.setup(userId: userId, context: modelContext)
+                }
                 updateRandomInfo()
                 Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
                     withAnimation(.easeInOut) {
@@ -593,11 +601,180 @@ struct GalleriesAquariusView: View {
 }
 
 struct CommentAquariusView: View {
+    @EnvironmentObject var vm: ConstellationViewModel.ConstellationCommentViewModel
+    @EnvironmentObject var authVM: AuthViewModel
+    
+    let constellationId: UUID
+    
+    @State private var messageText = ""
+    @State private var showingProfileUserId: UUID?
+
     var body: some View {
-        Text(LanguageManager.current.string("Comment Under Development"))
-            .font(.title2)
-            .foregroundColor(.white)
-            .padding()
+        VStack(spacing: 0) {
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(vm.comments) { comment in
+                        CommentBubble(
+                            comment: comment,
+                            currentUserId: authVM.currentUser?.id,
+                            onAvatarTap: { showingProfileUserId = comment.senderId }
+                        )
+                    }
+                }
+                .padding()
+            }
+            
+            CommentInputBar(text: $messageText) {
+                vm.sendComment(constellationId: constellationId, content: messageText)
+                messageText = ""
+            }
+        }
+        .onAppear {
+            vm.loadComments(for: constellationId)
+        }
+        .background(Color.black.opacity(0.1))
+        .ignoresSafeArea(edges: .bottom)
+        .fullScreenCover(isPresented: Binding(
+            get: { showingProfileUserId != nil },
+            set: { if !$0 { showingProfileUserId = nil } }
+        )) {
+            if let userId = showingProfileUserId {
+                ProfileViewForFriend(userId: userId)
+                    .environmentObject(authVM)
+            }
+        }
+    }
+    
+    // MARK: - Comment Bubble
+    struct CommentBubble: View {
+        let comment: ConstellationComment
+        let currentUserId: UUID?
+        let onAvatarTap: () -> Void
+        
+        @EnvironmentObject var authVM: AuthViewModel
+        
+        private var senderAvatarURL: URL? {
+            if comment.senderId == authVM.currentUser?.id {
+                return URL(string: authVM.currentUser?.avatar ?? "")
+            }
+            
+            if let context = authVM.modelContext,
+               let user = try? context.fetch(FetchDescriptor<UserModel>()).first(where: { $0.id == comment.senderId }) {
+                return URL(string: user.avatar ?? "")
+            }
+            
+            return URL(string: "")
+        }
+        
+        private var isFromCurrentUser: Bool {
+            comment.senderId == currentUserId
+        }
+        
+        var body: some View {
+            HStack(alignment: .bottom, spacing: 10) {
+                if !isFromCurrentUser {
+                    Button(action: onAvatarTap) {
+                        AsyncImage(url: senderAvatarURL) { image in
+                            image.resizable().scaledToFill()
+                        } placeholder: {
+                            Circle()
+                                .fill(Color.gray.opacity(0.5))
+                                .overlay(Image(systemName: "person.fill").foregroundColor(.white))
+                        }
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                }
+                
+                Text(comment.content)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.white)
+                    .padding(14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(isFromCurrentUser
+                                ? AnyShapeStyle(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                : AnyShapeStyle(Color.white.opacity(0.15))
+                            )
+                    )
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.75, alignment: isFromCurrentUser ? .trailing : .leading)
+                
+                if isFromCurrentUser {
+                    Button(action: onAvatarTap) {
+                        AsyncImage(url: senderAvatarURL) { image in
+                            image.resizable().scaledToFill()
+                        } placeholder: {
+                            Circle()
+                                .fill(Color.gray.opacity(0.5))
+                                .overlay(Image(systemName: "person.fill").foregroundColor(.white))
+                        }
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().strokeBorder(
+                                LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing),
+                                lineWidth: 2
+                            )
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: isFromCurrentUser ? .trailing : .leading)
+            .padding(.horizontal, isFromCurrentUser ? 12 : 0)
+        }
+    }
+
+    // MARK: - Comment Input Bar
+    struct CommentInputBar: View {
+        @Binding var text: String
+        let onSend: () -> Void
+        
+        var body: some View {
+            HStack(spacing: 12) {
+                TextField("Viết bình luận...", text: $text, axis: .vertical)
+                    .textFieldStyle(.plain)
+                    .foregroundColor(.white)
+                    .lineLimit(1...4)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(
+                        Capsule()
+                            .fill(Color.white.opacity(0.1))
+                    )
+                
+                Button(action: onSend) {
+                    Image(systemName: "paperplane.fill")
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                        .frame(width: 44, height: 44)
+                        .background(
+                            text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                                ? AnyView(Circle().fill(Color.gray.opacity(0.5)))
+                                : AnyView(Circle().fill(LinearGradient(colors: [.blue, .purple],
+                                                                       startPoint: .topLeading,
+                                                                       endPoint: .bottomTrailing)))
+                        )
+                }
+                .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(
+                Capsule()
+                    .fill(Color.black.opacity(0.6))
+                    .overlay(
+                        Capsule()
+                            .stroke(LinearGradient(colors: [.blue.opacity(0.3), .purple.opacity(0.3)],
+                                                  startPoint: .leading,
+                                                  endPoint: .trailing),
+                                   lineWidth: 1)
+                    )
+            )
+            .padding(.horizontal, 16)
+            .padding(.bottom, 10)
+        }
     }
 }
 

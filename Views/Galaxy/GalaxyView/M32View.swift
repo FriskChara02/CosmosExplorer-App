@@ -8,6 +8,7 @@
 import SwiftUI
 import WebKit
 import UIKit
+import SwiftData
 
 struct M32View: View {
     let galaxy: GalaxyModel
@@ -19,6 +20,10 @@ struct M32View: View {
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
+    @StateObject private var commentVM = GalaxyViewModel.GalaxyCommentViewModel()
+    @EnvironmentObject var authVM: AuthViewModel
+    private var m32Id: UUID { galaxy.id }
+    @Environment(\.modelContext) private var modelContext
     
     private let infoItems: [String] = [
         LanguageManager.current.string("M32 Random Info 1"),
@@ -92,7 +97,7 @@ struct M32View: View {
                     } else if selectedTab == "Galleries" {
                         GalleriesM32View(animation: animation)
                     } else if selectedTab == "Comment" {
-                        CommentM32View()
+                        CommentAndromedaView(galaxyId: m32Id).environmentObject(commentVM)
                     } else if selectedTab == "Wiki" {
                         VStack {
                             Text(LanguageManager.current.string("Wikipedia: Messier 32"))
@@ -122,6 +127,9 @@ struct M32View: View {
             .background(Image("M32_background").resizable().scaledToFill().ignoresSafeArea())
             .animation(.easeInOut(duration: 1.0), value: glowIntensity)
             .onAppear {
+                if let userId = authVM.currentUser?.id {
+                    commentVM.setup(userId: userId, context: modelContext)
+                }
                 updateRandomInfo()
                 Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
                     withAnimation(.easeInOut) {
@@ -543,11 +551,48 @@ struct GalleriesM32View: View {
 }
 
 struct CommentM32View: View {
+    @EnvironmentObject var vm: GalaxyViewModel.GalaxyCommentViewModel
+    @EnvironmentObject var authVM: AuthViewModel
+    
+    let galaxyId: UUID
+    
+    @State private var messageText = ""
+    @State private var showingProfileUserId: UUID?
+
     var body: some View {
-        Text("Phần Comment đang phát triển...")
-            .font(.title2)
-            .foregroundColor(.white)
-            .padding()
+        VStack(spacing: 0) {
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(vm.comments) { comment in
+                        CommentBubble(
+                            comment: comment,
+                            currentUserId: authVM.currentUser?.id,
+                            onAvatarTap: { showingProfileUserId = comment.senderId }
+                        )
+                    }
+                }
+                .padding()
+            }
+            
+            CommentInputBar(text: $messageText) {
+                vm.sendComment(galaxyId: galaxyId, content: messageText)
+                messageText = ""
+            }
+        }
+        .onAppear {
+            vm.loadComments(for: galaxyId)
+        }
+        .background(Color.black.opacity(0.1))
+        .ignoresSafeArea(edges: .bottom)
+        .fullScreenCover(isPresented: Binding(
+            get: { showingProfileUserId != nil },
+            set: { if !$0 { showingProfileUserId = nil } }
+        )) {
+            if let userId = showingProfileUserId {
+                ProfileViewForFriend(userId: userId)
+                    .environmentObject(authVM)
+            }
+        }
     }
 }
 

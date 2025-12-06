@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import PostgresClientKit
 import CryptoKit
+import UIKit
 
 // MARK: - AuthManager
 final class AuthManager {
@@ -300,6 +301,102 @@ class AuthViewModel: ObservableObject {
         self.isSignedIn = false
         self.username = nil
     }
+    
+    func submitFeedback(feedback: FeedbackModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
+
+        do {
+            let id = UUID()
+            let idString = id.uuidString
+            let timestampStr = ISO8601DateFormatter().string(from: feedback.timestamp)
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO feedbacks (id, user_id, username, email, category, subject, message, timestamp)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                """)
+            defer { statement.close() }
+            try statement.execute(parameterValues: [
+                idString,
+                feedback.userId.uuidString,
+                feedback.username,
+                feedback.email,
+                feedback.category,
+                feedback.subject,
+                feedback.message,
+                timestampStr
+            ])
+
+            // Lưu vào SwiftData
+            if let context = modelContext {
+                let newFeedback = FeedbackModel(
+                    id: id,
+                    userId: feedback.userId,
+                    username: feedback.username,
+                    email: feedback.email,
+                    category: feedback.category,
+                    subject: feedback.subject,
+                    message: feedback.message,
+                    timestamp: feedback.timestamp
+                )
+                context.insert(newFeedback)
+                try context.save()
+            }
+
+            completion(.success(()))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func submitRating(rating: RatingModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
+
+        do {
+            let id = UUID()
+            let idString = id.uuidString
+            let timestampStr = ISO8601DateFormatter().string(from: rating.timestamp)
+            let statement = try connection.prepareStatement(text: """
+                INSERT INTO ratings (id, user_id, username, avatar, rating, review, timestamp)
+                VALUES ($1, $2, $3, $4, $5, $6, $7)
+                """)
+            defer { statement.close() }
+            try statement.execute(parameterValues: [
+                idString,
+                rating.userId.uuidString,
+                rating.username,
+                rating.avatar,
+                rating.rating,
+                rating.review,
+                timestampStr
+            ])
+
+            // Lưu vào SwiftData
+            if let context = modelContext {
+                let newRating = RatingModel(
+                    id: id,
+                    userId: rating.userId,
+                    username: rating.username,
+                    avatar: rating.avatar,
+                    rating: rating.rating,
+                    review: rating.review,
+                    timestamp: rating.timestamp
+                )
+                context.insert(newRating)
+                try context.save()
+            }
+
+            completion(.success(()))
+        } catch {
+            completion(.failure(error))
+        }
+    }
 }
 
 extension AuthViewModel {
@@ -421,6 +518,155 @@ extension AuthViewModel {
         } catch {
             print("Error fetching user from server: \(error)")
             completion(nil)
+        }
+    }
+    
+    // MARK: - Google Sign In
+    func signInWithGoogle(presentingViewController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        GoogleService.shared.signIn(presentingViewController: presentingViewController) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let googleUser):
+                self.checkOrCreateGoogleUser(googleUser: googleUser, completion: completion)
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    private func checkOrCreateGoogleUser(googleUser: GoogleUser, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            let checkStatement = try connection.prepareStatement(text: """
+                SELECT id, username, password, avatar, user_description, date_of_birth, location,
+                       gender, hobbies, bio, rank, score, token, status, role, created_at
+                FROM users WHERE email = $1
+            """)
+            defer { checkStatement.close() }
+            
+            let cursor = try checkStatement.execute(parameterValues: [googleUser.email])
+            defer { cursor.close() }
+            
+            if let row = try cursor.next()?.get() {
+                let idString = try row.columns[0].string()
+                let userId = UUID(uuidString: idString)!
+                let username = try? row.columns[1].string()
+                
+                authManager.signIn(userId: userId, username: username ?? googleUser.username)
+                self.isSignedIn = true
+                self.username = username ?? googleUser.username
+                
+                // Lưu vào SwiftData
+                if let context = modelContext {
+                    let avatar = try? row.columns[3].string()
+                    let userDescription = try? row.columns[4].string()
+                    let dateOfBirthString = try? row.columns[5].string()
+                    let location = try? row.columns[6].string()
+                    let gender = try? row.columns[7].string()
+                    let hobbies = try? row.columns[8].string()
+                    let bio = try? row.columns[9].string()
+                    let rank = (try? row.columns[10].int()) ?? 2000
+                    let score = (try? row.columns[11].int()) ?? 0
+                    let token = try? row.columns[12].string()
+                    let status = try? row.columns[13].string()
+                    let role = try? row.columns[14].string()
+                    let createdAtString = try? row.columns[15].string()
+                    let storedPassword = try row.columns[2].string()
+                    
+                    var dateOfBirth: Date?
+                    if let dateString = dateOfBirthString {
+                        dateOfBirth = ISO8601DateFormatter().date(from: dateString)
+                    }
+                    
+                    var createdAt = Date()
+                    if let createdString = createdAtString {
+                        createdAt = ISO8601DateFormatter().date(from: createdString) ?? Date()
+                    }
+                    
+                    let existingUser = UserModel(
+                        id: userId,
+                        email: googleUser.email,
+                        username: username ?? googleUser.username,
+                        password: storedPassword,
+                        createdAt: createdAt,
+                        avatar: avatar ?? googleUser.profileImageURL?.absoluteString,
+                        userDescription: userDescription,
+                        dateOfBirth: dateOfBirth,
+                        location: location,
+                        gender: gender,
+                        hobbies: hobbies,
+                        bio: bio,
+                        rank: rank,
+                        score: score,
+                        token: token,
+                        status: status,
+                        role: role
+                    )
+                    context.insert(existingUser)
+                    try context.save()
+                    self.currentUser = existingUser
+                }
+                
+                completion(.success(()))
+                
+            } else {
+                let newUserId = UUID()
+                let insertStatement = try connection.prepareStatement(text: """
+                    INSERT INTO users (id, email, username, password, created_at, rank, score, status, role, avatar)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+                """)
+                defer { insertStatement.close() }
+                
+                let date = ISO8601DateFormatter().string(from: Date())
+                let randomPassword = UUID().uuidString
+                
+                try insertStatement.execute(parameterValues: [
+                    newUserId.uuidString,
+                    googleUser.email,
+                    googleUser.username,
+                    hashPassword(randomPassword),
+                    date,
+                    2000,
+                    0,
+                    "online",
+                    "user",
+                    googleUser.profileImageURL?.absoluteString ?? ""
+                ])
+                
+                // Lưu vào SwiftData
+                if let context = modelContext {
+                    let newUser = UserModel(
+                        id: newUserId,
+                        email: googleUser.email,
+                        username: googleUser.username,
+                        password: hashPassword(randomPassword),
+                        avatar: googleUser.profileImageURL?.absoluteString,
+                        rank: 2000,
+                        score: 0,
+                        status: "online",
+                        role: "user"
+                    )
+                    context.insert(newUser)
+                    try context.save()
+                    self.currentUser = newUser
+                }
+                
+                authManager.signIn(userId: newUserId, username: googleUser.username)
+                self.isSignedIn = true
+                self.username = googleUser.username
+                
+                completion(.success(()))
+            }
+            
+        } catch {
+            completion(.failure(error))
         }
     }
 }

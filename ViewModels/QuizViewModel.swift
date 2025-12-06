@@ -117,22 +117,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Quiz 1: Hệ Mặt Trời
         let quiz1 = Quiz(
             id: baseId + 1,
-            title: "Hệ Mặt Trời",
-            quizDescription: "8 hành tinh chính",
+            title: "Solar System",
+            quizDescription: "8 main planets",
             isPublic: false,
             createdBy: nil,
             categories: ["Flashcards"]
         )
         
-        let card1_1 = Card(term: "Trái Đất", definition: "Hành tinh thứ 3", hint: "Hành tinh xanh, có sự sống", imageData: imageData(named: "Earth"))
+        let card1_1 = Card(term: "Earth", definition: "The 3rd planet", hint: "Blue planet, has life", imageData: imageData(named: "Earth"))
         card1_1.id = baseId + 11
         card1_1.quiz = quiz1
         
-        let card1_2 = Card(term: "Sao Hỏa", definition: "Hành tinh Đỏ", hint: "Có núi lửa lớn nhất hệ Mặt Trời", imageData: imageData(named: "Mars"))
+        let card1_2 = Card(term: "Mars", definition: "Red Planet", hint: "Has the largest volcano in the Solar System", imageData: imageData(named: "Mars"))
         card1_2.id = baseId + 12
         card1_2.quiz = quiz1
         
-        let card1_3 = Card(term: "Sao Mộc", definition: "Hành tinh lớn nhất", hint: "Có Vết Đỏ Lớn là bão khổng lồ", imageData: imageData(named: "Jupiter"))
+        let card1_3 = Card(term: "Jupiter", definition: "Largest planet", hint: "Has the Great Red Spot, a giant storm", imageData: imageData(named: "Jupiter"))
         card1_3.id = baseId + 13
         card1_3.quiz = quiz1
         
@@ -142,22 +142,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Quiz 2: Thiên hà
         let quiz2 = Quiz(
             id: baseId + 2,
-            title: "Thiên hà",
-            quizDescription: "Các loại thiên hà",
+            title: "Galaxies",
+            quizDescription: "Types of galaxies",
             isPublic: false,
             createdBy: nil,
             categories: ["Flashcards"]
         )
         
-        let card2_1 = Card(term: "Andromeda", definition: "Thiên hà Andromeda", hint: "Thiên hà xoắn ốc gần nhất với Ngân Hà", imageData: imageData(named: "Andromeda"))
+        let card2_1 = Card(term: "Andromeda", definition: "Andromeda Galaxy", hint: "Nearest spiral galaxy to the Milky Way", imageData: imageData(named: "Andromeda"))
         card2_1.id = baseId + 21
         card2_1.quiz = quiz2
         
-        let card2_2 = Card(term: "M32", definition: "Thiên hà M32", hint: "Thiên hà vệ tinh của Andromeda", imageData: imageData(named: "M32"))
+        let card2_2 = Card(term: "M32", definition: "M32 Galaxy", hint: "Satellite galaxy of Andromeda", imageData: imageData(named: "M32"))
         card2_2.id = baseId + 22
         card2_2.quiz = quiz2
         
-        let card2_3 = Card(term: "Triangulum", definition: "Thiên hà Triangulum", hint: "Thành viên thứ 3 trong Nhóm Địa Phương", imageData: imageData(named: "Triangulum"))
+        let card2_3 = Card(term: "Triangulum", definition: "Triangulum Galaxy", hint: "Third member of the Local Group", imageData: imageData(named: "Triangulum"))
         card2_3.id = baseId + 23
         card2_3.quiz = quiz2
         
@@ -167,22 +167,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Quiz 3: Các vì sao
         let quiz3 = Quiz(
             id: baseId + 3,
-            title: "Các vì sao",
-            quizDescription: "Phân loại và đặc điểm của các ngôi sao",
+            title: "Stars",
+            quizDescription: "Classification and characteristics of stars",
             isPublic: false,
             createdBy: nil,
             categories: ["Flashcards"]
         )
         
-        let card3_1 = Card(term: "Mặt Trời", definition: "Ngôi sao trung tâm của Hệ Mặt Trời", hint: "Ngôi sao loại G, tuổi 4.6 tỷ năm", imageData: imageData(named: "Sun"))
+        let card3_1 = Card(term: "Sun", definition: "Central star of the Solar System", hint: "G-type star, 4.6 billion years old", imageData: imageData(named: "Sun"))
         card3_1.id = baseId + 31
         card3_1.quiz = quiz3
         
-        let card3_2 = Card(term: "Sao Siêu Khổng Lồ Đỏ", definition: "Ngôi sao ở giai đoạn cuối, cực lớn và sáng", hint: "Có thể to hơn cả quỹ đạo Trái Đất", imageData: imageData(named: "AlphaCentauri"))
+        let card3_2 = Card(term: "Red Supergiant Star", definition: "Star in final stage, extremely large and bright", hint: "Can be larger than Earth's orbit", imageData: imageData(named: "AlphaCentauri"))
         card3_2.id = baseId + 32
         card3_2.quiz = quiz3
         
-        let card3_3 = Card(term: "Sao Lùn Trắng", definition: "Tàn dư của sao sau khi cạn nhiên liệu", hint: "Kích thước bằng Trái Đất nhưng nặng bằng Mặt Trời", imageData: imageData(named: "Canopus"))
+        let card3_3 = Card(term: "White Dwarf Star", definition: "Remnant of a star after fuel depletion", hint: "Size of Earth but mass of Sun", imageData: imageData(named: "Canopus"))
         card3_3.id = baseId + 33
         card3_3.quiz = quiz3
         
@@ -192,22 +192,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Quiz 4: Các chòm sao
         let quiz4 = Quiz(
             id: baseId + 4,
-            title: "Các chòm sao",
-            quizDescription: "Tên và hình dạng của các chòm sao nổi tiếng",
+            title: "Constellations",
+            quizDescription: "Names and shapes of famous constellations",
             isPublic: false,
             createdBy: nil,
             categories: ["Flashcards"]
         )
         
-        let card4_1 = Card(term: "Orion", definition: "Chòm sao Thợ săn", hint: "Có ngôi sao sáng Betelgeuse và Rigel", imageData: imageData(named: "Sirius"))
+        let card4_1 = Card(term: "Orion", definition: "Hunter Constellation", hint: "Has bright stars Betelgeuse and Rigel", imageData: imageData(named: "Sirius"))
         card4_1.id = baseId + 41
         card4_1.quiz = quiz4
         
-        let card4_2 = Card(term: "Ursa Major", definition: "Chòm sao Gấu Lớn", hint: "Chứa chòm sao Bắc Đẩu", imageData: imageData(named: "AlphaCentauri"))
+        let card4_2 = Card(term: "Ursa Major", definition: "Great Bear Constellation", hint: "Contains the Big Dipper", imageData: imageData(named: "AlphaCentauri02"))
         card4_2.id = baseId + 42
         card4_2.quiz = quiz4
         
-        let card4_3 = Card(term: "Lyra", definition: "Chòm sao Thiên Cầm", hint: "Có ngôi sao sáng Vega", imageData: imageData(named: "ProximaB"))
+        let card4_3 = Card(term: "Lyra", definition: "Lyre Constellation", hint: "Has bright star Vega", imageData: imageData(named: "ProximaB"))
         card4_3.id = baseId + 43
         card4_3.quiz = quiz4
         
@@ -217,26 +217,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Learn Quiz 1: Hành tinh trong Hệ Mặt Trời
         let learnQuiz1 = Quiz(
             id: baseId + 101,
-            title: "Hành tinh Hệ Mặt Trời",
-            quizDescription: "Chọn tên hành tinh đúng",
+            title: "Solar System Planets",
+            quizDescription: "Choose the correct planet name",
             isPublic: false,
             createdBy: nil,
             categories: ["Learn"]
         )
 
-        let lcard1_1 = Card(term: "Sao Thủy", definition: "Hành tinh gần Mặt Trời nhất", hint: "Nhỏ nhất, không có khí quyển dày", imageData: imageData(named: "Mercury"))
+        let lcard1_1 = Card(term: "Mercury", definition: "Planet closest to the Sun", hint: "Smallest, no thick atmosphere", imageData: imageData(named: "Mercury"))
         lcard1_1.id = baseId + 111
         lcard1_1.quiz = learnQuiz1
 
-        let lcard1_2 = Card(term: "Sao Kim", definition: "Hành tinh nóng nhất", hint: "Có hiệu ứng nhà kính mạnh", imageData: imageData(named: "Venus"))
+        let lcard1_2 = Card(term: "Venus", definition: "Hottest planet", hint: "Strong greenhouse effect", imageData: imageData(named: "Venus"))
         lcard1_2.id = baseId + 112
         lcard1_2.quiz = learnQuiz1
 
-        let lcard1_3 = Card(term: "Trái Đất", definition: "Hành tinh có sự sống", hint: "Có nước lỏng và khí quyển oxy", imageData: imageData(named: "Earth"))
+        let lcard1_3 = Card(term: "Earth", definition: "Planet with life", hint: "Has liquid water and oxygen atmosphere", imageData: imageData(named: "Earth"))
         lcard1_3.id = baseId + 113
         lcard1_3.quiz = learnQuiz1
 
-        let lcard1_4 = Card(term: "Sao Hỏa", definition: "Hành tinh đỏ", hint: "Có núi lửa lớn nhất", imageData: imageData(named: "Mars"))
+        let lcard1_4 = Card(term: "Mars", definition: "Red planet", hint: "Has the largest volcano", imageData: imageData(named: "Mars"))
         lcard1_4.id = baseId + 114
         lcard1_4.quiz = learnQuiz1
 
@@ -246,22 +246,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Learn Quiz 2: Các ngôi sao sáng
         let learnQuiz2 = Quiz(
             id: baseId + 102,
-            title: "Ngôi sao sáng nhất",
-            quizDescription: "Chọn ngôi sao đúng theo độ sáng",
+            title: "Brightest Stars",
+            quizDescription: "Choose the star according to brightness",
             isPublic: false,
             createdBy: nil,
             categories: ["Learn"]
         )
 
-        let lcard2_1 = Card(term: "Sirius", definition: "Ngôi sao sáng nhất bầu trời đêm", hint: "Thuộc chòm sao Canis Major", imageData: imageData(named: "Sirius"))
+        let lcard2_1 = Card(term: "Sirius", definition: "Brightest star in the night sky", hint: "In Canis Major constellation", imageData: imageData(named: "Sirius"))
         lcard2_1.id = baseId + 121
         lcard2_1.quiz = learnQuiz2
 
-        let lcard2_2 = Card(term: "Canopus", definition: "Ngôi sao sáng thứ 2", hint: "Nằm ở Nam bán cầu", imageData: imageData(named: "Canopus"))
+        let lcard2_2 = Card(term: "Canopus", definition: "Second brightest star", hint: "Located in the Southern Hemisphere", imageData: imageData(named: "Canopus"))
         lcard2_2.id = baseId + 122
         lcard2_2.quiz = learnQuiz2
 
-        let lcard2_3 = Card(term: "Alpha Centauri", definition: "Hệ sao gần nhất", hint: "Gồm 3 ngôi sao", imageData: imageData(named: "AlphaCentauri"))
+        let lcard2_3 = Card(term: "Alpha Centauri", definition: "Closest star system", hint: "Consists of 3 stars", imageData: imageData(named: "AlphaCentauri"))
         lcard2_3.id = baseId + 123
         lcard2_3.quiz = learnQuiz2
 
@@ -271,22 +271,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Learn Quiz 3: Hiện tượng vũ trụ
         let learnQuiz3 = Quiz(
             id: baseId + 103,
-            title: "Hiện tượng vũ trụ",
-            quizDescription: "Chọn tên hiện tượng đúng",
+            title: "Cosmic Phenomena",
+            quizDescription: "Choose the correct phenomenon name",
             isPublic: false,
             createdBy: nil,
             categories: ["Learn"]
         )
 
-        let lcard3_1 = Card(term: "Siêu tân tinh", definition: "Vụ nổ sao cực mạnh", hint: "Sáng hơn cả thiên hà", imageData: imageData(named: "cosmos_background1"))
+        let lcard3_1 = Card(term: "Supernova", definition: "Extremely powerful star explosion", hint: "Brighter than an entire galaxy", imageData: imageData(named: "cosmos_background1"))
         lcard3_1.id = baseId + 131
         lcard3_1.quiz = learnQuiz3
 
-        let lcard3_2 = Card(term: "Hố đen", definition: "Vùng không gian hút mọi thứ", hint: "Không ánh sáng nào thoát ra", imageData: imageData(named: "BlackHole"))
+        let lcard3_2 = Card(term: "Black Hole", definition: "Region of space that sucks everything in", hint: "No light can escape", imageData: imageData(named: "BlackHole"))
         lcard3_2.id = baseId + 132
         lcard3_2.quiz = learnQuiz3
 
-        let lcard3_3 = Card(term: "Sao chổi", definition: "Khối băng bay quanh Mặt Trời", hint: "Có đuôi khi gần Mặt Trời", imageData: imageData(named: "ProximaB"))
+        let lcard3_3 = Card(term: "Comet", definition: "Ice block orbiting the Sun", hint: "Has a tail when near the Sun", imageData: imageData(named: "ProximaB"))
         lcard3_3.id = baseId + 133
         lcard3_3.quiz = learnQuiz3
 
@@ -296,22 +296,22 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Learn Quiz 4: Vệ tinh tự nhiên
         let learnQuiz4 = Quiz(
             id: baseId + 104,
-            title: "Vệ tinh nổi bật",
-            quizDescription: "Chọn vệ tinh đúng với hành tinh",
+            title: "Notable Moons",
+            quizDescription: "Choose the moon correct with the planet",
             isPublic: false,
             createdBy: nil,
             categories: ["Learn"]
         )
 
-        let lcard4_1 = Card(term: "Moon", definition: "Vệ tinh của Trái Đất", hint: "Gây ra thủy triều", imageData: imageData(named: "Moon"))
+        let lcard4_1 = Card(term: "Moon", definition: "Earth's moon", hint: "Causes tides", imageData: imageData(named: "Moon"))
         lcard4_1.id = baseId + 141
         lcard4_1.quiz = learnQuiz4
 
-        let lcard4_2 = Card(term: "Phobos", definition: "Vệ tinh của Sao Hỏa", hint: "Hình dạng bất thường", imageData: imageData(named: "Phobos"))
+        let lcard4_2 = Card(term: "Phobos", definition: "Mars' moon", hint: "Irregular shape", imageData: imageData(named: "Mars"))
         lcard4_2.id = baseId + 142
         lcard4_2.quiz = learnQuiz4
 
-        let lcard4_3 = Card(term: "Titan", definition: "Vệ tinh lớn nhất của Sao Thổ", hint: "Có khí quyển dày hơn Trái Đất", imageData: imageData(named: "Titan"))
+        let lcard4_3 = Card(term: "Titan", definition: "Largest moon of Saturn", hint: "Has thicker atmosphere than Earth", imageData: imageData(named: "Moon03"))
         lcard4_3.id = baseId + 143
         lcard4_3.quiz = learnQuiz4
 
@@ -321,30 +321,30 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Test Quiz 1: Hành tinh trong Hệ Mặt Trời
         let testQuiz1 = Quiz(
             id: baseId + 201,
-            title: "Hành tinh Hệ Mặt Trời",
-            quizDescription: "Kiểm tra kiến thức về 8 hành tinh",
+            title: "Solar System Planets",
+            quizDescription: "Test knowledge about 8 planets",
             isPublic: false,
             createdBy: nil,
             categories: ["Test"]
         )
 
-        let tcard1_1 = Card(term: "Sao Thủy", definition: "Hành tinh gần Mặt Trời nhất", hint: "Nhỏ nhất, không có vệ tinh", imageData: imageData(named: "Mercury"))
+        let tcard1_1 = Card(term: "Mercury", definition: "Planet closest to the Sun", hint: "Smallest, no moons", imageData: imageData(named: "Mercury"))
         tcard1_1.id = baseId + 211
         tcard1_1.quiz = testQuiz1
 
-        let tcard1_2 = Card(term: "Sao Kim", definition: "Hành tinh nóng nhất", hint: "Có hiệu ứng nhà kính mạnh", imageData: imageData(named: "Venus"))
+        let tcard1_2 = Card(term: "Venus", definition: "Hottest planet", hint: "Strong greenhouse effect", imageData: imageData(named: "Venus"))
         tcard1_2.id = baseId + 212
         tcard1_2.quiz = testQuiz1
 
-        let tcard1_3 = Card(term: "Trái Đất", definition: "Hành tinh duy nhất có sự sống", hint: "70% là nước", imageData: imageData(named: "Earth"))
+        let tcard1_3 = Card(term: "Earth", definition: "Only planet with life", hint: "70% water", imageData: imageData(named: "Earth"))
         tcard1_3.id = baseId + 213
         tcard1_3.quiz = testQuiz1
 
-        let tcard1_4 = Card(term: "Sao Hỏa", definition: "Hành tinh đỏ", hint: "Có Olympus Mons - núi lửa lớn nhất", imageData: imageData(named: "Mars"))
+        let tcard1_4 = Card(term: "Mars", definition: "Red planet", hint: "Has Olympus Mons - largest volcano", imageData: imageData(named: "Mars"))
         tcard1_4.id = baseId + 214
         tcard1_4.quiz = testQuiz1
 
-        let tcard1_5 = Card(term: "Sao Mộc", definition: "Hành tinh lớn nhất", hint: "Có Vết Đỏ Lớn", imageData: imageData(named: "Jupiter"))
+        let tcard1_5 = Card(term: "Jupiter", definition: "Largest planet", hint: "Has Great Red Spot", imageData: imageData(named: "Jupiter"))
         tcard1_5.id = baseId + 215
         tcard1_5.quiz = testQuiz1
 
@@ -354,26 +354,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Test Quiz 2: Các ngôi sao sáng
         let testQuiz2 = Quiz(
             id: baseId + 202,
-            title: "Ngôi sao sáng nhất bầu trời",
-            quizDescription: "Top 5 ngôi sao sáng nhất",
+            title: "Brightest Stars in the Sky",
+            quizDescription: "Top 5 brightest stars",
             isPublic: false,
             createdBy: nil,
             categories: ["Test"]
         )
 
-        let tcard2_1 = Card(term: "Sirius", definition: "Ngôi sao sáng nhất bầu trời đêm", hint: "Thuộc chòm sao Canis Major", imageData: imageData(named: "Sirius"))
+        let tcard2_1 = Card(term: "Sirius", definition: "Brightest star in the night sky", hint: "In Canis Major constellation", imageData: imageData(named: "Sirius"))
         tcard2_1.id = baseId + 221
         tcard2_1.quiz = testQuiz2
 
-        let tcard2_2 = Card(term: "Canopus", definition: "Ngôi sao sáng thứ hai", hint: "Nằm ở Nam bán cầu", imageData: imageData(named: "Canopus"))
+        let tcard2_2 = Card(term: "Canopus", definition: "Second brightest star", hint: "In Southern Hemisphere", imageData: imageData(named: "Canopus"))
         tcard2_2.id = baseId + 222
         tcard2_2.quiz = testQuiz2
 
-        let tcard2_3 = Card(term: "Alpha Centauri", definition: "Hệ sao gần Trái Đất nhất", hint: "Chỉ cách 4.3 năm ánh sáng", imageData: imageData(named: "AlphaCentauri"))
+        let tcard2_3 = Card(term: "Alpha Centauri", definition: "Closest star system to Earth", hint: "Only 4.3 light years away", imageData: imageData(named: "AlphaCentauri"))
         tcard2_3.id = baseId + 223
         tcard2_3.quiz = testQuiz2
 
-        let tcard2_4 = Card(term: "Vega", definition: "Ngôi sao sáng thứ năm", hint: "Thuộc chòm sao Lyra", imageData: imageData(named: "Moon"))
+        let tcard2_4 = Card(term: "Vega", definition: "Fifth brightest star", hint: "In Lyra constellation", imageData: imageData(named: "Moon01"))
         tcard2_4.id = baseId + 224
         tcard2_4.quiz = testQuiz2
 
@@ -383,30 +383,30 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Test Quiz 3: Hiện tượng vũ trụ
         let testQuiz3 = Quiz(
             id: baseId + 203,
-            title: "Hiện tượng vũ trụ nổi bật",
-            quizDescription: "Nhận diện các hiện tượng thiên văn",
+            title: "Notable Cosmic Phenomena",
+            quizDescription: "Identify astronomical phenomena",
             isPublic: false,
             createdBy: nil,
             categories: ["Test"]
         )
 
-        let tcard3_1 = Card(term: "Siêu tân tinh", definition: "Vụ nổ sao cực mạnh", hint: "Có thể sáng hơn cả thiên hà", imageData: imageData(named: "Sirius"))
+        let tcard3_1 = Card(term: "Supernova", definition: "Extremely powerful star explosion", hint: "Can be brighter than a galaxy", imageData: imageData(named: "Sirius"))
         tcard3_1.id = baseId + 231
         tcard3_1.quiz = testQuiz3
 
-        let tcard3_2 = Card(term: "Hố đen", definition: "Vùng không gian hút mọi thứ", hint: "Không ánh sáng nào thoát ra", imageData: imageData(named: "BlackHole"))
+        let tcard3_2 = Card(term: "Black Hole", definition: "Region of space that sucks everything in", hint: "No light escapes", imageData: imageData(named: "BlackHole"))
         tcard3_2.id = baseId + 232
         tcard3_2.quiz = testQuiz3
 
-        let tcard3_3 = Card(term: "Sao chổi", definition: "Khối băng di chuyển quanh Mặt Trời", hint: "Có đuôi khi gần Mặt Trời", imageData: imageData(named: "Canopus"))
+        let tcard3_3 = Card(term: "Comet", definition: "Ice block moving around the Sun", hint: "Has tail when near the Sun", imageData: imageData(named: "Canopus"))
         tcard3_3.id = baseId + 233
         tcard3_3.quiz = testQuiz3
 
-        let tcard3_4 = Card(term: "Tinh vân", definition: "Đám mây khí và bụi trong vũ trụ", hint: "Nơi sinh ra ngôi sao", imageData: imageData(named: "Nebula"))
+        let tcard3_4 = Card(term: "Nebula", definition: "Cloud of gas and dust in space", hint: "Birthplace of stars", imageData: imageData(named: "Nebula"))
         tcard3_4.id = baseId + 234
         tcard3_4.quiz = testQuiz3
 
-        let tcard3_5 = Card(term: "Sao neutron", definition: "Tàn dư cực kỳ đặc của sao lớn", hint: "Một thìa cà phê nặng hàng tỷ tấn", imageData: imageData(named: "Canopus"))
+        let tcard3_5 = Card(term: "Neutron Star", definition: "Extremely dense remnant of large star", hint: "A teaspoon weighs billions of tons", imageData: imageData(named: "Canopus"))
         tcard3_5.id = baseId + 235
         tcard3_5.quiz = testQuiz3
 
@@ -416,30 +416,30 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Test Quiz 4: Vệ tinh tự nhiên
         let testQuiz4 = Quiz(
             id: baseId + 204,
-            title: "Vệ tinh nổi bật",
-            quizDescription: "Nhận biết vệ tinh của các hành tinh",
+            title: "Notable Moons",
+            quizDescription: "Recognize moons of planets",
             isPublic: false,
             createdBy: nil,
             categories: ["Test"]
         )
 
-        let tcard4_1 = Card(term: "Moon", definition: "Vệ tinh của Trái Đất", hint: "Gây ra thủy triều", imageData: imageData(named: "Moon"))
+        let tcard4_1 = Card(term: "Moon", definition: "Earth's moon", hint: "Causes tides", imageData: imageData(named: "Moon04"))
         tcard4_1.id = baseId + 241
         tcard4_1.quiz = testQuiz4
 
-        let tcard4_2 = Card(term: "Phobos", definition: "Vệ tinh lớn nhất của Sao Hỏa", hint: "Hình dạng bất thường, gần hành tinh", imageData: imageData(named: "Phobos"))
+        let tcard4_2 = Card(term: "Phobos", definition: "Largest moon of Mars", hint: "Irregular shape, close to planet", imageData: imageData(named: "Mars05"))
         tcard4_2.id = baseId + 242
         tcard4_2.quiz = testQuiz4
 
-        let tcard4_3 = Card(term: "Titan", definition: "Vệ tinh lớn nhất của Sao Thổ", hint: "Có khí quyển dày hơn Trái Đất", imageData: imageData(named: "AlphaCentauri03"))
+        let tcard4_3 = Card(term: "Titan", definition: "Largest moon of Saturn", hint: "Has thicker atmosphere than Earth", imageData: imageData(named: "AlphaCentauri03"))
         tcard4_3.id = baseId + 243
         tcard4_3.quiz = testQuiz4
 
-        let tcard4_4 = Card(term: "Europa", definition: "Vệ tinh của Sao Mộc", hint: "Có đại dương nước lỏng dưới băng", imageData: imageData(named: "Sirius05"))
+        let tcard4_4 = Card(term: "Europa", definition: "Jupiter's moon", hint: "Has liquid water ocean under ice", imageData: imageData(named: "Sirius05"))
         tcard4_4.id = baseId + 244
         tcard4_4.quiz = testQuiz4
 
-        let tcard4_5 = Card(term: "Ganymede", definition: "Vệ tinh lớn nhất Hệ Mặt Trời", hint: "Lớn hơn cả Sao Thủy", imageData: imageData(named: "Canopus03"))
+        let tcard4_5 = Card(term: "Ganymede", definition: "Largest moon in Solar System", hint: "Larger than Mercury", imageData: imageData(named: "Canopus03"))
         tcard4_5.id = baseId + 245
         tcard4_5.quiz = testQuiz4
 
@@ -449,30 +449,30 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Blocks Quiz 1: Các hành tinh khí khổng lồ
         let blocksQuiz1 = Quiz(
             id: baseId + 301,
-            title: "Hành tinh khí khổng lồ",
-            quizDescription: "Khám phá các hành tinh khí trong Hệ Mặt Trời",
+            title: "Gas Giant Planets",
+            quizDescription: "Explore gas planets in the Solar System",
             isPublic: false,
             createdBy: nil,
             categories: ["Blocks"]
         )
 
-        let bcard1_1 = Card(term: "Sao Mộc", definition: "Hành tinh lớn nhất, có Vết Đỏ Lớn", hint: "Có hơn 79 vệ tinh", imageData: imageData(named: "Jupiter"))
+        let bcard1_1 = Card(term: "Jupiter", definition: "Largest planet, has Great Red Spot", hint: "Has over 79 moons", imageData: imageData(named: "Jupiter"))
         bcard1_1.id = baseId + 311
         bcard1_1.quiz = blocksQuiz1
 
-        let bcard1_2 = Card(term: "Sao Thổ", definition: "Hành tinh có vành đai nổi bật", hint: "Vành đai làm từ băng và đá", imageData: imageData(named: "Saturn"))
+        let bcard1_2 = Card(term: "Saturn", definition: "Planet with prominent rings", hint: "Rings made of ice and rock", imageData: imageData(named: "Saturn"))
         bcard1_2.id = baseId + 312
         bcard1_2.quiz = blocksQuiz1
 
-        let bcard1_3 = Card(term: "Sao Thiên Vương", definition: "Hành tinh quay nghiêng 98 độ", hint: "Có màu xanh do khí metan", imageData: imageData(named: "Uranus"))
+        let bcard1_3 = Card(term: "Uranus", definition: "Planet tilted 98 degrees", hint: "Blue color due to methane gas", imageData: imageData(named: "Uranus"))
         bcard1_3.id = baseId + 313
         bcard1_3.quiz = blocksQuiz1
 
-        let bcard1_4 = Card(term: "Sao Hải Vương", definition: "Hành tinh xa nhất, có gió mạnh nhất", hint: "Có Vết Tối Lớn là bão khổng lồ", imageData: imageData(named: "Neptune"))
+        let bcard1_4 = Card(term: "Neptune", definition: "Farthest planet, strongest winds", hint: "Has Great Dark Spot, giant storm", imageData: imageData(named: "Neptune"))
         bcard1_4.id = baseId + 314
         bcard1_4.quiz = blocksQuiz1
 
-        let bcard1_5 = Card(term: "Sao Diêm Vương", definition: "Hành tinh lùn, không còn là hành tinh chính", hint: "Có quỹ đạo lệch tâm", imageData: imageData(named: "Pluto"))
+        let bcard1_5 = Card(term: "Pluto", definition: "Dwarf planet, no longer main planet", hint: "Has eccentric orbit", imageData: imageData(named: "Mars01"))
         bcard1_5.id = baseId + 315
         bcard1_5.quiz = blocksQuiz1
 
@@ -482,26 +482,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Blocks Quiz 2: Các thiên hà nổi tiếng
         let blocksQuiz2 = Quiz(
             id: baseId + 302,
-            title: "Thiên hà nổi tiếng",
-            quizDescription: "Khám phá những thiên hà đặc biệt",
+            title: "Famous Galaxies",
+            quizDescription: "Explore special galaxies",
             isPublic: false,
             createdBy: nil,
             categories: ["Blocks"]
         )
 
-        let bcard2_1 = Card(term: "Ngân Hà", definition: "Thiên hà xoắn ốc chứa Hệ Mặt Trời", hint: "Có thanh ngang trung tâm", imageData: imageData(named: "cosmos_background2"))
+        let bcard2_1 = Card(term: "Milky Way", definition: "Spiral galaxy containing Solar System", hint: "Has central bar", imageData: imageData(named: "cosmos_background2"))
         bcard2_1.id = baseId + 321
         bcard2_1.quiz = blocksQuiz2
 
-        let bcard2_2 = Card(term: "Andromeda", definition: "Thiên hà gần nhất với Ngân Hà", hint: "Có thể thấy bằng mắt thường", imageData: imageData(named: "Andromeda"))
+        let bcard2_2 = Card(term: "Andromeda", definition: "Closest galaxy to Milky Way", hint: "Visible to naked eye", imageData: imageData(named: "Andromeda"))
         bcard2_2.id = baseId + 322
         bcard2_2.quiz = blocksQuiz2
 
-        let bcard2_3 = Card(term: "Sombrero", definition: "Thiên hà có vành sáng giống mũ", hint: "Tên khoa học M104", imageData: imageData(named: "Andromeda04"))
+        let bcard2_3 = Card(term: "Sombrero", definition: "Galaxy with bright ring like hat", hint: "Scientific name M104", imageData: imageData(named: "Andromeda04"))
         bcard2_3.id = baseId + 323
         bcard2_3.quiz = blocksQuiz2
 
-        let bcard2_4 = Card(term: "Centaurus A", definition: "Thiên hà radio mạnh", hint: "Có hố đen siêu khối lượng", imageData: imageData(named: "Andromeda05"))
+        let bcard2_4 = Card(term: "Centaurus A", definition: "Strong radio galaxy", hint: "Has supermassive black hole", imageData: imageData(named: "Andromeda05"))
         bcard2_4.id = baseId + 324
         bcard2_4.quiz = blocksQuiz2
 
@@ -511,26 +511,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Blocks Quiz 3: Các ngôi sao sáng nhất
         let blocksQuiz3 = Quiz(
             id: baseId + 303,
-            title: "Ngôi sao sáng nhất",
-            quizDescription: "Top ngôi sao rực rỡ trên bầu trời",
+            title: "Brightest Stars",
+            quizDescription: "Top brilliant stars in the sky",
             isPublic: false,
             createdBy: nil,
             categories: ["Blocks"]
         )
 
-        let bcard3_1 = Card(term: "Sirius", definition: "Ngôi sao sáng nhất bầu trời đêm", hint: "Thuộc chòm sao Canis Major", imageData: imageData(named: "Sirius"))
+        let bcard3_1 = Card(term: "Sirius", definition: "Brightest star in night sky", hint: "In Canis Major", imageData: imageData(named: "Sirius"))
         bcard3_1.id = baseId + 331
         bcard3_1.quiz = blocksQuiz3
 
-        let bcard3_2 = Card(term: "Canopus", definition: "Ngôi sao sáng thứ 2", hint: "Nằm ở Nam bán cầu", imageData: imageData(named: "Canopus"))
+        let bcard3_2 = Card(term: "Canopus", definition: "Second brightest star", hint: "In Southern Hemisphere", imageData: imageData(named: "Canopus"))
         bcard3_2.id = baseId + 332
         bcard3_2.quiz = blocksQuiz3
 
-        let bcard3_3 = Card(term: "Rigel", definition: "Ngôi sao xanh khổng lồ trong Orion", hint: "Sáng gấp 120.000 lần Mặt Trời", imageData: imageData(named: "Canopus05"))
+        let bcard3_3 = Card(term: "Rigel", definition: "Blue giant star in Orion", hint: "120,000 times brighter than Sun", imageData: imageData(named: "Canopus05"))
         bcard3_3.id = baseId + 333
         bcard3_3.quiz = blocksQuiz3
 
-        let bcard3_4 = Card(term: "Vega", definition: "Ngôi sao sáng trong chòm Lyra", hint: "Dùng để hiệu chuẩn độ sáng", imageData: imageData(named: "Sirius05"))
+        let bcard3_4 = Card(term: "Vega", definition: "Bright star in Lyra constellation", hint: "Used for brightness calibration", imageData: imageData(named: "Sirius05"))
         bcard3_4.id = baseId + 334
         bcard3_4.quiz = blocksQuiz3
 
@@ -540,26 +540,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Blast Quiz 1: Các hiện tượng vũ trụ
         let blastQuiz1 = Quiz(
             id: baseId + 401,
-            title: "Hiện tượng vũ trụ",
-            quizDescription: "Các hiện tượng đáng kinh ngạc trong không gian",
+            title: "Cosmic Phenomena",
+            quizDescription: "Amazing phenomena in space",
             isPublic: false,
             createdBy: nil,
             categories: ["Blast"]
         )
 
-        let blcard1_1 = Card(term: "Big Bang", definition: "Vụ nổ lớn tạo ra vũ trụ", hint: "Xảy ra khoảng 13.8 tỷ năm trước", imageData: imageData(named: "cosmos_background"))
+        let blcard1_1 = Card(term: "Big Bang", definition: "Big explosion that created the universe", hint: "Occurred about 13.8 billion years ago", imageData: imageData(named: "cosmos_background"))
         blcard1_1.id = baseId + 411
         blcard1_1.quiz = blastQuiz1
 
-        let blcard1_2 = Card(term: "Sao băng", definition: "Vật thể cháy sáng khi rơi vào khí quyển", hint: "Thường từ sao chổi hoặc tiểu hành tinh", imageData: imageData(named: "AlphaCentauri03"))
+        let blcard1_2 = Card(term: "Meteor", definition: "Object that burns bright when entering atmosphere", hint: "Usually from comets or asteroids", imageData: imageData(named: "AlphaCentauri03"))
         blcard1_2.id = baseId + 412
         blcard1_2.quiz = blastQuiz1
 
-        let blcard1_3 = Card(term: "Lỗ đen siêu khối lượng", definition: "Hố đen ở trung tâm thiên hà", hint: "Có khối lượng hàng triệu Mặt Trời", imageData: imageData(named: "BlackHole"))
+        let blcard1_3 = Card(term: "Supermassive Black Hole", definition: "Black hole at galaxy center", hint: "Mass of millions of Suns", imageData: imageData(named: "SagittariusA_background"))
         blcard1_3.id = baseId + 413
         blcard1_3.quiz = blastQuiz1
 
-        let blcard1_4 = Card(term: "Sao đôi", definition: "Hai ngôi sao quay quanh nhau", hint: "Có thể tạo ra sóng hấp dẫn", imageData: imageData(named: "Canopus06"))
+        let blcard1_4 = Card(term: "Binary Star", definition: "Two stars orbiting each other", hint: "Can produce gravitational waves", imageData: imageData(named: "Canopus06"))
         blcard1_4.id = baseId + 414
         blcard1_4.quiz = blastQuiz1
 
@@ -569,26 +569,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Blast Quiz 2: Các hành tinh lùn
         let blastQuiz2 = Quiz(
             id: baseId + 402,
-            title: "Hành tinh lùn",
-            quizDescription: "Những thế giới nhỏ nhưng đặc biệt",
+            title: "Dwarf Planets",
+            quizDescription: "Small but special worlds",
             isPublic: false,
             createdBy: nil,
             categories: ["Blast"]
         )
 
-        let blcard2_1 = Card(term: "Pluto", definition: "Hành tinh lùn nổi tiếng nhất", hint: "Có 5 vệ tinh, lớn nhất là Charon", imageData: imageData(named: "Kepler452B"))
+        let blcard2_1 = Card(term: "Pluto", definition: "Most famous dwarf planet", hint: "Has 5 moons, largest is Charon", imageData: imageData(named: "Kepler452B"))
         blcard2_1.id = baseId + 421
         blcard2_1.quiz = blastQuiz2
 
-        let blcard2_2 = Card(term: "Eris", definition: "Hành tinh lùn xa nhất", hint: "Lớn hơn Pluto một chút", imageData: imageData(named: "Cancri55E02"))
+        let blcard2_2 = Card(term: "Eris", definition: "Farthest dwarf planet", hint: "Slightly larger than Pluto", imageData: imageData(named: "Cancri55E02"))
         blcard2_2.id = baseId + 422
         blcard2_2.quiz = blastQuiz2
 
-        let blcard2_3 = Card(term: "Ceres", definition: "Hành tinh lùn trong vành đai tiểu hành tinh", hint: "Là tiểu hành tinh lớn nhất", imageData: imageData(named: "Cancri55E03"))
+        let blcard2_3 = Card(term: "Ceres", definition: "Dwarf planet in asteroid belt", hint: "Largest asteroid", imageData: imageData(named: "Cancri55E03"))
         blcard2_3.id = baseId + 423
         blcard2_3.quiz = blastQuiz2
 
-        let blcard2_4 = Card(term: "Makemake", definition: "Hành tinh lùn ở vành đai Kuiper", hint: "Không có vệ tinh", imageData: imageData(named: "Kepler452B05"))
+        let blcard2_4 = Card(term: "Makemake", definition: "Dwarf planet in Kuiper belt", hint: "No moons", imageData: imageData(named: "Kepler452B05"))
         blcard2_4.id = baseId + 424
         blcard2_4.quiz = blastQuiz2
 
@@ -598,26 +598,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Blast Quiz 3: Các hiện tượng thiên văn
         let blastQuiz3 = Quiz(
             id: baseId + 403,
-            title: "Hiện tượng thiên văn",
-            quizDescription: "Các sự kiện hiếm có trên bầu trời",
+            title: "Astronomical Phenomena",
+            quizDescription: "Rare events in the sky",
             isPublic: false,
             createdBy: nil,
             categories: ["Blast"]
         )
 
-        let blcard3_1 = Card(term: "Siêu tân tinh", definition: "Vụ nổ sao cực mạnh", hint: "Có thể sáng hơn cả thiên hà", imageData: imageData(named: "ProximaB02"))
+        let blcard3_1 = Card(term: "Supernova", definition: "Extremely powerful star explosion", hint: "Can be brighter than a galaxy", imageData: imageData(named: "ProximaB02"))
         blcard3_1.id = baseId + 431
         blcard3_1.quiz = blastQuiz3
 
-        let blcard3_2 = Card(term: "Sao chổi", definition: "Khối băng phát sáng khi gần Mặt Trời", hint: "Có đuôi dài hàng triệu km", imageData: imageData(named: "ProximaB01"))
+        let blcard3_2 = Card(term: "Comet", definition: "Ice block that glows near the Sun", hint: "Tail millions of km long", imageData: imageData(named: "ProximaB01"))
         blcard3_2.id = baseId + 432
         blcard3_2.quiz = blastQuiz3
 
-        let blcard3_3 = Card(term: "Mưa sao băng", definition: "Nhiều sao băng cùng lúc", hint: "Từ bụi sao chổi", imageData: imageData(named: "ProximaB04"))
+        let blcard3_3 = Card(term: "Meteor Shower", definition: "Many meteors at once", hint: "From comet dust", imageData: imageData(named: "ProximaB04"))
         blcard3_3.id = baseId + 433
         blcard3_3.quiz = blastQuiz3
 
-        let blcard3_4 = Card(term: "Nhật thực toàn phần", definition: "Mặt Trăng che kín Mặt Trời", hint: "Chỉ thấy ở dải hẹp trên Trái Đất", imageData: imageData(named: "ProximaB03"))
+        let blcard3_4 = Card(term: "Total Solar Eclipse", definition: "Moon completely covers the Sun", hint: "Visible only in narrow path on Earth", imageData: imageData(named: "ProximaB03"))
         blcard3_4.id = baseId + 434
         blcard3_4.quiz = blastQuiz3
 
@@ -627,30 +627,30 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Match Quiz 1: Các chòm sao nổi bật
         let matchQuiz1 = Quiz(
             id: baseId + 501,
-            title: "Chòm sao nổi bật",
-            quizDescription: "Ghép đôi tên và đặc điểm của chòm sao",
+            title: "Notable Constellations",
+            quizDescription: "Match names and features of constellations",
             isPublic: false,
             createdBy: nil,
             categories: ["Match"]
         )
 
-        let mcard1_1 = Card(term: "Orion", definition: "Chòm sao Thợ Săn với Betelgeuse", hint: "Dễ thấy vào mùa đông", imageData: imageData(named: "Orion"))
+        let mcard1_1 = Card(term: "Orion", definition: "Hunter constellation with Betelgeuse", hint: "Easily seen in winter", imageData: imageData(named: "Kepler452B05"))
         mcard1_1.id = baseId + 511
         mcard1_1.quiz = matchQuiz1
 
-        let mcard1_2 = Card(term: "Ursa Major", definition: "Chòm sao Gấu Lớn chứa Bắc Đẩu", hint: "Dùng để tìm Sao Bắc Cực", imageData: imageData(named: "TaurusZodiac"))
+        let mcard1_2 = Card(term: "Ursa Major", definition: "Great Bear constellation containing Big Dipper", hint: "Used to find North Star", imageData: imageData(named: "TaurusZodiac"))
         mcard1_2.id = baseId + 512
         mcard1_2.quiz = matchQuiz1
 
-        let mcard1_3 = Card(term: "Cassiopeia", definition: "Chòm sao Nữ Hoàng hình chữ W", hint: "Đối diện với Bắc Đẩu", imageData: imageData(named: "LeoZodiac"))
+        let mcard1_3 = Card(term: "Cassiopeia", definition: "Queen constellation shaped like W", hint: "Opposite the Big Dipper", imageData: imageData(named: "LeoZodiac"))
         mcard1_3.id = baseId + 513
         mcard1_3.quiz = matchQuiz1
 
-        let mcard1_4 = Card(term: "Leo", definition: "Chòm sao Sư Tử với ngôi sao Regulus", hint: "Biểu tượng cung hoàng đạo", imageData: imageData(named: "leo_chibi"))
+        let mcard1_4 = Card(term: "Leo", definition: "Lion constellation with star Regulus", hint: "Zodiac symbol", imageData: imageData(named: "leo_chibi"))
         mcard1_4.id = baseId + 514
         mcard1_4.quiz = matchQuiz1
 
-        let mcard1_5 = Card(term: "Scorpius", definition: "Chòm sao Bọ Cạp với Antares đỏ", hint: "Có hình dạng giống bọ cạp", imageData: imageData(named: "taurus_chibi"))
+        let mcard1_5 = Card(term: "Scorpius", definition: "Scorpion constellation with red Antares", hint: "Shaped like a scorpion", imageData: imageData(named: "taurus_chibi"))
         mcard1_5.id = baseId + 515
         mcard1_5.quiz = matchQuiz1
 
@@ -660,30 +660,30 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Match Quiz 2: Vệ tinh nổi bật
         let matchQuiz2 = Quiz(
             id: baseId + 502,
-            title: "Vệ tinh đặc biệt",
-            quizDescription: "Ghép vệ tinh với hành tinh mẹ",
+            title: "Special Moons",
+            quizDescription: "Match moons with parent planets",
             isPublic: false,
             createdBy: nil,
             categories: ["Match"]
         )
 
-        let mcard2_1 = Card(term: "Titan", definition: "Vệ tinh lớn nhất của Sao Thổ", hint: "Có khí quyển dày hơn Trái Đất", imageData: imageData(named: "Apollo11"))
+        let mcard2_1 = Card(term: "Titan", definition: "Largest moon of Saturn", hint: "Thicker atmosphere than Earth", imageData: imageData(named: "Apollo11"))
         mcard2_1.id = baseId + 521
         mcard2_1.quiz = matchQuiz2
 
-        let mcard2_2 = Card(term: "Ganymede", definition: "Vệ tinh lớn nhất Hệ Mặt Trời", hint: "Lớn hơn Sao Thủy", imageData: imageData(named: "CassiniProbe"))
+        let mcard2_2 = Card(term: "Ganymede", definition: "Largest moon in Solar System", hint: "Larger than Mercury", imageData: imageData(named: "CassiniProbe"))
         mcard2_2.id = baseId + 522
         mcard2_2.quiz = matchQuiz2
 
-        let mcard2_3 = Card(term: "Europa", definition: "Vệ tinh có đại dương dưới băng", hint: "Có thể có sự sống", imageData: imageData(named: "JunoProbe"))
+        let mcard2_3 = Card(term: "Europa", definition: "Moon with ocean under ice", hint: "May have life", imageData: imageData(named: "JunoProbe"))
         mcard2_3.id = baseId + 523
         mcard2_3.quiz = matchQuiz2
 
-        let mcard2_4 = Card(term: "Io", definition: "Vệ tinh có núi lửa hoạt động", hint: "Màu vàng do lưu huỳnh", imageData: imageData(named: "MercuryProbe"))
+        let mcard2_4 = Card(term: "Io", definition: "Moon with active volcanoes", hint: "Yellow due to sulfur", imageData: imageData(named: "MercuryProbe"))
         mcard2_4.id = baseId + 524
         mcard2_4.quiz = matchQuiz2
 
-        let mcard2_5 = Card(term: "Enceladus", definition: "Vệ tinh phun nước của Sao Thổ", hint: "Có đại dương ngầm", imageData: imageData(named: "ParkerProbe"))
+        let mcard2_5 = Card(term: "Enceladus", definition: "Saturn's water geyser moon", hint: "Has subsurface ocean", imageData: imageData(named: "ParkerProbe"))
         mcard2_5.id = baseId + 525
         mcard2_5.quiz = matchQuiz2
 
@@ -693,26 +693,26 @@ class QuizListViewModel: ObservableObject {
         // MARK: - Match Quiz 3: Các loại sao
         let matchQuiz3 = Quiz(
             id: baseId + 503,
-            title: "Phân loại sao",
-            quizDescription: "Ghép loại sao với đặc điểm",
+            title: "Star Classification",
+            quizDescription: "Match star types with features",
             isPublic: false,
             createdBy: nil,
             categories: ["Match"]
         )
 
-        let mcard3_1 = Card(term: "Sao lùn đỏ", definition: "Ngôi sao nhỏ, mát, sống lâu", hint: "Chiếm 70% số sao", imageData: imageData(named: "AlphaCentauri06"))
+        let mcard3_1 = Card(term: "Red Dwarf Star", definition: "Small, cool, long-lived star", hint: "Make up 70% of stars", imageData: imageData(named: "AlphaCentauri06"))
         mcard3_1.id = baseId + 531
         mcard3_1.quiz = matchQuiz3
 
-        let mcard3_2 = Card(term: "Sao khổng lồ đỏ", definition: "Ngôi sao lớn, mát, giai đoạn cuối", hint: "Có thể nuốt chửng hành tinh", imageData: imageData(named: "AlphaCentauri"))
+        let mcard3_2 = Card(term: "Red Giant Star", definition: "Large, cool star in final stage", hint: "Can engulf planets", imageData: imageData(named: "AlphaCentauri"))
         mcard3_2.id = baseId + 532
         mcard3_2.quiz = matchQuiz3
 
-        let mcard3_3 = Card(term: "Sao neutron", definition: "Tàn dư siêu đặc của sao lớn", hint: "1 thìa nặng tỷ tấn", imageData: imageData(named: "Canopus02"))
+        let mcard3_3 = Card(term: "Neutron Star", definition: "Super dense remnant of large star", hint: "1 teaspoon weighs a billion tons", imageData: imageData(named: "Canopus02"))
         mcard3_3.id = baseId + 533
         mcard3_3.quiz = matchQuiz3
 
-        let mcard3_4 = Card(term: "Sao lùn trắng", definition: "Tàn dư của sao giống Mặt Trời", hint: "Kích thước bằng Trái Đất", imageData: imageData(named: "Canopus"))
+        let mcard3_4 = Card(term: "White Dwarf Star", definition: "Remnant of Sun-like star", hint: "Size of Earth", imageData: imageData(named: "Canopus"))
         mcard3_4.id = baseId + 534
         mcard3_4.quiz = matchQuiz3
 
@@ -860,13 +860,22 @@ class FlashcardsViewModel: ObservableObject {
         self.service = service
         self.currentUserId = AuthManager.shared.currentUserId ?? UUID()
         
-            if quiz.id == 0 {
-                quiz.id = Int64(Date().timeIntervalSince1970 * 1000)
-            }
+        if quiz.id == 0 {
+            quiz.id = Int64(Date().timeIntervalSince1970 * 1000)
+        }
         
         service.saveQuiz(quiz)
         
         self.attempt = service.loadOrCreateAttempt(for: quiz.id, mode: "Flashcards", userId: currentUserId)
+        
+        attempt.currentIndex = 0
+        attempt.correctCount = 0
+        attempt.incorrectCount = 0
+        attempt.isCompleted = false
+        attempt.startedAt = Date()
+        attempt.lastUpdated = Date()
+        
+        service.updateAttempt(attempt)
     }
     
     public func loadCurrentCard() {

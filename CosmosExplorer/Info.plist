@@ -37,5 +37,21 @@
 
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>Ứng dụng cần quyền lưu ảnh vào thư viện.</string>
+    
+    <key>GIDClientID</key>
+    <string>YOUR_CLIENT_ID_HERE.apps.googleusercontent.com</string>
+
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.YOUR_CLIENT_ID_HERE</string>
+            </array>
+        </dict>
+    </array>
+    
 </dict>
 </plist>

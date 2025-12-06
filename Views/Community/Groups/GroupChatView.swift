@@ -1189,7 +1189,7 @@ struct FriendSelectionRow: View {
             Text(friend.username)
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
-            Text("Rank \(friend.rank)")
+            Text("Elo \(friend.rank)")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(.white.opacity(0.5))
         }

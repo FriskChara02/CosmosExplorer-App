@@ -23,6 +23,7 @@ struct LoginView: View {
     @State private var circleOffset1 = CGSize.zero
     @State private var circleOffset2 = CGSize.zero
     @State private var meteorOffset = CGSize.zero
+    @State private var isGoogleSigningIn = false
 
     var body: some View {
         NavigationStack {
@@ -215,12 +216,23 @@ struct LoginView: View {
                             Image(systemName: "apple.logo")
                                 .foregroundColor(.white)
                                 .font(.system(size: 30))
-                            Image(systemName: "g.circle.fill")
-                                .foregroundColor(.white)
-                                .font(.system(size: 30))
-                            Image(systemName: "f.circle.fill")
-                                .foregroundColor(.white)
-                                .font(.system(size: 30))
+                            Button(action: signInWithGoogle) {
+                                HStack(spacing: 8) {
+                                    if isGoogleSigningIn {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    } else {
+                                        Image("GoogleIcon")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .clipShape(Circle())
+                                    }
+                                }
+                            }
+                            .disabled(isGoogleSigningIn)
+                            Image("FacebookIcon")
+                                .resizable()
+                                .frame(width: 30, height: 30)
                         }
                     }
                     .padding(.top, 10)
@@ -338,6 +350,34 @@ struct LoginView: View {
                 }
             }
         }
+    }
+
+    private func signInWithGoogle() {
+        guard let rootVC = getRootViewController() else {
+            errorMessage = "Không thể lấy root view controller"
+            return
+        }
+        
+        isGoogleSigningIn = true
+        viewModel.signInWithGoogle(presentingViewController: rootVC) { result in
+            isGoogleSigningIn = false
+            switch result {
+            case .success:
+                print("✅ Đăng nhập Google thành công")
+                errorMessage = ""
+                showWelcomeView = true
+            case .failure(let error):
+                errorMessage = "Lỗi Google Sign-In: \(error.localizedDescription)"
+            }
+        }
+    }
+
+    private func getRootViewController() -> UIViewController? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let rootViewController = windowScene.windows.first?.rootViewController else {
+            return nil
+        }
+        return rootViewController
     }
 
     struct LoginFields: View {

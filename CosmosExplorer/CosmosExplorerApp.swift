@@ -33,6 +33,9 @@ struct CosmosExplorerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onOpenURL { url in
+                    GoogleService.shared.handleURL(url)
+            }
         }
         .modelContainer(sharedModelContainer)
         .modelContainer(for: [UserModel.self])
@@ -56,6 +59,13 @@ struct CosmosExplorerApp: App {
         .modelContainer(for: [GroupMemberModel.self])
         .modelContainer(for: [GroupMessageModel.self])
         .modelContainer(for: [GroupWordFilterModel.self])
+        .modelContainer(for: [GalaxyComment.self])
+        .modelContainer(for: [BlackholeComment.self])
+        .modelContainer(for: [StarComment.self])
+        .modelContainer(for: [NebulaComment.self])
+        .modelContainer(for: [PlanetsComment.self])
+        .modelContainer(for: [ConstellationComment.self])
+        .modelContainer(for: [PlanetComment.self])
         .modelContainer(swiftDataService.container)
     }
 }

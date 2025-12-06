@@ -106,3 +106,25 @@ extension ConstellationModel {
     }
 }
 
+@Model
+final class ConstellationComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var constellationId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        constellationId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.constellationId = constellationId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}

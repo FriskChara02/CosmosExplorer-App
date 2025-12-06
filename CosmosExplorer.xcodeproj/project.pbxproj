@@ -16,6 +16,8 @@
 		7AB292F62E7450F100582D0F /* OpenCombineDispatch in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F52E7450F100582D0F /* OpenCombineDispatch */; };
 		7AB292F82E7450F100582D0F /* OpenCombineFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F72E7450F100582D0F /* OpenCombineFoundation */; };
 		7AB292FA2E7450F100582D0F /* OpenCombineShim in Frameworks */ = {isa = PBXBuildFile; productRef = 7AB292F92E7450F100582D0F /* OpenCombineShim */; };
+		7ADF763A2EE3CD15001D7752 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADF76392EE3CD15001D7752 /* GoogleSignIn */; };
+		7ADF763C2EE3CD15001D7752 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADF763B2EE3CD15001D7752 /* GoogleSignInSwift */; };
 		7AEA5DF72ED165AE00AB3181 /* EmojiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEA5DF62ED165AE00AB3181 /* EmojiKit */; };
 /* End PBXBuildFile section */
 
@@ -208,6 +210,8 @@
 			files = (
 				7AA394042EADC504000C47DA /* SwiftAA in Frameworks */,
 				7A4FF4702E6310C900ED6904 /* WebKit.framework in Frameworks */,
+				7ADF763A2EE3CD15001D7752 /* GoogleSignIn in Frameworks */,
+				7ADF763C2EE3CD15001D7752 /* GoogleSignInSwift in Frameworks */,
 				7A4FF4722E64390500ED6904 /* UIKit.framework in Frameworks */,
 				7A4FF46E2E61A9EA00ED6904 /* RealityKit.framework in Frameworks */,
 				7AB292F42E7450F100582D0F /* OpenCombine in Frameworks */,
@@ -303,6 +307,8 @@
 				7AB292F92E7450F100582D0F /* OpenCombineShim */,
 				7AA394032EADC504000C47DA /* SwiftAA */,
 				7AEA5DF62ED165AE00AB3181 /* EmojiKit */,
+				7ADF76392EE3CD15001D7752 /* GoogleSignIn */,
+				7ADF763B2EE3CD15001D7752 /* GoogleSignInSwift */,
 			);
 			productName = CosmosExplorer;
 			productReference = 7A7F82CB2E367C30006291B9 /* CosmosExplorer.app */;
@@ -363,7 +369,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					7A7F82CA2E367C30006291B9 = {
 						CreatedOnToolsVersion = 16.3;
@@ -393,6 +399,7 @@
 				7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */,
 				7AA393FE2EADC504000C47DA /* XCRemoteSwiftPackageReference "SwiftAA" */,
 				7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */,
+				7ADF76382EE3CD15001D7752 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7A7F82CC2E367C30006291B9 /* Products */;
@@ -528,6 +535,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -586,6 +594,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -787,6 +796,14 @@
 				minimumVersion = 0.14.0;
 			};
 		};
+		7ADF76382EE3CD15001D7752 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielsaidi/EmojiKit.git";
@@ -827,6 +844,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7AB292F22E7450F100582D0F /* XCRemoteSwiftPackageReference "OpenCombine" */;
 			productName = OpenCombineShim;
+		};
+		7ADF76392EE3CD15001D7752 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7ADF76382EE3CD15001D7752 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		7ADF763B2EE3CD15001D7752 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7ADF76382EE3CD15001D7752 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 		7AEA5DF62ED165AE00AB3181 /* EmojiKit */ = {
 			isa = XCSwiftPackageProductDependency;

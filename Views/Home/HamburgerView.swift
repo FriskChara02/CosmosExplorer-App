@@ -510,8 +510,14 @@ struct HamburgerMenuView: View {
             Text("Other")
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.7))
-            menuItem(icon: "gearshape.fill", title: "Settings")
-            menuItem(icon: "questionmark.circle.fill", title: "Help and Settings")
+            NavigationLink(destination: SettingsView().environmentObject(authViewModel).navigationBarBackButtonHidden(true)){
+                menuItem(icon: "gearshape.fill", title: "Settings")
+            }
+            NavigationLink(destination: HelpView().environmentObject(authViewModel).navigationBarBackButtonHidden(true)){
+                menuItem(icon: "questionmark.circle.fill", title: "Help and Settings")
+            }
+            
+            Divider().background(Color.gray)
         }
     }
     

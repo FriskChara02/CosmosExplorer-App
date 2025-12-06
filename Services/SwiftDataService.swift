@@ -21,7 +21,7 @@
         init() {
             ValueTransformer.registerIfNeeded()
             
-            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self, FriendRequestModel.self, FriendshipModel.self, ChatModel.self, MessageModel.self, GroupModel.self, GroupMemberModel.self, GroupMessageModel.self, GroupWordFilterModel.self])
+            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self, FriendRequestModel.self, FriendshipModel.self, ChatModel.self, MessageModel.self, GroupModel.self, GroupMemberModel.self, GroupMessageModel.self, GroupWordFilterModel.self, GalaxyComment.self, BlackholeComment.self, StarComment.self, NebulaComment.self, PlanetsComment.self, ConstellationComment.self, PlanetComment.self])
             let containerURL = URL.applicationSupportDirectory.appendingPathComponent("CosmosDB.sqlite")
             
             let configuration = ModelConfiguration(
@@ -41,7 +41,7 @@
         
         init(inMemory: Bool = false) {
             ValueTransformer.registerIfNeeded()
-            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self, FriendRequestModel.self, FriendshipModel.self, ChatModel.self, MessageModel.self, GroupModel.self, GroupMemberModel.self, GroupMessageModel.self, GroupWordFilterModel.self])
+            let schema = Schema([PlanetModel.self, UserModel.self, GalaxyModel.self, NebulaModel.self, StarModel.self, BlackholeModel.self, ConstellationModel.self, PlanetsModel.self, Quiz.self, Card.self, Attempt.self, Favorite.self, UserProgress.self, FriendRequestModel.self, FriendshipModel.self, ChatModel.self, MessageModel.self, GroupModel.self, GroupMemberModel.self, GroupMessageModel.self, GroupWordFilterModel.self, GalaxyComment.self, BlackholeComment.self, StarComment.self, NebulaComment.self, PlanetsComment.self, ConstellationComment.self, PlanetComment.self])
             let config = ModelConfiguration(isStoredInMemoryOnly: inMemory)
             self.container = try! ModelContainer(for: schema, configurations: config)
         }
@@ -2226,7 +2226,14 @@
     // MARK: - Attempt Methods
     func loadOrCreateAttempt(for quizId: Int64, mode: String, userId: UUID) -> Attempt {
         let context = container.mainContext
-        let predicate = #Predicate<Attempt> { $0.userId == userId && $0.quizId == quizId && $0.mode == mode }
+        let userIdCaptured = userId
+        let quizIdCaptured = quizId
+        let modeCaptured = mode
+        
+        let predicate = #Predicate<Attempt> {
+            $0.userId == userIdCaptured && $0.quizId == quizIdCaptured && $0.mode == modeCaptured
+        }
+        
         if let existing = try? context.fetch(FetchDescriptor<Attempt>(predicate: predicate)).first {
             return existing
         }
@@ -2234,20 +2241,119 @@
         guard quizId != 0 else {
             fatalError("quizId không hợp lệ (0) – không thể tạo Attempt")
         }
+        
         let newAttempt = Attempt(userId: userId, quizId: quizId, mode: mode)
         if newAttempt.id == 0 {
-                newAttempt.id = Int64(Date().timeIntervalSince1970 * 1000) + Int64.random(in: 0..<1000)
-            }
+            newAttempt.id = Int64(Date().timeIntervalSince1970 * 1000) + Int64.random(in: 0..<1000)
+        }
+        
         context.insert(newAttempt)
-        try? context.save()
+        
+        do {
+            try context.save()
+        } catch {
+            print("❌ Error saving new attempt: \(error)")
+        }
+        
         saveOrUpdateAttempt(newAttempt, isUpdate: false)
         return newAttempt
     }
 
-    func updateAttempt(_ attempt: Attempt) {
-        let context = container.mainContext
-        try? context.save()
+        func updateAttempt(_ attempt: Attempt) {
+        guard let context = attempt.modelContext else {
+            print("❌ Attempt không có modelContext - object bị detached!")
+            container.mainContext.insert(attempt)
+            try? container.mainContext.save()
+            saveOrUpdateAttempt(attempt, isUpdate: true)
+            return
+        }
+        
+        print("🔍 Updating attempt: id=\(attempt.id), userId=\(attempt.userId), mode=\(attempt.mode), correct=\(attempt.correctCount), incorrect=\(attempt.incorrectCount)")
+        
+        do {
+            try context.save()
+            print("💾 Attempt saved to SwiftData")
+        } catch {
+            print("❌ Error saving attempt: \(error)")
+        }
         saveOrUpdateAttempt(attempt, isUpdate: true)
+    }
+        
+    func fetchAttemptsFromPostgreSQL(userId: UUID, mode: String? = nil) -> [Attempt] {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            print("❌ Không thể kết nối PostgreSQL")
+            return []
+        }
+        defer { connection.close() }
+        
+        do {
+            let query: String
+            let params: [PostgresValueConvertible?]
+            
+            if let mode = mode {
+                query = """
+                SELECT id, user_id, quiz_id, mode, 
+                       started_at::text, last_updated::text,
+                       is_completed, current_index, correct_count, incorrect_count
+                FROM attempts 
+                WHERE user_id = $1 AND mode = $2 
+                ORDER BY last_updated DESC
+                """
+                params = [pg(userId.uuidString), pg(mode)]
+            } else {
+                query = """
+                SELECT id, user_id, quiz_id, mode, 
+                       started_at::text, last_updated::text,
+                       is_completed, current_index, correct_count, incorrect_count
+                FROM attempts 
+                WHERE user_id = $1 
+                ORDER BY last_updated DESC
+                """
+                params = [pg(userId.uuidString)]
+            }
+            
+            let stmt = try connection.prepareStatement(text: query)
+            let cursor = try stmt.execute(parameterValues: params.compactMap { $0 })
+            
+            var attempts: [Attempt] = []
+            let dateFormatter = ISO8601DateFormatter()
+            
+            for row in cursor {
+                let columns = try row.get().columns
+                
+                let id = try columns[0].int()
+                let userIdStr = try columns[1].string()
+                let quizId = try columns[2].int()
+                let mode = try columns[3].string()
+                let startedAtStr = try columns[4].string()
+                let lastUpdatedStr = try columns[5].string()
+                let isCompleted = try columns[6].bool()
+                let currentIndex = try columns[7].int()
+                let correctCount = try columns[8].int()
+                let incorrectCount = try columns[9].int()
+                
+                let attempt = Attempt(
+                    id: Int64(id),
+                    userId: UUID(uuidString: userIdStr) ?? userId,
+                    quizId: Int64(quizId),
+                    mode: mode
+                )
+                attempt.startedAt = dateFormatter.date(from: startedAtStr) ?? Date()
+                attempt.lastUpdated = dateFormatter.date(from: lastUpdatedStr) ?? Date()
+                attempt.isCompleted = isCompleted
+                attempt.currentIndex = currentIndex
+                attempt.correctCount = correctCount
+                attempt.incorrectCount = incorrectCount
+                
+                attempts.append(attempt)
+            }
+            
+            return attempts
+            
+        } catch {
+            print("❌ Error fetching attempts: \(error)")
+            return []
+        }
     }
 
     public func saveOrUpdateAttempt(_ attempt: Attempt, isUpdate: Bool) {

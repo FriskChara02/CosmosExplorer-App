@@ -8,6 +8,7 @@
 import SwiftUI
 import WebKit
 import UIKit
+import SwiftData
 
 struct TriangulumView: View {
     let galaxy: GalaxyModel
@@ -19,6 +20,10 @@ struct TriangulumView: View {
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
+    @StateObject private var commentVM = GalaxyViewModel.GalaxyCommentViewModel()
+    @EnvironmentObject var authVM: AuthViewModel
+    private var triangulumId: UUID { galaxy.id }
+    @Environment(\.modelContext) private var modelContext
     
     private let infoItems: [String] = [
         LanguageManager.current.string("Triangulum Random Info 1"),
@@ -92,7 +97,7 @@ struct TriangulumView: View {
                     } else if selectedTab == "Galleries" {
                         GalleriesTriangulumView(animation: animation)
                     } else if selectedTab == "Comment" {
-                        CommentTriangulumView()
+                        CommentAndromedaView(galaxyId: triangulumId).environmentObject(commentVM)
                     } else if selectedTab == "Wiki" {
                         VStack {
                             Text(LanguageManager.current.string("Wikipedia: Triangulum Galaxy"))
@@ -122,6 +127,9 @@ struct TriangulumView: View {
             .background(Image("Triangulum_background").resizable().scaledToFill().ignoresSafeArea())
             .animation(.easeInOut(duration: 1.0), value: glowIntensity)
             .onAppear {
+                if let userId = authVM.currentUser?.id {
+                    commentVM.setup(userId: userId, context: modelContext)
+                }
                 updateRandomInfo()
                 Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
                     withAnimation(.easeInOut) {
@@ -544,11 +552,48 @@ struct GalleriesTriangulumView: View {
 }
 
 struct CommentTriangulumView: View {
+    @EnvironmentObject var vm: GalaxyViewModel.GalaxyCommentViewModel
+    @EnvironmentObject var authVM: AuthViewModel
+    
+    let galaxyId: UUID
+    
+    @State private var messageText = ""
+    @State private var showingProfileUserId: UUID?
+
     var body: some View {
-        Text(LanguageManager.current.string("Comment Under Development"))
-            .font(.title2)
-            .foregroundColor(.white)
-            .padding()
+        VStack(spacing: 0) {
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(vm.comments) { comment in
+                        CommentBubble(
+                            comment: comment,
+                            currentUserId: authVM.currentUser?.id,
+                            onAvatarTap: { showingProfileUserId = comment.senderId }
+                        )
+                    }
+                }
+                .padding()
+            }
+            
+            CommentInputBar(text: $messageText) {
+                vm.sendComment(galaxyId: galaxyId, content: messageText)
+                messageText = ""
+            }
+        }
+        .onAppear {
+            vm.loadComments(for: galaxyId)
+        }
+        .background(Color.black.opacity(0.1))
+        .ignoresSafeArea(edges: .bottom)
+        .fullScreenCover(isPresented: Binding(
+            get: { showingProfileUserId != nil },
+            set: { if !$0 { showingProfileUserId = nil } }
+        )) {
+            if let userId = showingProfileUserId {
+                ProfileViewForFriend(userId: userId)
+                    .environmentObject(authVM)
+            }
+        }
     }
 }
 

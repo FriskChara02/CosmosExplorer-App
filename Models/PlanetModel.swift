@@ -213,3 +213,26 @@ class PlanetMission: Identifiable {
         self.missionId = missionId
     }
 }
+
+@Model
+final class PlanetComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var planetId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        planetId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.planetId = planetId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}

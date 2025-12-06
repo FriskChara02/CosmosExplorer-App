@@ -698,7 +698,7 @@ struct ProfileViewContent: View {
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(rankColor(for: user.rank))
             Text("•").foregroundColor(.white.opacity(0.3))
-            Text("Rank \(user.rank)")
+            Text("Elo \(user.rank)")
                 .font(.system(size: 14, weight: .medium, design: .monospaced))
                 .foregroundColor(.white.opacity(0.7))
             Text("•").foregroundColor(.white.opacity(0.3))

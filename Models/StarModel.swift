@@ -100,3 +100,26 @@ extension StarModel {
         wikiLink = other.wikiLink
     }
 }
+
+@Model
+final class StarComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var starId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        starId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.starId = starId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}

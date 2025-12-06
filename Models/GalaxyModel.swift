@@ -100,3 +100,26 @@ extension GalaxyModel {
         wikiLink = other.wikiLink
     }
 }
+
+@Model
+final class GalaxyComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var galaxyId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        galaxyId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.galaxyId = galaxyId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}

@@ -100,3 +100,26 @@ extension BlackholeModel {
         wikiLink = other.wikiLink
     }
 }
+
+@Model
+final class BlackholeComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var blackholeId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        blackholeId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.blackholeId = blackholeId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}

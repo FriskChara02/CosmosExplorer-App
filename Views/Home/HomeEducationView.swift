@@ -439,7 +439,7 @@ struct HomeEducationView: View {
                                 Text(LanguageManager.current.string("Learn Streaks") + " - \(viewModel.streakDays) days")
                                     .font(.title2)
                                     .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.cyan)
                             }
                             .padding(.leading, 15)
                             .offset(y: -40)
@@ -473,7 +473,7 @@ struct HomeEducationView: View {
                                 .foregroundColor(.white)
                                 .padding(.leading, 15)
                                 .offset(y: -40)
-                            
+                            NavigationLink(destination: ChartsView().navigationBarBackButtonHidden(true)) {
                             HStack {
                                 Image("cosmos_background")
                                     .resizable()
@@ -486,7 +486,7 @@ struct HomeEducationView: View {
                                     Text(LanguageManager.current.string("Your Learning Progress"))
                                         .font(.headline)
                                         .foregroundColor(.white)
-                                    Text("Sep 11/2025")
+                                    Text(DateHelper.formatDate(Date()))
                                         .font(.caption)
                                         .foregroundColor(.white.opacity(0.8))
                                 }
@@ -495,8 +495,9 @@ struct HomeEducationView: View {
                                     .foregroundColor(.white)
                             }
                             .padding()
-                            .background(Color.black.opacity(0.3))
+                            .background(Color.white.opacity(0.1))
                             .cornerRadius(10)
+                        }
                             .padding(.horizontal, 15)
                             .offset(y: -40)
                         }
@@ -669,11 +670,53 @@ class HomeEducationViewModel: ObservableObject {
         self.authViewModel = authViewModel
         self.userName = authViewModel?.username ?? "User"
         self.randomCosmosQuote = cosmosQuotes.randomElement() ?? "Explore the universe!"
+        
+        let savedStreak = UserDefaults.standard.integer(forKey: "StreakDays")
+        self.streakDays = savedStreak > 0 ? savedStreak : 1
+        
+        updateStreakIfNeeded()
+    }
+    
+    private func updateStreakIfNeeded() {
+        let calendar = Calendar.current
+        let today = Date()
+        if let lastDate = UserDefaults.standard.object(forKey: "LastActiveDate") as? Date {
+            let daysDiff = calendar.dateComponents([.day], from: lastDate, to: today).day ?? 0
+            if daysDiff > 1 {
+                streakDays = 1
+            } else if daysDiff == 1 {
+                streakDays += 1
+            }
+        } else {
+            streakDays = 1
+        }
+        UserDefaults.standard.set(today, forKey: "LastActiveDate")
+        UserDefaults.standard.set(streakDays, forKey: "StreakDays")
     }
     
     func isDayCompleted(index: Int) -> Bool {
-        let today = Calendar.current.component(.weekday, from: Date()) - 2
-        return index == today
+        let calendar = Calendar.current
+        let today = Date()
+        let weekday = calendar.component(.weekday, from: today)
+        
+        let todayIndex = (weekday + 5) % 7
+        
+        guard let lastActiveDate = UserDefaults.standard.object(forKey: "LastActiveDate") as? Date else {
+            return index == todayIndex
+        }
+        
+        let daysDifference = calendar.dateComponents([.day], from: lastActiveDate, to: today).day ?? 0
+        
+        if daysDifference == 0 {
+            return index >= todayIndex - streakDays + 1 && index <= todayIndex
+        } else if daysDifference == 1 {
+            UserDefaults.standard.set(today, forKey: "LastActiveDate")
+            return index >= todayIndex - streakDays + 1 && index <= todayIndex
+        } else {
+            streakDays = 1
+            UserDefaults.standard.set(today, forKey: "LastActiveDate")
+            return index == todayIndex
+        }
     }
     
     func demoQuiz(for mode: String) -> Quiz {

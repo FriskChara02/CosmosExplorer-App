@@ -100,3 +100,26 @@ extension PlanetsModel {
     }
 }
 
+@Model
+final class PlanetsComment: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var planetsId: UUID
+    var senderId: UUID
+    var content: String
+    var createdAt: Date
+    
+    init(
+        id: UUID = UUID(),
+        planetsId: UUID,
+        senderId: UUID,
+        content: String,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.planetsId = planetsId
+        self.senderId = senderId
+        self.content = content
+        self.createdAt = createdAt
+    }
+}
+

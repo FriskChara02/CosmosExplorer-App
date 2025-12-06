@@ -187,4 +187,133 @@ class PlanetsViewModel: ObservableObject {
             }
         }
     }
+    
+    @MainActor
+    class PlanetsCommentViewModel: ObservableObject {
+        @Published var comments: [PlanetsComment] = []
+        @Published var isLoading = false
+        
+        private var currentUserId: UUID?
+        private var modelContext: ModelContext?
+        
+        func setup(userId: UUID, context: ModelContext) {
+            self.currentUserId = userId
+            self.modelContext = context
+        }
+        
+        func loadComments(for planetsId: UUID) {
+            isLoading = true
+            
+            guard let connection = try? DatabaseConfig.createConnection() else {
+                print("Không tạo được connection")
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
+                return
+            }
+
+            do {
+                let stmt = try connection.prepareStatement(text: """
+                    SELECT id, sender_id, content, created_at 
+                    FROM planetss_comments 
+                    WHERE planetss_id = $1 
+                    ORDER BY created_at ASC
+                """)
+
+                let cursor = try stmt.execute(parameterValues: [planetsId.uuidString])
+
+                var list: [PlanetsComment] = []
+                for row in cursor {
+                    let columns = try row.get().columns
+                    let idStr = try columns[0].string()
+                    let senderStr = try columns[1].string()
+                    let content = try columns[2].string()
+                    let createdStr = try columns[3].string()
+                                        
+                    guard let id = UUID(uuidString: idStr) else {
+                        print("❌ Parse UUID id failed: \(idStr)")
+                        continue
+                    }
+                    
+                    guard let senderId = UUID(uuidString: senderStr) else {
+                        print("❌ Parse UUID senderId failed: \(senderStr)")
+                        continue
+                    }
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+                    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                    
+                    guard let createdAt = dateFormatter.date(from: createdStr) else {
+                        print("❌ Parse date failed: \(createdStr)")
+                        continue
+                    }
+                    
+                    let comment = PlanetsComment(
+                        id: id,
+                        planetsId: planetsId,
+                        senderId: senderId,
+                        content: content,
+                        createdAt: createdAt
+                    )
+                    list.append(comment)
+                }
+                
+                cursor.close()
+                stmt.close()
+                connection.close()
+                
+                
+                DispatchQueue.main.async {
+                    self.comments = list
+                    self.isLoading = false
+                }
+                
+            } catch {
+                print("LỖI LOAD COMMENT: \(error)")
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
+            }
+        }
+        
+        func sendComment(planetsId: UUID, content: String) {
+            guard let userId = currentUserId else { return }
+            let trimmed = content.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else { return }
+            
+            guard let connection = try? DatabaseConfig.createConnection() else { return }
+            defer { connection.close() }
+            
+            do {
+                let commentId = UUID()
+                let now = ISO8601DateFormatter().string(from: Date())
+                
+                let stmt = try connection.prepareStatement(text: """
+                    INSERT INTO planetss_comments (id, planetss_id, sender_id, content, created_at)
+                    VALUES ($1, $2, $3, $4, $5)
+                """)
+                defer { stmt.close() }
+                
+                try stmt.execute(parameterValues: [
+                    commentId.uuidString,
+                    planetsId.uuidString,
+                    userId.uuidString,
+                    trimmed,
+                    now
+                ])
+                
+                let newComment = PlanetsComment(
+                    id: commentId,
+                    planetsId: planetsId,
+                    senderId: userId,
+                    content: trimmed
+                )
+                comments.append(newComment)
+            } catch {
+                print("Lỗi gửi comment: \(error)")
+            }
+        }
+    }
 }

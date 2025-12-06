@@ -8,6 +8,7 @@
 import SwiftUI
 import WebKit
 import UIKit
+import SwiftData
 
 struct GalaxyView: View {
     let galaxy: GalaxyModel
@@ -19,6 +20,10 @@ struct GalaxyView: View {
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
+    @StateObject private var commentVM = GalaxyViewModel.GalaxyCommentViewModel()
+    @EnvironmentObject var authVM: AuthViewModel
+    @Environment(\.modelContext) private var modelContext
+    private var galaxyId: UUID { galaxy.id }
 
     init(galaxy: GalaxyModel, viewModel: GalaxyViewModel) {
         self.galaxy = galaxy
@@ -83,7 +88,7 @@ struct GalaxyView: View {
                     } else if selectedTab == LanguageManager.current.string("Galleries") {
                         GalleriesView(galaxy: galaxy, animation: animation)
                     } else if selectedTab == LanguageManager.current.string("Comment") {
-                        CommentView()
+                        CommentView(galaxyId: galaxyId).environmentObject(commentVM)
                     } else if selectedTab == LanguageManager.current.string("Wiki") {
                         VStack {
                             Text("\(LanguageManager.current.string("Wiki")): \(galaxy.name)")
@@ -119,6 +124,9 @@ struct GalaxyView: View {
                     }
                 }
                 viewModel.incrementViewCount(galaxy: galaxy)
+                if let userId = authVM.currentUser?.id {
+                    commentVM.setup(userId: userId, context: modelContext)
+                }
             }
             .navigationBarBackButtonHidden(true)
         }
@@ -587,11 +595,55 @@ struct GalaxyView: View {
     }
 
     struct CommentView: View {
+        let galaxyId: UUID
+        
+        @EnvironmentObject var vm: GalaxyViewModel.GalaxyCommentViewModel
+        @EnvironmentObject var authVM: AuthViewModel
+        
+        @State private var messageText = ""
+        @State private var showingProfileUserId: UUID?
+
         var body: some View {
-            Text(LanguageManager.current.string("Comment Under Development"))
-                .font(.title2)
-                .foregroundColor(.white)
-                .padding()
+            VStack(spacing: 0) {
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        if vm.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .scaleEffect(1.2)
+                                .padding()
+                        }
+                        
+                        ForEach(vm.comments) { comment in
+                            CommentBubble(
+                                comment: comment,
+                                currentUserId: authVM.currentUser?.id,
+                                onAvatarTap: { showingProfileUserId = comment.senderId }
+                            )
+                        }
+                    }
+                    .padding()
+                }
+                
+                CommentInputBar(text: $messageText) {
+                    vm.sendComment(galaxyId: galaxyId, content: messageText)
+                    messageText = ""
+                }
+            }
+            .onAppear {
+                vm.loadComments(for: galaxyId)
+            }
+            .background(Color.black.opacity(0.3))
+            .ignoresSafeArea(edges: .bottom)
+            .fullScreenCover(isPresented: Binding(
+                get: { showingProfileUserId != nil },
+                set: { if !$0 { showingProfileUserId = nil } }
+            )) {
+                if let userId = showingProfileUserId {
+                    ProfileViewForFriend(userId: userId)
+                        .environmentObject(authVM)
+                }
+            }
         }
     }
 }

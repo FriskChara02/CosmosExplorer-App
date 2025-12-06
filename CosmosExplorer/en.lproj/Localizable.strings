@@ -101,17 +101,17 @@
 "Hope you enjoy the universe." = "Hope you enjoy the universe.";
 
 /*SettingsView */
-"Settings" = "Cài đặt";
-"Language" = "Ngôn ngữ";
-"English" = "Tiếng Anh";
-"Vietnamese" = "Tiếng Việt";
-"Are you sure you want to change the language?" = "Bạn có chắc chắn muốn thay đổi ngôn ngữ?";
-"Cancel" = "Hủy";
-"Yes" = "Có";
-"Language Changed" = "Ngôn ngữ đã thay đổi";
+"Settings" = "Settings";
+"Language" = "Language";
+"English" = "English";
+"Vietnamese" = "Vietnamese";
+"Are you sure you want to change the language?" = "Are you sure you want to change the language?";
+"Cancel" = "Cancel";
+"Yes" = "Yes";
+"Language Changed" = "Language Changed";
 "OK" = "OK";
-"The language has been changed to English." = "Ngôn ngữ đã được thay đổi thành Tiếng Anh.";
-"The language has been changed to Vietnamese." = "Ngôn ngữ đã được thay đổi thành Tiếng Việt.";
+"The language has been changed to English." = "The language has been changed to English.";
+"The language has been changed to Vietnamese." = "The language has been changed to Vietnamese.";
 
 /* PlanetView */
 "Content for tab coming soon" = "Content for tab coming soon!";
@@ -127,7 +127,7 @@
 "Length of Day" = "Length of Day";
 "Temperature" = "Temperature";
 "Age" = "Age";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Myths Across Cultures" = "Myths Across Cultures";
 "Internal Layers" = "Internal Layers";
 "In-Depth Study" = "In-Depth Study";
@@ -203,7 +203,7 @@
 "Culture" = "Culture {index}";
 "God Name" = "God Name {index}";
 "God Description" = "God Description {index}";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Internal" = "Internal";
 "Internal Title" = "Internal Title";
 "Layer name" = "Layer Name {index}";
@@ -845,7 +845,7 @@
 "Unknown" = "Unknown";
 "Comment Under Development" = "Comment section under development...";
 "No description available" = "No description available";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Videos" = "Videos";
 
 /* AndromedaView */
@@ -966,7 +966,7 @@
 "Unknown" = "Unknown";
 "Comment Under Development" = "Comment section under development...";
 "No description available" = "No description available";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Videos" = "Videos";
 "Pinch to Zoom" = "Pinch to Zoom";
 "Invalid URL" = "Invalid URL";
@@ -1093,7 +1093,7 @@
 "Unknown" = "Unknown";
 "Comment Under Development" = "Comment section under development...";
 "No description available" = "No description available";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Videos" = "Videos";
 "Pinch to Zoom" = "Pinch to Zoom";
 
@@ -1230,7 +1230,7 @@
 "Unknown" = "Unknown";
 "Comment Under Development" = "Comment section under development...";
 "No description available" = "No description available";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Videos" = "Videos";
 "Wikipedia: Sagittarius A" = "Wikipedia: Sagittarius A*";
 "Wikipedia: TON 618" = "Wikipedia: TON 618";
@@ -1312,7 +1312,7 @@
 "Unknown" = "Unknown";
 "Comment Under Development" = "Comment section under development...";
 "No description available" = "No description available";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Videos" = "Videos";
 "Wikipedia: Aquarius Constellation" = "Wikipedia: Aquarius Constellation";
 "360°" = "360°";
@@ -1397,7 +1397,7 @@
 "Unknown" = "Unknown";
 "Comment Under Development" = "Comment section under development...";
 "No description available" = "No description available";
-"Image" = "Image {index}";
+"Image" = "Image";
 "Videos" = "Videos";
 "Pinch to Zoom" = "Pinch to Zoom";
 

@@ -8,6 +8,7 @@
 import SwiftUI
 import WebKit
 import UIKit
+import SwiftData
 
 struct BlackholeView: View {
     let blackhole: BlackholeModel
@@ -19,6 +20,10 @@ struct BlackholeView: View {
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var hoverEffect: [String: CGFloat] = [:]
+    @StateObject private var commentVM = BlackholeViewModel.BlackholeCommentViewModel()
+    @EnvironmentObject var authVM: AuthViewModel
+    private var blackholeId: UUID { blackhole.id }
+    @Environment(\.modelContext) private var modelContext
 
     init(blackhole: BlackholeModel, viewModel: BlackholeViewModel) {
         self.blackhole = blackhole
@@ -83,7 +88,7 @@ struct BlackholeView: View {
                     } else if selectedTab == LanguageManager.current.string("Galleries") {
                         GalleriesView(blackhole: blackhole, animation: animation)
                     } else if selectedTab == LanguageManager.current.string("Comment") {
-                        CommentView()
+                        CommentView(blackholeId: blackholeId).environmentObject(commentVM)
                     } else if selectedTab == LanguageManager.current.string("Wiki") {
                         VStack {
                             Text("\(LanguageManager.current.string("Wiki")): \(blackhole.name)")
@@ -119,6 +124,9 @@ struct BlackholeView: View {
                     }
                 }
                 viewModel.incrementViewCount(blackhole: blackhole)
+                if let userId = authVM.currentUser?.id {
+                    commentVM.setup(userId: userId, context: modelContext)
+                }
             }
             .navigationBarBackButtonHidden(true)
         }
@@ -597,11 +605,129 @@ struct BlackholeView: View {
     }
 
     struct CommentView: View {
+        @EnvironmentObject var vm: BlackholeViewModel.BlackholeCommentViewModel
+        @EnvironmentObject var authVM: AuthViewModel
+        
+        let blackholeId: UUID
+        
+        @State private var messageText = ""
+        @State private var showingProfileUserId: UUID?
+        
         var body: some View {
-            Text(LanguageManager.current.string("Comment Under Development"))
-                .font(.title2)
-                .foregroundColor(.white)
-                .padding()
+            VStack(spacing: 0) {
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        ForEach(vm.comments) { comment in
+                            CommentBubble(
+                                comment: comment,
+                                currentUserId: authVM.currentUser?.id,
+                                onAvatarTap: { showingProfileUserId = comment.senderId }
+                            )
+                        }
+                    }
+                    .padding()
+                }
+                
+                CommentInputBar(text: $messageText) {
+                    vm.sendComment(blackholeId: blackholeId, content: messageText)
+                    messageText = ""
+                }
+            }
+            .onAppear {
+                vm.loadComments(for: blackholeId)
+            }
+            .background(Color.black.opacity(0.1))
+            .ignoresSafeArea(edges: .bottom)
+            .fullScreenCover(isPresented: Binding(
+                get: { showingProfileUserId != nil },
+                set: { if !$0 { showingProfileUserId = nil } }
+            )) {
+                if let userId = showingProfileUserId {
+                    ProfileViewForFriend(userId: userId)
+                        .environmentObject(authVM)
+                }
+            }
+        }
+        
+        // MARK: - Comment Bubble
+        struct CommentBubble: View {
+            let comment: BlackholeComment
+            let currentUserId: UUID?
+            let onAvatarTap: () -> Void
+            
+            @EnvironmentObject var authVM: AuthViewModel
+            
+            private var senderAvatarURL: URL? {
+                if comment.senderId == authVM.currentUser?.id {
+                    return URL(string: authVM.currentUser?.avatar ?? "")
+                }
+                
+                if let context = authVM.modelContext,
+                   let user = try? context.fetch(FetchDescriptor<UserModel>()).first(where: { $0.id == comment.senderId }) {
+                    return URL(string: user.avatar ?? "")
+                }
+                
+                return URL(string: "")
+            }
+            
+            private var isFromCurrentUser: Bool {
+                comment.senderId == currentUserId
+            }
+            
+            var body: some View {
+                HStack(alignment: .bottom, spacing: 10) {
+                    if !isFromCurrentUser {
+                        Button(action: onAvatarTap) {
+                            AsyncImage(url: senderAvatarURL) { image in
+                                image.resizable().scaledToFill()
+                            } placeholder: {
+                                Circle()
+                                    .fill(Color.gray.opacity(0.5))
+                                    .overlay(Image(systemName: "person.fill").foregroundColor(.white))
+                            }
+                            .frame(width: 36, height: 36)
+                            .clipShape(Circle())
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    
+                    Text(comment.content)
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.white)
+                        .padding(14)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(isFromCurrentUser
+                                      ? AnyShapeStyle(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                      : AnyShapeStyle(Color.white.opacity(0.15))
+                                     )
+                        )
+                        .frame(maxWidth: UIScreen.main.bounds.width * 0.75, alignment: isFromCurrentUser ? .trailing : .leading)
+                    
+                    if isFromCurrentUser {
+                        Button(action: onAvatarTap) {
+                            AsyncImage(url: senderAvatarURL) { image in
+                                image.resizable().scaledToFill()
+                            } placeholder: {
+                                Circle()
+                                    .fill(Color.gray.opacity(0.5))
+                                    .overlay(Image(systemName: "person.fill").foregroundColor(.white))
+                            }
+                            .frame(width: 36, height: 36)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle().strokeBorder(
+                                    LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing),
+                                    lineWidth: 2
+                                )
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: isFromCurrentUser ? .trailing : .leading)
+                .padding(.horizontal, isFromCurrentUser ? 12 : 0)
+            }
         }
     }
 }

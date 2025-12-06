@@ -13,6 +13,11 @@ struct SaturnView: View {
     @State private var selectedTab: String = "Overview"
     @State private var randomInfo: String = ""
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var commentVM = SolarSystemViewModel.PlanetCommentViewModel()
+    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject var authVM: AuthViewModel
+    private var planetId: UUID { planet.id }
+    
     private let infoItems: [String] = [
         LanguageManager.current.string("Saturn Random Info 1"),
         LanguageManager.current.string("Saturn Random Info 2"),
@@ -105,6 +110,8 @@ struct SaturnView: View {
                         InDepthView(animation: animation)
                     } else if selectedTab == "Exploration" {
                         ExplorationView(animation: animation)
+                    } else if selectedTab == "Comment" {
+                        CommentSaturnView(planetId: planetId).environmentObject(commentVM)
                     } else {
                         Text(LanguageManager.current.string("Content for tab coming soon").replacingOccurrences(of: "{tab}", with: selectedTab))
                             .font(.title2)
@@ -121,6 +128,7 @@ struct SaturnView: View {
             .background(Image("BlackBG").resizable().scaledToFill().ignoresSafeArea())
             .animation(.easeInOut(duration: 1.0), value: glowIntensity)
             .onAppear {
+                if let userId = authVM.currentUser?.id { commentVM.setup(userId: userId, context: modelContext) }
                 updateRandomInfo()
                 Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
                     withAnimation(.easeInOut) {
@@ -1063,6 +1071,133 @@ struct SaturnView: View {
         ringMaterial.metallic = 0.0
         
         return ModelEntity(mesh: meshResource, materials: [ringMaterial])
+    }
+}
+
+struct CommentSaturnView: View {
+    @EnvironmentObject var vm: SolarSystemViewModel.PlanetCommentViewModel
+    @EnvironmentObject var authVM: AuthViewModel
+    
+    let planetId: UUID
+    
+    @State private var messageText = ""
+    @State private var showingProfileUserId: UUID?
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            ScrollView {
+                LazyVStack(spacing: 12) {
+                    ForEach(vm.comments) { comment in
+                        CommentBubble(
+                            comment: comment,
+                            currentUserId: authVM.currentUser?.id,
+                            onAvatarTap: { showingProfileUserId = comment.senderId }
+                        )
+                    }
+                }
+                .padding()
+            }
+            
+            CommentInputBar(text: $messageText) {
+                vm.sendComment(planetId: planetId, content: messageText)
+                messageText = ""
+            }
+        }
+        .onAppear {
+            vm.loadComments(for: planetId)
+        }
+        .background(Color.black.opacity(0.1))
+        .ignoresSafeArea(edges: .bottom)
+        .fullScreenCover(isPresented: Binding(
+            get: { showingProfileUserId != nil },
+            set: { if !$0 { showingProfileUserId = nil } }
+        )) {
+            if let userId = showingProfileUserId {
+                ProfileViewForFriend(userId: userId)
+                    .environmentObject(authVM)
+            }
+        }
+    }
+    
+    // MARK: - Comment Bubble
+    struct CommentBubble: View {
+        let comment: PlanetComment
+        let currentUserId: UUID?
+        let onAvatarTap: () -> Void
+        
+        @EnvironmentObject var authVM: AuthViewModel
+        
+        private var senderAvatarURL: URL? {
+            if comment.senderId == authVM.currentUser?.id {
+                return URL(string: authVM.currentUser?.avatar ?? "")
+            }
+            
+            if let context = authVM.modelContext,
+               let user = try? context.fetch(FetchDescriptor<UserModel>()).first(where: { $0.id == comment.senderId }) {
+                return URL(string: user.avatar ?? "")
+            }
+            
+            return URL(string: "")
+        }
+        
+        private var isFromCurrentUser: Bool {
+            comment.senderId == currentUserId
+        }
+        
+        var body: some View {
+            HStack(alignment: .bottom, spacing: 10) {
+                if !isFromCurrentUser {
+                    Button(action: onAvatarTap) {
+                        AsyncImage(url: senderAvatarURL) { image in
+                            image.resizable().scaledToFill()
+                        } placeholder: {
+                            Circle()
+                                .fill(Color.gray.opacity(0.5))
+                                .overlay(Image(systemName: "person.fill").foregroundColor(.white))
+                        }
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                }
+                
+                Text(comment.content)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.white)
+                    .padding(14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(isFromCurrentUser
+                                  ? AnyShapeStyle(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                  : AnyShapeStyle(Color.white.opacity(0.15))
+                                 )
+                    )
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.75, alignment: isFromCurrentUser ? .trailing : .leading)
+                
+                if isFromCurrentUser {
+                    Button(action: onAvatarTap) {
+                        AsyncImage(url: senderAvatarURL) { image in
+                            image.resizable().scaledToFill()
+                        } placeholder: {
+                            Circle()
+                                .fill(Color.gray.opacity(0.5))
+                                .overlay(Image(systemName: "person.fill").foregroundColor(.white))
+                        }
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().strokeBorder(
+                                LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing),
+                                lineWidth: 2
+                            )
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: isFromCurrentUser ? .trailing : .leading)
+            .padding(.horizontal, isFromCurrentUser ? 12 : 0)
+        }
     }
 }
 
