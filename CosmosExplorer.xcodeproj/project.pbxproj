@@ -19,6 +19,8 @@
 		7ADF763A2EE3CD15001D7752 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADF76392EE3CD15001D7752 /* GoogleSignIn */; };
 		7ADF763C2EE3CD15001D7752 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7ADF763B2EE3CD15001D7752 /* GoogleSignInSwift */; };
 		7AEA5DF72ED165AE00AB3181 /* EmojiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7AEA5DF62ED165AE00AB3181 /* EmojiKit */; };
+		7AECA4362EE873B800A676B9 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7AECA4352EE873B800A676B9 /* FacebookCore */; };
+		7AECA4382EE873B800A676B9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7AECA4372EE873B800A676B9 /* FacebookLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,7 @@
 				Nebula/NebulaView/HelixView.swift,
 				Planets/AddPlanetsView.swift,
 				Planets/EditPlanetsView.swift,
+				Planets/Planets3DView.swift,
 				Planets/PlanetsCatalogView.swift,
 				Planets/PlanetsView.swift,
 				Planets/PlanetsView/Cancrie55View.swift,
@@ -114,7 +117,9 @@
 				Planets/PlanetsView/ProximabView.swift,
 				SkyLive/SkyLiveListView.swift,
 				SkyLive/SolarSysteam3D.swift,
+				SolarSystem/SolarSystem3DView.swift,
 				SolarSystem/SolarSystemView/MoonView.swift,
+				Star/Stars3DView.swift,
 			);
 			target = 7A7F82E32E367C31006291B9 /* CosmosExplorerUITests */;
 		};
@@ -208,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AECA4362EE873B800A676B9 /* FacebookCore in Frameworks */,
 				7AA394042EADC504000C47DA /* SwiftAA in Frameworks */,
 				7A4FF4702E6310C900ED6904 /* WebKit.framework in Frameworks */,
 				7ADF763A2EE3CD15001D7752 /* GoogleSignIn in Frameworks */,
@@ -219,6 +225,7 @@
 				7AEA5DF72ED165AE00AB3181 /* EmojiKit in Frameworks */,
 				7AB292EF2E74499D00582D0F /* PostgresClientKit in Frameworks */,
 				7AB292F82E7450F100582D0F /* OpenCombineFoundation in Frameworks */,
+				7AECA4382EE873B800A676B9 /* FacebookLogin in Frameworks */,
 				7AB292FA2E7450F100582D0F /* OpenCombineShim in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +316,8 @@
 				7AEA5DF62ED165AE00AB3181 /* EmojiKit */,
 				7ADF76392EE3CD15001D7752 /* GoogleSignIn */,
 				7ADF763B2EE3CD15001D7752 /* GoogleSignInSwift */,
+				7AECA4352EE873B800A676B9 /* FacebookCore */,
+				7AECA4372EE873B800A676B9 /* FacebookLogin */,
 			);
 			productName = CosmosExplorer;
 			productReference = 7A7F82CB2E367C30006291B9 /* CosmosExplorer.app */;
@@ -400,6 +409,7 @@
 				7AA393FE2EADC504000C47DA /* XCRemoteSwiftPackageReference "SwiftAA" */,
 				7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */,
 				7ADF76382EE3CD15001D7752 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				7AECA4342EE873B800A676B9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7A7F82CC2E367C30006291B9 /* Products */;
@@ -509,6 +519,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = M47BB5RR2A;
@@ -575,6 +587,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = M47BB5RR2A;
@@ -605,6 +619,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmosExplorer/CosmosExplorer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M47BB5RR2A;
@@ -634,6 +649,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CosmosExplorer/CosmosExplorer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M47BB5RR2A;
@@ -812,6 +828,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		7AECA4342EE873B800A676B9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -859,6 +883,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7AEA5DF52ED165AE00AB3181 /* XCRemoteSwiftPackageReference "EmojiKit" */;
 			productName = EmojiKit;
+		};
+		7AECA4352EE873B800A676B9 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AECA4342EE873B800A676B9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		7AECA4372EE873B800A676B9 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7AECA4342EE873B800A676B9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

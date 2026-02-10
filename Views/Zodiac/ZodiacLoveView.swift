@@ -31,7 +31,7 @@ struct ZodiacLoveView: View {
     private var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 12), count: 4)
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 // Background
                 Color.clear

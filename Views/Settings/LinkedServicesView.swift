@@ -40,6 +40,7 @@ struct LinkedServicesView: View {
                         VStack(spacing: 12) {
                             sectionLabel(title: "Popular Services", icon: "star.fill")
                             
+                            // Google
                             ServiceCard(
                                 service: "Google",
                                 icon: "GoogleIcon",
@@ -67,6 +68,7 @@ struct LinkedServicesView: View {
                                 }
                             )
                             
+                            // Apple
                             ServiceCard(
                                 service: "Apple",
                                 icon: "apple.logo",
@@ -75,7 +77,22 @@ struct LinkedServicesView: View {
                                 gradient: [.white, .gray],
                                 description: "Use your Apple ID for quick access",
                                 isLinked: $appleLinked,
-                                delay: 0.2
+                                delay: 0.2,
+                                onLink: {
+                                    AppleService.shared.signIn { result in
+                                        switch result {
+                                        case .success(let appleUser):
+                                            print("✅ Linked Apple: \(appleUser.username)")
+                                            appleLinked = true
+                                        case .failure(let error):
+                                            print("❌ Failed to link Apple: \(error)")
+                                        }
+                                    }
+                                },
+                                onUnlink: {
+                                    AppleService.shared.signOut()
+                                    appleLinked = false
+                                }
                             )
                         }
                         
@@ -83,6 +100,7 @@ struct LinkedServicesView: View {
                         VStack(spacing: 12) {
                             sectionLabel(title: "Social Networks", icon: "person.2.fill")
                             
+                            // Facebook
                             ServiceCard(
                                 service: "Facebook",
                                 icon: "FacebookIcon",
@@ -91,7 +109,23 @@ struct LinkedServicesView: View {
                                 gradient: [.blue, .cyan],
                                 description: "Connect with Facebook",
                                 isLinked: $facebookLinked,
-                                delay: 0.3
+                                delay: 0.3,
+                                onLink: {
+                                    guard let rootVC = getRootViewController() else { return }
+                                    FacebookService.shared.signIn(from: rootVC) { result in
+                                        switch result {
+                                        case .success(let facebookUser):
+                                            print("✅ Linked Facebook: \(facebookUser.username)")
+                                            facebookLinked = true
+                                        case .failure(let error):
+                                            print("❌ Failed to link Facebook: \(error)")
+                                        }
+                                    }
+                                },
+                                onUnlink: {
+                                    FacebookService.shared.signOut()
+                                    facebookLinked = false
+                                }
                             )
                         }
                         

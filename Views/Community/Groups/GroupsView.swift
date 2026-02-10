@@ -149,11 +149,11 @@ struct GroupsView: View {
             }
             
             VStack(spacing: 8) {
-                Text("Chưa có nhóm nào")
+                Text("No groups yet")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
                 
-                Text("Tạo nhóm để trò chuyện cùng\nnhiều người bạn!")
+                Text("Create a group to chat with many friends!")
                     .font(.system(size: 15, weight: .medium))
                     .foregroundColor(.white.opacity(0.6))
                     .multilineTextAlignment(.center)
@@ -165,7 +165,7 @@ struct GroupsView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 18, weight: .semibold))
-                    Text("Tạo nhóm mới")
+                    Text("Create a new group")
                         .font(.system(size: 16, weight: .semibold))
                 }
                 .foregroundColor(.white)
@@ -338,11 +338,11 @@ struct CreateGroupView: View {
                     VStack(spacing: 24) {
                         // Group Name Input
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Tên nhóm")
+                            Text("Group name")
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(.white.opacity(0.8))
                             
-                            TextField("Nhập tên nhóm...", text: $groupName)
+                            TextField("Enter group name...", text: $groupName)
                                 .textInputAutocapitalization(.words)
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.white)
@@ -360,19 +360,19 @@ struct CreateGroupView: View {
                         // Members Selection
                         VStack(alignment: .leading, spacing: 12) {
                             HStack {
-                                Text("Thêm thành viên")
+                                Text("Add member")
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(.white.opacity(0.8))
                                 
                                 Spacer()
                                 
-                                Text("\(selectedFriends.count) được chọn")
+                                Text("\(selectedFriends.count) selected")
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundColor(.white.opacity(0.5))
                             }
                             
                             if friendsVM.friends.isEmpty {
-                                Text("Bạn chưa có bạn bè nào")
+                                Text("You don't have any friends yet.")
                                     .font(.system(size: 15, weight: .medium))
                                     .foregroundColor(.white.opacity(0.5))
                                     .frame(maxWidth: .infinity)
@@ -398,7 +398,7 @@ struct CreateGroupView: View {
                                     Image(systemName: "checkmark.circle.fill")
                                         .font(.system(size: 18, weight: .semibold))
                                 }
-                                Text(isCreating ? "Đang tạo..." : "Tạo nhóm")
+                                Text(isCreating ? "Creating..." : "Create group")
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             .foregroundColor(.white)
@@ -426,7 +426,7 @@ struct CreateGroupView: View {
                     .padding(20)
                 }
             }
-            .navigationTitle("Tạo nhóm mới")
+            .navigationTitle("Create a new group")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {
@@ -544,9 +544,9 @@ struct CreateGroupView: View {
             DispatchQueue.main.async {
                 isCreating = false
                 if success {
-                    alertMessage = "Tạo nhóm thành công!"
+                    alertMessage = "Group created successfully!"
                 } else {
-                    alertMessage = "Tạo nhóm thất bại, vui lòng thử lại"
+                    alertMessage = "Group creation failed, please try again"
                 }
                 showAlert = true
             }

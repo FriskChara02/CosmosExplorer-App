@@ -138,7 +138,7 @@ struct ChatDetailView: View {
                     Circle()
                         .fill(Color.green)
                         .frame(width: 8, height: 8)
-                    Text("Đang hoạt động")
+                    Text("Online")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.white.opacity(0.7))
                 }
@@ -214,11 +214,11 @@ struct ChatDetailView: View {
                         replyingTo = message
                     }
                     .contextMenu {
-                        Button("Trả lời") {
+                        Button("Reply") {
                             replyingTo = message
                         }
                         if isFromCurrentUser(message) {
-                            Button("Xóa tin nhắn", role: .destructive) {
+                            Button("Delete message", role: .destructive) {
                                 deleteMessage(message)
                             }
                         }
@@ -315,7 +315,7 @@ struct ChatDetailView: View {
             
             // Text field
             HStack(spacing: 8) {
-                TextField("Nhập tin nhắn...", text: $messageText, axis: .vertical)
+                TextField("Enter message...", text: $messageText, axis: .vertical)
                     .textFieldStyle(.plain)
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.white)
@@ -578,11 +578,11 @@ struct EmojiPickerSheet: View {
                 )
                 .padding()
             }
-            .navigationTitle("Chọn Emoji")
+            .navigationTitle("Select Emoji")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Đóng") {
+                    Button("Close") {
                         dismiss()
                     }
                     .foregroundColor(.blue)
@@ -618,8 +618,8 @@ struct ChatSettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Tùy chỉnh") {
-                    TextField("Biệt danh", text: $nickname)
+                Section("Customize") {
+                    TextField("Nickname", text: $nickname)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                     
@@ -658,29 +658,29 @@ struct ChatSettingsView: View {
                 
                 Section {
                     if chat.isBlocked {
-                        Button("Bỏ chặn") {}
+                        Button("Unblock") {}
                         .foregroundColor(.green)
                     } else {
-                        Button("Chặn người này", role: .destructive) {
+                        Button("Block this person", role: .destructive) {
                             viewModel.blockUser(chatId: chat.id) { _ in }
                             dismiss()
                         }
                     }
                     
-                    Button("Xóa cuộc trò chuyện", role: .destructive) {
+                    Button("Delete conversation", role: .destructive) {
                         viewModel.deleteChat(chatId: chat.id) { _ in }
                         dismiss()
                     }
                 }
             }
-            .navigationTitle("Cài đặt trò chuyện")
+            .navigationTitle("Chat settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Hủy") { dismiss() }
+                    Button("Cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Lưu") {
+                    Button("Save") {
                         viewModel.updateChatSettings(
                             chatId: chat.id,
                             nickname: nickname.isEmpty ? nil : nickname,

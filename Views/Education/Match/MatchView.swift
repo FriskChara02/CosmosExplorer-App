@@ -22,7 +22,21 @@ struct MatchView: View {
             ZStack {
                 Color(.systemBackground).ignoresSafeArea()
                 
-                if viewModel.isCompleted {
+                if viewModel.quiz.cards.isEmpty {
+                    VStack(spacing: 16) {
+                        Image(systemName: "square.grid.4x3.fill")
+                            .font(.system(size: 60))
+                            .foregroundColor(.secondary)
+                        Text("No cards available")
+                            .font(.title2)
+                            .foregroundColor(.secondary)
+                        Text("Add at least 8 cards to play Match game")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding()
+                } else if viewModel.isCompleted {
                     MatchCompletionView(
                         correct: viewModel.correctCount,
                         total: viewModel.matchedPairs.count,
@@ -46,9 +60,10 @@ struct MatchView: View {
             }
             .navigationBarBackButtonHidden(true)
             .onAppear {
-                if viewModel.attempt.id == 0 {
-                    viewModel.startMatch()
+                if viewModel.quiz.cards.isEmpty {
+                    print("⚠️ WARNING: Quiz has no cards!")
                 }
+                viewModel.startMatch()
             }
         }
     }

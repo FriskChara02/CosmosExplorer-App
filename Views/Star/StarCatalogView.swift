@@ -64,7 +64,12 @@ struct StarCatalogView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
-                    HStack {
+                    HStack(spacing: 15) {
+                        NavigationLink(destination: Stars3DView().navigationBarBackButtonHidden(true)) {
+                            Image(systemName: "cube.transparent")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                        }
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 isSearchActive.toggle()

@@ -203,7 +203,7 @@ struct ProfileView: View {
                 .frame(width: 10, height: 10)
                 .shadow(color: getRankUIColor().opacity(0.5), radius: 4, x: 0, y: 2)
             
-            Text(currentUser?.getRankColor() ?? "Trắng")
+            Text(currentUser?.getRankColor() ?? "White")
                 .font(.system(size: 14, weight: .semibold, design: .rounded))
                 .foregroundColor(getRankUIColor())
             
@@ -239,12 +239,12 @@ struct ProfileView: View {
     // MARK: - Bio Section
     private var bioSection: some View {
         VStack(alignment: .center, spacing: 8) {
-            Text("Tiểu sử")
+            Text("Bio")
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(.white.opacity(0.6))
                 .frame(maxWidth: .infinity, alignment: .center)
             
-            Text(currentUser?.bio?.isEmpty == false ? currentUser!.bio! : "Chưa có tiểu sử")
+            Text(currentUser?.bio?.isEmpty == false ? currentUser!.bio! : "No bio yet")
                 .font(.system(size: 16, weight: .regular, design: .rounded))
                 .foregroundColor(.white.opacity(0.9))
                 .multilineTextAlignment(.center)
@@ -273,47 +273,47 @@ struct ProfileView: View {
                 .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.45), value: isLoaded)
             
             if let description = currentUser?.userDescription, !description.isEmpty {
-                ModernInfoCard(icon: "quote.bubble.fill", title: "Mô tả", value: description, accentColor: .cyan)
+                ModernInfoCard(icon: "quote.bubble.fill", title: "Description", value: description, accentColor: .cyan)
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : -20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.48), value: isLoaded)
             }
             
             if let dateOfBirth = currentUser?.dateOfBirth {
-                ModernInfoCard(icon: "calendar", title: "Ngày sinh", value: DateHelper.formatDate(dateOfBirth), accentColor: .orange)
+                ModernInfoCard(icon: "calendar", title: "Date of birth", value: DateHelper.formatDate(dateOfBirth), accentColor: .orange)
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : -20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.52), value: isLoaded)
             }
             
             if let location = currentUser?.location, !location.isEmpty {
-                ModernInfoCard(icon: "location.fill", title: "Vị trí", value: location, accentColor: .green)
+                ModernInfoCard(icon: "location.fill", title: "Location", value: location, accentColor: .green)
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : -20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.55), value: isLoaded)
             }
             
             if let gender = currentUser?.gender, !gender.isEmpty {
-                ModernInfoCard(icon: "person.fill", title: "Giới tính", value: gender.capitalized, accentColor: .purple)
+                ModernInfoCard(icon: "person.fill", title: "Gender", value: gender.capitalized, accentColor: .purple)
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : -20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.58), value: isLoaded)
             }
             
             if let hobbies = currentUser?.hobbies, !hobbies.isEmpty {
-                ModernInfoCard(icon: "star.fill", title: "Sở thích", value: hobbies, accentColor: .yellow)
+                ModernInfoCard(icon: "star.fill", title: "Hobbies", value: hobbies, accentColor: .yellow)
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : -20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.62), value: isLoaded)
             }
             
             HStack(spacing: 12) {
-                ModernStatusCard(icon: "circle.fill", title: "Trạng thái", value: (currentUser?.status ?? "offline").capitalized, status: currentUser?.status ?? "offline")
+                ModernStatusCard(icon: "circle.fill", title: "Status", value: (currentUser?.status ?? "offline").capitalized, status: currentUser?.status ?? "offline")
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : -20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.7), value: isLoaded)
                 
-                ModernRoleCard(icon: "shield.fill", title: "Vai trò", value: (currentUser?.role ?? "user").capitalized, role: currentUser?.role ?? "user")
+                ModernRoleCard(icon: "shield.fill", title: "Role", value: (currentUser?.role ?? "user").capitalized, role: currentUser?.role ?? "user")
                     .opacity(isLoaded ? 1 : 0)
                     .offset(x: isLoaded ? 0 : 20)
                     .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.7), value: isLoaded)
@@ -347,12 +347,12 @@ struct ProfileView: View {
         .opacity(isLoaded ? 1 : 0)
         .offset(y: isLoaded ? 0 : 20)
         .animation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.75), value: isLoaded)
-        .alert("Đăng xuất", isPresented: $showLogoutConfirmation) {
-            Button("Hủy", role: .cancel) { }
-            Button("Đăng xuất", role: .destructive) {
+        .alert("Logout", isPresented: $showLogoutConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Logout", role: .destructive) {
                 withAnimation { viewModel.signOut() }
             }
-        } message: { Text("Bạn có chắc chắn muốn đăng xuất không?") }
+        } message: { Text("Are you sure you want to log out?") }
     }
     
     private var placeholderAvatar: some View {
@@ -419,7 +419,7 @@ struct EditProfileView: View {
     
     // MARK: - Gender Selection
     @State private var selectedGender = "Khác"
-    private let genders = ["Nam", "Nữ", "Khác"]
+    private let genders = ["Male", "Female", "Other"]
     
     // MARK: - Text Fields State
     @State private var usernameText: String = ""
@@ -438,14 +438,14 @@ struct EditProfileView: View {
                 personalInfoSection
                 actionsSection
             }
-            .navigationTitle("Chỉnh sửa hồ sơ")
+            .navigationTitle("Edit profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Hủy") { dismiss() }
+                    Button("Cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Lưu") {
+                    Button("Save") {
                         Task { await saveChanges() }
                     }
                     .disabled(isUploadingAvatar)
@@ -454,20 +454,20 @@ struct EditProfileView: View {
             .onAppear {
                 initializeFields()
             }
-            .alert("Xóa tài khoản vĩnh viễn?", isPresented: $showDeleteConfirmation) {
-                Button("Hủy", role: .cancel) { }
-                Button("Xóa", role: .destructive) {
+            .alert("Permanently delete your account?", isPresented: $showDeleteConfirmation) {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
                     deleteAccount()
                 }
             } message: {
-                Text("Bạn sẽ mất toàn bộ dữ liệu và không thể khôi phục.")
+                Text("You will lose all your data and it will be impossible to recover it.")
             }
         }
     }
     
     // MARK: - Avatar
     private var avatarSection: some View {
-        Section("Ảnh đại diện") {
+        Section("Avatar") {
             avatarDisplay
             avatarPicker
         }
@@ -526,7 +526,7 @@ struct EditProfileView: View {
     
     private var avatarPicker: some View {
         PhotosPicker(selection: $selectedPhoto, matching: .images) {
-            Label("Chọn ảnh từ thư viện", systemImage: "photo.on.rectangle")
+            Label("Select an image from the library", systemImage: "photo.on.rectangle")
         }
         .onChange(of: selectedPhoto) { _, newItem in
             Task {
@@ -537,19 +537,19 @@ struct EditProfileView: View {
     
     // MARK: - Basic Info
     private var basicInfoSection: some View {
-        Section("Thông tin cơ bản") {
-            TextField("Tên người dùng", text: $usernameText)
+        Section("Basic information") {
+            TextField("User name", text: $usernameText)
             TextField("Email", text: $user.email)
                 .disabled(true)
                 .foregroundColor(.secondary)
-            TextField("Tiểu sử (Bio)", text: $bioText, axis: .vertical)
+            TextField("Bio", text: $bioText, axis: .vertical)
                 .lineLimit(3...6)
         }
     }
     
     // MARK: - Description Section
     private var descriptionSection: some View {
-        Section("Mô tả bản thân") {
+        Section("Describe yourself") {
             TextEditor(text: $userDescriptionText)
                 .frame(height: 120)
                 .scrollContentBackground(.hidden)
@@ -560,25 +560,25 @@ struct EditProfileView: View {
     
     // MARK: - Personal Info
     private var personalInfoSection: some View {
-        Section("Thông tin cá nhân") {
-            DatePicker("Ngày sinh", selection: $selectedDateOfBirth, displayedComponents: .date)
+        Section("Personal information") {
+            DatePicker("Date of birth", selection: $selectedDateOfBirth, displayedComponents: .date)
                 .datePickerStyle(.compact)
             
-            TextField("Vị trí", text: $locationText)
+            TextField("Location", text: $locationText)
             
-            Picker("Giới tính", selection: $selectedGender) {
+            Picker("Sex", selection: $selectedGender) {
                 ForEach(genders, id: \.self) { Text($0).tag($0) }
             }
             .pickerStyle(.segmented)
             
-            TextField("Sở thích", text: $hobbiesText)
+            TextField("Interest", text: $hobbiesText)
         }
     }
     
     // MARK: - Actions Section
     private var actionsSection: some View {
         Section {
-            Button("Xóa tài khoản", role: .destructive) {
+            Button("Delete account", role: .destructive) {
                 showDeleteConfirmation = true
             }
         }
@@ -591,7 +591,7 @@ struct EditProfileView: View {
         userDescriptionText = user.userDescription ?? ""
         locationText = user.location ?? ""
         hobbiesText = user.hobbies ?? ""
-        selectedGender = user.gender ?? "Khác"
+        selectedGender = user.gender ?? "Other"
         selectedDateOfBirth = user.dateOfBirth ?? Date()
     }
     
@@ -625,7 +625,7 @@ struct EditProfileView: View {
         user.userDescription = userDescriptionText.isEmpty ? nil : userDescriptionText
         user.location = locationText.isEmpty ? nil : locationText
         user.hobbies = hobbiesText.isEmpty ? nil : hobbiesText
-        user.gender = selectedGender == "Khác" ? nil : selectedGender
+        user.gender = selectedGender == "Other" ? nil : selectedGender
         user.dateOfBirth = selectedDateOfBirth
         
         SwiftDataService().updateUser(user)

@@ -78,11 +78,11 @@ struct ChatsView: View {
             }
             
             VStack(alignment: .leading, spacing: 2) {
-                Text("Tin nhắn")
+                Text("Messenger")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 
-                Text("\(unifiedItems.count) cuộc trò chuyện")
+                Text("\(unifiedItems.count) conversations")
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(.white.opacity(0.6))
             }
@@ -216,11 +216,11 @@ struct ChatsView: View {
             }
             
             VStack(spacing: 8) {
-                Text("Chưa có tin nhắn nào")
+                Text("No messages")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
                 
-                Text("Bắt đầu trò chuyện với bạn bè\nhoặc tham gia nhóm!")
+                Text("Start a chat with friends or join a group!")
                     .font(.system(size: 15, weight: .medium))
                     .foregroundColor(.white.opacity(0.6))
                     .multilineTextAlignment(.center)
@@ -230,7 +230,7 @@ struct ChatsView: View {
                 HStack(spacing: 8) {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 18, weight: .semibold))
-                    Text("Tạo nhóm mới")
+                    Text("Create a new group")
                         .font(.system(size: 16, weight: .semibold))
                 }
                 .foregroundColor(.white)
@@ -447,9 +447,9 @@ struct ModernChatRow: View {
 
 // MARK: - Supporting Types
 enum ChatFilterTab: String, CaseIterable {
-    case all = "Tất cả"
+    case all = "All"
     case chats = "Chats"
-    case groups = "Nhóm"
+    case groups = "Groups"
 }
 
 struct UnifiedChatItem: Identifiable, Equatable {

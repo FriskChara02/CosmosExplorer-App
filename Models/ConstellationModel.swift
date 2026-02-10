@@ -47,6 +47,11 @@ class ConstellationModel: Identifiable {
     
     var namedStars: [String] {
         get {
+            if let string = String(data: namedStarsData, encoding: .utf8),
+               let dataFromString = string.data(using: .utf8),
+               let array = try? JSONDecoder().decode([String].self, from: dataFromString) {
+                return array
+            }
             guard let data = try? JSONDecoder().decode([String].self, from: namedStarsData) else { return [] }
             return data
         }

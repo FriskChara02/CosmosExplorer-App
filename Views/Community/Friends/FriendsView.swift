@@ -44,7 +44,7 @@ struct FriendsView: View {
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "Tìm kiếm bạn bè...")
+            .searchable(text: $searchText, prompt: "Looking for friends...")
             .navigationBarHidden(true)
             .onAppear {
                 if let userId = authViewModel.currentUser?.id {
@@ -80,11 +80,11 @@ struct FriendsView: View {
             }
             
             VStack(alignment: .leading, spacing: 2) {
-                Text("Bạn bè")
+                Text("Friends")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 
-                Text("\(viewModel.friends.count) người bạn")
+                Text("\(viewModel.friends.count) Friends")
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(.white.opacity(0.6))
             }
@@ -99,9 +99,9 @@ struct FriendsView: View {
     // MARK: - Segmented Control
     private var modernSegmentedControl: some View {
         HStack(spacing: 0) {
-            segmentButton(title: "Bạn bè", icon: "person.2.fill", index: 0)
-            segmentButton(title: "Lời mời", icon: "envelope.badge.fill", index: 1)
-            segmentButton(title: "Gợi ý", icon: "sparkles", index: 2)
+            segmentButton(title: "Friends", icon: "person.2.fill", index: 0)
+            segmentButton(title: "Pending", icon: "envelope.badge.fill", index: 1)
+            segmentButton(title: "Suggest", icon: "sparkles", index: 2)
         }
         .padding(4)
         .background(
@@ -153,13 +153,13 @@ struct FriendsView: View {
                         Button {
                             openPrivateChat(with: friend.userId)
                         } label: {
-                            Label("Nhắn tin", systemImage: "message.fill")
+                            Label("Chatting", systemImage: "message.fill")
                         }
                         
                         Button(role: .destructive) {
                             deleteFriend(friend.userId)
                         } label: {
-                            Label("Xóa bạn", systemImage: "trash")
+                            Label("Delete Friend", systemImage: "trash")
                         }
                     }
                 }
@@ -225,7 +225,7 @@ struct FriendsView: View {
                         .font(.system(size: 6))
                         .foregroundColor(.green)
                     
-                    Text(friend.status ?? "Đang hoạt động")
+                    Text(friend.status ?? "Online")
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(.white.opacity(0.6))
                 }
@@ -293,7 +293,7 @@ struct FriendsView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.white)
                 
-                Text("Muốn kết bạn với bạn")
+                Text("Want to make friends with you")
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(.white.opacity(0.6))
             }
@@ -307,7 +307,7 @@ struct FriendsView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "checkmark")
                             .font(.system(size: 12, weight: .bold))
-                        Text("Chấp nhận")
+                        Text("Accept")
                             .font(.system(size: 13, weight: .semibold))
                     }
                     .foregroundColor(.white)
@@ -328,7 +328,7 @@ struct FriendsView: View {
                 Button {
                     viewModel.rejectFriendRequest(from: user.userId) { _ in }
                 } label: {
-                    Text("Từ chối")
+                    Text("Decline")
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundColor(.white.opacity(0.7))
                         .padding(.horizontal, 16)
@@ -397,7 +397,7 @@ struct FriendsView: View {
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundColor(.white)
                 
-                Text(user.bio ?? "Chưa có tiểu sử")
+                Text(user.bio ?? "No bio yet")
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(.white.opacity(0.6))
                     .lineLimit(2)
@@ -411,7 +411,7 @@ struct FriendsView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "person.badge.plus")
                         .font(.system(size: 14, weight: .semibold))
-                    Text("Kết bạn")
+                    Text("Add friend")
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .foregroundColor(.white)
@@ -549,7 +549,7 @@ struct ProfileViewForFriend: View {
             .ignoresSafeArea()
             
             if isLoading {
-                ProgressView("Đang tải hồ sơ...")
+                ProgressView("Loading profile...")
                     .scaleEffect(1.5)
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -563,7 +563,7 @@ struct ProfileViewForFriend: View {
                     Image(systemName: "person.crop.circle.badge.xmark")
                         .font(.system(size: 60))
                         .foregroundColor(.gray)
-                    Text(errorMessage ?? "Không tìm thấy người dùng")
+                    Text(errorMessage ?? "No user found")
                         .font(.title3)
                         .foregroundColor(.white.opacity(0.8))
                 }
@@ -585,7 +585,7 @@ struct ProfileViewForFriend: View {
                 if let fetchedUser = fetchedUser {
                     self.friendUser = fetchedUser
                 } else {
-                    self.errorMessage = "Người dùng không tồn tại hoặc đã bị xóa"
+                    self.errorMessage = "User does not exist or has been deleted"
                 }
             }
         }

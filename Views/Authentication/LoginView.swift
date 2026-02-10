@@ -24,6 +24,8 @@ struct LoginView: View {
     @State private var circleOffset2 = CGSize.zero
     @State private var meteorOffset = CGSize.zero
     @State private var isGoogleSigningIn = false
+    @State private var isAppleSigningIn = false
+    @State private var isFacebookSigningIn = false
 
     var body: some View {
         NavigationStack {
@@ -213,9 +215,22 @@ struct LoginView: View {
                             .foregroundColor(.white.opacity(0.7))
                             .fontWeight(.bold)
                         HStack(spacing: 20) {
-                            Image(systemName: "apple.logo")
-                                .foregroundColor(.white)
-                                .font(.system(size: 30))
+                            // Apple
+                            Button(action: signInWithApple) {
+                                    HStack(spacing: 8) {
+                                        if isAppleSigningIn {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                        } else {
+                                            Image(systemName: "apple.logo")
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 30))
+                                        }
+                                    }
+                                }
+                                .disabled(isAppleSigningIn)
+                            
+                            // Google
                             Button(action: signInWithGoogle) {
                                 HStack(spacing: 8) {
                                     if isGoogleSigningIn {
@@ -230,9 +245,21 @@ struct LoginView: View {
                                 }
                             }
                             .disabled(isGoogleSigningIn)
-                            Image("FacebookIcon")
-                                .resizable()
-                                .frame(width: 30, height: 30)
+                            
+                            // Facebook
+                            Button(action: signInWithFacebook) {
+                                HStack(spacing: 8) {
+                                    if isFacebookSigningIn {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    } else {
+                                        Image("FacebookIcon")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                    }
+                                }
+                            }
+                            .disabled(isFacebookSigningIn)
                         }
                     }
                     .padding(.top, 10)
@@ -378,6 +405,51 @@ struct LoginView: View {
             return nil
         }
         return rootViewController
+    }
+    
+    // Thêm functions
+    private func signInWithApple() {
+        isAppleSigningIn = true
+        
+        viewModel.signInWithApple { result in
+            isAppleSigningIn = false
+            
+            switch result {
+            case .success:
+                print("✅🍎 LoginView: Apple Sign-In thành công!")
+                errorMessage = ""
+                showWelcomeView = true
+                
+            case .failure(let error):
+                print("❌ LoginView: Apple Sign-In FAILED")
+                print("❌ Error Type: \(type(of: error))")
+                print("❌ Error Description: \(error.localizedDescription)")
+                print("❌ Full Error Object: \(error)")
+                
+                // Show full error to user temporarily
+                errorMessage = "Apple Sign-In Error: \(error.localizedDescription)\n\nFull: \(error)"
+            }
+        }
+    }
+
+    private func signInWithFacebook() {
+        guard let rootVC = getRootViewController() else {
+            errorMessage = "Không thể lấy root view controller"
+            return
+        }
+        
+        isFacebookSigningIn = true
+        viewModel.signInWithFacebook(presentingViewController: rootVC) { result in
+            isFacebookSigningIn = false
+            switch result {
+            case .success:
+                print("✅ Đăng nhập Facebook thành công")
+                errorMessage = ""
+                showWelcomeView = true
+            case .failure(let error):
+                errorMessage = "Lỗi Facebook Login: \(error.localizedDescription)"
+            }
+        }
     }
 
     struct LoginFields: View {

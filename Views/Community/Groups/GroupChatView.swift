@@ -168,7 +168,7 @@ struct GroupChatView: View {
                 .font(.system(size: 17, weight: .semibold))
                 .foregroundColor(.white)
             
-            Text("\(viewModel.groupMembers.count) thành viên")
+            Text("\(viewModel.groupMembers.count) members")
                 .font(.system(size: 12, weight: .medium))
                 .foregroundColor(.white.opacity(0.7))
         }
@@ -211,11 +211,11 @@ struct GroupChatView: View {
                         }
                     )
                     .contextMenu {
-                        Button("Trả lời") {
+                        Button("Reply") {
                             replyingTo = message
                         }
                         if message.senderId == authViewModel.currentUser?.id {
-                            Button("Xóa tin nhắn", role: .destructive) {
+                            Button("Delete messages", role: .destructive) {
                                 deleteMessage(message)
                             }
                         }
@@ -281,7 +281,7 @@ struct GroupChatView: View {
     }
     
     private var messageTextField: some View {
-        TextField("Tin nhắn nhóm...", text: $messageText, axis: .vertical)
+        TextField("Group messaging...", text: $messageText, axis: .vertical)
             .textFieldStyle(.plain)
             .font(.system(size: 16, weight: .medium))
             .foregroundColor(.white)
@@ -414,7 +414,7 @@ struct ReplyPreviewBar: View {
     
     private var replyContent: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Đang trả lời \(senderName)")
+            Text("Responding \(senderName)")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(.white.opacity(0.8))
             Text(content)
@@ -644,16 +644,16 @@ struct GroupSettingsAndMembersView: View {
                     .padding(20)
                 }
             }
-            .navigationTitle("Cài đặt nhóm")
+            .navigationTitle("Group settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Cài đặt nhóm")
+                    Text("Group settings")
                         .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.white)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Lưu") {
+                    Button("Save") {
                         saveSettings()
                     }
                     .foregroundColor(.orange)
@@ -685,11 +685,11 @@ struct GroupSettingsAndMembersView: View {
     
     private var groupInfoSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Thông tin nhóm")
+            Text("Group information")
                 .font(.system(size: 18, weight: .bold))
                 .foregroundColor(.white)
             
-            TextField("Tên nhóm", text: $newGroupName)
+            TextField("Group name", text: $newGroupName)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.white)
                 .padding(16)
@@ -749,7 +749,7 @@ struct GroupSettingsAndMembersView: View {
     
     private var membersSectionHeader: some View {
         HStack {
-            Text("Thành viên")
+            Text("Members")
                 .font(.system(size: 18, weight: .bold))
                 .foregroundColor(.white)
             
@@ -782,7 +782,7 @@ struct GroupSettingsAndMembersView: View {
             HStack(spacing: 8) {
                 Image(systemName: "person.badge.plus")
                     .font(.system(size: 16, weight: .semibold))
-                Text("Thêm thành viên")
+                Text("Add member")
                     .font(.system(size: 16, weight: .semibold))
             }
             .foregroundColor(.white)
@@ -807,12 +807,12 @@ struct GroupSettingsAndMembersView: View {
     private var wordFilterSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Bộ lọc từ")
+                Text("Filter words")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white)
                 
                 Spacer()
-                Button("Thêm từ") {
+                Button("Add words") {
                     showingAddFilter = true
                 }
                 .font(.system(size: 14, weight: .semibold))
@@ -863,7 +863,7 @@ struct GroupSettingsAndMembersView: View {
         Button {
             confirmLeaveGroup()
         } label: {
-            Text("Rời nhóm")
+            Text("Leave group")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
@@ -885,7 +885,7 @@ struct GroupSettingsAndMembersView: View {
         Button {
             confirmDeleteGroup()
         } label: {
-            Text("Xóa nhóm hoàn toàn")
+            Text("Delete group")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
@@ -945,12 +945,12 @@ struct GroupSettingsAndMembersView: View {
     
     private func confirmLeaveGroup() {
         let alert = UIAlertController(
-            title: "Rời nhóm",
-            message: "Bạn có chắc chắn muốn rời khỏi nhóm \"\(group.title)\" không?",
+            title: "Leave group",
+            message: "Are you sure you want to leave the \"\(group.title)\" group?",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Rời nhóm", style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Leave group", style: .destructive) { _ in
             viewModel.leaveGroup(groupId: group.id) { success in
                 if success {
                     dismiss()
@@ -963,12 +963,12 @@ struct GroupSettingsAndMembersView: View {
     
     private func confirmDeleteGroup() {
         let alert = UIAlertController(
-            title: "Xóa nhóm",
-            message: "Hành động này sẽ xóa toàn bộ tin nhắn và dữ liệu nhóm. Không thể khôi phục!",
+            title: "Delete group",
+            message: "This action will delete all messages and group data. It cannot be recovered!",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Xóa vĩnh viễn", style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Permanently delete", style: .destructive) { _ in
             viewModel.deleteGroup(groupId: group.id) { success in
                 if success {
                     dismiss()
@@ -1078,12 +1078,12 @@ struct ModernMemberRow: View {
     
     private func confirmRemoveMember(_ member: GroupMemberDisplayModel) {
         let alert = UIAlertController(
-            title: "Xóa thành viên",
-            message: "Bạn có chắc chắn muốn xóa \(member.username) khỏi nhóm không?",
+            title: "Remove member",
+            message: "Are you sure you want to remove \(member.username) from the group?",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "Hủy", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Xóa", style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
             viewModel.kickMember(groupId: groupId, userId: member.userId) { _ in }
         })
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -1122,11 +1122,11 @@ struct AddMemberToGroupView: View {
                     .padding(20)
                 }
             }
-            .navigationTitle("Thêm thành viên")
+            .navigationTitle("Add members")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Đóng") { dismiss() }
+                    Button("Close") { dismiss() }
                         .foregroundColor(.orange)
                         .fontWeight(.semibold)
                 }
@@ -1198,12 +1198,12 @@ struct FriendSelectionRow: View {
     @ViewBuilder
     private var actionView: some View {
         if isInGroup {
-            Text("Đã trong nhóm")
+            Text("Already in the group")
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(.white.opacity(0.5))
         } else {
             Button(action: onAdd) {
-                Text("Thêm")
+                Text("Add")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.white)
                     .padding(.horizontal, 16)
@@ -1246,20 +1246,20 @@ struct AddWordFilterView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Từ cần cấm") {
-                    TextField("Nhập từ cấm (không phân biệt hoa thường)", text: $bannedWord)
+                Section("Forbidden Word") {
+                    TextField("Enter the forbidden word (case-insensitive)", text: $bannedWord)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                 }
                 
-                Section("Thay thế bằng (tùy chọn)") {
-                    TextField("Để trống sẽ thay bằng ***", text: $replacement)
+                Section("Replace with (optional)") {
+                    TextField("Leave blank and it will be replaced with ***", text: $replacement)
                         .textInputAutocapitalization(.never)
                         .foregroundColor(.secondary)
                 }
                 
                 Section {
-                    Button("Hoặc lưu ở đây nè admin :333") {
+                    Button("Or save here, admin :333") {
                         let word = bannedWord.trimmingCharacters(in: .whitespacesAndNewlines)
                         guard !word.isEmpty else { return }
                         
@@ -1280,15 +1280,15 @@ struct AddWordFilterView: View {
                     .disabled(bannedWord.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
-            .navigationTitle("Thêm từ cấm")
+            .navigationTitle("Add forbidden word")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Hủy") { dismiss() }
+                    Button("Cancel") { dismiss() }
                         .foregroundColor(.orange)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Lưu") {
+                    Button("Save") {
                         let word = bannedWord.trimmingCharacters(in: .whitespacesAndNewlines)
                         guard !word.isEmpty else { return }
                         

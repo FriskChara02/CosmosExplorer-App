@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import FacebookCore
 
 @main
 struct CosmosExplorerApp: App {
@@ -14,6 +15,11 @@ struct CosmosExplorerApp: App {
     
         init() {
             ValueTransformer.registerIfNeeded()
+            
+            ApplicationDelegate.shared.application(
+                UIApplication.shared,
+                didFinishLaunchingWithOptions: nil
+            )
         }
     
     // MARK: - SwiftData ModelContainer
@@ -35,6 +41,13 @@ struct CosmosExplorerApp: App {
             ContentView()
                 .onOpenURL { url in
                     GoogleService.shared.handleURL(url)
+                    // Handle Facebook Login callback
+                    ApplicationDelegate.shared.application(
+                        UIApplication.shared,
+                        open: url,
+                        sourceApplication: nil,
+                        annotation: [UIApplication.OpenURLOptionsKey.annotation]
+                )
             }
         }
         .modelContainer(sharedModelContainer)

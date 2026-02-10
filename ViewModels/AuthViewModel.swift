@@ -669,4 +669,323 @@ extension AuthViewModel {
             completion(.failure(error))
         }
     }
+    
+    // MARK: - Apple Sign In
+    func signInWithApple(completion: @escaping (Result<Void, Error>) -> Void) {
+        AppleService.shared.signIn { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let appleUser):
+                self.checkOrCreateAppleUser(appleUser: appleUser, completion: completion)
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    private func checkOrCreateAppleUser(appleUser: AppleUser, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            // Email có thể nil với Apple Sign-In
+            let email = appleUser.email ?? "\(appleUser.id)@privaterelay.appleid.com"
+            
+            // Kiểm tra xem user đã tồn tại chưa
+            let checkStatement = try connection.prepareStatement(text: """
+                SELECT id, username, password, avatar, user_description, date_of_birth, location,
+                       gender, hobbies, bio, rank, score, token, status, role, created_at
+                FROM users WHERE email = $1 OR id = $2
+            """)
+            defer { checkStatement.close() }
+            
+            let cursor = try checkStatement.execute(parameterValues: [email, appleUser.id])
+            defer { cursor.close() }
+            
+            if let row = try cursor.next()?.get() {
+                // User đã tồn tại → Sign in
+                let idString = try row.columns[0].string()
+                let userId = UUID(uuidString: idString) ?? UUID()
+                let username = try? row.columns[1].string()
+                
+                authManager.signIn(userId: userId, username: username ?? appleUser.username)
+                self.isSignedIn = true
+                self.username = username ?? appleUser.username
+                
+                // Lưu vào SwiftData
+                if let context = modelContext {
+                    let avatar = try? row.columns[3].string()
+                    let userDescription = try? row.columns[4].string()
+                    let dateOfBirthString = try? row.columns[5].string()
+                    let location = try? row.columns[6].string()
+                    let gender = try? row.columns[7].string()
+                    let hobbies = try? row.columns[8].string()
+                    let bio = try? row.columns[9].string()
+                    let rank = (try? row.columns[10].int()) ?? 2000
+                    let score = (try? row.columns[11].int()) ?? 0
+                    let token = try? row.columns[12].string()
+                    let status = try? row.columns[13].string()
+                    let role = try? row.columns[14].string()
+                    let createdAtString = try? row.columns[15].string()
+                    let storedPassword = try row.columns[2].string()
+                    
+                    var dateOfBirth: Date?
+                    if let dateString = dateOfBirthString {
+                        dateOfBirth = ISO8601DateFormatter().date(from: dateString)
+                    }
+                    
+                    var createdAt = Date()
+                    if let createdString = createdAtString {
+                        createdAt = ISO8601DateFormatter().date(from: createdString) ?? Date()
+                    }
+                    
+                    let existingUser = UserModel(
+                        id: userId,
+                        email: email,
+                        username: username ?? appleUser.username,
+                        password: storedPassword,
+                        createdAt: createdAt,
+                        avatar: avatar,
+                        userDescription: userDescription,
+                        dateOfBirth: dateOfBirth,
+                        location: location,
+                        gender: gender,
+                        hobbies: hobbies,
+                        bio: bio,
+                        rank: rank,
+                        score: score,
+                        token: token,
+                        status: status,
+                        role: role
+                    )
+                    context.insert(existingUser)
+                    try context.save()
+                    self.currentUser = existingUser
+                }
+                
+                completion(.success(()))
+                
+            } else {
+                // User chưa tồn tại → Tạo mới
+                let newUserId = UUID()
+                let insertStatement = try connection.prepareStatement(text: """
+                    INSERT INTO users (id, email, username, password, created_at, rank, score, status, role)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                """)
+                defer { insertStatement.close() }
+                
+                let date = ISO8601DateFormatter().string(from: Date())
+                let randomPassword = UUID().uuidString
+                
+                try insertStatement.execute(parameterValues: [
+                    newUserId.uuidString,
+                    email,
+                    appleUser.username,
+                    hashPassword(randomPassword),
+                    date,
+                    2000,
+                    0,
+                    "online",
+                    "user"
+                ])
+                
+                // Lưu vào SwiftData
+                if let context = modelContext {
+                    let newUser = UserModel(
+                        id: newUserId,
+                        email: email,
+                        username: appleUser.username,
+                        password: hashPassword(randomPassword),
+                        rank: 2000,
+                        score: 0,
+                        status: "online",
+                        role: "user"
+                    )
+                    context.insert(newUser)
+                    try context.save()
+                    self.currentUser = newUser
+                }
+                
+                authManager.signIn(userId: newUserId, username: appleUser.username)
+                self.isSignedIn = true
+                self.username = appleUser.username
+                
+                completion(.success(()))
+            }
+            
+        } catch {
+            // ✅ THÊM FULL ERROR LOG
+            print("❌ Apple Sign-In Database Error:")
+            print("❌ Error Type: \(type(of: error))")
+            print("❌ Error Description: \(error.localizedDescription)")
+            print("❌ Full Error: \(error)")
+            
+            if let pgError = error as? PostgresError {
+                print("❌ PostgreSQL Error Code: \(pgError)")
+                print("❌ PostgreSQL Details: \(String(describing: pgError))")
+            }
+            
+            completion(.failure(error))
+        }
+    }
+
+    // MARK: - Facebook Sign In
+    func signInWithFacebook(presentingViewController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        FacebookService.shared.signIn(from: presentingViewController) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let facebookUser):
+                self.checkOrCreateFacebookUser(facebookUser: facebookUser, completion: completion)
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    private func checkOrCreateFacebookUser(facebookUser: FacebookUser, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let connection = try? DatabaseConfig.createConnection() else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Không thể kết nối database"])))
+            return
+        }
+        defer { connection.close() }
+        
+        do {
+            // Email có thể nil với Facebook
+            let email = facebookUser.email ?? "\(facebookUser.id)@facebook.com"
+            
+            // Kiểm tra xem user đã tồn tại chưa
+            let checkStatement = try connection.prepareStatement(text: """
+                SELECT id, username, password, avatar, user_description, date_of_birth, location,
+                       gender, hobbies, bio, rank, score, token, status, role, created_at
+                FROM users WHERE email = $1
+            """)
+            defer { checkStatement.close() }
+            
+            let cursor = try checkStatement.execute(parameterValues: [email])
+            defer { cursor.close() }
+            
+            if let row = try cursor.next()?.get() {
+                // User đã tồn tại → Sign in
+                let idString = try row.columns[0].string()
+                let userId = UUID(uuidString: idString)!
+                let username = try? row.columns[1].string()
+                
+                authManager.signIn(userId: userId, username: username ?? facebookUser.username)
+                self.isSignedIn = true
+                self.username = username ?? facebookUser.username
+                
+                // Lưu vào SwiftData
+                if let context = modelContext {
+                    let avatar = try? row.columns[3].string()
+                    let userDescription = try? row.columns[4].string()
+                    let dateOfBirthString = try? row.columns[5].string()
+                    let location = try? row.columns[6].string()
+                    let gender = try? row.columns[7].string()
+                    let hobbies = try? row.columns[8].string()
+                    let bio = try? row.columns[9].string()
+                    let rank = (try? row.columns[10].int()) ?? 2000
+                    let score = (try? row.columns[11].int()) ?? 0
+                    let token = try? row.columns[12].string()
+                    let status = try? row.columns[13].string()
+                    let role = try? row.columns[14].string()
+                    let createdAtString = try? row.columns[15].string()
+                    let storedPassword = try row.columns[2].string()
+                    
+                    var dateOfBirth: Date?
+                    if let dateString = dateOfBirthString {
+                        dateOfBirth = ISO8601DateFormatter().date(from: dateString)
+                    }
+                    
+                    var createdAt = Date()
+                    if let createdString = createdAtString {
+                        createdAt = ISO8601DateFormatter().date(from: createdString) ?? Date()
+                    }
+                    
+                    let existingUser = UserModel(
+                        id: userId,
+                        email: email,
+                        username: username ?? facebookUser.username,
+                        password: storedPassword,
+                        createdAt: createdAt,
+                        avatar: avatar ?? facebookUser.profilePictureURL?.absoluteString,
+                        userDescription: userDescription,
+                        dateOfBirth: dateOfBirth,
+                        location: location,
+                        gender: gender,
+                        hobbies: hobbies,
+                        bio: bio,
+                        rank: rank,
+                        score: score,
+                        token: token,
+                        status: status,
+                        role: role
+                    )
+                    context.insert(existingUser)
+                    try context.save()
+                    self.currentUser = existingUser
+                }
+                
+                completion(.success(()))
+                
+            } else {
+                // User chưa tồn tại → Tạo mới
+                let newUserId = UUID()
+                let insertStatement = try connection.prepareStatement(text: """
+                    INSERT INTO users (id, email, username, password, created_at, rank, score, status, role, avatar)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+                """)
+                defer { insertStatement.close() }
+                
+                let date = ISO8601DateFormatter().string(from: Date())
+                let randomPassword = UUID().uuidString
+                
+                try insertStatement.execute(parameterValues: [
+                    newUserId.uuidString,
+                    email,
+                    facebookUser.username,
+                    hashPassword(randomPassword),
+                    date,
+                    2000,
+                    0,
+                    "online",
+                    "user",
+                    facebookUser.profilePictureURL?.absoluteString ?? ""
+                ])
+                
+                // Lưu vào SwiftData
+                if let context = modelContext {
+                    let newUser = UserModel(
+                        id: newUserId,
+                        email: email,
+                        username: facebookUser.username,
+                        password: hashPassword(randomPassword),
+                        avatar: facebookUser.profilePictureURL?.absoluteString,
+                        rank: 2000,
+                        score: 0,
+                        status: "online",
+                        role: "user"
+                    )
+                    context.insert(newUser)
+                    try context.save()
+                    self.currentUser = newUser
+                }
+                
+                authManager.signIn(userId: newUserId, username: facebookUser.username)
+                self.isSignedIn = true
+                self.username = facebookUser.username
+                
+                completion(.success(()))
+            }
+            
+        } catch {
+            completion(.failure(error))
+        }
+    }
 }
