@@ -6,24 +6,24 @@
   ![SwiftUI](https://img.shields.io/badge/SwiftUI-iOS%2018+-blue?style=for-the-badge&logo=swift)
   ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-336791?style=for-the-badge&logo=postgresql)
   
-  **Khám phá vũ trụ một cách sinh động, tương tác và đầy giáo dục**
+  **Explore the universe in a vivid, interactive, and educational way**
   
-  [Tính năng](#-tính-năng) • [Cài đặt](#-cài-đặt) • [Công nghệ](#️-công-nghệ) • [Đóng góp](#-đóng-góp)
+  [Features](#-features) • [Installation](#-installation) • [Technologies](#️-technologies) • [Contributing](#-contributing)
   
 </div>
 
 ---
 
-## 📖 Giới thiệu
+## 📖 Introduction
 
-**Cosmos Explorer** là ứng dụng iOS mang đến trải nghiệm khám phá vũ trụ toàn diện, kết hợp giữa **giáo dục**, **khám phá** và **giải trí**. Ứng dụng không chỉ cung cấp kiến thức thiên văn học phong phú mà còn tạo ra một cộng đồng người yêu thiên văn có thể học hỏi, chia sẻ và tương tác với nhau.
+**Cosmos Explorer** is an iOS app that delivers a comprehensive universe exploration experience, blending **education**, **discovery**, and **entertainment**. The app not only provides rich astronomical knowledge but also builds a community of astronomy enthusiasts who can learn, share, and interact with one another.
 
-### 🎯 Mục tiêu
+### 🎯 Goals
 
-- 🌟 Xây dựng môi trường học tập thiên văn hiện đại, sinh động và dễ hiểu
-- 🚀 Cung cấp trải nghiệm khám phá vũ trụ tương tác và trực quan
-- 👥 Kết nối cộng đồng người yêu thích thiên văn học
-- 📚 Hỗ trợ học tập qua hệ thống quiz tương tác
+- 🌟 Build a modern, engaging, and accessible astronomy learning environment
+- 🚀 Provide an interactive and visual universe exploration experience
+- 👥 Connect communities of astronomy lovers
+- 📚 Support learning through an interactive quiz system
 
 ---
 
@@ -43,115 +43,115 @@
 
 ---
 
-## ✨ Tính năng
+## ✨ Features
 
-### 🔐 Xác thực & Quản lý Người dùng
-- Đăng nhập/Đăng ký qua **Google**, **Apple ID**, **Facebook**
-- Quản lý hồ sơ cá nhân và tùy chỉnh trải nghiệm
+### 🔐 Authentication & User Management
+- Sign in / Sign up via **Google**, **Apple ID**, **Facebook**
+- Manage personal profiles and customize your experience
 
-### 🌠 Khám phá Vũ trụ
-Khám phá các chủ đề thiên văn đa dạng:
-- **Hệ Mặt Trời** - Chi tiết từng hành tinh với thông tin đầy đủ
-- **Sao & Chòm sao** - Tìm hiểu về các ngôi sao và chòm sao
-- **12 Cung Hoàng đạo** - Khám phá ý nghĩa thiên văn
-- **Thiên hà & Tinh vân** - Vẻ đẹp của vũ trụ sâu thẳm
-- **Lỗ đen** - Hiện tượng bí ẩn nhất vũ trụ
-- **Sky Live** - Quan sát bầu trời thời gian thực
+### 🌠 Universe Exploration
+Explore diverse astronomy topics:
+- **Solar System** – Detailed information on every planet
+- **Stars & Constellations** – Learn about stars and constellations
+- **12 Zodiac Signs** – Discover their astronomical significance
+- **Galaxies & Nebulae** – The beauty of the deep universe
+- **Black Holes** – The universe's most mysterious phenomenon
+- **Sky Live** – Real-time sky observation
 
-#### 🪐 Thông tin Hành tinh Chi tiết
-- Bán kính, khoảng cách từ Mặt Trời
-- Số lượng vệ tinh, trọng lực
-- Nhiệt độ, tuổi của hành tinh
-- Thư viện ảnh & video
-- Liên kết Wikipedia
-- Thống kê lượt xem từ cộng đồng
+#### 🪐 Detailed Planet Information
+- Radius, distance from the Sun
+- Number of moons, gravity
+- Temperature, planet age
+- Photo & video gallery
+- Wikipedia links
+- Community view statistics
 
-### 📰 Tin tức Thiên văn
-- Cập nhật tin tức mới nhất từ **NASA API**
-- Khám phá các sự kiện thiên văn đáng chú ý
+### 📰 Astronomy News
+- Latest news from the **NASA API**
+- Explore notable astronomical events
 
-### 📊 Trực quan hóa Dữ liệu
-- Biểu đồ và chỉ số phần trăm trực quan
+### 📊 Data Visualization
+- Visual charts and percentage indicators
 
-### 💬 Tương tác Xã hội
-- ✅ Kết bạn với người dùng khác
-- 👥 Tạo và tham gia nhóm
-- 💭 Chat cá nhân và nhóm
-- 📝 Bình luận trên từng hành tinh
+### 💬 Social Interaction
+- ✅ Add other users as friends
+- 👥 Create and join groups
+- 💭 Personal and group chat
+- 📝 Comment on individual planets
 
-### 🎵 Giải trí
-- Nhạc nền chủ đề vũ trụ
-- Danh sách phát được tuyển chọn
-- Đọc câu chuyện về vũ trụ
+### 🎵 Entertainment
+- Space-themed background music
+- Curated playlists
+- Read stories about the universe
 
-### 🎓 Quiz & Học tập
-- Hệ thống quiz trắc nghiệm tương tác
-- Học kiến thức thiên văn qua câu hỏi thực tế
-- Theo dõi tiến độ học tập
+### 🎓 Quiz & Learning
+- Interactive multiple-choice quiz system
+- Learn astronomical knowledge through real questions
+- Track your learning progress
 
 ---
 
-## 🛠️ Công nghệ
+## 🛠️ Technologies
 
-### Ngôn ngữ & Framework
+### Language & Framework
 - **Swift 6.2.3**
-- **SwiftUI** - UI Framework hiện đại
-- **SwiftData** - Quản lý dữ liệu local
+- **SwiftUI** – Modern UI framework
+- **SwiftData** – Local data management
 
-### Cơ sở Dữ liệu
-- **PostgreSQL** (pgAdmin4) - Database chính
-- **SwiftData** - Cache & offline support
+### Database
+- **PostgreSQL** (pgAdmin4) – Primary database
+- **SwiftData** – Cache & offline support
 
-### API & Dịch vụ
-- **NASA API** - Tin tức & dữ liệu thiên văn
+### APIs & Services
+- **NASA API** – Astronomy news & data
 
-### Xác thực
+### Authentication
 - **Google Sign-In SDK**
 - **Apple AuthenticationServices**
 - **Facebook Login SDK**
 
 ### IDE & Tools
 - **Xcode 26.2+**
-- **pgAdmin4** - PostgreSQL management
+- **pgAdmin4** – PostgreSQL management
 
 ---
 
-## 📥 Cài đặt
+## 📥 Installation
 
-### Yêu cầu
+### Requirements
 - macOS 13.0+
 - Xcode 15.0+
 - iOS 17.0+
 - PostgreSQL 17+
 
-### Các bước cài đặt
+### Setup Steps
 
-1. **Clone repository**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/FriskChara02/CosmosExplorer-App.git
 cd CosmosExplorer-App
 ```
 
-2. **Cài đặt dependencies**
+2. **Install dependencies**
 ```bash
-# Sử dụng Swift Package Manager trong Xcode
+# Use Swift Package Manager in Xcode
 # File > Add Packages...
-# Thêm các package cần thiết (GoogleSignIn, FacebookLogin, etc.)
+# Add the required packages (GoogleSignIn, FacebookLogin, etc.)
 ```
 
-3. **Cấu hình Database**
+3. **Configure the database**
 ```bash
-# Tạo database PostgreSQL
+# Create a PostgreSQL database
 createdb cosmos_explorer
 ```
 
-4. **Cấu hình API Keys**
+4. **Configure API Keys**
 
-Tạo file `Config.swift` trong project:
+Create a `Config.swift` file in the project:
 
 ```swift
 struct APIConfig {
-    // NASA API Key - Đăng ký tại: https://api.nasa.gov/
+    // NASA API Key – Register at: https://api.nasa.gov/
     static let nasaAPIKey = "YOUR_NASA_API_KEY_HERE"
     
     // Database Configuration
@@ -163,18 +163,18 @@ struct APIConfig {
 }
 ```
 
-5. **Cấu hình OAuth**
+5. **Configure OAuth**
 
 #### Google Sign-In
-- Tạo project tại [Google Cloud Console](https://console.cloud.google.com/)
-- Tạo OAuth 2.0 Client ID cho iOS
-- Thêm `GoogleService-Info.plist` vào project
-- Cập nhật URL Schemes trong Xcode
+- Create a project at [Google Cloud Console](https://console.cloud.google.com/)
+- Create an OAuth 2.0 Client ID for iOS
+- Add `GoogleService-Info.plist` to the project
+- Update URL Schemes in Xcode
 
 #### Facebook Login
-- Tạo app tại [Facebook Developers](https://developers.facebook.com/)
-- Lấy App ID và Client Token
-- Thêm vào `Info.plist`:
+- Create an app at [Facebook Developers](https://developers.facebook.com/)
+- Get your App ID and Client Token
+- Add to `Info.plist`:
 ```xml
 <key>FacebookAppID</key>
 <string>YOUR_FACEBOOK_APP_ID</string>
@@ -185,29 +185,29 @@ struct APIConfig {
 ```
 
 #### Apple Sign-In
-- Đã được tích hợp sẵn trong iOS SDK
-- Bật capability "Sign in with Apple" trong Xcode
+- Built into the iOS SDK
+- Enable the "Sign in with Apple" capability in Xcode
 
 6. **Build & Run**
-- Mở project trong Xcode
-- Chọn target device hoặc simulator
-- Nhấn `Cmd + R` để build và chạy
+- Open the project in Xcode
+- Select a target device or simulator
+- Press `Cmd + R` to build and run
 
 ---
 
-## 🤝 Đóng góp
+## 🤝 Contributing
 
-Chúng tôi luôn chào đón mọi đóng góp! Nếu bạn muốn đóng góp cho dự án:
+We welcome all contributions! If you'd like to contribute to the project:
 
-1. Fork repository
-2. Tạo branch mới (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Mở Pull Request
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
-## 👨‍💻 Tác giả
+## 👨‍💻 Author
 
 **FriskChara**
 - GitHub: [@FriskChara02](https://github.com/FriskChara02)
@@ -215,16 +215,16 @@ Chúng tôi luôn chào đón mọi đóng góp! Nếu bạn muốn đóng góp 
 
 ---
 
-## 🙏 Cảm ơn
+## 🙏 Acknowledgements
 
-- [NASA API](https://api.nasa.gov/) - Cung cấp dữ liệu thiên văn
-- [Swift Community](https://swift.org/community/) - Support và resources
+- [NASA API](https://api.nasa.gov/) – Providing astronomical data
+- [Swift Community](https://swift.org/community/) – Support and resources
 
 ---
 
 <div align="center">
   
-**⭐ Nếu bạn thích dự án này, hãy cho một ngôi sao nhé! ⭐**
+**⭐ If you like this project, please give it a star! ⭐**
 
 Made with ❤️ and ☕ for space enthusiasts
 
