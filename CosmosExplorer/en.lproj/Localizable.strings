@@ -252,7 +252,7 @@
 "Sun By The Numbers Day" = "Length of Day: ~25.38 Earth days";
 "Sun By The Numbers Temperature" = "Temperature: ~5,500°C (surface)";
 "Sun By The Numbers Age" = "Age: ~4.6 billion years";
-"Sun Myths Title" = "☀️ Sun Myths Across Cultures";
+"Sun Myths Title" = "Sun Myths Across Cultures";
 "Sun Myths Description" = "Throughout history, civilizations revered the Sun as a divine force, shaping myths and legends worldwide.";
 "Egyptian Myth Culture" = "Egyptian";
 "Egyptian Myth God" = "Ra";
@@ -266,7 +266,7 @@
 "Japanese Myth Culture" = "Japanese";
 "Japanese Myth God" = "Amaterasu";
 "Japanese Myth Description" = "Amaterasu, the Sun goddess, was a central deity in Shinto, symbolizing light and life.";
-"Sun Internal Title" = "☀️ Internal Layers of the Sun";
+"Sun Internal Title" = "Internal Layers of the Sun";
 "Sun Layer Core" = "Core";
 "Sun Layer Core Description" = "At 15 million °C, nuclear fusion happens here, producing the Sun’s immense energy.";
 "Sun Layer Radiative" = "Radiative Zone";
@@ -316,7 +316,7 @@
 "Mercury By The Numbers Day" = "Length of Day: ~58.6 Earth days";
 "Mercury By The Numbers Temperature" = "Temperature: ~430°C (day), ~-180°C (night)";
 "Mercury By The Numbers Age" = "Age: ~4.5 billion years";
-"Mercury Myths Title" = "🌌 Mercury Myths Across Cultures";
+"Mercury Myths Title" = "Mercury Myths Across Cultures";
 "Mercury Myths Description" = "Mercury, the swiftest planet, inspired myths of messengers and travelers across ancient cultures.";
 "Roman Myth Culture" = "Roman";
 "Roman Myth God" = "Mercury";
@@ -330,7 +330,7 @@
 "Mayan Myth Culture" = "Mayan";
 "Mayan Myth God" = "Kukulkan";
 "Mayan Myth Description" = "Kukulkan, a feathered serpent god, was associated with celestial movements, including Mercury.";
-"Mercury Internal Title" = "🌌 Internal Layers of Mercury";
+"Mercury Internal Title" = "Internal Layers of Mercury";
 "Mercury Layer Core" = "Core";
 "Mercury Layer Core Description" = "Mercury's large iron core occupies about 85% of its radius, generating a weak magnetic field.";
 "Mercury Layer Mantle" = "Mantle";
@@ -374,7 +374,7 @@
 "Venus By The Numbers Day" = "Length of Day: ~243 Earth days";
 "Venus By The Numbers Temperature" = "Temperature: ~470°C (surface)";
 "Venus By The Numbers Age" = "Age: ~4.5 billion years";
-"Venus Myths Title" = "🌌 Venus Myths Across Cultures";
+"Venus Myths Title" = "Venus Myths Across Cultures";
 "Venus Myths Description" = "Venus, the brightest planet in the sky, has inspired myths of love, beauty, and celestial power across civilizations.";
 "Roman Myth Culture" = "Roman";
 "Roman Myth God" = "Venus";
@@ -388,7 +388,7 @@
 "Hindu Myth Culture" = "Hindu";
 "Hindu Myth God" = "Shukra";
 "Hindu Myth Description" = "Shukra, the deity of Venus, represents wealth, pleasure, and reproduction in Hindu mythology.";
-"Venus Internal Title" = "🌌 Internal Layers of Venus";
+"Venus Internal Title" = "Internal Layers of Venus";
 "Venus Layer Core" = "Core";
 "Venus Layer Core Description" = "Venus' iron core, likely molten, generates a weak magnetic field.";
 "Venus Layer Mantle" = "Mantle";
@@ -434,7 +434,7 @@
 "Earth By The Numbers Day" = "Length of Day: ~24 hours";
 "Earth By The Numbers Temperature" = "Temperature: ~15°C (average surface)";
 "Earth By The Numbers Age" = "Age: ~4.54 billion years";
-"Earth Myths Title" = "🌍 Earth Myths Across Cultures";
+"Earth Myths Title" = "Earth Myths Across Cultures";
 "Earth Myths Description" = "Across civilizations, Earth has been revered as a nurturing mother or divine entity, shaping myths worldwide.";
 "Egyptian Myth Culture" = "Egyptian";
 "Egyptian Myth God" = "Geb";
@@ -448,7 +448,7 @@
 "Inca Myth Culture" = "Inca";
 "Inca Myth God" = "Pachamama";
 "Inca Myth Description" = "Pachamama, the Earth goddess, was revered as a fertility deity sustaining life and crops.";
-"Earth Internal Title" = "🌍 Internal Layers of the Earth";
+"Earth Internal Title" = "Internal Layers of the Earth";
 "Earth Layer Core" = "Core";
 "Earth Layer Core Description" = "The Earth's core, at ~5,000°C, consists of a solid inner core and liquid outer core, driving the magnetic field.";
 "Earth Layer Mantle" = "Mantle";
@@ -493,7 +493,7 @@
 "Moon By The Numbers Rotation" = "Rotation Period: ~27.32 Earth days (synchronous)";
 "Moon By The Numbers Temperature" = "Temperature: -173°C to 127°C";
 "Moon By The Numbers Age" = "Age: ~4.5 billion years";
-"Moon Myths Title" = "🌙 Moon Myths Across Cultures";
+"Moon Myths Title" = "Moon Myths Across Cultures";
 "Moon Myths Description" = "The Moon has captivated human imagination for millennia, inspiring myths and deities in cultures worldwide.";
 "Greek Myth Culture" = "Greek";
 "Greek Moon God" = "Selene";
@@ -507,7 +507,7 @@
 "Aztec Myth Culture" = "Aztec";
 "Aztec Moon God" = "Metztli";
 "Aztec Moon Description" = "Metztli, the Aztec Moon deity, symbolized the cyclical nature of time and was revered in rituals.";
-"Moon Internal Title" = "🌙 Internal Structure of the Moon";
+"Moon Internal Title" = "Internal Structure of the Moon";
 "Moon Layer Crust" = "Crust";
 "Moon Layer Crust Description" = "A rocky, cratered surface, about 50 km thick, formed from ancient volcanic activity and impacts.";
 "Moon Layer Mantle" = "Mantle";
@@ -552,7 +552,7 @@
 "Mars By The Numbers Day" = "Length of Day: ~24.6 Earth hours";
 "Mars By The Numbers Temperature" = "Temperature: ~-65°C (average)";
 "Mars By The Numbers Age" = "Age: ~4.6 billion years";
-"Mars Myths Title" = "🔴 Mars Myths Across Cultures";
+"Mars Myths Title" = "Mars Myths Across Cultures";
 "Mars Myths Description" = "Mars, named after gods of war and conflict, embodies strength and conquest in ancient mythologies.";
 "Roman Myth Culture" = "Roman";
 "Roman Myth God" = "Mars";
@@ -566,7 +566,7 @@
 "Norse Myth Culture" = "Norse";
 "Norse Myth God" = "Tyr";
 "Norse Myth Description" = "Tyr, the Norse god of war and justice, is linked to Mars through his martial attributes.";
-"Mars Internal Title" = "🔴 Internal Layers of Mars";
+"Mars Internal Title" = "Internal Layers of Mars";
 "Mars Layer Core" = "Core";
 "Mars Layer Core Description" = "Mars’ core is likely composed of iron and nickel, partially molten, driving a weak magnetic field.";
 "Mars Layer Mantle" = "Mantle";
@@ -612,7 +612,7 @@
 "Jupiter By The Numbers Day" = "Length of Day: ~9.93 Earth hours";
 "Jupiter By The Numbers Temperature" = "Temperature: ~-110°C (cloud surface)";
 "Jupiter By The Numbers Age" = "Age: ~4.6 billion years";
-"Jupiter Myths Title" = "☄️ Jupiter Myths Across Cultures";
+"Jupiter Myths Title" = "Jupiter Myths Across Cultures";
 "Jupiter Myths Description" = "Jupiter, named after supreme gods in various cultures, symbolizes power and grandeur in mythological stories.";
 "Greek Myth Culture" = "Greek";
 "Greek Myth God" = "Zeus";
@@ -626,7 +626,7 @@
 "Norse Myth Culture" = "Norse";
 "Norse Myth God" = "Thor";
 "Norse Myth Description" = "Thor, the Norse god of thunder, shares similarities with Jupiter as a symbol of strength.";
-"Jupiter Internal Title" = "☄️ Internal Layers of Jupiter";
+"Jupiter Internal Title" = "Internal Layers of Jupiter";
 "Jupiter Layer Core" = "Core";
 "Jupiter Layer Core Description" = "Jupiter’s core may be a mix of rock and metal, under extreme pressure and temperature.";
 "Jupiter Layer Metallic Hydrogen" = "Metallic Hydrogen";
@@ -672,7 +672,7 @@
 "Saturn By The Numbers Day" = "Length of Day: ~10.7 hours";
 "Saturn By The Numbers Temperature" = "Temperature: ~-139°C (average)";
 "Saturn By The Numbers Age" = "Age: ~4.5 billion years";
-"Saturn Myths Title" = "🪐 Saturn Myths Across Cultures";
+"Saturn Myths Title" = "Saturn Myths Across Cultures";
 "Saturn Myths Description" = "Saturn is associated with gods of time and agriculture in various ancient cultures.";
 "Roman Myth Culture" = "Roman";
 "Roman Myth God" = "Saturnus";
@@ -683,7 +683,7 @@
 "Hindu Myth Culture" = "Hindu";
 "Hindu Myth God" = "Shani";
 "Hindu Myth Description" = "Shani, the god of justice and discipline, influences human destiny through the planet Saturn.";
-"Saturn Internal Title" = "🪐 Internal Layers of Saturn";
+"Saturn Internal Title" = "Internal Layers of Saturn";
 "Saturn Layer Core" = "Core";
 "Saturn Layer Core Description" = "Saturn’s rocky and metallic core is under extreme pressure, generating high temperatures.";
 "Saturn Layer Mantle" = "Mantle";
@@ -727,7 +727,7 @@
 "Uranus By The Numbers Day" = "Length of Day: ~17.24 Earth hours";
 "Uranus By The Numbers Temperature" = "Temperature: ~-224°C (atmosphere)";
 "Uranus By The Numbers Age" = "Age: ~4.6 billion years";
-"Uranus Myths Title" = "🪐 Uranus Myths Across Cultures";
+"Uranus Myths Title" = "Uranus Myths Across Cultures";
 "Uranus Myth Description" = "Named after the Greek god of the sky, Uranus inspired myths representing the heavens and cosmic order across various cultures.";
 "Greek Myth Culture" = "Greek";
 "Greek Myth God" = "Uranus";
@@ -741,7 +741,7 @@
 "Maori Myth Culture" = "Maori";
 "Maori Myth God" = "Rangi";
 "Maori Myth Description" = "Rangi, the Maori sky father, was locked in embrace with Earth until separated by his children.";
-"Uranus Internal Title" = "🪐 Internal Layers of Uranus";
+"Uranus Internal Title" = "Internal Layers of Uranus";
 "Uranus Layer Core" = "Rocky Core";
 "Uranus Layer Core Description" = "A small, rocky core, possibly 0.55 Earth masses, sits at the planet’s center.";
 "Uranus Layer Mantle" = "Icy Mantle";
@@ -781,7 +781,7 @@
 "Neptune By The Numbers Day" = "Length of Day: ~16.11 Earth hours";
 "Neptune By The Numbers Temperature" = "Temperature: ~-201°C (atmosphere)";
 "Neptune By The Numbers Age" = "Age: ~4.6 billion years";
-"Neptune Myths Title" = "🪐 Neptune Myths Across Cultures";
+"Neptune Myths Title" = "Neptune Myths Across Cultures";
 "Neptune Myths Description" = "Named after the Roman god of the sea, Neptune inspired myths of the ocean and cosmic waters across various cultures.";
 "Greek Myth Culture" = "Greek";
 "Greek Myth God" = "Poseidon";
@@ -795,7 +795,7 @@
 "Maori Myth Culture" = "Maori";
 "Maori Myth God" = "Tangaroa";
 "Maori Myth Description" = "Tangaroa, the Maori god of the sea, was the creator of marine life and ruler of oceans.";
-"Neptune Internal Title" = "🪐 Internal Layers of Neptune";
+"Neptune Internal Title" = "Internal Layers of Neptune";
 "Neptune Layer Core" = "Rocky Core";
 "Neptune Layer Core Description" = "A small rocky core, possibly 1.2 Earth masses, lies at Neptune’s center.";
 "Neptune Layer Mantle" = "Icy Mantle";

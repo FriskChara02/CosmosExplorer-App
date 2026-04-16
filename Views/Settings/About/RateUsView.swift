@@ -489,9 +489,9 @@ struct RateUsView: View {
     
     private var ratingMessage: String {
         switch userRating {
-        case 5: return "Awesome! 🌟"
-        case 4: return "Great! ⭐"
-        case 3: return "Good! ✨"
+        case 5: return "Awesome!"
+        case 4: return "Great!"
+        case 3: return "Good!"
         case 2: return "Could be better"
         case 1: return "We'll improve!"
         default: return ""

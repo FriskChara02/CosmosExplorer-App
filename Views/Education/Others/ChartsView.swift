@@ -617,7 +617,7 @@ struct ChartsView: View {
         return HStack {
             Spacer()
             VStack(spacing: 4) {
-                Text(accuracy >= 80 ? "Excellent ^^! 🎉" : accuracy >= 50 ? "Good job :3 👍" : "Keep it up!!! 💪")
+                Text(accuracy >= 80 ? "Excellent ^^!" : accuracy >= 50 ? "Good job :3" : "Keep it up!!!")
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(.white)
             }

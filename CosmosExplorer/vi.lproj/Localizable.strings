@@ -252,7 +252,7 @@
 "Sun By The Numbers Day" = "Độ Dài Ngày: ~25.38 ngày Trái Đất";
 "Sun By The Numbers Temperature" = "Nhiệt Độ: ~5.500°C (bề mặt)";
 "Sun By The Numbers Age" = "Tuổi: ~4.6 tỷ năm";
-"Sun Myths Title" = "☀️ Thần Thoại Mặt Trời Qua Các Nền Văn Hóa";
+"Sun Myths Title" = "Thần Thoại Mặt Trời Qua Các Nền Văn Hóa";
 "Sun Myths Description" = "Trong suốt lịch sử, các nền văn minh tôn kính Mặt Trời như một lực lượng thần thánh, định hình các thần thoại và truyền thuyết trên toàn thế giới.";
 "Egyptian Myth Culture" = "Ai Cập";
 "Egyptian Myth God" = "Ra";
@@ -266,7 +266,7 @@
 "Japanese Myth Culture" = "Nhật Bản";
 "Japanese Myth God" = "Amaterasu";
 "Japanese Myth Description" = "Amaterasu, nữ thần Mặt Trời, là một vị thần trung tâm trong Thần đạo, biểu tượng cho ánh sáng và sự sống.";
-"Sun Internal Title" = "☀️ Các Lớp Bên Trong của Mặt Trời";
+"Sun Internal Title" = "Các Lớp Bên Trong của Mặt Trời";
 "Sun Layer Core" = "Lõi";
 "Sun Layer Core Description" = "Ở 15 triệu °C, phản ứng tổng hợp hạt nhân xảy ra tại đây, tạo ra năng lượng khổng lồ của Mặt Trời.";
 "Sun Layer Radiative" = "Vùng Bức Xạ";
@@ -316,7 +316,7 @@
 "Mercury By The Numbers Day" = "Độ Dài Ngày: ~58,6 ngày Trái Đất";
 "Mercury By The Numbers Temperature" = "Nhiệt Độ: ~430°C (ngày), ~-180°C (đêm)";
 "Mercury By The Numbers Age" = "Tuổi: ~4,5 tỷ năm";
-"Mercury Myths Title" = "🌌 Thần Thoại Sao Thủy Qua Các Nền Văn Hóa";
+"Mercury Myths Title" = "Thần Thoại Sao Thủy Qua Các Nền Văn Hóa";
 "Mercury Myths Description" = "Sao Thủy, hành tinh nhanh nhất, đã truyền cảm hứng cho các thần thoại về sứ giả và du hành qua các nền văn hóa cổ đại.";
 "Roman Myth Culture" = "La Mã";
 "Roman Myth God" = "Mercury";
@@ -330,7 +330,7 @@
 "Mayan Myth Culture" = "Maya";
 "Mayan Myth God" = "Kukulkan";
 "Mayan Myth Description" = "Kukulkan, thần rắn có lông, được liên kết với các chuyển động thiên thể, bao gồm sao Thủy.";
-"Mercury Internal Title" = "🌌 Các Lớp Bên Trong của Sao Thủy";
+"Mercury Internal Title" = "Các Lớp Bên Trong của Sao Thủy";
 "Mercury Layer Core" = "Lõi";
 "Mercury Layer Core Description" = "Lõi sắt lớn của sao Thủy chiếm khoảng 85% bán kính, tạo ra từ trường yếu.";
 "Mercury Layer Mantle" = "Lớp Áo";
@@ -374,7 +374,7 @@
 "Venus By The Numbers Day" = "Độ Dài Ngày: ~243 ngày Trái Đất";
 "Venus By The Numbers Temperature" = "Nhiệt Độ: ~470°C (bề mặt)";
 "Venus By The Numbers Age" = "Tuổi: ~4,5 tỷ năm";
-"Venus Myths Title" = "🌌 Thần Thoại Sao Kim Qua Các Nền Văn Hóa";
+"Venus Myths Title" = "Thần Thoại Sao Kim Qua Các Nền Văn Hóa";
 "Venus Myths Description" = "Sao Kim, hành tinh sáng nhất trên bầu trời, đã truyền cảm hứng cho các thần thoại về tình yêu, vẻ đẹp và sức mạnh thiên thể qua các nền văn minh.";
 "Roman Myth Culture" = "La Mã";
 "Roman Myth God" = "Venus";
@@ -388,7 +388,7 @@
 "Hindu Myth Culture" = "Hindu";
 "Hindu Myth God" = "Shukra";
 "Hindu Myth Description" = "Shukra, vị thần của sao Kim, đại diện cho sự giàu có, niềm vui và sự sinh sản trong thần thoại Hindu.";
-"Venus Internal Title" = "🌌 Các Lớp Bên Trong của Sao Kim";
+"Venus Internal Title" = "Các Lớp Bên Trong của Sao Kim";
 "Venus Layer Core" = "Lõi";
 "Venus Layer Core Description" = "Lõi sắt của sao Kim, có thể ở trạng thái lỏng, tạo ra từ trường yếu.";
 "Venus Layer Mantle" = "Lớp Áo";
@@ -434,7 +434,7 @@
 "Earth By The Numbers Day" = "Độ Dài Ngày: ~24 giờ";
 "Earth By The Numbers Temperature" = "Nhiệt Độ: ~15°C (bề mặt trung bình)";
 "Earth By The Numbers Age" = "Tuổi: ~4,54 tỷ năm";
-"Earth Myths Title" = "🌍 Thần Thoại Trái Đất Qua Các Nền Văn Hóa";
+"Earth Myths Title" = "Thần Thoại Trái Đất Qua Các Nền Văn Hóa";
 "Earth Myths Description" = "Qua các nền văn minh, Trái Đất được tôn kính như một người mẹ nuôi dưỡng hoặc thực thể thần thánh, định hình các thần thoại trên toàn thế giới.";
 "Egyptian Myth Culture" = "Ai Cập";
 "Egyptian Myth God" = "Geb";
@@ -448,7 +448,7 @@
 "Inca Myth Culture" = "Inca";
 "Inca Myth God" = "Pachamama";
 "Inca Myth Description" = "Pachamama, nữ thần Trái Đất, được tôn kính như vị thần sinh sản duy trì sự sống và mùa màng.";
-"Earth Internal Title" = "🌍 Các Lớp Bên Trong của Trái Đất";
+"Earth Internal Title" = "Các Lớp Bên Trong của Trái Đất";
 "Earth Layer Core" = "Lõi";
 "Earth Layer Core Description" = "Lõi Trái Đất, ở ~5.000°C, gồm lõi trong rắn và lõi ngoài lỏng, tạo ra từ trường.";
 "Earth Layer Mantle" = "Lớp Áo";
@@ -493,7 +493,7 @@
 "Moon By The Numbers Rotation" = "Chu kỳ quay: ~27,32 ngày Trái Đất (đồng bộ)";
 "Moon By The Numbers Temperature" = "Nhiệt độ: -173°C đến 127°C";
 "Moon By The Numbers Age" = "Tuổi: ~4,5 tỷ năm";
-"Moon Myths Title" = "🌙 Thần thoại về Mặt Trăng qua các nền văn hóa";
+"Moon Myths Title" = "Thần thoại về Mặt Trăng qua các nền văn hóa";
 "Moon Myths Description" = "Mặt Trăng đã thu hút trí tưởng tượng của con người qua hàng thiên niên kỷ, truyền cảm hứng cho các thần thoại và truyền thuyết trên toàn thế giới.";
 "Greek Myth Culture" = "Hy Lạp";
 "Greek Moon God" = "Selene";
@@ -507,7 +507,7 @@
 "Aztec Myth Culture" = "Aztec";
 "Aztec Moon God" = "Metztli";
 "Aztec Moon Description" = "Metztli, vị thần Mặt Trăng Aztec, tượng trưng cho bản chất chu kỳ của thời gian và được tôn kính trong các nghi lễ.";
-"Moon Internal Title" = "🌙 Cấu trúc bên trong của Mặt Trăng";
+"Moon Internal Title" = "Cấu trúc bên trong của Mặt Trăng";
 "Moon Layer Crust" = "Vỏ";
 "Moon Layer Crust Description" = "Bề mặt đá, đầy hố va chạm, dày khoảng 50 km, được hình thành từ hoạt động núi lửa cổ đại và các vụ va chạm.";
 "Moon Layer Mantle" = "Lớp phủ";
@@ -552,7 +552,7 @@
 "Mars By The Numbers Day" = "Độ Dài Ngày: ~24,6 giờ Trái Đất";
 "Mars By The Numbers Temperature" = "Nhiệt Độ: ~-65°C (trung bình)";
 "Mars By The Numbers Age" = "Tuổi: ~4,6 tỷ năm";
-"Mars Myths Title" = "🔴 Thần Thoại Sao Hỏa Qua Các Nền Văn Hóa";
+"Mars Myths Title" = "Thần Thoại Sao Hỏa Qua Các Nền Văn Hóa";
 "Mars Myths Description" = "Sao Hỏa, được đặt tên theo các vị thần chiến tranh và xung đột, tượng trưng cho sức mạnh và sự chinh phục trong các thần thoại cổ đại.";
 "Roman Myth Culture" = "La Mã";
 "Roman Myth God" = "Mars";
@@ -566,7 +566,7 @@
 "Norse Myth Culture" = "Bắc Âu";
 "Norse Myth God" = "Tyr";
 "Norse Myth Description" = "Tyr, thần chiến tranh và công lý Bắc Âu, được liên kết với Sao Hỏa qua các thuộc tính chiến binh.";
-"Mars Internal Title" = "🔴 Các Lớp Bên Trong của Sao Hỏa";
+"Mars Internal Title" = "Các Lớp Bên Trong của Sao Hỏa";
 "Mars Layer Core" = "Lõi";
 "Mars Layer Core Description" = "Lõi của Sao Hỏa có thể gồm sắt và niken, một phần nóng chảy, tạo ra từ trường yếu.";
 "Mars Layer Mantle" = "Lớp Manti";
@@ -612,7 +612,7 @@
 "Jupiter By The Numbers Day" = "Độ Dài Ngày: ~9,93 giờ Trái Đất";
 "Jupiter By The Numbers Temperature" = "Nhiệt Độ: ~-110°C (bề mặt mây)";
 "Jupiter By The Numbers Age" = "Tuổi: ~4,6 tỷ năm";
-"Jupiter Myths Title" = "☄️ Thần Thoại Sao Mộc Qua Các Nền Văn Hóa";
+"Jupiter Myths Title" = "Thần Thoại Sao Mộc Qua Các Nền Văn Hóa";
 "Jupiter Myths Description" = "Sao Mộc, được đặt tên theo các vị thần tối cao trong nhiều nền văn hóa, là biểu tượng của quyền lực và sự vĩ đại trong các câu chuyện thần thoại.";
 "Greek Myth Culture" = "Hy Lạp";
 "Greek Myth God" = "Zeus";
@@ -626,7 +626,7 @@
 "Norse Myth Culture" = "Bắc Âu";
 "Norse Myth God" = "Thor";
 "Norse Myth Description" = "Thor, thần sấm sét Bắc Âu, có những đặc điểm tương đồng với Sao Mộc, biểu tượng của sức mạnh.";
-"Jupiter Internal Title" = "☄️ Các Lớp Bên Trong của Sao Mộc";
+"Jupiter Internal Title" = "Các Lớp Bên Trong của Sao Mộc";
 "Jupiter Layer Core" = "Lõi";
 "Jupiter Layer Core Description" = "Lõi của Sao Mộc có thể là một hỗn hợp đá và kim loại, với áp suất và nhiệt độ cực cao.";
 "Jupiter Layer Metallic Hydrogen" = "Hydro Kim Loại";
@@ -672,7 +672,7 @@
 "Saturn By The Numbers Day" = "Độ Dài Ngày: ~10,7 giờ";
 "Saturn By The Numbers Temperature" = "Nhiệt Độ: ~-139°C (trung bình)";
 "Saturn By The Numbers Age" = "Tuổi: ~4,5 tỷ năm";
-"Saturn Myths Title" = "🪐 Thần Thoại Sao Thổ Qua Các Nền Văn Hóa";
+"Saturn Myths Title" = "Thần Thoại Sao Thổ Qua Các Nền Văn Hóa";
 "Saturn Myths Description" = "Sao Thổ được liên kết với các vị thần của thời gian và nông nghiệp trong nhiều nền văn hóa cổ đại.";
 "Roman Myth Culture" = "La Mã";
 "Roman Myth God" = "Saturnus";
@@ -683,7 +683,7 @@
 "Hindu Myth Culture" = "Ấn Độ";
 "Hindu Myth God" = "Shani";
 "Hindu Myth Description" = "Shani, vị thần của công lý và kỷ luật, ảnh hưởng đến số phận con người qua hành tinh Sao Thổ.";
-"Saturn Internal Title" = "🪐 Các Lớp Bên Trong của Sao Thổ";
+"Saturn Internal Title" = "Các Lớp Bên Trong của Sao Thổ";
 "Saturn Layer Core" = "Lõi";
 "Saturn Layer Core Description" = "Lõi đá và kim loại của Sao Thổ có áp suất cực cao, tạo ra nhiệt độ hàng nghìn độ.";
 "Saturn Layer Mantle" = "Lớp Áo";
@@ -727,7 +727,7 @@
 "Uranus By The Numbers Day" = "Độ Dài Ngày: ~17,24 giờ Trái Đất";
 "Uranus By The Numbers Temperature" = "Nhiệt Độ: ~-224°C (bầu khí quyển)";
 "Uranus By The Numbers Age" = "Tuổi: ~4,6 tỷ năm";
-"Uranus Myths Title" = "🪐 Thần Thoại Sao Thiên Vương Qua Các Nền Văn Hóa";
+"Uranus Myths Title" = "Thần Thoại Sao Thiên Vương Qua Các Nền Văn Hóa";
 "Uranus Myth Description" = "Được đặt tên theo thần bầu trời Hy Lạp, Sao Thiên Vương truyền cảm hứng cho các thần thoại đại diện cho bầu trời và trật tự vũ trụ qua nhiều nền văn hóa.";
 "Greek Myth Culture" = "Hy Lạp";
 "Greek Myth God" = "Uranus";
@@ -741,7 +741,7 @@
 "Maori Myth Culture" = "Maori";
 "Maori Myth God" = "Rangi";
 "Maori Myth Description" = "Rangi, cha bầu trời Maori, bị khóa chặt trong vòng tay của Đất cho đến khi các con ông tách rời.";
-"Uranus Internal Title" = "🪐 Các Lớp Bên Trong của Sao Thiên Vương";
+"Uranus Internal Title" = "Các Lớp Bên Trong của Sao Thiên Vương";
 "Uranus Layer Core" = "Lõi Đá";
 "Uranus Layer Core Description" = "Một lõi đá nhỏ, có thể nặng 0,55 lần Trái Đất, nằm ở trung tâm hành tinh.";
 "Uranus Layer Mantle" = "Lớp Băng";
@@ -781,7 +781,7 @@
 "Neptune By The Numbers Day" = "Độ Dài Ngày: ~16,11 giờ Trái Đất";
 "Neptune By The Numbers Temperature" = "Nhiệt Độ: ~-201°C (bầu khí quyển)";
 "Neptune By The Numbers Age" = "Tuổi: ~4,6 tỷ năm";
-"Neptune Myths Title" = "🪐 Thần Thoại Sao Hải Vương Qua Các Nền Văn Hóa";
+"Neptune Myths Title" = "Thần Thoại Sao Hải Vương Qua Các Nền Văn Hóa";
 "Neptune Myths Description" = "Được đặt tên theo thần biển La Mã, Sao Hải Vương truyền cảm hứng cho các thần thoại về đại dương và vùng nước vũ trụ qua nhiều nền văn hóa.";
 "Greek Myth Culture" = "Hy Lạp";
 "Greek Myth God" = "Poseidon";
@@ -795,7 +795,7 @@
 "Maori Myth Culture" = "Maori";
 "Maori Myth God" = "Tangaroa";
 "Maori Myth Description" = "Tangaroa, thần biển Maori, là người tạo ra sinh vật biển và cai trị đại dương.";
-"Neptune Internal Title" = "🪐 Các Lớp Bên Trong của Sao Hải Vương";
+"Neptune Internal Title" = "Các Lớp Bên Trong của Sao Hải Vương";
 "Neptune Layer Core" = "Lõi Đá";
 "Neptune Layer Core Description" = "Một lõi đá nhỏ, có thể nặng 1,2 lần Trái Đất, nằm ở trung tâm Sao Hải Vương.";
 "Neptune Layer Mantle" = "Lớp Băng";

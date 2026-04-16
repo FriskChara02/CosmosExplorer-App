@@ -80,7 +80,7 @@ private struct HeaderView: View {
             Spacer()
             
             VStack(spacing: 2) {
-                Text("🏆 LEADERBOARD")
+                Text("LEADERBOARD")
                     .font(.system(size: 26, weight: .bold, design: .rounded))
                     .foregroundStyle(
                         LinearGradient(

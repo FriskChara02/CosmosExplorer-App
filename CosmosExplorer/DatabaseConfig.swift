@@ -17,6 +17,7 @@ struct DatabaseConfig {
         configuration.user = "postgres"
         configuration.credential = .scramSHA256(password: "123456")
         configuration.ssl = false
+        configuration.credential = .trust
 
         do {
             return try Connection(configuration: configuration)

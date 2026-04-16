@@ -69,17 +69,17 @@ class UserModel: Identifiable {
     func getRankColor() -> String {
         switch rank {
         case 1..<1000:
-            return "Neutron Star ⭐"
+            return "Neutron Star"
         case 1000..<1200:
-            return "Eternity Guardian 💥🌌"
+            return "Eternity Guardian"
         case 1200..<1400:
-            return "Pulsar Emperor ✨🌟✨"
+            return "Pulsar Emperor"
         case 1400..<1600:
-            return "Void Walker 🕳️"
+            return "Void Walker"
         case 1600..<999999:
-            return "Cosmic Overlord 🌀"
+            return "Cosmic Overlord"
         default:
-            return "Meteor 🌠"
+            return "Meteor"
         }
     }
 }

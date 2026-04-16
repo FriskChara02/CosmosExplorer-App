@@ -416,13 +416,11 @@ struct SettingsView: View {
                 
                 Picker("", selection: $selectedLanguage) {
                     HStack {
-                        Text("🇺🇸")
                         Text("English")
                     }.tag("en")
                     
                     HStack {
-                        Text("🇻🇳")
-                        Text("Tiếng Việt")
+                        Text("Vietnamese")
                     }.tag("vi")
                 }
                 .pickerStyle(.menu)
