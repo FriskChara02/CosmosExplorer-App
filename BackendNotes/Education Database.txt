@@ -1,0 +1,69 @@
+#  Database Education CosmosExplorer: 
+
+**[Note]:** Simply copy the entire code block and run it against your database using your specific name.
+(pgAdmin4 - PostgreSQL)
+
+
+
+DROP TABLE IF EXISTS favorites, attempts, cards, quizzes, user_progress, categories;
+
+
+
+
+CREATE TABLE quizzes (
+id BIGSERIAL PRIMARY KEY,
+title VARCHAR(50) NOT NULL,
+description TEXT,
+is_public BOOLEAN DEFAULT FALSE,
+created_by UUID REFERENCES users(id),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+categories TEXT[] DEFAULT '{}'
+);
+
+CREATE TABLE cards (
+id BIGSERIAL PRIMARY KEY,
+quiz_id BIGINT NOT NULL REFERENCES quizzes(id) ON DELETE CASCADE,
+term TEXT NOT NULL,
+definition TEXT NOT NULL,
+hint TEXT,
+image_data BYTEA,
+term_formatting BYTEA,
+definition_formatting BYTEA
+);
+
+CREATE TABLE attempts (
+id BIGSERIAL PRIMARY KEY,
+user_id UUID NOT NULL REFERENCES users(id),
+quiz_id BIGINT NOT NULL REFERENCES quizzes(id),
+mode VARCHAR(50) NOT NULL,
+started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+is_completed BOOLEAN DEFAULT FALSE,
+current_index INTEGER DEFAULT 0,
+correct_count INTEGER DEFAULT 0,
+incorrect_count INTEGER DEFAULT 0,
+user_answers JSONB DEFAULT '{}',
+correct_cards BIGINT[] DEFAULT '{}'
+);
+
+CREATE TABLE favorites (
+id BIGSERIAL PRIMARY KEY,
+user_id UUID NOT NULL REFERENCES users(id),
+card_id BIGINT NOT NULL REFERENCES cards(id) ON DELETE CASCADE,
+quiz_id BIGINT NOT NULL REFERENCES quizzes(id) ON DELETE CASCADE,
+added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+UNIQUE(user_id, card_id)
+);
+
+CREATE TABLE user_progress (
+user_id UUID PRIMARY KEY REFERENCES users(id),
+streak_days INTEGER DEFAULT 0,
+last_completed_date TIMESTAMP,
+weekly_completions TEXT,
+total_completions INTEGER DEFAULT 0
+);
+
+ALTER TABLE attempts
+ADD CONSTRAINT attempts_user_quiz_mode_unique
+UNIQUE (user_id, quiz_id, mode);

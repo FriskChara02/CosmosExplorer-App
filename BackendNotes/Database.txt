@@ -1,0 +1,444 @@
+#  Database CosmosExplorer: 
+
+**[Note]:** Simply copy the entire code block and run it against your database using your specific name.
+(pgAdmin4 - PostgreSQL)
+
+
+
+- Xóa các bảng: Ví dụ
+DROP TABLE IF EXISTS PlanetMissions;
+DROP TABLE IF EXISTS PlanetInfoCards;
+DROP TABLE IF EXISTS PlanetLayers;
+DROP TABLE IF EXISTS PlanetMyths;
+DROP TABLE IF EXISTS planets;
+
+
+
+CREATE TABLE users (
+id UUID PRIMARY KEY,
+email VARCHAR(30) UNIQUE NOT NULL,
+username VARCHAR(20) UNIQUE,
+password VARCHAR(128) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+avatar TEXT,
+user_description TEXT,
+date_of_birth TIMESTAMP,
+location TEXT,
+gender VARCHAR(10),
+hobbies TEXT,
+bio TEXT,
+rank INTEGER DEFAULT 0,
+score INTEGER DEFAULT 0,
+token TEXT,
+status VARCHAR(20) DEFAULT 'online',
+role VARCHAR(20) DEFAULT 'user'
+);
+
+- Tạo lại bảng planets
+CREATE TABLE planets (
+id UUID PRIMARY KEY,
+name TEXT,
+planet_description TEXT,
+view_count INTEGER,
+is_favorite BOOLEAN,
+planet_order INTEGER,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+planet_type TEXT,
+radius TEXT,
+distance_from_sun TEXT,
+moons TEXT,
+gravity TEXT,
+tilt_of_axis TEXT,
+length_of_year TEXT,
+length_of_day TEXT,
+temperature TEXT,
+age TEXT,
+gallery_image_data BYTEA[],
+myth_title TEXT,
+myth_description TEXT,
+internal_title TEXT,
+internal_image BYTEA,
+in_depth_title TEXT,
+header_image_in_depth_data BYTEA,
+exploration_title TEXT,
+header_image_exploration_data BYTEA,
+highlight_quote TEXT,
+showcase_image_data BYTEA,
+wiki_link TEXT
+);
+
+CREATE TABLE planets_comments (
+id UUID PRIMARY KEY,
+planets_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+- Tạo bảng PlanetMyths
+CREATE TABLE PlanetMyths (
+id UUID PRIMARY KEY,
+planet_id UUID REFERENCES planets(id),
+culture TEXT,
+god_name TEXT,
+myth_description TEXT,
+image_data BYTEA
+);
+
+- Tạo bảng PlanetLayers
+CREATE TABLE PlanetLayers (
+id UUID PRIMARY KEY,
+planet_id UUID REFERENCES planets(id),
+name TEXT,
+layer_description TEXT,
+color_start TEXT,
+color_end TEXT,
+icon TEXT
+);
+
+- Tạo bảng PlanetInfoCards
+CREATE TABLE PlanetInfoCards (
+id UUID PRIMARY KEY,
+planet_id UUID REFERENCES planets(id),
+icon TEXT,
+title TEXT,
+info_card_description TEXT,
+icon_color TEXT
+);
+
+- Tạo bảng PlanetMissions
+CREATE TABLE PlanetMissions (
+id UUID PRIMARY KEY,
+planet_id UUID REFERENCES planets(id),
+title TEXT,
+mission_description TEXT,
+icon TEXT,
+mission_id TEXT
+);
+
+- Tạo bảng galaxies
+CREATE TABLE IF NOT EXISTS galaxies (
+id UUID PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+galaxy_description TEXT,
+view_count INTEGER DEFAULT 0,
+is_favorite BOOLEAN DEFAULT FALSE,
+galaxy_order INTEGER,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+radius VARCHAR(30),
+distance_from_sun VARCHAR(30),
+age VARCHAR(30),
+gallery_image_data BYTEA[],
+wiki_link TEXT
+);
+
+CREATE TABLE galaxy_comments (
+id UUID PRIMARY KEY,
+galaxy_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS nebulas (
+id UUID PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+nebula_description TEXT,
+view_count INTEGER DEFAULT 0,
+is_favorite BOOLEAN DEFAULT FALSE,
+nebula_order INTEGER,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+radius VARCHAR(30),
+distance_from_sun VARCHAR(30),
+age VARCHAR(30),
+gallery_image_data BYTEA[],
+wiki_link TEXT
+);
+
+CREATE TABLE nebula_comments (
+id UUID PRIMARY KEY,
+nebula_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS stars (
+id UUID PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+star_description TEXT,
+view_count INTEGER DEFAULT 0,
+is_favorite BOOLEAN DEFAULT FALSE,
+star_order INTEGER,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+radius VARCHAR(30),
+distance_from_sun VARCHAR(30),
+age VARCHAR(30),
+gallery_image_data BYTEA[],
+wiki_link TEXT
+);
+
+CREATE TABLE stars_comments (
+id UUID PRIMARY KEY,
+star_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+- Tạo bảng blackholes
+CREATE TABLE IF NOT EXISTS blackholes (
+id UUID PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+blackhole_description TEXT,
+view_count INTEGER DEFAULT 0,
+is_favorite BOOLEAN DEFAULT FALSE,
+blackhole_order INTEGER,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+radius VARCHAR(30),
+distance_from_sun VARCHAR(30),
+age VARCHAR(30),
+gallery_image_data BYTEA[],
+wiki_link TEXT
+);
+
+CREATE TABLE blackhole_comments (
+id UUID PRIMARY KEY,
+blackhole_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS constellations (
+id UUID PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+constellation_description TEXT,
+view_count INTEGER DEFAULT 0,
+is_favorite BOOLEAN DEFAULT FALSE,
+constellation_order INTEGER DEFAULT 0,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+main_stars INTEGER DEFAULT 0,
+named_stars BYTEA,
+gallery_image_data BYTEA[],
+wiki_link TEXT
+);
+
+CREATE TABLE constellation_comments (
+id UUID PRIMARY KEY,
+constellation_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS planetss (
+id UUID PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+planets_description TEXT,
+view_count INTEGER DEFAULT 0,
+is_favorite BOOLEAN DEFAULT FALSE,
+planets_order INTEGER,
+image_data BYTEA,
+random_infos BYTEA,
+about_description TEXT,
+video_urls BYTEA,
+radius VARCHAR(30),
+distance_from_sun VARCHAR(30),
+age VARCHAR(30),
+gallery_image_data BYTEA[],
+wiki_link TEXT
+);
+
+CREATE TABLE planetss_comments (
+id UUID PRIMARY KEY,
+planetss_id UUID NOT NULL,
+sender_id UUID NOT NULL,
+content TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+---
+
+Friends - Groups - Chats
+
+CREATE TABLE IF NOT EXISTS friend_requests (
+id UUID PRIMARY KEY,
+sender_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+receiver_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+status VARCHAR(20) NOT NULL DEFAULT 'pending', -- pending, accepted, rejected
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+CONSTRAINT unique_friend_request UNIQUE(sender_id, receiver_id),
+CONSTRAINT no_self_request CHECK (sender_id != receiver_id)
+);
+
+CREATE INDEX idx_friend_requests_sender ON friend_requests(sender_id);
+CREATE INDEX idx_friend_requests_receiver ON friend_requests(receiver_id);
+CREATE INDEX idx_friend_requests_status ON friend_requests(status);
+
+CREATE TABLE IF NOT EXISTS friendships (
+id UUID PRIMARY KEY,
+user_id1 UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+user_id2 UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+CONSTRAINT unique_friendship UNIQUE(user_id1, user_id2),
+CONSTRAINT no_self_friendship CHECK (user_id1 != user_id2)
+);
+
+CREATE INDEX idx_friendships_user1 ON friendships(user_id1);
+CREATE INDEX idx_friendships_user2 ON friendships(user_id2);
+
+CREATE TABLE IF NOT EXISTS chats (
+id UUID PRIMARY KEY,
+participant1_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+participant2_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+last_message_content TEXT,
+last_message_time TIMESTAMP,
+is_blocked BOOLEAN DEFAULT FALSE,
+blocked_by UUID REFERENCES users(id) ON DELETE SET NULL,
+custom_nickname1 VARCHAR(25),
+custom_nickname2 VARCHAR(25),
+theme_color VARCHAR(7), -- hex color like #FF5733
+quick_reaction_emoji VARCHAR(10) DEFAULT '👍',
+background_name TEXT,
+CONSTRAINT unique_chat UNIQUE(participant1_id, participant2_id),
+CONSTRAINT no_self_chat CHECK (participant1_id != participant2_id)
+);
+
+CREATE INDEX idx_chats_participant1 ON chats(participant1_id);
+CREATE INDEX idx_chats_participant2 ON chats(participant2_id);
+CREATE INDEX idx_chats_last_message_time ON chats(last_message_time DESC NULLS LAST);
+
+CREATE TABLE IF NOT EXISTS messages (
+id UUID PRIMARY KEY,
+chat_id UUID NOT NULL REFERENCES chats(id) ON DELETE CASCADE,
+sender_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+content TEXT NOT NULL,
+message_type VARCHAR(20) DEFAULT 'text', -- text, image, emoji
+reactions TEXT, -- JSON array of reactions
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+is_read BOOLEAN DEFAULT FALSE,
+reply_to_message_id UUID REFERENCES messages(id) ON DELETE SET NULL
+);
+
+CREATE INDEX idx_messages_chat ON messages(chat_id);
+CREATE INDEX idx_messages_sender ON messages(sender_id);
+CREATE INDEX idx_messages_created_at ON messages(created_at);
+
+CREATE TABLE IF NOT EXISTS groups (
+id UUID PRIMARY KEY,
+title VARCHAR(25) NOT NULL,
+avatar TEXT,
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+created_by UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+last_message_content TEXT,
+last_message_time TIMESTAMP
+);
+
+CREATE INDEX idx_groups_created_by ON groups(created_by);
+CREATE INDEX idx_groups_last_message_time ON groups(last_message_time DESC NULLS LAST);
+
+CREATE TABLE IF NOT EXISTS group_members (
+id UUID PRIMARY KEY,
+group_id UUID NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
+user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+role VARCHAR(20) DEFAULT 'member', -- admin, member
+joined_at TIMESTAMP NOT NULL DEFAULT NOW(),
+CONSTRAINT unique_group_member UNIQUE(group_id, user_id)
+);
+
+CREATE INDEX idx_group_members_group ON group_members(group_id);
+CREATE INDEX idx_group_members_user ON group_members(user_id);
+CREATE INDEX idx_group_members_role ON group_members(role);
+
+CREATE TABLE IF NOT EXISTS group_messages (
+id UUID PRIMARY KEY,
+group_id UUID NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
+sender_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+content TEXT NOT NULL,
+message_type VARCHAR(20) DEFAULT 'text', -- text, image, emoji
+reactions TEXT, -- JSON array
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+reply_to_message_id UUID REFERENCES group_messages(id) ON DELETE SET NULL
+);
+
+CREATE INDEX idx_group_messages_group ON group_messages(group_id);
+CREATE INDEX idx_group_messages_sender ON group_messages(sender_id);
+CREATE INDEX idx_group_messages_created_at ON group_messages(created_at);
+
+CREATE TABLE IF NOT EXISTS group_word_filters (
+id UUID PRIMARY KEY,
+group_id UUID NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
+banned_word VARCHAR(30) NOT NULL,
+replacement VARCHAR(30),
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+CONSTRAINT unique_word_filter UNIQUE(group_id, banned_word)
+);
+
+CREATE INDEX idx_word_filters_group ON group_word_filters(group_id);
+
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+NEW.updated_at = NOW();
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_friend_requests_updated_at
+BEFORE UPDATE ON friend_requests
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_chats_updated_at
+BEFORE UPDATE ON chats
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_groups_updated_at
+BEFORE UPDATE ON groups
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TABLE ratings (
+id UUID PRIMARY KEY,
+user_id UUID NOT NULL REFERENCES users(id),
+username VARCHAR(25) NOT NULL,
+rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+review TEXT,
+timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+avatar TEXT
+);
+
+CREATE TABLE feedbacks (
+id UUID PRIMARY KEY,
+user_id UUID NOT NULL REFERENCES users(id),
+username VARCHAR(25) NOT NULL,
+email VARCHAR(25) NOT NULL,
+category VARCHAR(25) NOT NULL,
+subject VARCHAR(100) NOT NULL,
+message TEXT NOT NULL,
+timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
